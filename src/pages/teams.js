@@ -3,11 +3,11 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const Teams = () => (
   <Layout>
-    <SEO title="Drivers" />
-    <h1>Drivers</h1>
+    <SEO title="Teams" />
+    <h1>Teams</h1>
   </Layout>
 )
 
-export default IndexPage
+export default Teams
