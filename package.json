@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "f2standings",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Formula 2 Standings",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Pavel Růžička <hello@pavelruzicka.com>",
   "dependencies": {
     "gatsby": "^2.13.50",
     "gatsby-image": "^2.2.8",
@@ -30,14 +30,10 @@
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "serve": "gatsby serve"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/pavelruzicka/f2standings"
   }
 }
