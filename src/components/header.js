@@ -1,14 +1,20 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 
 import Image from "./image"
 
+const linkStyle = {
+  textDecoration: `none`,
+  fontWeight: `bold`,
+  color: `#000000cc`,
+  opacity: `.35`,
+  margin: `0 .75rem`,
+}
+
 const Header = () => (
   <header
     style={{
-      marginBottom: `2rem`,
-      margin: `0 auto`,
+      margin: `1rem auto 2.5rem`,
       maxWidth: 1024,
       display: `flex`,
       justifyContent: `space-between`,
@@ -24,7 +30,7 @@ const Header = () => (
             display: `flex`,
           }}
         >
-          <div style={{ width: 110, margin: `1rem` }}>
+          <div style={{ width: 90, margin: `1rem .5rem` }}>
             <Image />
           </div>
         </Link>
@@ -32,9 +38,15 @@ const Header = () => (
     </div>
 
     <div>
-      <Link to="/">Drivers</Link>
-      <Link to="/teams">Teams</Link>
-      <Link to="/races">Races</Link>
+      <Link to="/" style={linkStyle} activeStyle={{ opacity: 1 }}>
+        Drivers
+      </Link>
+      <Link to="/teams" style={linkStyle} activeStyle={{ opacity: 1 }}>
+        Teams
+      </Link>
+      <Link to="/races" style={linkStyle} activeStyle={{ opacity: 1 }}>
+        Races
+      </Link>
     </div>
   </header>
 )
