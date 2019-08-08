@@ -3,7 +3,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+
+import "../styles/layout.css"
+import { footer, footerLine, footerLink } from "../styles/footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,7 +29,20 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>{data.site.siteMetadata.description}</footer>
+        <footer style={footer}>
+          <p style={footerLine}>{data.site.siteMetadata.description}</p>
+          <p style={footerLine}>
+            Crafted in {new Date().getFullYear()} by{" "}
+            <a
+              style={footerLink}
+              href="https://www.pavelruzicka.com/"
+              target="_blank"
+            >
+              Pavel Růžička
+            </a>
+            .
+          </p>
+        </footer>
       </div>
     </>
   )

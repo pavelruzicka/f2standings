@@ -3,24 +3,10 @@ import React from "react"
 
 import Image from "./image"
 
-const linkStyle = {
-  textDecoration: `none`,
-  fontWeight: `bold`,
-  color: `#000000cc`,
-  opacity: `.35`,
-  margin: `0 .75rem`,
-}
+import { header, link } from "../styles/header"
 
 const Header = () => (
-  <header
-    style={{
-      margin: `1rem auto 2.5rem`,
-      maxWidth: 1024,
-      display: `flex`,
-      justifyContent: `space-between`,
-      alignItems: `center`,
-    }}
-  >
+  <header style={header}>
     <div style={{}}>
       <h3 style={{ margin: 0 }}>
         <Link
@@ -38,13 +24,13 @@ const Header = () => (
     </div>
 
     <div>
-      <Link to="/" style={linkStyle} activeStyle={{ opacity: 1 }}>
+      <Link to="/" style={link} activeStyle={{ opacity: 1 }}>
         Drivers
       </Link>
-      <Link to="/teams" style={linkStyle} activeStyle={{ opacity: 1 }}>
+      <Link to="/teams" style={link} activeStyle={{ opacity: 1 }}>
         Teams
       </Link>
-      <Link to="/races" style={linkStyle} activeStyle={{ opacity: 1 }}>
+      <Link to="/races" style={link} activeStyle={{ opacity: 1 }}>
         Races
       </Link>
     </div>
