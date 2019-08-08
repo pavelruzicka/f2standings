@@ -22,7 +22,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
   createPage({
     path: `/`,
     component: require.resolve(`${templateDir}/drivers.js`),
-    context: { drivers, teams },
+    context: { drivers, teams, races },
   })
 
   createPage({
