@@ -12,29 +12,36 @@ const RacesRow = ({ results, races }) => {
           <thead>
             <tr>
               {results.map(race => (
-                <RaceHeader race={race} races={races} />
+                <RaceHeader race={race} races={races} key={race.location} />
               ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              {results.map(() => (
-                <>
+              {results.map(race => (
+                <React.Fragment key={race.location}>
                   <RacePartition type="feature" />
                   <RacePartition type="sprint" />
-                </>
+                </React.Fragment>
               ))}
             </tr>
             <tr>
               {results.map(race => {
                 if (race.upcoming) {
-                  return <RaceResult race={race} upcoming={true} type={null} />
+                  return (
+                    <RaceResult
+                      race={race}
+                      key={race.location}
+                      upcoming={true}
+                      type={null}
+                    />
+                  )
                 } else {
                   return (
-                    <>
+                    <React.Fragment key={race.location}>
                       <RaceResult race={race} upcoming={false} type="feature" />
                       <RaceResult race={race} upcoming={false} type="sprint" />
-                    </>
+                    </React.Fragment>
                   )
                 }
               })}

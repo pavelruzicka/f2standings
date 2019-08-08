@@ -45,6 +45,7 @@ export default ({ pageContext: { drivers, teams, races } }) => (
               teams={teams}
               races={races}
               index={index}
+              key={driver.short}
             />
           ))}
         </tbody>

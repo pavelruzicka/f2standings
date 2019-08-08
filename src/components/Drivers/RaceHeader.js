@@ -1,5 +1,7 @@
 import React from "react"
 
+import Flag from "../Flag"
+
 const RaceHeader = ({ race, races }) => {
   const { location } = race
   const raceInfo = races.filter(r => r.short === location)[0]
@@ -14,11 +16,11 @@ const RaceHeader = ({ race, races }) => {
       }}
       colSpan="2"
     >
-      <img
-        src={`/flags/${location}.svg`}
+      <Flag
+        countryCode={location}
+        large={false}
         alt={raceInfo.country}
         title={raceInfo.country}
-        style={{ width: 24, margin: `0 .5rem 0 0` }}
       />
       <small style={{ fontWeight: `bold` }}>
         <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>

@@ -14,10 +14,11 @@ const DriverRow = ({ driver, team, onClick }) => {
         #0
       </th>
       <td>
-        <Flag countryCode={country} /> {name} <strong>{lastName}</strong>
+        <Flag countryCode={country} large={true} /> {name}{" "}
+        <strong>{lastName}</strong>
       </td>
       <td>
-        <Flag countryCode={team.country} /> {team.name}
+        <Flag countryCode={team.country} large={true} /> {team.name}
       </td>
       <td>0</td>
       <td>0</td>
