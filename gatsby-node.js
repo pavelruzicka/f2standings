@@ -22,13 +22,13 @@ exports.createPages = async ({ actions: { createPage } }) => {
   createPage({
     path: `/`,
     component: require.resolve(`${templateDir}/drivers.js`),
-    context: { drivers },
+    context: { drivers, teams },
   })
 
   createPage({
     path: `/teams`,
     component: require.resolve(`${templateDir}/teams.js`),
-    context: { teams },
+    context: { teams, drivers },
   })
 
   createPage({

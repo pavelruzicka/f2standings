@@ -3,7 +3,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-export default ({ pageContext: { teams } }) => (
+export default ({ pageContext: { teams, drivers } }) => (
   <>
     <Layout>
       <SEO title="Teams" />

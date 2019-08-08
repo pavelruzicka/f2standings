@@ -1,6 +1,5 @@
 export const header = {
   margin: `1rem auto 2.5rem`,
-  maxWidth: 1024,
   display: `flex`,
   justifyContent: `space-between`,
   alignItems: `center`,

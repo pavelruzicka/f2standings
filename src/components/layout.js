@@ -21,28 +21,29 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 1024,
-        }}
-      >
-        <main>{children}</main>
-        <footer style={footer}>
-          <p style={footerLine}>{data.site.siteMetadata.description}</p>
-          <p style={footerLine}>
-            Crafted in {new Date().getFullYear()} by{" "}
-            <a
-              style={footerLink}
-              href="https://www.pavelruzicka.com/"
-              target="_blank"
-            >
-              Pavel Růžička
-            </a>
-            .
-          </p>
-        </footer>
+      <div class="container">
+        <Header />
+        <div
+          style={{
+            margin: `0 auto`,
+          }}
+        >
+          <main>{children}</main>
+          <footer style={footer}>
+            <p style={footerLine}>{data.site.siteMetadata.description}</p>
+            <p style={footerLine}>
+              Crafted in {new Date().getFullYear()} by{" "}
+              <a
+                style={footerLink}
+                href="https://www.pavelruzicka.com/"
+                target="_blank"
+              >
+                Pavel Růžička
+              </a>
+              .
+            </p>
+          </footer>
+        </div>
       </div>
     </>
   )
