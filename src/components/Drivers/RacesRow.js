@@ -7,8 +7,8 @@ import RaceResult from "./RaceResult"
 const RacesRow = ({ results, races }) => {
   return (
     <tr>
-      <td colspan="6" style={{ padding: 0 }}>
-        <table class="table table-sm" style={{ marginBottom: 0 }}>
+      <td colSpan="6" style={{ padding: 0 }}>
+        <table className="table table-sm" style={{ marginBottom: 0 }}>
           <thead>
             <tr>
               {results.map(race => (

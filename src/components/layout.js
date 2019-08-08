@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div class="container">
+      <div className="container">
         <Header />
         <div
           style={{

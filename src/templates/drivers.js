@@ -12,22 +12,40 @@ export default ({ pageContext: { drivers, teams, races } }) => (
     <Layout>
       <SEO title="Drivers" />
 
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
-            <th scope="col" style={{ padding: `.75rem` }}>
+            <th
+              scope="col"
+              style={{
+                padding: `.75rem`,
+                borderLeft: `1px solid #dee2e6`,
+              }}
+            >
               Pos
             </th>
             <th scope="col">Driver</th>
             <th scope="col">Team</th>
             <th scope="col">PP</th>
             <th scope="col">FL</th>
-            <th scope="col">Points</th>
+            <th
+              scope="col"
+              style={{
+                borderRight: `1px solid #dee2e6`,
+              }}
+            >
+              Points
+            </th>
           </tr>
         </thead>
         <tbody>
-          {drivers.map(driver => (
-            <DriverProfile driver={driver} teams={teams} races={races} />
+          {drivers.map((driver, index) => (
+            <DriverProfile
+              driver={driver}
+              teams={teams}
+              races={races}
+              index={index}
+            />
           ))}
         </tbody>
       </table>

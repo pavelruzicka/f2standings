@@ -12,7 +12,7 @@ const RaceHeader = ({ race, races }) => {
         border: `1px solid #dee2e6`,
         textAlign: `center`,
       }}
-      colspan="2"
+      colSpan="2"
     >
       <img
         src={`/flags/${location}.svg`}

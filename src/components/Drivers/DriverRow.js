@@ -1,10 +1,12 @@
 import React from "react"
 
-const DriverRow = ({ driver, team }) => {
+import Flag from "../Flag"
+
+const DriverRow = ({ driver, team, onClick }) => {
   const { country, name, lastName } = driver
 
   return (
-    <tr>
+    <tr onClick={() => onClick()}>
       <th
         scope="row"
         style={{ borderLeft: `1px solid #dee2e6`, padding: `.75rem` }}
@@ -12,28 +14,10 @@ const DriverRow = ({ driver, team }) => {
         #0
       </th>
       <td>
-        <img
-          src={`/flags/${country}.svg`}
-          style={{
-            width: 25,
-            margin: `0 .35rem 0 0`,
-            position: `relative`,
-            bottom: `3px`,
-          }}
-        />{" "}
-        {name} <strong>{lastName}</strong>
+        <Flag countryCode={country} /> {name} <strong>{lastName}</strong>
       </td>
       <td>
-        <img
-          src={`/flags/${team.country}.svg`}
-          style={{
-            width: 25,
-            margin: `0 .35rem 0 0`,
-            position: `relative`,
-            bottom: `3px`,
-          }}
-        />{" "}
-        {team.name}
+        <Flag countryCode={team.country} /> {team.name}
       </td>
       <td>0</td>
       <td>0</td>
