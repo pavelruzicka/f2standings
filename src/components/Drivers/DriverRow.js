@@ -2,7 +2,7 @@ import React from "react"
 
 import Flag from "../Flag"
 
-const DriverRow = ({ driver, team, onClick }) => {
+const DriverRow = ({ driver, team, stats, onClick }) => {
   const { country, name, lastName } = driver
 
   return (
@@ -20,8 +20,8 @@ const DriverRow = ({ driver, team, onClick }) => {
       <td>
         <Flag countryCode={team.country} large={true} /> {team.name}
       </td>
-      <td>0</td>
-      <td>0</td>
+      <td>{stats.poles}</td>
+      <td>{stats.fastest}</td>
       <td style={{ borderRight: `1px solid #dee2e6` }}>0</td>
     </tr>
   )
