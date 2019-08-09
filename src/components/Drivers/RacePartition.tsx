@@ -7,6 +7,12 @@ interface IRacePartition {
 }
 
 const RacePartition = ({ type }: IRacePartition) => {
+  const abbr = (full: string) =>
+    `${full
+      .split(` `)
+      .map(part => part[0])
+      .join(` `)}R`
+
   return (
     <td
       style={{
@@ -16,7 +22,7 @@ const RacePartition = ({ type }: IRacePartition) => {
       }}
     >
       <small>
-        <abbr title={`${RaceType[type]} Race`}>NN</abbr>
+        <abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</abbr>
       </small>
     </td>
   )
