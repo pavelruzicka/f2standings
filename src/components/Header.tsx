@@ -5,15 +5,15 @@ import Image from "./Image"
 
 import { header, link } from "../styles/header"
 
-const Header = () => (
+export const Header = () => (
   <header style={header}>
     <div style={{}}>
       <h3 style={{ margin: 0 }}>
         <Link
           to="/"
           style={{
-            textDecoration: `none`,
             display: `flex`,
+            textDecoration: `none`,
           }}
         >
           <div style={{ width: 90, margin: `1rem .5rem` }}>
@@ -36,5 +36,3 @@ const Header = () => (
     </div>
   </header>
 )
-
-export default Header

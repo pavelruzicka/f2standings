@@ -1,13 +1,13 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./Header"
+import { graphql, useStaticQuery } from "gatsby"
 
-import "../styles/layout.css"
+import { Header } from "./Header"
+
 import { footer, footerLine, footerLink } from "../styles/footer"
+import "../styles/layout.css"
 
-const Layout = ({ children }) => {
+export const Layout: React.SFC = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -48,9 +48,3 @@ const Layout = ({ children }) => {
     </>
   )
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout

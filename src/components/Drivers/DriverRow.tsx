@@ -1,8 +1,20 @@
 import React from "react"
 
-import Flag from "../Flag"
+import { Flag } from "../Flag"
 
-const DriverRow = ({ driver, team, index, onClick }) => {
+import { IDriver } from "../../interfaces/Driver"
+import { ITeam } from "../../interfaces/Team"
+
+type ExpandFunc = () => void
+
+interface IDriverProps {
+  driver: IDriver
+  team: ITeam
+  index: number
+  onClick: ExpandFunc
+}
+
+const DriverRow = ({ driver, team, index, onClick }: IDriverProps) => {
   const { country, name, lastName, stats } = driver
 
   return (
@@ -25,8 +37,8 @@ const DriverRow = ({ driver, team, index, onClick }) => {
       <td
         style={{
           borderRight: `1px solid #dee2e6`,
-          textAlign: `center`,
           padding: `.75rem`,
+          textAlign: `center`,
         }}
       >
         {stats.points}

@@ -1,0 +1,35 @@
+<svg width="20px" height="22px" viewBox="0 0 20 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-22.000000, -16.000000)">
+            <g id="Group" transform="translate(22.000000, 17.000000)">
+                <g id="White-Fillings" transform="translate(3.000000, 0.108359)" fill="#F9F9F9" fill-rule="nonzero">
+                    <polygon id="Path-11" points="4.25 0 4.25 3.89164065 6.25 4.381035 8.25 5.07788043 8.25 1.06108049"></polygon>
+                    <polygon id="Path-10" points="0 4.89607337 0 8.95310796 2.125 7.97716012 4.25 7.89164065 4.25 3.89164065 2.125 4.14368268"></polygon>
+                    <polygon id="Path-12" points="4.25 7.97716012 4.25 12.0626796 8.25 12.8916407 8.25 9.07788043 6.25 8.32826114"></polygon>
+                    <polygon id="Path-13" points="8.25 5.07788043 8.25 9.07788043 10.3007734 9.89164065 12.25 10.2641202 12.25 6.26412021 10.25 5.82420482"></polygon>
+                    <polygon id="Path-14" points="12.25 2.00109282 12.25 6.26412021 14.125 6.11304787 16 5.32070579 16 1.21160879"></polygon>
+                    <polygon id="Path-15" points="12.25 10.2641202 12.25 13.8916407 16 12.8916407 16 9.25366877 14.125 10.1208957"></polygon>
+                </g>
+                <g id="Black-Fillings" transform="translate(3.000000, 0.108359)" fill="#0D0D0D">
+                    <polygon id="Path-5" fill-rule="nonzero" points="4.25 3.89164065 4.25 7.97716012 6.31553588 8.34669452 8.25 9.07788043 8.25 5.07788043 6.31553588 4.36481801"></polygon>
+                    <polygon id="Path-4" fill-rule="nonzero" points="0 0.891640653 0 4.89607337 1.79496686 4.12604272 4.25 3.89164065 4.25 0"></polygon>
+                    <polygon id="Path-6" fill-rule="nonzero" points="0 8.95310796 0 12.7267444 4.25 11.8172673 4.25 7.89164065 2.125 8.08796766"></polygon>
+                    <polygon id="Path-7" fill-rule="nonzero" points="8.25 13.0626796 8.25 9.07788043 10.3007734 9.89164065 12.25 10.2641202 12.25 13.8916407"></polygon>
+                    <polygon id="Path-9" fill-rule="nonzero" points="12.25 6.26412021 12.25 10.2641202 14.2767145 10.0739717 16 9.25366877 16 5.32070579 14.125 6.11304787"></polygon>
+                    <polygon id="Path-2" points="8.25 1.21160879 8.25 5.07788078 10.25 5.82420482 12.25 6.26412021 12.25 2.36181234"></polygon>
+                </g>
+                <g transform="translate(3.000000, 0.000000)" stroke="#000000" stroke-width="0.25">
+                    <path d="M8.25,1 C8.25,8.99109918 8.25,13.0481122 8.25,13.1710389" id="Path-2"></path>
+                    <path d="M4.25,0 C4.25,7.99109918 4.25,12.0481122 4.25,12.1710389" id="Path-2"></path>
+                    <path d="M12.25,2 C12.25,9.99109918 12.25,14.0481122 12.25,14.1710389" id="Path-2"></path>
+                    <path d="M0,5.18623978 C2.00862292,3.60458674 4.75862292,3.60458674 8.25,5.18623978 C11.7413771,6.76789282 14.3247104,6.76789282 16,5.18623978" id="Path-3"></path>
+                    <path d="M0,9.18623978 C2.00862292,7.60458674 4.75862292,7.60458674 8.25,9.18623978 C11.7413771,10.7678928 14.3247104,10.7678928 16,9.18623978" id="Path-3"></path>
+                </g>
+                <g id="Frame" stroke-linecap="round" stroke-linejoin="round" stroke="#000000" stroke-width="1.5">
+                    <path d="M3,13 C3,13 4,12 7,12 C10,12 12,14 15,14 C18,14 19,13 19,13 L19,1 C19,1 18,2 15,2 C12,2 10,0 7,0 C4,0 3,1 3,1 L3,13 Z" id="Path"></path>
+                    <path d="M1,20 L1,0" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
