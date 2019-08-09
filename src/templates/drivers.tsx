@@ -44,11 +44,7 @@ const countPoints = (
 ) => {
   const base = results.reduce((acc, curr) => {
     if (!curr.upcoming) {
-      if (
-        curr.feature &&
-        curr.feature.position >= 1 &&
-        curr.feature.position <= 10
-      ) {
+      if (curr.feature) {
         acc += featurePoints[curr.feature.position] || 0
       }
 
