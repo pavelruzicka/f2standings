@@ -14,17 +14,17 @@ const RacePartition = ({ type }: IRacePartition) => {
       .join(` `)}R`
 
   return (
-    <td
+    <div
       style={{
-        padding: `.3rem`,
+        flexBasis: `50%`,
+        padding: `.3rem 0`,
         textAlign: `center`,
-        width: `${100 / 24}%`,
       }}
     >
       <small>
         <abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</abbr>
       </small>
-    </td>
+    </div>
   )
 }
 

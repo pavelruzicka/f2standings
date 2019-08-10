@@ -10,15 +10,16 @@ interface IRaceResultProps {
 
 const RaceResult = ({ result, upcoming, type }: IRaceResultProps) => {
   return (
-    <td
+    <div
       style={{
-        padding: `.3rem`,
+        flexBasis: `50%`,
+        opacity: result[type!] ? 1 : 0.4,
+        padding: `.3rem 0`,
         textAlign: `center`,
       }}
-      colSpan={upcoming ? 2 : 1}
     >
       {upcoming ? "" : result[type!] ? `P${result[type!].position}` : "—"}
-    </td>
+    </div>
   )
 }
 

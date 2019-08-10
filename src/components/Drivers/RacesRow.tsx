@@ -18,53 +18,31 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
   return (
     <tr>
       <td colSpan={6} style={{ padding: 0 }}>
-        <table className="table table-sm" style={{ marginBottom: 0 }}>
-          <thead>
-            <tr>
-              {results.map(race => (
-                <RaceHeader race={race} races={races} key={race.location} />
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {results.map(race => (
-                <Fragment key={race.location}>
-                  <RacePartition type={RaceType.Feature} />
-                  <RacePartition type={RaceType.Sprint} />
-                </Fragment>
-              ))}
-            </tr>
-            <tr>
-              {results.map(race => {
-                if (race.upcoming) {
-                  return (
-                    <RaceResult
-                      result={race}
-                      key={race.location}
-                      upcoming={true}
-                    />
-                  )
-                } else {
-                  return (
-                    <Fragment key={race.location}>
-                      <RaceResult
-                        result={race}
-                        upcoming={false}
-                        type="feature"
-                      />
-                      <RaceResult
-                        result={race}
-                        upcoming={false}
-                        type="sprint"
-                      />
-                    </Fragment>
-                  )
-                }
-              })}
-            </tr>
-          </tbody>
-        </table>
+        <div style={{ marginBottom: 0, display: `flex` }}>
+          {results.map((race, index) => (
+            <div
+              key={race.short}
+              style={{
+                flex: `1 1 0`,
+              }}
+            >
+              <RaceHeader race={race} races={races} key={race.location} />
+              <div style={{ display: `flex`, padding: `0 .35rem` }}>
+                <RacePartition type={RaceType.Feature} />
+                <RacePartition type={RaceType.Sprint} />
+              </div>
+              <div style={{ display: `flex`, padding: `0 .35rem` }}>
+                {/* convert strings to RaceType*/}
+                {!race.upcoming ? (
+                  <>
+                    <RaceResult result={race} upcoming={false} type="feature" />
+                    <RaceResult result={race} upcoming={false} type="sprint" />
+                  </>
+                ) : null}
+              </div>
+            </div>
+          ))}
+        </div>
       </td>
     </tr>
   )

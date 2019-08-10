@@ -15,13 +15,11 @@ const RaceHeader = ({ race, races }: IRaceHeaderProps) => {
   const raceInfo = races.filter(r => r.short === location)[0]
 
   return (
-    <td
+    <div
       style={{
-        padding: `.3rem`,
+        padding: `.3rem 0`,
         textAlign: `center`,
-        width: `${100 / 12}%`,
       }}
-      colSpan={2}
     >
       <Flag
         countryCode={location}
@@ -34,7 +32,7 @@ const RaceHeader = ({ race, races }: IRaceHeaderProps) => {
           {location}
         </abbr>
       </small>
-    </td>
+    </div>
   )
 }
 

@@ -87,20 +87,18 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
       <Layout>
         <SEO title="Drivers" />
 
-        <table className="table">
+        <table className="uk-table">
           <thead>
             <tr>
-              <th
-                scope="col"
-                style={{
-                  borderLeft: `1px solid #dee2e6`,
-                  padding: `.75rem`,
-                }}
-              >
+              <th scope="col" style={{ textAlign: `right`, color: `black` }}>
                 Pos
               </th>
-              <th scope="col">Driver</th>
-              <th scope="col">Team</th>
+              <th scope="col" style={{ color: `black` }}>
+                Driver
+              </th>
+              <th scope="col" style={{ color: `black` }}>
+                Team
+              </th>
               <th scope="col" style={{ textAlign: `center` }}>
                 <img
                   src={`/icons/pole.svg`}
@@ -108,7 +106,6 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
                   title={"Pole positions"}
                   style={{
                     bottom: `2px`,
-
                     margin: `0`,
                     position: `relative`,
                     width: 22,
@@ -122,7 +119,6 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
                   title={"Fastest laps"}
                   style={{
                     bottom: `2px`,
-
                     margin: `0`,
                     position: `relative`,
                     width: 22,
@@ -132,9 +128,8 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
               <th
                 scope="col"
                 style={{
-                  borderRight: `1px solid #dee2e6`,
-                  padding: `.75rem`,
                   textAlign: `center`,
+                  color: `black`,
                 }}
               >
                 Points

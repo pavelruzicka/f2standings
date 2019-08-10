@@ -21,7 +21,7 @@ export const Layout: React.SFC = ({ children }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="uk-container">
         <Header />
         <div
           style={{

@@ -19,11 +19,8 @@ const DriverRow = ({ driver, team, index, onClick }: IDriverProps) => {
 
   return (
     <tr onClick={() => onClick()}>
-      <th
-        scope="row"
-        style={{ borderLeft: `1px solid #dee2e6`, padding: `.75rem` }}
-      >
-        {`#${index + 1}`}
+      <th scope="row" style={{ textAlign: `right`, color: `black` }}>
+        #{index + 1}
       </th>
       <td>
         <Flag countryCode={country} large={true} /> {name}{" "}
@@ -36,8 +33,6 @@ const DriverRow = ({ driver, team, index, onClick }: IDriverProps) => {
       <td style={{ textAlign: `center` }}>{stats.fastest}</td>
       <td
         style={{
-          borderRight: `1px solid #dee2e6`,
-          padding: `.75rem`,
           textAlign: `center`,
         }}
       >
