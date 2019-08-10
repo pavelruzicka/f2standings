@@ -1,71 +1,35 @@
 import React from "react"
+import styled from "styled-components"
 
 import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
+import { Icon } from "../components/Icon"
 
 import DriverProfile from "../components/Drivers/DriverProfile"
 
-import { IDriverBase, IResult } from "../interfaces/Driver"
+import { IDriverBase } from "../interfaces/Driver"
 import { IRace } from "../interfaces/Race"
 import { ITeam } from "../interfaces/Team"
 
-import { featurePoints, sprintPoints } from "../util/points"
+import { getDriverStats } from "../services/driversChampionship"
 
-const countPoles = (results: IResult[]) =>
-  results.reduce((acc, curr) => {
-    if (!curr.upcoming && curr.feature && curr.feature.pole) {
-      acc += 1
-    }
+const TableHead = styled.th`
+  && {
+    color: black;
+  }
+`
 
-    return acc
-  }, 0)
+const TableHeadInit = styled(TableHead)`
+  && {
+    text-align: right;
+  }
+`
 
-const countFastest = (results: IResult[]) =>
-  results.reduce((acc, curr) => {
-    if (!curr.upcoming && curr.feature && curr.feature.fastest) {
-      acc += 1
-    }
-
-    if (!curr.upcoming && curr.sprint && curr.sprint.fastest) {
-      acc += 1
-    }
-
-    return acc
-  }, 0)
-
-interface IBonusPointSources {
-  poles: number
-  fastest: number
-}
-
-const countPoints = (
-  results: IResult[],
-  { poles, fastest }: IBonusPointSources
-) => {
-  const base = results.reduce((acc, curr) => {
-    if (!curr.upcoming) {
-      if (curr.feature) {
-        acc += featurePoints[curr.feature.position] || 0
-      }
-
-      if (curr.sprint) {
-        acc += sprintPoints[curr.sprint.position] || 0
-      }
-    }
-
-    return acc
-  }, 0)
-
-  return base + poles * 4 + fastest * 2
-}
-
-const getDriverStats = (results: IResult[]) => {
-  const poles = countPoles(results)
-  const fastest = countFastest(results)
-  const points = countPoints(results, { poles, fastest })
-
-  return { poles, fastest, points }
-}
+const TableHeadCentered = styled(TableHead)`
+  && {
+    text-align: center;
+  }
+`
 
 const sortDrivers = (drivers: IDriverBase[]) => {
   return drivers
@@ -87,55 +51,22 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
       <Layout>
         <SEO title="Drivers" />
 
-        <table className="uk-table">
+        <table className="uk-table uk-table-small">
           <thead>
             <tr>
-              <th scope="col" style={{ textAlign: `right`, color: `black` }}>
-                Pos
-              </th>
-              <th scope="col" style={{ color: `black` }}>
-                Driver
-              </th>
-              <th scope="col" style={{ color: `black` }}>
-                Team
-              </th>
-              <th scope="col" style={{ textAlign: `center` }}>
-                <img
-                  src={`/icons/pole.svg`}
-                  alt={"Pole positions"}
-                  title={"Pole positions"}
-                  style={{
-                    bottom: `2px`,
-                    margin: `0`,
-                    position: `relative`,
-                    width: 22,
-                  }}
-                />
-              </th>
-              <th scope="col" style={{ textAlign: `center` }}>
-                <img
-                  src={`/icons/fastest.svg`}
-                  alt={"Fastest laps"}
-                  title={"Fastest laps"}
-                  style={{
-                    bottom: `2px`,
-                    margin: `0`,
-                    position: `relative`,
-                    width: 22,
-                  }}
-                />
-              </th>
-              <th
-                scope="col"
-                style={{
-                  color: `black`,
-                  textAlign: `center`,
-                }}
-              >
-                Points
-              </th>
+              <TableHeadInit scope="col">Pos</TableHeadInit>
+              <TableHead scope="col">Driver</TableHead>
+              <TableHead scope="col">Team</TableHead>
+              <TableHeadCentered scope="col">
+                <Icon type={"pole"} />
+              </TableHeadCentered>
+              <TableHeadCentered scope="col">
+                <Icon type={"fastest"} />
+              </TableHeadCentered>
+              <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>
           </thead>
+
           <tbody>
             {sortDrivers(drivers).map((driver, index) => (
               <DriverProfile

@@ -1,11 +1,32 @@
 import React from "react"
+import styled from "styled-components"
 
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Header } from "./Header"
 
-import { footer, footerLine, footerLink } from "../styles/footer"
 import "../styles/layout.css"
+
+const Footer = styled.footer`
+  margin: 2.5rem 0 6rem;
+  padding: 1.5rem 0;
+`
+
+const FooterLine = styled.p`
+  font-size: 16.5px;
+  margin-bottom: 0;
+  text-align: center;
+`
+
+const FooterLink = styled.a`
+  color: #273746;
+  text-decoration: underline;
+
+  :hover {
+    color: #273746;
+    text-decoration: none;
+  }
+`
 
 export const Layout: React.FunctionComponent = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,20 +49,16 @@ export const Layout: React.FunctionComponent = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer style={footer}>
-          <p style={footerLine}>{data.site.siteMetadata.description}</p>
-          <p style={footerLine}>
+        <Footer>
+          <FooterLine>{data.site.siteMetadata.description}</FooterLine>
+          <FooterLine>
             Crafted in {new Date().getFullYear()} by{" "}
-            <a
-              style={footerLink}
-              href="https://www.pavelruzicka.com/"
-              target="_blank"
-            >
+            <FooterLink href="https://www.pavelruzicka.com/" target="_blank">
               Pavel Růžička
-            </a>
+            </FooterLink>
             .
-          </p>
-        </footer>
+          </FooterLine>
+        </Footer>
       </div>
     </div>
   )

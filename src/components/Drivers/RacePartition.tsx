@@ -1,12 +1,15 @@
 import React from "react"
+import styled from "styled-components"
 
 import { RaceType } from "../../enums/RaceType"
 
-interface IRacePartition {
-  type: RaceType
-}
+const PartitionWrapper = styled.div`
+  flex-basis: 50%;
+  padding: 0.3rem 0;
+  text-align: center;
+`
 
-const RacePartition = ({ type }: IRacePartition) => {
+const RacePartition = ({ type }: { type: RaceType }) => {
   const abbr = (full: string) =>
     `${full
       .split(` `)
@@ -14,17 +17,11 @@ const RacePartition = ({ type }: IRacePartition) => {
       .join(` `)}R`
 
   return (
-    <div
-      style={{
-        flexBasis: `50%`,
-        padding: `.3rem 0`,
-        textAlign: `center`,
-      }}
-    >
+    <PartitionWrapper>
       <small>
         <abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</abbr>
       </small>
-    </div>
+    </PartitionWrapper>
   )
 }
 

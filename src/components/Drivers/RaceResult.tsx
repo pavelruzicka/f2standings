@@ -1,25 +1,29 @@
 import React from "react"
+import styled from "styled-components"
+
+import { RaceType } from "../../enums/RaceType"
 
 import { IResult } from "../../interfaces/Driver"
 
+const ResultWrapper = styled.div<{ active: boolean }>`
+  flex-basis: 50%;
+  opacity: ${p => (p.active ? `1` : `0.4`)};
+  padding: 0.3rem 0;
+  text-align: center;
+`
+
 interface IRaceResultProps {
   result: IResult
-  upcoming: boolean
-  type?: string
+  type: RaceType
 }
 
-const RaceResult = ({ result, upcoming, type }: IRaceResultProps) => {
+const RaceResult = ({ result, type }: IRaceResultProps) => {
+  const typeName = RaceType[type].toLowerCase()
+
   return (
-    <div
-      style={{
-        flexBasis: `50%`,
-        opacity: result[type!] ? 1 : 0.4,
-        padding: `.3rem 0`,
-        textAlign: `center`,
-      }}
-    >
-      {upcoming ? "" : result[type!] ? `P${result[type!].position}` : "—"}
-    </div>
+    <ResultWrapper active={result[typeName] !== null}>
+      {result[typeName] ? `P${result[typeName].position}` : "—"}
+    </ResultWrapper>
   )
 }
 

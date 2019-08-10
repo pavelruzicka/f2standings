@@ -1,38 +1,54 @@
 import { Link } from "gatsby"
 import React from "react"
+import styled from "styled-components"
 
 import Image from "./Image"
 
-import { header, link } from "../styles/header"
+import { menuLink } from "../styles/menuLink"
+
+const HeaderWrapper = styled.header`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto 2.5rem;
+
+  h3 {
+    margin: 0;
+  }
+
+  link {
+    display: flex;
+    text-decoration: none;
+  }
+`
+
+const ImageWrapper = styled.div`
+  width: 90px;
+  margin: 1rem 0.5rem;
+`
 
 export const Header = () => (
-  <header style={header}>
+  <HeaderWrapper>
     <div>
-      <h3 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            display: `flex`,
-            textDecoration: `none`,
-          }}
-        >
-          <div style={{ width: 90, margin: `1rem .5rem` }}>
+      <h3>
+        <Link to="/">
+          <ImageWrapper>
             <Image />
-          </div>
+          </ImageWrapper>
         </Link>
       </h3>
     </div>
 
     <div>
-      <Link to="/" style={link} activeStyle={{ opacity: 1 }}>
+      <Link to="/" style={menuLink} activeStyle={{ opacity: 1 }}>
         Drivers
       </Link>
-      <Link to="/teams" style={link} activeStyle={{ opacity: 1 }}>
+      <Link to="/teams" style={menuLink} activeStyle={{ opacity: 1 }}>
         Teams
       </Link>
-      <Link to="/races" style={link} activeStyle={{ opacity: 1 }}>
+      <Link to="/races" style={menuLink} activeStyle={{ opacity: 1 }}>
         Races
       </Link>
     </div>
-  </header>
+  </HeaderWrapper>
 )

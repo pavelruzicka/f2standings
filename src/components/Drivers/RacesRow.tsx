@@ -1,4 +1,5 @@
-import React, { Fragment } from "react"
+import React from "react"
+import styled from "styled-components"
 
 import RaceHeader from "./RaceHeader"
 import RacePartition from "./RacePartition"
@@ -9,6 +10,24 @@ import { RaceType } from "../../enums/RaceType"
 import { IResult } from "../../interfaces/Driver"
 import { IRace } from "../../interfaces/Race"
 
+const RowBase = styled.td`
+  padding: 0 !important;
+`
+
+const RowTable = styled.div`
+  display: flex;
+  margin-bottom: 0;
+`
+
+const RaceWrapper = styled.div`
+  flex: 1 1 0;
+`
+
+const SectionWrapper = styled.div`
+  display: flex;
+  padding: 0 0.35rem;
+`
+
 interface IRacesRowProps {
   results: IResult[]
   races: IRace[]
@@ -17,35 +36,29 @@ interface IRacesRowProps {
 const RacesRow = ({ results, races }: IRacesRowProps) => {
   return (
     <tr>
-      <td colSpan={6} style={{ padding: 0 }}>
-        <div style={{ marginBottom: 0, display: `flex` }}>
-          {results.map((race, index) => (
-            <div
-              key={race.short}
-              style={{
-                flex: `1 1 0`,
-              }}
-            >
+      <RowBase colSpan={6}>
+        <RowTable>
+          {results.map(race => (
+            <RaceWrapper key={race.short}>
               <RaceHeader race={race} races={races} key={race.location} />
 
-              <div style={{ display: `flex`, padding: `0 .35rem` }}>
+              <SectionWrapper>
                 <RacePartition type={RaceType.Feature} />
                 <RacePartition type={RaceType.Sprint} />
-              </div>
+              </SectionWrapper>
 
-              <div style={{ display: `flex`, padding: `0 .35rem` }}>
-                {/* convert strings to RaceType*/}
+              <SectionWrapper>
                 {!race.upcoming ? (
                   <>
-                    <RaceResult result={race} upcoming={false} type="feature" />
-                    <RaceResult result={race} upcoming={false} type="sprint" />
+                    <RaceResult result={race} type={RaceType.Feature} />
+                    <RaceResult result={race} type={RaceType.Sprint} />
                   </>
                 ) : null}
-              </div>
-            </div>
+              </SectionWrapper>
+            </RaceWrapper>
           ))}
-        </div>
-      </td>
+        </RowTable>
+      </RowBase>
     </tr>
   )
 }
