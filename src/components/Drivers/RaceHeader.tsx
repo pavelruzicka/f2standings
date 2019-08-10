@@ -12,28 +12,32 @@ interface IRaceHeaderProps {
 
 const RaceHeader = ({ race, races }: IRaceHeaderProps) => {
   const { location } = race
-  const raceInfo = races.filter(r => r.short === location)[0]
+  const raceInfo = races.find(r => r.short === location)
 
-  return (
-    <div
-      style={{
-        padding: `.3rem 0`,
-        textAlign: `center`,
-      }}
-    >
-      <Flag
-        countryCode={location}
-        large={false}
-        alt={raceInfo.country}
-        title={raceInfo.country}
-      />
-      <small style={{ fontWeight: `bold` }}>
-        <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>
-          {location}
-        </abbr>
-      </small>
-    </div>
-  )
+  if (raceInfo) {
+    return (
+      <div
+        style={{
+          padding: `.3rem 0`,
+          textAlign: `center`,
+        }}
+      >
+        <Flag
+          countryCode={location}
+          large={false}
+          alt={raceInfo.country}
+          title={raceInfo.country}
+        />
+        <small style={{ fontWeight: `bold` }}>
+          <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>
+            {location}
+          </abbr>
+        </small>
+      </div>
+    )
+  }
+
+  return <div />
 }
 
 export default RaceHeader

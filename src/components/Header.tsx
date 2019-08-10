@@ -7,7 +7,7 @@ import { header, link } from "../styles/header"
 
 export const Header = () => (
   <header style={header}>
-    <div style={{}}>
+    <div>
       <h3 style={{ margin: 0 }}>
         <Link
           to="/"

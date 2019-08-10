@@ -27,10 +27,12 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
               }}
             >
               <RaceHeader race={race} races={races} key={race.location} />
+
               <div style={{ display: `flex`, padding: `0 .35rem` }}>
                 <RacePartition type={RaceType.Feature} />
                 <RacePartition type={RaceType.Sprint} />
               </div>
+
               <div style={{ display: `flex`, padding: `0 .35rem` }}>
                 {/* convert strings to RaceType*/}
                 {!race.upcoming ? (

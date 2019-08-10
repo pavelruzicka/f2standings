@@ -11,17 +11,15 @@ interface IDriverProps {
   driver: IDriver
   team: ITeam
   index: number
-  onClick: ExpandFunc
+  expand: ExpandFunc
 }
 
-const DriverRow = ({ driver, team, index, onClick }: IDriverProps) => {
+const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
   const { country, name, lastName, stats } = driver
 
   return (
-    <tr onClick={() => onClick()}>
-      <th scope="row" style={{ textAlign: `right`, color: `black` }}>
-        #{index + 1}
-      </th>
+    <tr onClick={() => expand()}>
+      <td style={{ textAlign: `right`, color: `black` }}>#{index + 1}</td>
       <td>
         <Flag countryCode={country} large={true} /> {name}{" "}
         <strong>{lastName}</strong>

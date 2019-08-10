@@ -1,9 +1,15 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title }) => {
+import { graphql, useStaticQuery } from "gatsby"
+
+interface ISEOProps {
+  description?: string
+  lang?: string
+  title: string
+}
+
+export const SEO = ({ description, lang, title }: ISEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -29,53 +35,26 @@ const SEO = ({ description, lang, meta, title }) => {
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
+          content: metaDescription,
           name: `description`,
-          content: metaDescription,
         },
         {
+          content: title,
           property: `og:title`,
-          content: title,
         },
         {
+          content: metaDescription,
           property: `og:description`,
-          content: metaDescription,
         },
         {
-          property: `og:type`,
           content: `website`,
+          property: `og:type`,
         },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+        { content: `summary`, name: `twitter:card` },
+        { content: site.siteMetadata.author, name: `twitter:creator` },
+        { content: title, name: `twitter:title` },
+        { content: metaDescription, name: `twitter:description` },
+      ]}
     />
   )
 }
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO

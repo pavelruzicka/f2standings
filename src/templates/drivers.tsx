@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Layout } from "../components/Layout"
-import SEO from "../components/SEO"
+import { SEO } from "../components/SEO"
 
 import DriverProfile from "../components/Drivers/DriverProfile"
 
@@ -128,8 +128,8 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
               <th
                 scope="col"
                 style={{
-                  textAlign: `center`,
                   color: `black`,
+                  textAlign: `center`,
                 }}
               >
                 Points
