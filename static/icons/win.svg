@@ -1,12 +1,8 @@
-
-<svg width="18px" height="20px" viewBox="0 0 18 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-20.000000, -10.000000)" stroke="#000000">
-            <path d="M29,11 L33.9131944,11 C34.2826858,18.5940749 32.6449544,22.5940749 29,23 C25.3287645,22.5940749 23.6792245,18.5940749 24.05138,11 L29,11" id="Path-2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M24,14 L20.7547364,14 C20.7234539,17.3062739 22.1465908,19.5343493 25.024147,20.6842264" id="Path-3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M36.0405926,14 L33.0004727,14 C32.9711677,17.3062739 34.3043435,19.5343493 37,20.6842264" id="Path-3" stroke-linecap="round" stroke-linejoin="round" transform="translate(35.000000, 17.342113) scale(-1, 1) translate(-35.000000, -17.342113) "></path>
-            <path d="M28.9821033,23 L28.9821033,28.5" id="Line" stroke-width="1.5" stroke-linecap="square"></path>
-            <path d="M25.024147,29 L33,29" id="Line-2" stroke-width="1.5" stroke-linecap="round"></path>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="20">
+  <g fill="none" fill-rule="evenodd" stroke="#000">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 1h4.9132C14.2827 8.594 12.645 12.594 9 13c-3.6712-.406-5.3208-4.406-4.9486-12H9"/>
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4H.7547c-.0312 3.3063 1.3919 5.5343 4.2694 6.6842M13.9594 4h3.0401c.0293 3.3063-1.3038 5.5343-3.9995 6.6842"/>
+    <path stroke-linecap="square" stroke-width="1.5" d="M8.9821 13v5.5"/>
+    <path stroke-linecap="round" stroke-width="1.5" d="M5.0241 19H13"/>
+  </g>
 </svg>
