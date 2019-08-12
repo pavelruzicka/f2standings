@@ -1,11 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 
+import { iconTypes } from "../util/icons"
+
 const IconElement = styled.img`
   bottom: 2px;
   margin: 0;
   position: relative;
-  width: 22;
+  width: 20px;
 `
 
 interface IIconProps {
@@ -14,10 +16,8 @@ interface IIconProps {
 }
 
 export const Icon = ({ type, singular }: IIconProps) => {
-  const description =
-    type === "pole"
-      ? `Pole position${singular ? "" : "s"}`
-      : `Fastest lap${singular ? "" : "s"}`
+  const { desc, pluralizer } = (iconTypes as any)[type]
+  const description = `${desc}${singular ? "" : pluralizer}`
 
   return (
     <IconElement

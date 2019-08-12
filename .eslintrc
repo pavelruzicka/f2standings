@@ -24,6 +24,7 @@
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/indent": 0,
     "@typescript-eslint/no-object-literal-type-assertion": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
     "react/prop-types": 0,
     "react/no-unescaped-entities": 0,
     "react-hooks/rules-of-hooks": "error",

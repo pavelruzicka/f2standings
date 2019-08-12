@@ -5,7 +5,6 @@ interface IRaceBase {
 interface IRaceHappened extends IRaceBase {
   fastest?: string
   podium?: string[]
-  winningTeam?: string
 }
 
 export interface IRacePartition extends IRaceHappened {

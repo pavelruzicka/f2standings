@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 
 import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
@@ -13,23 +12,11 @@ import { ITeam } from "../interfaces/Team"
 
 import { getDriverStats } from "../services/driversChampionship"
 
-const TableHead = styled.th`
-  && {
-    color: black;
-  }
-`
-
-const TableHeadInit = styled(TableHead)`
-  && {
-    text-align: right;
-  }
-`
-
-const TableHeadCentered = styled(TableHead)`
-  && {
-    text-align: center;
-  }
-`
+import {
+  TableHead,
+  TableHeadInit,
+  TableHeadCentered,
+} from "../styles/TableHead"
 
 const sortDrivers = (drivers: IDriverBase[]) => {
   return drivers
