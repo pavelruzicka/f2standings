@@ -28,12 +28,7 @@ const RaceHeader = ({ race, races }: IRaceHeaderProps) => {
   if (raceInfo) {
     return (
       <LocationWrapper>
-        <Flag
-          countryCode={location}
-          large={false}
-          alt={raceInfo.country}
-          title={raceInfo.country}
-        />
+        <Flag countryCode={location} large={false} desc={raceInfo.country} />
 
         <Circuit>
           <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>

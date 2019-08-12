@@ -43,8 +43,8 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
               <RaceHeader race={race} races={races} key={race.location} />
 
               <SectionWrapper>
-                <RacePartition type={RaceType.Feature} />
-                <RacePartition type={RaceType.Sprint} />
+                <RacePartition type={RaceType.Feature} padded={true} />
+                <RacePartition type={RaceType.Sprint} padded={true} />
               </SectionWrapper>
 
               <SectionWrapper>

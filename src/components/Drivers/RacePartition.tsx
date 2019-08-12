@@ -3,13 +3,18 @@ import styled from "styled-components"
 
 import { RaceType } from "../../enums/RaceType"
 
-const PartitionWrapper = styled.div`
+const PartitionWrapper = styled.div<{ padded: boolean }>`
   flex-basis: 50%;
-  padding: 0.3rem 0;
+  padding: ${p => (p.padded ? `0.3rem 0` : undefined)};
   text-align: center;
 `
 
-const RacePartition = ({ type }: { type: RaceType }) => {
+interface IPartitionProps {
+  type: RaceType
+  padded: boolean
+}
+
+const RacePartition = ({ type, padded }: IPartitionProps) => {
   const abbr = (full: string) =>
     `${full
       .split(` `)
@@ -17,7 +22,7 @@ const RacePartition = ({ type }: { type: RaceType }) => {
       .join(` `)}R`
 
   return (
-    <PartitionWrapper>
+    <PartitionWrapper padded={padded}>
       <small>
         <abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</abbr>
       </small>

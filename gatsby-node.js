@@ -17,12 +17,12 @@ const fetchData = async endpoint => {
 exports.createPages = async ({ actions: { createPage } }) => {
   const drivers = await fetchData("drivers")
   const teams = await fetchData("teams")
-  const races = await fetchData("races")
+  const calendar = await fetchData("races")
 
   createPage({
     path: `/`,
     component: require.resolve(`${templateDir}/drivers.tsx`),
-    context: { drivers, teams, races },
+    context: { drivers, teams, races: calendar },
   })
 
   createPage({
@@ -34,6 +34,6 @@ exports.createPages = async ({ actions: { createPage } }) => {
   createPage({
     path: `/races`,
     component: require.resolve(`${templateDir}/races.tsx`),
-    context: { races },
+    context: { drivers, teams, calendar },
   })
 }

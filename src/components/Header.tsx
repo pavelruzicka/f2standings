@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Image from "./Image"
 
-import { menuLink } from "../styles/menuLink"
+import { MenuLink } from "../styles/MenuLink"
 
 const HeaderWrapper = styled.header`
   align-items: center;
@@ -40,13 +40,13 @@ export const Header = () => (
     </div>
 
     <div>
-      <Link to="/" style={menuLink} activeStyle={{ opacity: 1 }}>
+      <Link to="/" style={MenuLink} activeStyle={{ opacity: 1 }}>
         Drivers
       </Link>
-      <Link to="/teams" style={menuLink} activeStyle={{ opacity: 1 }}>
+      <Link to="/teams" style={MenuLink} activeStyle={{ opacity: 1 }}>
         Teams
       </Link>
-      <Link to="/races" style={menuLink} activeStyle={{ opacity: 1 }}>
+      <Link to="/races" style={MenuLink} activeStyle={{ opacity: 1 }}>
         Races
       </Link>
     </div>

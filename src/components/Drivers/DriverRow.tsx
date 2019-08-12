@@ -1,27 +1,11 @@
 import React from "react"
-import styled from "styled-components"
 
 import { Flag } from "../Flag"
 
 import { IDriver } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
 
-const RowInit = styled.td`
-  color: black;
-  text-align: right;
-`
-
-const RowBlock = styled.td`
-  text-align: center;
-`
-
-const RowWrapper = styled.tr`
-  cursor: pointer;
-
-  &:hover {
-    background-color: #eff2f7;
-  }
-`
+import { RowInit, RowBlock, RowWrapper } from "../../styles/TableRow"
 
 type ExpandFunc = () => void
 

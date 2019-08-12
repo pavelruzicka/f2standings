@@ -8,8 +8,22 @@ const IconElement = styled.img`
   width: 22;
 `
 
-export const Icon = ({ type }: { type: string }) => {
-  const desc = type === "pole" ? "Pole positions" : "Fastest laps"
+interface IIconProps {
+  type: string
+  singular: boolean
+}
 
-  return <IconElement src={`/icons/${type}.svg`} alt={desc} title={desc} />
+export const Icon = ({ type, singular }: IIconProps) => {
+  const description =
+    type === "pole"
+      ? `Pole position${singular ? "" : "s"}`
+      : `Fastest lap${singular ? "" : "s"}`
+
+  return (
+    <IconElement
+      src={`/icons/${type}.svg`}
+      alt={description}
+      title={description}
+    />
+  )
 }

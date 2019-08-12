@@ -58,10 +58,10 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
               <TableHead scope="col">Driver</TableHead>
               <TableHead scope="col">Team</TableHead>
               <TableHeadCentered scope="col">
-                <Icon type={"pole"} />
+                <Icon type={"pole"} singular={false} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">
-                <Icon type={"fastest"} />
+                <Icon type={"fastest"} singular={false} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>
