@@ -14,9 +14,15 @@ interface IRaceColumn {
   occupants: string[]
   drivers: IDriverBase[]
   teams: ITeam[]
+  shortened: boolean
 }
 
-const RaceColumn = ({ occupants, drivers, teams }: IRaceColumn) => {
+const RaceColumn = ({
+  occupants,
+  drivers,
+  teams,
+  shortened = true,
+}: IRaceColumn) => {
   let boxes = occupants.map(o => drivers.find(d => d.short === o))
 
   return (
@@ -29,11 +35,15 @@ const RaceColumn = ({ occupants, drivers, teams }: IRaceColumn) => {
             return (
               <Driver>
                 <Flag countryCode={driver.country} large={true} />
-                <abbr
-                  title={`${driver.name} ${driver.lastName} | ${team.name}`}
-                >
-                  {driver.short}
-                </abbr>
+                {shortened ? (
+                  <abbr
+                    title={`${driver.name} ${driver.lastName} | ${team.name}`}
+                  >
+                    {driver.short}
+                  </abbr>
+                ) : (
+                  `${driver.name} ${driver.lastName}`
+                )}
               </Driver>
             )
           }

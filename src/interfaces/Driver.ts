@@ -1,3 +1,5 @@
+import { countries } from "../util/countries"
+
 interface IFeatureRaceReport {
   pole: boolean
   position: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
@@ -16,11 +18,10 @@ interface IStats {
 }
 
 export interface IResult {
-  location: string
+  location: keyof typeof countries
   upcoming?: boolean
   feature: IFeatureRaceReport | null
   sprint: ISprintRaceReport | null
-  [type: string]: any
 }
 
 export interface IDriverBase {

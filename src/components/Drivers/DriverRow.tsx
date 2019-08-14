@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 
 import { Flag } from "../Flag"
 
@@ -6,6 +7,10 @@ import { IDriver } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
 
 import { RowInit, RowBlock, RowWrapper } from "../../styles/TableRow"
+
+const Team = styled.td`
+  font-weight: 500;
+`
 
 type ExpandFunc = () => void
 
@@ -28,9 +33,9 @@ const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
         <strong>{lastName}</strong>
       </td>
 
-      <td>
+      <Team>
         <Flag countryCode={team.country} large={true} /> {team.name}
-      </td>
+      </Team>
 
       <RowBlock>{stats.poles}</RowBlock>
       <RowBlock>{stats.fastest}</RowBlock>

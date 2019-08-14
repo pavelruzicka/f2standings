@@ -1,11 +1,7 @@
-import { IResult } from "../interfaces/Driver"
+import { IDriverBase, IResult } from "../interfaces/Driver"
+import { IBonusPointSources } from "../interfaces/General"
 
 import { featurePoints, sprintPoints } from "../util/points"
-
-interface IBonusPointSources {
-  poles: number
-  fastest: number
-}
 
 const countPoles = (results: IResult[]) =>
   results.reduce((acc, curr) => {
@@ -29,10 +25,7 @@ const countFastest = (results: IResult[]) =>
     return acc
   }, 0)
 
-const countPoints = (
-  results: IResult[],
-  { poles, fastest }: IBonusPointSources
-) => {
+const countPoints = (results: IResult[]) => {
   const base = results.reduce((acc, curr) => {
     if (!curr.upcoming) {
       if (curr.feature) {
@@ -47,13 +40,19 @@ const countPoints = (
     return acc
   }, 0)
 
-  return base + poles * 4 + fastest * 2
+  return base
 }
 
-export const getDriverStats = (results: IResult[]) => {
+const getDriverStats = (results: IResult[]) => {
   const poles = countPoles(results)
   const fastest = countFastest(results)
-  const points = countPoints(results, { poles, fastest })
+  const points = countPoints(results)
 
-  return { poles, fastest, points }
+  return { poles, fastest, points: points + poles * 4 + fastest * 2 }
+}
+
+export const sortDrivers = (drivers: IDriverBase[]) => {
+  return drivers
+    .map(driver => ({ ...driver, stats: getDriverStats(driver.results) }))
+    .sort((x, y) => y.stats.points - x.stats.points)
 }

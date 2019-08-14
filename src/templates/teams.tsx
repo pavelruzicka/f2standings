@@ -4,8 +4,12 @@ import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
 import { Icon } from "../components/Icon"
 
+import TeamProfile from "../components/Teams/TeamProfile"
+
 import { IDriverBase } from "../interfaces/Driver"
 import { ITeam } from "../interfaces/Team"
+
+import { sortTeams } from "../services/teamsChampionship"
 
 import {
   TableHead,
@@ -43,15 +47,15 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
           </thead>
 
           <tbody>
-            {/*sortTeams(teams).map((team, index) => (
-              <DriverProfile
-                driver={driver}
+            {sortTeams(teams).map((team, index) => (
+              <TeamProfile
+                team={team}
                 teams={teams}
-                races={races}
+                drivers={drivers}
                 index={index}
-                key={driver.short}
+                key={team.short}
               />
-            ))*/}
+            ))}
           </tbody>
         </table>
       </Layout>

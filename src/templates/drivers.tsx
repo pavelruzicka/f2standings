@@ -10,19 +10,13 @@ import { IDriverBase } from "../interfaces/Driver"
 import { IRace } from "../interfaces/Race"
 import { ITeam } from "../interfaces/Team"
 
-import { getDriverStats } from "../services/driversChampionship"
+import { sortDrivers } from "../services/driversChampionship"
 
 import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
-
-const sortDrivers = (drivers: IDriverBase[]) => {
-  return drivers
-    .map(driver => ({ ...driver, stats: getDriverStats(driver.results) }))
-    .sort((x, y) => y.stats.points - x.stats.points)
-}
 
 interface IPageContext {
   pageContext: {
