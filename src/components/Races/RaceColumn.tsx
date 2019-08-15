@@ -27,13 +27,13 @@ const RaceColumn = ({
 
   return (
     <td>
-      {boxes.map(driver => {
+      {boxes.map((driver, index) => {
         if (driver) {
           const team = teams.find(t => t.drivers.includes(driver.short))
 
           if (team) {
             return (
-              <Driver key={driver.short}>
+              <Driver key={index}>
                 <Flag countryCode={driver.country} large={true} />
                 {shortened ? (
                   <abbr
