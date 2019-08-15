@@ -2,7 +2,9 @@
 
 ## To-do
 
-[ ] responsive styling
-[ ] design own logo
-[ ] meta page title
-[ ] use logo as icon, fix gatsby defaults
+- [ ] design own logo
+- [ ] meta page title
+- [ ] use logo as icon, fix gatsby defaults
+- [ ] highlight podium finishes among positions
+- [ ] denote rookies
+- [ ] responsive styling
