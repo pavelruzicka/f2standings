@@ -65,7 +65,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                   occupants={[feature.podium[n], sprint.podium[n]]}
                   drivers={drivers}
                   teams={teams}
-                  key={`P${n + 1}`}
+                  key={n}
                 />
               )
             }
@@ -84,7 +84,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
       ) : (
         <>
           {[0, 1, 2, 3, 4].map(n => (
-            <td key={n + 1} />
+            <td key={n} />
           ))}
         </>
       )}
