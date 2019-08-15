@@ -58,20 +58,28 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
             <RacePartition type={RaceType.Sprint} padded={false} />
           </td>
 
-          {[0, 1, 2].map(n => (
+          {[0, 1, 2].map(n => {
+            if (feature.podium && sprint.podium) {
+              return (
+                <RaceColumn
+                  occupants={[feature.podium[n], sprint.podium[n]]}
+                  drivers={drivers}
+                  teams={teams}
+                  key={`P${n + 1}`}
+                />
+              )
+            }
+          })}
+
+          {feature.fastest && sprint.fastest ? (
             <RaceColumn
-              occupants={[feature.podium![n], sprint.podium![n]]}
+              occupants={[feature.fastest, sprint.fastest]}
               drivers={drivers}
               teams={teams}
-              key={`P${n + 1}`}
             />
-          ))}
-
-          <RaceColumn
-            occupants={[feature.fastest!, sprint.fastest!]}
-            drivers={drivers}
-            teams={teams}
-          />
+          ) : (
+            <td />
+          )}
         </>
       ) : (
         <>

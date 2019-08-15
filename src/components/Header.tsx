@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 import Image from "./Image"
 
-import { MenuLink } from "../styles/MenuLink"
+import { MenuLink } from "../styles/menuLink"
 
 const HeaderWrapper = styled.header`
   align-items: center;

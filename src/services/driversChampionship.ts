@@ -1,5 +1,4 @@
 import { IDriverBase, IResult } from "../interfaces/Driver"
-import { IBonusPointSources } from "../interfaces/General"
 
 import { featurePoints, sprintPoints } from "../util/points"
 

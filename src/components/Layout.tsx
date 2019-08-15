@@ -53,8 +53,12 @@ export const Layout: React.FunctionComponent = ({ children }) => {
           <FooterLine>{data.site.siteMetadata.description}</FooterLine>
           <FooterLine>
             Crafted in {new Date().getFullYear()} by{" "}
-            <FooterLink href="https://www.pavelruzicka.com/" target="_blank">
+            <FooterLink href="https://pavelruzicka.com/" target="_blank">
               Pavel Růžička
+            </FooterLink>{" "}
+            and{" "}
+            <FooterLink href="https://ruigrok.info/" target="_blank">
+              Christian Ruigrok
             </FooterLink>
             .
           </FooterLine>

@@ -7,7 +7,7 @@ import RaceColumn from "../Races/RaceColumn"
 import { IDriverBase } from "../../interfaces/Driver"
 import { ITeam, ITeamExpanded } from "../../interfaces/Team"
 
-import { RowInit, RowBlock } from "../../styles/TableRow"
+import { RowInitVert, RowVert, RowBlock } from "../../styles/TableRow"
 
 interface ITeamProfileProps {
   team: ITeamExpanded
@@ -21,12 +21,12 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
 
   return (
     <tr>
-      <RowInit>#{index + 1}</RowInit>
+      <RowInitVert>#{index + 1}</RowInitVert>
 
-      <td>
+      <RowVert>
         <Flag countryCode={team.country} large={true} />{" "}
         <strong>{team.name}</strong>
-      </td>
+      </RowVert>
 
       <RaceColumn
         occupants={[team.drivers[0], team.drivers[1]]}
