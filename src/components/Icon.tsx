@@ -11,12 +11,12 @@ const IconElement = styled.img`
 `
 
 interface IIconProps {
-  type: string
+  type: keyof typeof iconTypes
   singular: boolean
 }
 
 export const Icon = ({ type, singular }: IIconProps) => {
-  const { desc, pluralizer } = (iconTypes as any)[type]
+  const { desc, pluralizer } = iconTypes[type]
   const description = `${desc}${singular ? "" : pluralizer}`
 
   return (

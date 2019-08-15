@@ -14,7 +14,7 @@ interface IRaceColumn {
   occupants: string[]
   drivers: IDriverBase[]
   teams: ITeam[]
-  shortened: boolean
+  shortened?: boolean
 }
 
 const RaceColumn = ({
@@ -23,17 +23,17 @@ const RaceColumn = ({
   teams,
   shortened = true,
 }: IRaceColumn) => {
-  let boxes = occupants.map(o => drivers.find(d => d.short === o))
+  const boxes = occupants.map(o => drivers.find(d => d.short === o))
 
   return (
     <td>
-      {boxes.map(driver => {
+      {boxes.map((driver, idx) => {
         if (driver) {
           const team = teams.find(t => t.drivers.includes(driver.short))
 
           if (team) {
             return (
-              <Driver>
+              <Driver key={idx}>
                 <Flag countryCode={driver.country} large={true} />
                 {shortened ? (
                   <abbr

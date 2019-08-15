@@ -39,8 +39,8 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
       <RowBase colSpan={6}>
         <RowTable>
           {results.map(race => (
-            <RaceWrapper key={race.short}>
-              <RaceHeader race={race} races={races} key={race.location} />
+            <RaceWrapper key={race.location}>
+              <RaceHeader race={race} races={races} />
 
               <SectionWrapper>
                 <RacePartition type={RaceType.Feature} padded={true} />

@@ -28,7 +28,7 @@ export interface IDriverBase {
   short: string
   name: string
   lastName: string
-  country: string
+  country: keyof typeof countries
   team: string
   results: IResult[]
 }

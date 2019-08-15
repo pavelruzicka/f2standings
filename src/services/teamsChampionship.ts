@@ -14,9 +14,7 @@ const countPoints = (set: (number | null)[]) =>
     .map(v => (v === null ? 0 : v))
     .reduce((acc, curr, idx) => {
       const isFeature = idx % 2 === 0
-      const source = isFeature
-        ? (featurePoints as any)[curr]
-        : (sprintPoints as any)[curr]
+      const source = isFeature ? featurePoints[curr] : sprintPoints[curr]
 
       acc += source || 0
 

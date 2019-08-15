@@ -20,10 +20,11 @@ interface IRaceResultProps {
 
 const RaceResult = ({ result, type }: IRaceResultProps) => {
   const typeName = RaceType[type].toLowerCase()
+  const race = typeName === "feature" ? result["feature"] : result["sprint"]
 
   return (
-    <ResultWrapper active={result[typeName] !== null}>
-      {result[typeName] ? `P${result[typeName].position}` : "—"}
+    <ResultWrapper active={race !== null}>
+      {race ? `P${race.position}` : "—"}
     </ResultWrapper>
   )
 }

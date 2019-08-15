@@ -1,3 +1,5 @@
+import { countries } from "../util/countries"
+
 interface IRaceBase {
   date: string
 }
@@ -18,7 +20,7 @@ export interface IRaceWeekend {
 }
 
 export interface IRace {
-  short: string
+  short: keyof typeof countries
   city: string
   country: string
   circuit: string

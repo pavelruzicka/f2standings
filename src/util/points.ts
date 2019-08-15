@@ -1,4 +1,4 @@
-export const featurePoints = {
+export const featurePoints: { [x: number]: number | undefined } = {
   1: 25,
   2: 18,
   3: 15,
@@ -11,7 +11,7 @@ export const featurePoints = {
   10: 1,
 }
 
-export const sprintPoints = {
+export const sprintPoints: { [x: number]: number | undefined } = {
   1: 15,
   2: 12,
   3: 10,

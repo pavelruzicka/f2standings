@@ -12,14 +12,13 @@ const FlagElement = styled.img<{ countryCode: string; large: boolean }>`
 `
 
 interface IFlagProps {
-  countryCode: string
+  countryCode: keyof typeof countries
   desc?: string
   large: boolean
 }
 
 export const Flag = ({ countryCode, desc, large }: IFlagProps) => {
-  const description =
-    desc || countryCode !== "empty" ? (countries as any)[countryCode] : null
+  const description = desc || countries[countryCode]
 
   return (
     <FlagElement

@@ -53,6 +53,7 @@ export default ({
               index={index}
               drivers={drivers}
               teams={teams}
+              key={race.short}
             />
           ))}
         </tbody>

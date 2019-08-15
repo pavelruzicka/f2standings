@@ -23,4 +23,5 @@ export const countries = {
   NLD: "Netherlands",
   RUS: "Russia",
   USA: "United States of America",
+  empty: "",
 }
