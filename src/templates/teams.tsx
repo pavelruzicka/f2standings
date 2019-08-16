@@ -40,7 +40,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
                 <Icon type={"podium"} singular={false} />
               </TableHeadCentered>
               <TableHeadCentered>
-                <Icon type={"win"} singular={false} />
+                <Icon type={"win"} size={18} singular={false} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>

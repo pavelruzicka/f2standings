@@ -3,19 +3,20 @@ import styled from "styled-components"
 
 import { iconTypes } from "../util/icons"
 
-const IconElement = styled.img`
+const IconElement = styled.img<{ size: number }>`
   bottom: 2px;
   margin: 0;
   position: relative;
-  width: 20px;
+  width: ${p => p.size || 20}px;
 `
 
 interface IIconProps {
   type: keyof typeof iconTypes
   singular: boolean
+  size?: number
 }
 
-export const Icon = ({ type, singular }: IIconProps) => {
+export const Icon = ({ type, singular, size = 20 }: IIconProps) => {
   const { desc, pluralizer } = iconTypes[type]
   const description = `${desc}${singular ? "" : pluralizer}`
 
@@ -24,6 +25,7 @@ export const Icon = ({ type, singular }: IIconProps) => {
       src={`/icons/${type}.svg`}
       alt={description}
       title={description}
+      size={size}
     />
   )
 }
