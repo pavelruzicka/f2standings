@@ -47,6 +47,10 @@ export const SEO = ({ description, lang, title }: ISEOProps) => {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: "https://f2standings.com/images/og-image.png",
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
