@@ -15,7 +15,7 @@ interface IProfileProps {
 }
 
 const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
-  const [racesVisible, updateVisibility] = useState(index < 3)
+  const [racesVisible, updateVisibility] = useState(index === 0)
 
   const { results } = driver
   const team = teams.find(t => t.short === driver.team)

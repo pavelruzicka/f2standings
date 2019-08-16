@@ -24,6 +24,7 @@ const HeaderWrapper = styled.header`
 
 const ImageWrapper = styled.div`
   width: 90px;
+  height: 69px;
   margin: 1rem 0.5rem;
 `
 
