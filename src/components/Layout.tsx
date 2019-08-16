@@ -13,7 +13,7 @@ const Footer = styled.footer`
 `
 
 const FooterLine = styled.p`
-  font-size: 16.5px;
+  font-size: 15.5px;
   margin-bottom: 0;
   text-align: center;
 `
