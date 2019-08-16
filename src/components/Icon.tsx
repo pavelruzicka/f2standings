@@ -7,7 +7,7 @@ const IconElement = styled.img<{ size: number }>`
   bottom: 2px;
   margin: 0;
   position: relative;
-  width: ${p => p.size || 20}px;
+  width: ${p => p.size}px;
 `
 
 interface IIconProps {
