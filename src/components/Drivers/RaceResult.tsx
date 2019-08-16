@@ -13,6 +13,10 @@ const ResultWrapper = styled.div<{ active: boolean }>`
   text-align: center;
 `
 
+const ResultWrapperBold = styled(ResultWrapper)`
+  font-weight: bold;
+`
+
 interface IRaceResultProps {
   result: IResult
   type: RaceType
@@ -22,11 +26,17 @@ const RaceResult = ({ result, type }: IRaceResultProps) => {
   const typeName = RaceType[type].toLowerCase()
   const race = typeName === "feature" ? result["feature"] : result["sprint"]
 
-  return (
-    <ResultWrapper active={race !== null}>
-      {race ? `P${race.position}` : "—"}
-    </ResultWrapper>
-  )
+  if (race === null) {
+    return <ResultWrapper active={false}>—</ResultWrapper>
+  }
+
+  if (race.position < 4) {
+    return (
+      <ResultWrapperBold active={true}>{`P${race.position}`}</ResultWrapperBold>
+    )
+  } else {
+    return <ResultWrapper active={true}>{`P${race.position}`}</ResultWrapper>
+  }
 }
 
 export default RaceResult

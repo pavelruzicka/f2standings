@@ -13,6 +13,7 @@ import { IRace } from "../../interfaces/Race"
 const RowBase = styled.td`
   padding: 0 !important;
   background: #f7f6f6;
+  border-bottom: 2px solid hsla(0, 0%, 0%, 0.12);
 `
 
 const RowTable = styled.div`
