@@ -41,12 +41,10 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           <Flag countryCode={race.short} large={true} />
           {race.circuit}
         </Circuit>
-        <div>
-          <Flag countryCode={"empty"} large={true} />
-          <small>
-            {race.city}, {race.country}
-          </small>
-        </div>
+        <Flag countryCode={"empty"} large={true} />
+        <small>
+          {race.city}, {race.country}
+        </small>
       </td>
 
       <RacePole feature={feature} drivers={drivers} teams={teams} />
@@ -62,6 +60,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
             if (feature.podium && sprint.podium) {
               return (
                 <RaceColumn
+                  keys={["feature", "sprint"]}
                   occupants={[feature.podium[n], sprint.podium[n]]}
                   drivers={drivers}
                   teams={teams}
@@ -73,6 +72,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
 
           {feature.fastest && sprint.fastest ? (
             <RaceColumn
+              keys={["feature", "sprint"]}
               occupants={[feature.fastest, sprint.fastest]}
               drivers={drivers}
               teams={teams}

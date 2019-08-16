@@ -29,15 +29,13 @@ const ImageWrapper = styled.div`
 
 export const Header = () => (
   <HeaderWrapper>
-    <div>
-      <h3>
-        <Link to="/">
-          <ImageWrapper>
-            <Image />
-          </ImageWrapper>
-        </Link>
-      </h3>
-    </div>
+    <h3>
+      <Link to="/">
+        <ImageWrapper>
+          <Image />
+        </ImageWrapper>
+      </Link>
+    </h3>
 
     <div>
       <Link to="/" style={MenuLink} activeStyle={{ opacity: 1 }}>

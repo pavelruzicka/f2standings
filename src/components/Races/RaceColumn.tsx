@@ -11,6 +11,7 @@ const Driver = styled.div`
 `
 
 interface IRaceColumn {
+  keys?: string[]
   occupants: string[]
   drivers: IDriverBase[]
   teams: ITeam[]
@@ -18,6 +19,7 @@ interface IRaceColumn {
 }
 
 const RaceColumn = ({
+  keys,
   occupants,
   drivers,
   teams,
@@ -27,13 +29,13 @@ const RaceColumn = ({
 
   return (
     <td>
-      {boxes.map(driver => {
+      {boxes.map((driver, index) => {
         if (driver) {
           const team = teams.find(t => t.drivers.includes(driver.short))
 
           if (team) {
             return (
-              <Driver key={driver.short}>
+              <Driver key={keys ? keys[index] : driver.short}>
                 <Flag countryCode={driver.country} large={true} />
                 {shortened ? (
                   <abbr

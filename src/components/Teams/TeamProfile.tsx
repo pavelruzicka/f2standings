@@ -29,7 +29,7 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
       </RowVert>
 
       <RaceColumn
-        occupants={[team.drivers[0], team.drivers[1]]}
+        occupants={team.drivers}
         drivers={drivers}
         teams={teams}
         shortened={false}
