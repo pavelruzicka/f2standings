@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Formula 2 Standings`,
     description: `The number one destination for FIA Formula 2 championship standings, race reports, and team overviews.`,
-    author: `Pavel Růžička`,
+    author: `Pavel Růžička and Christian Ruigrok`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

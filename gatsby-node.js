@@ -4,17 +4,14 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const templateDir = "./src/templates"
-
-const get = endpoint => axios.get(`${process.env.API_URL}${endpoint}`)
-
 const fetchData = async endpoint => {
-  const { data } = await get(`/${endpoint}`)
+  const { data } = await axios.get(`${process.env.API_URL}/${endpoint}`)
 
   return data
 }
 
 exports.createPages = async ({ actions: { createPage } }) => {
+  const templateDir = "./src/templates"
   const drivers = await fetchData("drivers")
   const teams = await fetchData("teams")
   const calendar = await fetchData("races")
