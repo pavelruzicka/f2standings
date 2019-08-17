@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import { viewports } from "../util/viewports"
+
 export const RowInit = styled.td`
   color: black;
   text-align: right;

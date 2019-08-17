@@ -1,16 +1,21 @@
-import { Link } from "gatsby"
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 
 import Logo from "./Logo"
 
 import { MenuLink } from "../styles/menuLink"
+import { viewports } from "../util/viewports"
 
 const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1rem auto 2.5rem;
+
+  @media ${viewports.mobileL} {
+    flex-direction: column;
+  }
 
   h3 {
     margin: 0;
