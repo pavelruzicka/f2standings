@@ -2,14 +2,14 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-import Image from "./Image"
+import Logo from "./Logo"
 
 import { MenuLink } from "../styles/menuLink"
 
 const HeaderWrapper = styled.header`
-  align-items: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 1rem auto 2.5rem;
 
   h3 {
@@ -23,8 +23,7 @@ const HeaderWrapper = styled.header`
 `
 
 const ImageWrapper = styled.div`
-  width: 90px;
-  height: 69px;
+  width: 60px;
   margin: 1rem 0.5rem;
 `
 
@@ -33,7 +32,7 @@ export const Header = () => (
     <h3>
       <Link to="/">
         <ImageWrapper>
-          <Image />
+          <Logo />
         </ImageWrapper>
       </Link>
     </h3>
