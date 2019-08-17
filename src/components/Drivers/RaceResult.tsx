@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
+import { getRule } from "../../util/viewports"
+
 import { RaceType } from "../../enums/RaceType"
 
 import { IResult } from "../../interfaces/Driver"
@@ -11,6 +13,11 @@ const ResultWrapper = styled.div<{ active: boolean }>`
   opacity: ${p => (p.active ? 1 : 0.4)};
   padding: 0.3rem 0;
   text-align: center;
+
+  @media ${getRule("max", "mobileL")} {
+    text-align: right;
+    padding: 0 6px 0 0;
+  }
 `
 
 const ResultWrapperBold = styled(ResultWrapper)`

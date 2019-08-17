@@ -72,6 +72,7 @@ export const RowStart = styled(RowBlock)`
       display: flex;
       justify-content: space-between;
       padding: 16px 6px 4px;
+      margin-top: 1rem;
       border-bottom: none;
       border-top: 2px solid hsla(0, 0%, 0%, 0.12);
     }
@@ -82,7 +83,6 @@ export const RowEnd = styled(RowBlock)`
   @media ${getRule("max", "mobileL")} {
     && {
       padding: 4px 6px 16px;
-      margin-bottom: 1rem;
       border-bottom: 2px solid hsla(0, 0%, 0%, 0.12);
     }
   }

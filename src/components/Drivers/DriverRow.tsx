@@ -75,12 +75,8 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
 }
 
 const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
-  {
-    /*<RowWrapper onClick={() => expand()}>*/
-  }
-
   return (
-    <RowWrapper>
+    <RowWrapper onClick={() => expand()}>
       <RowInit>#{index + 1}</RowInit>
 
       <RowContent driver={driver} team={team} index={index} />
