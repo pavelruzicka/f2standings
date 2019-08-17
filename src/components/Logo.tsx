@@ -2,7 +2,7 @@ import React from "react"
 
 const Logo = () => {
   return (
-    <svg viewBox="0 0 784 600" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 784 600" width="60" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="a">
           <stop stopColor="#62D3EA" offset="0%" />
