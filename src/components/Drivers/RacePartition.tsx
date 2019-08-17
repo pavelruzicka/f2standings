@@ -5,7 +5,7 @@ import { RaceType } from "../../enums/RaceType"
 
 const PartitionWrapper = styled.div<{ padded: boolean }>`
   flex-basis: 50%;
-  padding: ${p => (p.padded ? `0.3rem 0` : undefined)};
+  padding: ${p => (p.padded ? "0.3rem 0" : 0)};
   text-align: center;
 `
 

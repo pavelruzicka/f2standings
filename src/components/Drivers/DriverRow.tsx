@@ -32,7 +32,7 @@ const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
       <td>
         <Flag countryCode={country} large={true} /> {`${name} `}
         <strong>{lastName}</strong>
-        {driver.rookie ? <RookieStatus /> : undefined}
+        {driver.rookie ? <RookieStatus /> : null}
       </td>
 
       <Team>

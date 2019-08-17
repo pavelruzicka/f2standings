@@ -8,7 +8,7 @@ import { IResult } from "../../interfaces/Driver"
 const ResultWrapper = styled.div<{ active: boolean }>`
   flex-basis: 50%;
   font-weight: 500;
-  opacity: ${p => (p.active ? `1` : `0.4`)};
+  opacity: ${p => (p.active ? 1 : 0.4)};
   padding: 0.3rem 0;
   text-align: center;
 `

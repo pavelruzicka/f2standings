@@ -4,11 +4,11 @@ import styled from "styled-components"
 import { countries } from "../util/countries"
 
 const FlagElement = styled.img<{ countryCode: string; large: boolean }>`
-  bottom: ${p => (p.large ? `2px` : undefined)};
+  bottom: ${p => (p.large ? 2 : 0)}px;
   margin: 0 0.5rem 0 0;
-  position: ${p => (p.large ? `relative` : undefined)};
-  width: ${p => (p.large ? `24` : `21`)}px;
-  user-select: ${p => (p.countryCode === "empty" ? `none` : undefined)};
+  position: ${p => (p.large ? "relative" : "static")};
+  width: ${p => (p.large ? 24 : 21)}px;
+  user-select: ${p => (p.countryCode === "empty" ? "none" : "auto")};
 `
 
 interface IFlagProps {

@@ -5,9 +5,11 @@ import { Flag } from "../Flag"
 
 import { IDriverBase } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
+import RookieStatus from "../Drivers/RookieStatus"
 
 const Driver = styled.div`
   font-weight: 500;
+  position: relative;
 `
 
 interface IRaceColumn {
@@ -46,6 +48,7 @@ const RaceColumn = ({
                 ) : (
                   `${driver.name} ${driver.lastName}`
                 )}
+                {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
               </Driver>
             )
           }
