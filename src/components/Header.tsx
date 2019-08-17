@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Logo from "./Logo"
 
 import { MenuLink } from "../styles/menuLink"
-import { viewports } from "../util/viewports"
+import { getRule } from "../util/viewports"
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -13,7 +13,7 @@ const HeaderWrapper = styled.header`
   align-items: center;
   margin: 1rem auto 2.5rem;
 
-  @media ${viewports.mobileL} {
+  @media ${getRule("max", "mobileL")} {
     flex-direction: column;
   }
 
