@@ -6,5 +6,5 @@
 - [x] meta page title
 - [x] use logo as icon, fix gatsby defaults
 - [x] highlight podium finishes among positions
-- [ ] denote rookies
+- [x] denote rookies
 - [ ] responsive styling

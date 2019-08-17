@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
+import RookieStatus from "./RookieStatus"
 import { Flag } from "../Flag"
 
 import { IDriver } from "../../interfaces/Driver"
@@ -31,6 +32,7 @@ const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
       <td>
         <Flag countryCode={country} large={true} /> {`${name} `}
         <strong>{lastName}</strong>
+        {driver.rookie ? <RookieStatus /> : undefined}
       </td>
 
       <Team>

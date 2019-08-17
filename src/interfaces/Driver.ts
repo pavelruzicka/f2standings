@@ -30,6 +30,7 @@ export interface IDriverBase {
   lastName: string
   country: keyof typeof countries
   team: string
+  rookie: boolean | undefined
   results: IResult[]
 }
 
