@@ -4,7 +4,7 @@
       <circle cx="10" cy="10" r="10" stroke-linejoin="round"/>
       <path stroke-linejoin="bevel" d="M10 10l4.5-4.5"/>
     </g>
-    <path stroke-linejoin="bevel" stroke-width="2" d="M7.4734 1.1917h7.1254"/>
+    <path stroke-linejoin="bevel" stroke-width="2" d="M7.473 1.192H14.6"/>
     <path stroke-width="1.5" d="M11 4.75V1.5"/>
   </g>
 </svg>
