@@ -18,6 +18,7 @@ import {
   TableHeadCentered,
 } from "../styles/TableHead"
 import { LineChart } from "../components/Graphs/LineChart"
+import { featurePoints, sprintPoints } from "../util/points"
 
 interface IPageContext {
   pageContext: {
@@ -28,25 +29,45 @@ interface IPageContext {
 }
 
 export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
+  const placements = drivers
+    .filter(driver => teams.some(team => team.drivers.includes(driver.short)))
+    .map(driver => {
+      const points = driver.results
+        .filter(result => result.upcoming !== true)
+        .reduce<number[]>((total, result) => {
+          const previousPoints = total[total.length - 1] || 0
+
+          let points = 0
+
+          if (result.feature) {
+            points += featurePoints[result.feature.position] || 0
+            points += result.feature.fastest ? 2 : 0
+            points += result.feature.pole ? 4 : 0
+          }
+
+          if (result.sprint) {
+            points += sprintPoints[result.sprint.position] || 0
+            points += result.sprint.fastest ? 2 : 0
+          }
+
+          return [...total, previousPoints + points]
+        }, [])
+        .map<[number, number]>((points, index) => [index, points])
+
+      return { driver, points }
+    })
+
   return (
     <>
       <Layout>
         <Head title="Drivers" />
 
         <LineChart
-          races={races.map(race => race.short)}
-          data={[
-            {
-              points: [[0, 4], [1, 8], [2, 10], [3, 22], [4, 22], [5, 23]],
-              driver: "DEV",
-              color: "#f08",
-            },
-            {
-              points: [[0, 0], [1, 2], [2, 4], [3, 8], [4, 10], [5, 20]],
-              driver: "LOT",
-              color: "#f0f",
-            },
-          ]}
+          races={drivers[0].results
+            .filter(result => result.upcoming !== true)
+            .map(race => race.location)}
+          teams={teams}
+          data={placements}
         />
 
         <table className="uk-table uk-table-small">

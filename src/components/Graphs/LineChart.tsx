@@ -1,18 +1,21 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import * as d3 from "d3"
+import { IDriverBase } from "../../interfaces/Driver"
+import { teamColours } from "../../util/colours"
+import { ITeam } from "../../interfaces/Team"
 
 const width = 800
-const height = 350
-const padding = 20
+const height = 500
+const padding = 30
 
 interface IProps {
   data: {
-    driver: string
+    driver: IDriverBase
     points: [number, number][]
-    color: string
   }[]
   races: string[]
+  teams: ITeam[]
 }
 
 const SvgWrapper = styled.svg`
@@ -34,12 +37,12 @@ const SvgWrapper = styled.svg`
   }
 `
 
-export function LineChart({ data, races }: IProps) {
+export function LineChart({ data, races, teams }: IProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
 
   useEffect(() => {
-    const maxX = d3.max(data, d => d3.max(d.points, ([x]) => x)) || 0
-    const maxY = d3.max(data, d => d3.max(d.points, ([_, y]) => y)) || 0
+    const maxX = races.length
+    const maxY = d3.max(data, d => d3.max(d.points, ([_, x]) => x)) || 0
 
     const xScale = d3
       .scaleLinear()
@@ -69,17 +72,33 @@ export function LineChart({ data, races }: IProps) {
 
     const line = d3
       .line()
-      .curve(d3.curveCardinal)
+      .curve(d3.curveBundle)
       .x(([x]) => xScale(x))
       .y(([_, y]) => yScale(y))
 
-    for (const d of data) {
+    for (const results of data) {
+      const team = teams.find(team => team.short === results.driver.team)
+
       chartGroup
         .append("path")
         .attr("fill", "none")
-        .attr("stroke", d.color)
-        .attr("stroke-width", 4)
-        .attr("d", line(d.points) || "")
+        .attr("stroke", teamColours[results.driver.team] || "#000")
+        .attr("stroke-width", 2.25)
+        .attr(
+          "stroke-dasharray",
+          team && team.drivers.indexOf(results.driver.short) === 1
+            ? 11.3
+            : "initial"
+        )
+        .attr("data-shit", results.driver.short)
+        .attr("d", line(results.points) || "")
+        .append("text")
+        .attr("x", 0)
+        .attr("y", 0)
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "18px")
+        .attr("fill", "red")
+        .text("weewee")
     }
 
     chartGroup
@@ -91,7 +110,7 @@ export function LineChart({ data, races }: IProps) {
       .append("g")
       .attr("class", "axis axis-y")
       .call(yAxis)
-  }, [data, races, svgRef])
+  }, [data, races, svgRef, teams])
 
   return <SvgWrapper ref={svgRef} />
 }
