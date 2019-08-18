@@ -17,6 +17,7 @@ import {
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
+import { LineChart } from "../components/Graphs/LineChart"
 
 interface IPageContext {
   pageContext: {
@@ -31,6 +32,22 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
     <>
       <Layout>
         <Head title="Drivers" />
+
+        <LineChart
+          races={races.map(race => race.short)}
+          data={[
+            {
+              points: [[0, 4], [1, 8], [2, 10], [3, 22], [4, 22], [5, 23]],
+              driver: "DEV",
+              color: "#f08",
+            },
+            {
+              points: [[0, 0], [1, 2], [2, 4], [3, 8], [4, 10], [5, 20]],
+              driver: "LOT",
+              color: "#f0f",
+            },
+          ]}
+        />
 
         <table className="uk-table uk-table-small">
           <thead>
