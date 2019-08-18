@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
 import DriverProfile from "../components/Drivers/DriverProfile"
@@ -30,7 +30,7 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
   return (
     <>
       <Layout>
-        <SEO title="Drivers" />
+        <Head title="Drivers" />
 
         <table className="uk-table uk-table-small">
           <thead>

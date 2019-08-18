@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
 import TeamProfile from "../components/Teams/TeamProfile"
@@ -28,7 +28,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
   return (
     <>
       <Layout>
-        <SEO title="Teams" />
+        <Head title="Teams" />
 
         <table className="uk-table uk-table-small">
           <thead>

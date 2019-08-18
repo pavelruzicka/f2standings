@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
 import RaceRow from "../components/Races/RaceRow"
@@ -25,7 +25,7 @@ export default ({
 }: IPageContext) => {
   return (
     <Layout>
-      <SEO title="Races" />
+      <Head title="Races" />
 
       <table className="uk-table uk-table-small">
         <thead>

@@ -9,7 +9,7 @@ interface ISEOProps {
   title: string
 }
 
-export const SEO = ({ description, lang, title }: ISEOProps) => {
+export const Head = ({ description, lang, title }: ISEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
