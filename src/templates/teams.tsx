@@ -4,21 +4,22 @@ import { Layout } from "../components/Layout"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
+import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
 import TeamProfile from "../components/Teams/TeamProfile"
 
 import { IDriverBase } from "../interfaces/Driver"
 import { ITeam } from "../interfaces/Team"
+import { IRace } from "../interfaces/Race"
 
 import { sortTeams } from "../services/teamsChampionship"
+
+import { teamColours } from "../util/colours"
 
 import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
-import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
-import { IRace } from "../interfaces/Race"
-import { teamColours } from "../util/colours"
 
 interface IPageContext {
   pageContext: {

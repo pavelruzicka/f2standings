@@ -4,6 +4,7 @@ import { Layout } from "../components/Layout"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
+import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
 import DriverProfile from "../components/Drivers/DriverProfile"
 
 import { IDriverBase } from "../interfaces/Driver"
@@ -12,14 +13,14 @@ import { ITeam } from "../interfaces/Team"
 
 import { sortDrivers } from "../services/driversChampionship"
 
+import { featurePoints, sprintPoints } from "../util/points"
+import { teamColours } from "../util/colours"
+
 import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
-import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
-import { featurePoints, sprintPoints } from "../util/points"
-import { teamColours } from "../util/colours"
 
 interface IPageContext {
   pageContext: {
