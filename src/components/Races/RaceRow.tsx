@@ -72,9 +72,27 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
             <RacePartition type={RaceType.Sprint} padded={false} />
           </RaceContentWrapper>
 
-          {[0, 1, 2].map(n => {
-            if (feature.podium && sprint.podium) {
-              return (
+          {feature.podium && sprint.podium ? (
+            <>
+              <RaceColumn
+                keys={["feature"]}
+                occupants={[0, 1, 2].map(n => feature.podium[n])}
+                drivers={drivers}
+                teams={teams}
+                label={"Feature race podium"}
+                mobile={true}
+              />
+
+              <RaceColumn
+                keys={["sprint"]}
+                occupants={[0, 1, 2].map(n => sprint.podium[n])}
+                drivers={drivers}
+                teams={teams}
+                label={"Sprint race podium"}
+                mobile={true}
+              />
+
+              {[0, 1, 2].map(n => (
                 <RaceColumn
                   keys={["feature", "sprint"]}
                   occupants={[feature.podium[n], sprint.podium[n]]}
@@ -82,17 +100,37 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                   teams={teams}
                   key={n}
                 />
-              )
-            }
-          })}
+              ))}
+            </>
+          ) : null}
 
           {feature.fastest && sprint.fastest ? (
-            <RaceColumn
-              keys={["feature", "sprint"]}
-              occupants={[feature.fastest, sprint.fastest]}
-              drivers={drivers}
-              teams={teams}
-            />
+            <>
+              <RaceColumn
+                keys={["feature", "sprint"]}
+                occupants={[feature.fastest, sprint.fastest]}
+                drivers={drivers}
+                teams={teams}
+              />
+
+              <RaceColumn
+                keys={["feature"]}
+                occupants={[feature.fastest]}
+                drivers={drivers}
+                teams={teams}
+                label={"Fastest lap of feature race"}
+                mobile={true}
+              />
+
+              <RaceColumn
+                keys={["sprint"]}
+                occupants={[sprint.fastest]}
+                drivers={drivers}
+                teams={teams}
+                label={"Fastest lap of sprint race"}
+                mobile={true}
+              />
+            </>
           ) : (
             <RowEnd />
           )}
@@ -104,6 +142,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           ))}
         </>
       )}
+
       <RowEnd />
     </RowWrapper>
   )
