@@ -35,6 +35,11 @@ const SvgWrapper = styled.svg`
     stroke-width: 2;
   }
 
+  .legend text {
+    font-weight: 500;
+    fill: rgba(0, 0, 0, 0.7);
+  }
+
   .line {
     stroke-linecap: round;
     stroke-width: 2.25;
@@ -47,11 +52,13 @@ const SvgWrapper = styled.svg`
   }
 
   .axis-y .tick text {
+    fill: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
     transform: translateX(-10px);
   }
 
   .axis-x .tick text {
-    font-weight: bold;
+    font-weight: 600;
     transform: translateY(10px);
   }
 
@@ -77,7 +84,7 @@ export function LineChart({ data, races }: IProps) {
     drawGrid(svg, xAxis, yAxis, races, size)
     drawAxis(svg, xAxis, yAxis, races, size)
     drawLegend(svg, data, size)
-    drawLines(svg, xScale, yScale, data, size)
+    drawLines(svg, xScale, yScale, data.slice().reverse(), size)
   }, [data, races, svgRef])
 
   return <SvgWrapper ref={svgRef} />

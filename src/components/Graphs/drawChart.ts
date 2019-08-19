@@ -168,16 +168,6 @@ export function drawLines(
   }
 }
 
-function drawRoot(
-  svg: d3.Selection<SVGSVGElement | null, unknown, null, undefined>,
-  size: ISize
-) {
-  // Create root element for the svg that includes padding
-  return svg
-    .append("g")
-    .attr("transform", `translate(${size.padding}, ${size.padding})`)
-}
-
 export function drawSvg(svgElement: SVGSVGElement | null, size: ISize) {
   // Update the svg element to be responsive
   const svg = d3
@@ -193,5 +183,7 @@ export function drawSvg(svgElement: SVGSVGElement | null, size: ISize) {
   svg.selectAll("*").remove()
 
   // Return the root element with padding
-  return drawRoot(svg, size)
+  return svg
+    .append("g")
+    .attr("transform", `translate(${size.padding}, ${size.padding})`)
 }
