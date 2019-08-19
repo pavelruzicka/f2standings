@@ -8,6 +8,8 @@ import { ITeam } from "../../interfaces/Team"
 
 import { MobileLabel, MobileText } from "../../styles/Mobile"
 
+import { getSuffix } from "../../util/ordinalSuffix"
+
 import {
   RowInit,
   RowBlock,
@@ -53,7 +55,7 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
 
       <RowInitMobile>
         <MobileLabel>Championship position</MobileLabel>
-        <MobileText>#{index + 1}</MobileText>
+        <MobileText>{getSuffix(index + 1)}</MobileText>
       </RowInitMobile>
 
       <RowBlock>
