@@ -37,11 +37,29 @@ export const RowInitVert = styled(RowInit)`
   && {
     vertical-align: middle;
   }
+
+  @media ${getRule("max", "mobileL")} {
+    && {
+      display: none;
+    }
+  }
 `
 
 export const RowVert = styled.td`
   && {
     vertical-align: middle;
+  }
+
+  @media ${getRule("max", "mobileL")} {
+    && {
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding: 16px 4px 6px;
+      border-bottom: none;
+      border-top: 2px solid hsla(0, 0%, 0%, 0.12);
+    }
   }
 `
 
@@ -79,6 +97,14 @@ export const RowStart = styled(RowBlock)`
   }
 `
 
+export const RowStartVert = styled(RowStart)`
+  @media ${getRule("min", "mobileL")} {
+    && {
+      vertical-align: middle;
+    }
+  }
+`
+
 export const RowEnd = styled(RowBlock)`
   @media ${getRule("max", "mobileL")} {
     && {
@@ -89,8 +115,6 @@ export const RowEnd = styled(RowBlock)`
 `
 
 export const RowWrapper = styled.tr`
-  cursor: pointer;
-
   @media ${getRule("max", "mobileL")} {
     display: block;
 
@@ -98,6 +122,10 @@ export const RowWrapper = styled.tr`
       display: block;
     }
   }
+`
+
+export const RowWrapperClickable = styled(RowWrapper)`
+  cursor: pointer;
 
   &:hover {
     background-color: #eff2f7;

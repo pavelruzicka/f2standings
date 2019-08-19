@@ -15,6 +15,7 @@ import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
+  TableHeadWrapper,
 } from "../styles/TableHead"
 
 interface IPageContext {
@@ -31,7 +32,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
         <SEO title="Teams" />
 
         <table className="uk-table uk-table-small">
-          <thead>
+          <TableHeadWrapper>
             <tr>
               <TableHeadInit scope="col">Pos</TableHeadInit>
               <TableHead scope="col">Team</TableHead>
@@ -44,7 +45,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>
-          </thead>
+          </TableHeadWrapper>
 
           <tbody>
             {sortTeams(teams).map((team, index) => (

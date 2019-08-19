@@ -7,7 +7,17 @@ import RaceColumn from "../Races/RaceColumn"
 import { IDriverBase } from "../../interfaces/Driver"
 import { ITeam, ITeamExpanded } from "../../interfaces/Team"
 
-import { RowInitVert, RowVert, RowBlock } from "../../styles/TableRow"
+import {
+  RowWrapper,
+  RowInitMobile,
+  RowInitVert,
+  RowVert,
+  RowBlock,
+  RowEnd,
+} from "../../styles/TableRow"
+import { MobileLabel, MobileText } from "../../styles/Mobile"
+
+import { getSuffix } from "../../util/ordinalSuffix"
 
 interface ITeamProfileProps {
   team: ITeamExpanded
@@ -20,25 +30,44 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
   const { stats } = team
 
   return (
-    <tr>
+    <RowWrapper>
       <RowInitVert>#{index + 1}</RowInitVert>
 
       <RowVert>
-        <Flag countryCode={team.country} large={true} />{" "}
-        <strong>{team.name}</strong>
+        <MobileLabel>Team</MobileLabel>
+        <MobileText>
+          <Flag countryCode={team.country} large={true} /> {team.name}
+        </MobileText>
       </RowVert>
+
+      <RowInitMobile>
+        <MobileLabel>Championship position</MobileLabel>
+        <MobileText>{getSuffix(index + 1)}</MobileText>
+      </RowInitMobile>
 
       <RaceColumn
         occupants={team.drivers}
         drivers={drivers}
         teams={teams}
         shortened={false}
+        label={"Drivers"}
       />
 
-      <RowBlock>{stats.podiums}</RowBlock>
-      <RowBlock>{stats.wins}</RowBlock>
-      <RowBlock>{stats.points}</RowBlock>
-    </tr>
+      <RowBlock>
+        <MobileLabel>Podium finishes</MobileLabel>
+        <MobileText>{stats.podiums}</MobileText>
+      </RowBlock>
+
+      <RowBlock>
+        <MobileLabel>Race wins</MobileLabel>
+        <MobileText>{stats.wins}</MobileText>
+      </RowBlock>
+
+      <RowEnd>
+        <MobileLabel>Points</MobileLabel>
+        <MobileText>{stats.points}</MobileText>
+      </RowEnd>
+    </RowWrapper>
   )
 }
 

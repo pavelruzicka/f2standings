@@ -15,7 +15,7 @@ import {
   RowBlock,
   RowStart,
   RowEnd,
-  RowWrapper,
+  RowWrapperClickable,
   RowInitMobile,
   Team,
 } from "../../styles/TableRow"
@@ -78,11 +78,11 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
 
 const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
   return (
-    <RowWrapper onClick={() => expand()}>
+    <RowWrapperClickable onClick={() => expand()}>
       <RowInit>#{index + 1}</RowInit>
 
       <RowContent driver={driver} team={team} index={index} />
-    </RowWrapper>
+    </RowWrapperClickable>
   )
 }
 
