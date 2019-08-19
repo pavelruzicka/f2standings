@@ -16,13 +16,11 @@ interface IPageContext {
   pageContext: {
     drivers: IDriverBase[]
     teams: ITeam[]
-    calendar: IRace[]
+    races: IRace[]
   }
 }
 
-export default ({
-  pageContext: { drivers, teams, calendar },
-}: IPageContext) => {
+export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
   return (
     <Layout>
       <Head title="Races" />
@@ -47,7 +45,7 @@ export default ({
         </thead>
 
         <tbody>
-          {calendar.map((race, index) => (
+          {races.map((race, index) => (
             <RaceRow
               race={race}
               index={index}

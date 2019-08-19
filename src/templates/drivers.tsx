@@ -17,8 +17,9 @@ import {
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
-import { LineChart } from "../components/Graphs/LineChart"
+import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
 import { featurePoints, sprintPoints } from "../util/points"
+import { teamColours } from "../util/colours"
 
 interface IPageContext {
   pageContext: {
@@ -28,8 +29,18 @@ interface IPageContext {
   }
 }
 
+function isSecondDriver(teams: ITeam[], driver: IDriverBase) {
+  const team = teams.find(team => team.short === driver.team)
+  return (team && team.drivers.indexOf(driver.short) === 1) || false
+}
+
 export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
-  const placements = drivers
+  const sortedDrivers = sortDrivers(drivers)
+
+  const dataRaces = drivers[0].results
+    .filter(result => result.upcoming !== true)
+    .map(race => race.location)
+  const data: IDataEntry[] = sortedDrivers
     .filter(driver => teams.some(team => team.drivers.includes(driver.short)))
     .map(driver => {
       const points = driver.results
@@ -54,25 +65,21 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
         }, [])
         .map<[number, number]>((points, index) => [index, points])
 
-      return { driver, points }
+      return {
+        points,
+        color: teamColours[driver.team] || "#000",
+        dotted: isSecondDriver(teams, driver),
+        shortLabel: driver.short,
+        longLabel: `${driver.name} ${driver.lastName} | ${driver.team}`,
+      }
     })
-    .sort(
-      (a, b) =>
-        b.points[b.points.length - 1][1] - a.points[a.points.length - 1][1]
-    )
 
   return (
     <>
       <Layout>
         <Head title="Drivers" />
 
-        <LineChart
-          races={drivers[0].results
-            .filter(result => result.upcoming !== true)
-            .map(race => race.location)}
-          teams={teams}
-          data={placements}
-        />
+        <LineChart races={dataRaces} data={data} />
 
         <table className="uk-table uk-table-small">
           <thead>
@@ -91,7 +98,7 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
           </thead>
 
           <tbody>
-            {sortDrivers(drivers).map((driver, index) => (
+            {sortedDrivers.map((driver, index) => (
               <DriverProfile
                 driver={driver}
                 teams={teams}

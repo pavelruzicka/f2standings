@@ -16,19 +16,43 @@ import {
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
+import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
+import { IRace } from "../interfaces/Race"
+import { teamColours } from "../util/colours"
 
 interface IPageContext {
   pageContext: {
-    teams: ITeam[]
     drivers: IDriverBase[]
+    teams: ITeam[]
+    races: IRace[]
   }
 }
 
 export default ({ pageContext: { teams, drivers } }: IPageContext) => {
+  const sortedTeams = sortTeams(teams)
+
+  const dataRaces = drivers[0].results
+    .filter(result => result.upcoming !== true)
+    .map(race => race.location)
+  const data: IDataEntry[] = sortedTeams.map(team => {
+    // TODO: populate this
+    const points: [number, number][] = []
+
+    return {
+      points,
+      color: teamColours[team.short] || "#000",
+      dotted: false,
+      longLabel: team.name,
+      shortLabel: team.short,
+    }
+  })
+
   return (
     <>
       <Layout>
         <Head title="Teams" />
+
+        <LineChart races={dataRaces} data={data} />
 
         <table className="uk-table uk-table-small">
           <thead>
@@ -47,7 +71,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
           </thead>
 
           <tbody>
-            {sortTeams(teams).map((team, index) => (
+            {sortedTeams.map((team, index) => (
               <TeamProfile
                 team={team}
                 teams={teams}

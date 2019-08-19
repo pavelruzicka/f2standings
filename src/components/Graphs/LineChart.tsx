@@ -1,22 +1,23 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import * as d3 from "d3"
-import { IDriverBase } from "../../interfaces/Driver"
-import { teamColours } from "../../util/colours"
-import { ITeam } from "../../interfaces/Team"
 
 const width = 700
 const height = 400
 const padding = 30
 const legendSize = 20
 
+export interface IDataEntry {
+  points: [number, number][]
+  shortLabel: string
+  longLabel: string
+  dotted: boolean
+  color: string
+}
+
 interface IProps {
-  data: {
-    driver: IDriverBase
-    points: [number, number][]
-  }[]
+  data: IDataEntry[]
   races: string[]
-  teams: ITeam[]
 }
 
 const SvgWrapper = styled.svg`
@@ -51,16 +52,7 @@ const SvgWrapper = styled.svg`
   }
 `
 
-function getTeamColor(driver: IDriverBase) {
-  return teamColours[driver.team] || "#000"
-}
-
-function isSecondDriver(teams: ITeam[], driver: IDriverBase) {
-  const team = teams.find(team => team.short === driver.team)
-  return team && team.drivers.indexOf(driver.short) === 1
-}
-
-export function LineChart({ data, races, teams }: IProps) {
+export function LineChart({ data, races }: IProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
 
   useEffect(() => {
@@ -102,7 +94,6 @@ export function LineChart({ data, races, teams }: IProps) {
       const y = index * 18
       const radius = 4
 
-      const teamColor = getTeamColor(result.driver)
       const circle = legend
         .append("circle")
         .attr("r", radius)
@@ -111,22 +102,19 @@ export function LineChart({ data, races, teams }: IProps) {
         .attr("fill", "none")
         .attr("stroke-width", 2)
 
-      if (isSecondDriver(teams, result.driver)) {
-        circle.attr("stroke", teamColor)
+      if (result.dotted) {
         circle.attr("r", radius - 1)
+        circle.attr("stroke", result.color)
       } else {
-        circle.attr("fill", teamColor)
+        circle.attr("fill", result.color)
       }
 
       legend
         .append("text")
-        .text(result.driver.short)
+        .text(result.shortLabel)
         .attr("y", y)
         .attr("font-size", 10)
-        .attr(
-          "title",
-          `${result.driver.name} ${result.driver.lastName} | ${result.driver.team}`
-        )
+        .attr("title", result.longLabel)
     })
 
     chartGroup
@@ -162,20 +150,17 @@ export function LineChart({ data, races, teams }: IProps) {
       .x(([x]) => xScale(x))
       .y(([_, y]) => yScale(y))
 
-    for (const results of data) {
+    for (const result of data) {
       chartGroup
         .append("path")
         .attr("fill", "none")
-        .attr("stroke", getTeamColor(results.driver))
+        .attr("stroke", result.color)
         .attr("stroke-width", 2.25)
         .attr("stroke-linecap", "round")
-        .attr(
-          "stroke-dasharray",
-          isSecondDriver(teams, results.driver) ? "11 6" : "initial"
-        )
-        .attr("d", line(results.points) || "")
+        .attr("stroke-dasharray", result.dotted ? "11 6" : "initial")
+        .attr("d", line(result.points) || "")
     }
-  }, [data, races, svgRef, teams])
+  }, [data, races, svgRef])
 
   return <SvgWrapper ref={svgRef} />
 }

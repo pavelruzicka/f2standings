@@ -14,23 +14,23 @@ exports.createPages = async ({ actions: { createPage } }) => {
   const templateDir = "./src/templates"
   const drivers = await fetchData("drivers")
   const teams = await fetchData("teams")
-  const calendar = await fetchData("races")
+  const races = await fetchData("races")
 
   createPage({
     path: `/`,
     component: require.resolve(`${templateDir}/drivers.tsx`),
-    context: { drivers, teams, races: calendar },
+    context: { drivers, teams, races },
   })
 
   createPage({
     path: `/teams`,
     component: require.resolve(`${templateDir}/teams.tsx`),
-    context: { teams, drivers },
+    context: { teams, drivers, races },
   })
 
   createPage({
     path: `/races`,
     component: require.resolve(`${templateDir}/races.tsx`),
-    context: { drivers, teams, calendar },
+    context: { drivers, teams, races },
   })
 }
