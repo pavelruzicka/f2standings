@@ -93,26 +93,6 @@ export function LineChart({ data, races, teams }: IProps) {
       .append("g")
       .attr("transform", `translate(${padding}, ${padding})`)
 
-    const line = d3
-      .line()
-      .curve(d3.curveBasis)
-      .x(([x]) => xScale(x))
-      .y(([_, y]) => yScale(y))
-
-    for (const results of data) {
-      chartGroup
-        .append("path")
-        .attr("fill", "none")
-        .attr("stroke", getTeamColor(results.driver))
-        .attr("stroke-width", 2.25)
-        .attr("stroke-linecap", "round")
-        .attr(
-          "stroke-dasharray",
-          isSecondDriver(teams, results.driver) ? "11 6" : "initial"
-        )
-        .attr("d", line(results.points) || "")
-    }
-
     const legend = chartGroup
       .append("g")
       .attr("class", "legend")
@@ -157,6 +137,17 @@ export function LineChart({ data, races, teams }: IProps) {
 
     chartGroup
       .append("g")
+      .attr("class", "grid grid-x")
+      .attr("transform", `translate(0, ${height})`)
+      .call(
+        xAxis
+          .ticks(races.length - 1)
+          .tickSize(-height)
+          .tickFormat(() => "")
+      )
+
+    chartGroup
+      .append("g")
       .attr("transform", `translate(0, ${height})`)
       .attr("class", "axis axis-x")
       .call(xAxis.tickSize(0).tickFormat(s => races[s.valueOf()]))
@@ -164,6 +155,26 @@ export function LineChart({ data, races, teams }: IProps) {
       .append("g")
       .attr("class", "axis axis-y")
       .call(yAxis.tickSize(0).tickFormat(s => String(s)))
+
+    const line = d3
+      .line()
+      .curve(d3.curveBasis)
+      .x(([x]) => xScale(x))
+      .y(([_, y]) => yScale(y))
+
+    for (const results of data) {
+      chartGroup
+        .append("path")
+        .attr("fill", "none")
+        .attr("stroke", getTeamColor(results.driver))
+        .attr("stroke-width", 2.25)
+        .attr("stroke-linecap", "round")
+        .attr(
+          "stroke-dasharray",
+          isSecondDriver(teams, results.driver) ? "11 6" : "initial"
+        )
+        .attr("d", line(results.points) || "")
+    }
   }, [data, races, svgRef, teams])
 
   return <SvgWrapper ref={svgRef} />

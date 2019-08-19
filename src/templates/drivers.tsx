@@ -56,6 +56,10 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
 
       return { driver, points }
     })
+    .sort(
+      (a, b) =>
+        b.points[b.points.length - 1][1] - a.points[a.points.length - 1][1]
+    )
 
   return (
     <>
