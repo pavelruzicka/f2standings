@@ -46,6 +46,8 @@ export const RowInitVert = styled(RowInit)`
 `
 
 export const RowVert = styled.td`
+  font-weight: bold;
+
   && {
     vertical-align: middle;
   }
@@ -56,7 +58,7 @@ export const RowVert = styled.td`
       display: flex;
       justify-content: space-between;
       margin-top: 1rem;
-      padding: 16px 4px 6px;
+      padding: 16px 6px 4px;
       border-bottom: none;
       border-top: 2px solid hsla(0, 0%, 0%, 0.12);
     }
@@ -76,6 +78,24 @@ export const RowBlock = styled.td`
       justify-content: space-between;
       padding: 4px 6px;
       border-bottom: none;
+    }
+  }
+`
+
+export const RowLeftAligned = styled(RowBlock)<{ border?: boolean }>`
+  && {
+    text-align: left;
+  }
+
+  @media ${getRule("max", "mobileL")} {
+    && {
+      font-weight: 400;
+      display: flex;
+      justify-content: space-between;
+      margin-top: ${p => (p.border ? `1rem` : 0)};
+      padding: 16px 6px 4px;
+      border-bottom: none;
+      border-top: ${p => (p.border ? `2px solid hsla(0, 0%, 0%, 0.12)` : ``)};
     }
   }
 `
@@ -129,6 +149,14 @@ export const RowWrapperClickable = styled(RowWrapper)`
 
   &:hover {
     background-color: #eff2f7;
+  }
+`
+
+export const RowFiller = styled.td`
+  @media ${getRule("max", "mobileL")} {
+    && {
+      display: none;
+    }
   }
 `
 

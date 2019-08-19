@@ -9,7 +9,7 @@ import { IDriverBase } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
 import RookieStatus from "../Drivers/RookieStatus"
 
-import { MobileLabel, MobileText } from "../../styles/Mobile"
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
 const RaceColumnWrapper = styled.td`
   @media ${getRule("max", "mobileL")} {
@@ -53,7 +53,7 @@ const RaceColumn = ({
   return (
     <RaceColumnWrapper>
       <MobileLabel>{label || ``}</MobileLabel>
-      <MobileText>
+      <MobileContent>
         {boxes.map((driver, index) => {
           if (driver) {
             const team = teams.find(t => t.drivers.includes(driver.short))
@@ -77,7 +77,7 @@ const RaceColumn = ({
             }
           }
         })}
-      </MobileText>
+      </MobileContent>
     </RaceColumnWrapper>
   )
 }

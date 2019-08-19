@@ -6,7 +6,7 @@ import { Flag } from "../Flag"
 import { IDriver } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
 
-import { MobileLabel, MobileText } from "../../styles/Mobile"
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
 import { getSuffix } from "../../util/ordinalSuffix"
 
@@ -39,38 +39,38 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
     <>
       <RowStart>
         <MobileLabel>Driver</MobileLabel>
-        <MobileText>
+        <MobileContent>
           <Flag countryCode={country} large={true} /> {`${name} `}
           <strong>{lastName}</strong>
           {driver.rookie ? <RookieStatus /> : null}
-        </MobileText>
+        </MobileContent>
       </RowStart>
 
       <Team>
         <MobileLabel>Team</MobileLabel>
-        <MobileText>
+        <MobileContent>
           <Flag countryCode={team.country} large={true} /> {team.name}
-        </MobileText>
+        </MobileContent>
       </Team>
 
       <RowInitMobile>
         <MobileLabel>Championship position</MobileLabel>
-        <MobileText>{getSuffix(index + 1)}</MobileText>
+        <MobileContent>{getSuffix(index + 1)}</MobileContent>
       </RowInitMobile>
 
       <RowBlock>
         <MobileLabel>Pole positions</MobileLabel>
-        <MobileText>{stats.poles}</MobileText>
+        <MobileContent>{stats.poles}</MobileContent>
       </RowBlock>
 
       <RowBlock>
         <MobileLabel>Fastest laps</MobileLabel>
-        <MobileText>{stats.fastest}</MobileText>
+        <MobileContent>{stats.fastest}</MobileContent>
       </RowBlock>
 
       <RowEnd>
         <MobileLabel>Points</MobileLabel>
-        <MobileText>{stats.points}</MobileText>
+        <MobileContent>{stats.points}</MobileContent>
       </RowEnd>
     </>
   )

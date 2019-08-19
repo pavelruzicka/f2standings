@@ -7,7 +7,10 @@ import { IDriverBase } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
 import { IRacePartition } from "../../interfaces/Race"
 
-const Driver = styled.td`
+import { RowLeftAligned } from "../../styles/TableRow"
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
+
+const Driver = styled.div`
   font-weight: 500;
 `
 
@@ -28,17 +31,22 @@ const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
 
   if (team) {
     return (
-      <Driver>
-        <div>
-          <Flag countryCode={driver.country} large={true} />
-          <abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
-            {driver.short}
-          </abbr>
-        </div>
-        <div>
-          <small>{feature.poleTime}</small>
-        </div>
-      </Driver>
+      <RowLeftAligned>
+        <MobileLabel>Pole position</MobileLabel>
+        <MobileContent>
+          <Driver>
+            <div>
+              <Flag countryCode={driver.country} large={true} />
+              <abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
+                {driver.short}
+              </abbr>
+            </div>
+            <div>
+              <small>{feature.poleTime}</small>
+            </div>
+          </Driver>
+        </MobileContent>
+      </RowLeftAligned>
     )
   }
 

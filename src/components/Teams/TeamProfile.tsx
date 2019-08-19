@@ -15,7 +15,7 @@ import {
   RowBlock,
   RowEnd,
 } from "../../styles/TableRow"
-import { MobileLabel, MobileText } from "../../styles/Mobile"
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
 import { getSuffix } from "../../util/ordinalSuffix"
 
@@ -35,14 +35,14 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
 
       <RowVert>
         <MobileLabel>Team</MobileLabel>
-        <MobileText>
+        <MobileContent>
           <Flag countryCode={team.country} large={true} /> {team.name}
-        </MobileText>
+        </MobileContent>
       </RowVert>
 
       <RowInitMobile>
         <MobileLabel>Championship position</MobileLabel>
-        <MobileText>{getSuffix(index + 1)}</MobileText>
+        <MobileContent>{getSuffix(index + 1)}</MobileContent>
       </RowInitMobile>
 
       <RaceColumn
@@ -55,17 +55,17 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
 
       <RowBlock>
         <MobileLabel>Podium finishes</MobileLabel>
-        <MobileText>{stats.podiums}</MobileText>
+        <MobileContent>{stats.podiums}</MobileContent>
       </RowBlock>
 
       <RowBlock>
         <MobileLabel>Race wins</MobileLabel>
-        <MobileText>{stats.wins}</MobileText>
+        <MobileContent>{stats.wins}</MobileContent>
       </RowBlock>
 
       <RowEnd>
         <MobileLabel>Points</MobileLabel>
-        <MobileText>{stats.points}</MobileText>
+        <MobileContent>{stats.points}</MobileContent>
       </RowEnd>
     </RowWrapper>
   )

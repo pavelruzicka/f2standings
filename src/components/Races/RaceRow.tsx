@@ -14,7 +14,18 @@ import { IDriverBase } from "../../interfaces/Driver"
 import { IRace } from "../../interfaces/Race"
 import { ITeam } from "../../interfaces/Team"
 
-import { RowInit } from "../../styles/TableRow"
+import {
+  RowInit,
+  RowLeftAligned,
+  RowWrapper,
+  RowEnd,
+  RowFiller,
+} from "../../styles/TableRow"
+import {
+  MobileLabel,
+  MobileContent,
+  RaceContentWrapper,
+} from "../../styles/Mobile"
 
 const Circuit = styled.div`
   font-weight: 500;
@@ -31,30 +42,35 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races
 
   return (
-    <tr>
+    <RowWrapper>
       <RowInit>#{index + 1}</RowInit>
 
-      <RaceDates feature={feature} sprint={sprint} />
+      <RaceDates feature={feature} sprint={sprint} mobile={false} />
 
-      <td>
-        <Circuit>
-          <Flag countryCode={race.short} large={true} />
-          {race.circuit}
-        </Circuit>
-        <Flag countryCode={"empty"} large={true} />
-        <small>
-          {race.city}, {race.country}
-        </small>
-      </td>
+      <RowLeftAligned border={true}>
+        <MobileLabel varied={true}>Round {index + 1}</MobileLabel>
+        <MobileContent>
+          <Circuit>
+            <Flag countryCode={race.short} large={true} />
+            {race.circuit}
+          </Circuit>
+          <Flag countryCode={"empty"} large={true} />
+          <small>
+            {race.city}, {race.country}
+          </small>
+        </MobileContent>
+      </RowLeftAligned>
 
-      <RacePole feature={feature} drivers={drivers} teams={teams} />
+      <RaceDates feature={feature} sprint={sprint} mobile={true} />
 
       {feature.pole ? (
         <>
-          <td>
+          <RacePole feature={feature} drivers={drivers} teams={teams} />
+
+          <RaceContentWrapper>
             <RacePartition type={RaceType.Feature} padded={false} />
             <RacePartition type={RaceType.Sprint} padded={false} />
-          </td>
+          </RaceContentWrapper>
 
           {[0, 1, 2].map(n => {
             if (feature.podium && sprint.podium) {
@@ -78,17 +94,18 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
               teams={teams}
             />
           ) : (
-            <td />
+            <RowEnd />
           )}
         </>
       ) : (
         <>
           {[0, 1, 2, 3, 4].map(n => (
-            <td key={n} />
+            <RowFiller key={n} />
           ))}
         </>
       )}
-    </tr>
+      <RowEnd />
+    </RowWrapper>
   )
 }
 

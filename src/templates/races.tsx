@@ -10,7 +10,7 @@ import { IDriverBase } from "../interfaces/Driver"
 import { IRace } from "../interfaces/Race"
 import { ITeam } from "../interfaces/Team"
 
-import { TableHead, TableHeadInit } from "../styles/TableHead"
+import { TableHeadWrapper, TableHead, TableHeadInit } from "../styles/TableHead"
 
 interface IPageContext {
   pageContext: {
@@ -28,7 +28,7 @@ export default ({
       <SEO title="Races" />
 
       <table className="uk-table uk-table-small">
-        <thead>
+        <TableHeadWrapper>
           <tr>
             <TableHeadInit scope="col">No</TableHeadInit>
             <TableHead scope="col">Race dates</TableHead>
@@ -44,7 +44,7 @@ export default ({
               <Icon type={"fastest"} singular={true} />
             </TableHead>
           </tr>
-        </thead>
+        </TableHeadWrapper>
 
         <tbody>
           {calendar.map((race, index) => (

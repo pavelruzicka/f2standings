@@ -18,9 +18,13 @@ export interface IRacePartition extends IRaceHappened {
   poleTime?: string
 }
 
-export interface IRaceWeekend {
+interface IRaceWeekend {
   feature: IRacePartition
   sprint: IRacePartition
+}
+
+export interface IRaceDatesProps extends IRaceWeekend {
+  mobile: boolean
 }
 
 export interface IRace {
