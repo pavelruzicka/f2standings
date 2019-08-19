@@ -12,7 +12,7 @@ const LocationWrapperShortened = styled.div`
   padding: 0.3rem 0;
   text-align: center;
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "tablet")} {
     display: none;
   }
 `
@@ -23,7 +23,7 @@ const LocationWrapperExpanded = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media ${getRule("min", "mobileL")} {
+  @media ${getRule("min", "tablet")} {
     display: none;
   }
 `

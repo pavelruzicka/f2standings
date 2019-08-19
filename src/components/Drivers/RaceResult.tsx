@@ -14,7 +14,7 @@ const ResultWrapper = styled.div<{ active: boolean }>`
   padding: 0.3rem 0;
   text-align: center;
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "tablet")} {
     text-align: right;
     padding: 0 6px 0 0;
   }

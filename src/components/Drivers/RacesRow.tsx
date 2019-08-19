@@ -20,7 +20,7 @@ import {
 } from "../../styles/RacesRow"
 
 const RaceConstraint = styled.div`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "tablet")} {
     display: flex;
   }
 `

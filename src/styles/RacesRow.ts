@@ -14,7 +14,7 @@ export const RowTable = styled.div`
   display: flex;
   margin-bottom: 0;
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "tablet")} {
     flex-direction: column;
     flex-wrap: wrap;
   }
@@ -23,13 +23,17 @@ export const RowTable = styled.div`
 export const RaceWrapper = styled.div`
   flex: 1 1 0;
 
-  @media ${getRule("max", "mobileL")} {
-    height: 75px;
+  @media ${getRule("max", "tablet")} {
     padding: 10px 0;
+    height: 85px;
 
     &:not(:last-child) {
       border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
     }
+  }
+
+  @media ${getRule("max", "mobileL")} {
+    height: 75px;
   }
 `
 
@@ -37,7 +41,7 @@ export const SectionWrapper = styled.div`
   display: flex;
   padding: 0 0.35rem;
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "tablet")} {
     display: flex;
     flex-direction: column;
     width: 50%;
