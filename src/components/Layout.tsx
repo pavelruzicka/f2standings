@@ -54,11 +54,11 @@ export const Layout: React.FunctionComponent = ({ children }) => {
           <FooterLine>
             Crafted in 2019 by{" "}
             <FooterLink href="https://pavelruzicka.com/" target="_blank">
-              Pavel Růžička
+              Pavel&nbsp;Růžička
             </FooterLink>{" "}
             and{" "}
             <FooterLink href="https://ruigrok.info/" target="_blank">
-              Christian Ruigrok
+              Christian&nbsp;Ruigrok
             </FooterLink>
             .
           </FooterLine>
