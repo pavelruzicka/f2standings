@@ -17,7 +17,7 @@ import "./chart.css"
 export interface IDataEntry {
   points: [number, number][]
   shortLabel: string
-  longLabel: string
+  label: string
   dotted: boolean
   color: string
 }

@@ -74,7 +74,9 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
         color: teamColours[driver.team] || "#000",
         dotted: isSecondDriver(teams, driver),
         shortLabel: driver.short,
-        longLabel: `${driver.name} ${driver.lastName} | ${teamName}`,
+        label: `<b>${driver.name} ${driver.lastName}</b> ${
+          driver.rookie ? "*" : ""
+        }<br/>${teamName}`,
       }
     })
 

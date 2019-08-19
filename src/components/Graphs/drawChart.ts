@@ -64,6 +64,14 @@ export function drawLegend(
 
     const group = legend.append("g").attr("class", "legend-item")
 
+    group
+      .append("rect")
+      .attr("x", -16)
+      .attr("y", y - 14)
+      .attr("height", 19)
+      .attr("width", "100%")
+      .attr("fill", "rgba(0, 0, 0, 0)")
+
     // Color indicator for the legend item
     const circle = group
       .append("circle")
@@ -85,7 +93,7 @@ export function drawLegend(
       .text(result.shortLabel)
       .attr("y", y)
       .attr("font-size", 10)
-      .attr("title", result.longLabel)
+      .attr("title", result.label)
 
     // Show tooltip
     group
@@ -93,7 +101,7 @@ export function drawLegend(
         onHoverOn(result)
 
         tooltip
-          .text(result.longLabel)
+          .html(result.label)
           .transition()
           .duration(100)
           .style("opacity", 1)
@@ -213,7 +221,11 @@ export function drawLines(
 
         const points = result.points[result.points.length - 1][1]
         tooltip
-          .text(`${points} points - ${result.longLabel}`)
+          .html(
+            `${result.label.split("<br/>")[0]} | ${points} point${
+              points === 1 ? "" : "s"
+            }`
+          )
           .transition()
           .duration(100)
           .style("opacity", 1)

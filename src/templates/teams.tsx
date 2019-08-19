@@ -43,7 +43,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
       points,
       color: teamColours[team.short] || "#000",
       dotted: false,
-      longLabel: team.name,
+      label: team.name,
       shortLabel: team.short,
     }
   })
