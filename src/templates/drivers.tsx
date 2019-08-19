@@ -66,12 +66,15 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
         }, [])
         .map<[number, number]>((points, index) => [index, points])
 
+      const team = teams.find(team => team.short === driver.team)
+      const teamName = team ? team.name : driver.team
+
       return {
         points,
         color: teamColours[driver.team] || "#000",
         dotted: isSecondDriver(teams, driver),
         shortLabel: driver.short,
-        longLabel: `${driver.name} ${driver.lastName} | ${driver.team}`,
+        longLabel: `${driver.name} ${driver.lastName} | ${teamName}`,
       }
     })
 

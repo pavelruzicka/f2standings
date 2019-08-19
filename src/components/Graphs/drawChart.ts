@@ -36,10 +36,21 @@ export function getLeftAxis(data: IDataEntry[], size: ISize) {
   return { yScale, yAxis }
 }
 
+export function createTooltip() {
+  return d3
+    .select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+}
+
 export function drawLegend(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   data: IDataEntry[],
-  size: ISize
+  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
+  size: ISize,
+  onHoverOn: (dataEntry: IDataEntry) => void,
+  onHoverOff: () => void
 ) {
   // Create root element for the legend
   const legend = root
@@ -51,8 +62,10 @@ export function drawLegend(
   data.forEach((result, index) => {
     const y = index * 19
 
+    const group = legend.append("g").attr("class", "legend-item")
+
     // Color indicator for the legend item
-    const circle = legend
+    const circle = group
       .append("circle")
       .attr("r", 4)
       .attr("cy", y - 3.5)
@@ -67,12 +80,37 @@ export function drawLegend(
     }
 
     // Text for the legend item
-    legend
+    group
       .append("text")
       .text(result.shortLabel)
       .attr("y", y)
       .attr("font-size", 10)
       .attr("title", result.longLabel)
+
+    // Show tooltip
+    group
+      .on("mouseover", () => {
+        onHoverOn(result)
+
+        tooltip
+          .text(result.longLabel)
+          .transition()
+          .duration(100)
+          .style("opacity", 1)
+      })
+      .on("mousemove", () => {
+        tooltip
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY - 28 + "px")
+      })
+      .on("mouseout", () => {
+        onHoverOff()
+
+        tooltip
+          .transition()
+          .duration(100)
+          .style("opacity", 0)
+      })
   })
 }
 
@@ -141,7 +179,11 @@ export function drawLines(
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
-  size: ISize
+  size: ISize,
+  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
+  onHoverOn: (dataEntry: IDataEntry) => void,
+  onHoverOff: () => void,
+  hovered: IDataEntry | null
 ) {
   // Create wrapper element for lines
   const lineWrapper = root
@@ -151,7 +193,7 @@ export function drawLines(
     .attr("height", size.height)
 
   // Create function to calculate points locations with
-  const line = d3
+  const createLine = d3
     .line()
     .curve(d3.curveBasis)
     .x(([x]) => xScale(x))
@@ -164,7 +206,31 @@ export function drawLines(
       .attr("class", "line")
       .attr("stroke", result.color)
       .attr("stroke-dasharray", result.dotted ? "11 6" : "initial")
-      .attr("d", line(result.points) || "")
+      .attr("opacity", hovered === null ? 1 : hovered === result ? 1 : 0.2)
+      .attr("d", createLine(result.points) || "")
+      .on("mouseover", () => {
+        onHoverOn(result)
+
+        const points = result.points[result.points.length - 1][1]
+        tooltip
+          .text(`${points} points - ${result.longLabel}`)
+          .transition()
+          .duration(100)
+          .style("opacity", 1)
+      })
+      .on("mousemove", () => {
+        tooltip
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY - 28 + "px")
+      })
+      .on("mouseout", () => {
+        onHoverOff()
+
+        tooltip
+          .transition()
+          .duration(100)
+          .style("opacity", 0)
+      })
   }
 }
 

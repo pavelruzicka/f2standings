@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 
 import {
@@ -9,7 +9,10 @@ import {
   drawSvg,
   getLeftAxis,
   getBottomAxis,
+  createTooltip,
 } from "./drawChart"
+
+import "./chart.css"
 
 export interface IDataEntry {
   points: [number, number][]
@@ -44,6 +47,7 @@ const SvgWrapper = styled.svg`
     stroke-linecap: round;
     stroke-width: 2.25;
     fill: none;
+    transition: opacity 0.2s ease;
   }
 
   .grid .tick line {
@@ -67,8 +71,11 @@ const SvgWrapper = styled.svg`
   }
 `
 
+const tooltip = createTooltip()
+
 export function LineChart({ data, races }: IProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
+  const [hovered, setHovered] = useState<IDataEntry | null>(null)
 
   useEffect(() => {
     const size = {
@@ -83,9 +90,19 @@ export function LineChart({ data, races }: IProps) {
     const svg = drawSvg(svgRef.current, size)
     drawGrid(svg, xAxis, yAxis, races, size)
     drawAxis(svg, xAxis, yAxis, races, size)
-    drawLegend(svg, data, size)
-    drawLines(svg, xScale, yScale, data.slice().reverse(), size)
-  }, [data, races, svgRef])
+    drawLegend(svg, data, tooltip, size, setHovered, () => setHovered(null))
+    drawLines(
+      svg,
+      xScale,
+      yScale,
+      data.slice().reverse(),
+      size,
+      tooltip,
+      setHovered,
+      () => setHovered(null),
+      hovered
+    )
+  }, [data, races, svgRef, hovered])
 
   return <SvgWrapper ref={svgRef} />
 }
