@@ -86,7 +86,7 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
       <Layout>
         <Head title="Drivers" />
 
-        <Tooltip className="tooltip" />
+        <Tooltip data-tooltip />
         <LineChart races={dataRaces} data={data} />
 
         <table className="uk-table uk-table-small">

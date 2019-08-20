@@ -89,7 +89,7 @@ export function drawLegend(
       .attr("title", result.label)
 
     const reversedData = data.slice().reverse()
-    const tooltip = d3.select(".tooltip")
+    const tooltip = d3.select("div[data-tooltip]")
 
     // Show tooltip
     group
@@ -225,7 +225,7 @@ export function drawLines(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .y(([_, y]) => yScale(y))
 
-  const tooltip = d3.select(".tooltip")
+  const tooltip = d3.select("div[data-tooltip]")
 
   for (const result of data) {
     // Create and draw line
