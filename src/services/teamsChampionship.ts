@@ -1,16 +1,17 @@
-import { ITeam } from "../interfaces/Team"
+import { ITeamResult, ITeam } from "../interfaces/Team"
 import { IBonusPointSources } from "../interfaces/General"
 
 import { featurePoints, sprintPoints } from "../util/points"
 
-const countCarPodiums = (set: (number | null)[]) =>
-  set.filter(placement => placement && placement < 4).length
+const countCarPodiums = (set: ITeamResult[]) =>
+  set.filter(placement => placement.position && placement.position < 4).length
 
-const countCarWins = (set: (number | null)[]) =>
-  set.filter(placement => placement === 1).length
+const countCarWins = (set: ITeamResult[]) =>
+  set.filter(placement => placement.position === 1).length
 
-const countPoints = (set: (number | null)[]) =>
+const countPoints = (set: ITeamResult[]) =>
   set
+    .map(v => v.position)
     .map(v => (v === null ? 0 : v))
     .reduce((acc, curr, index) => {
       const isFeature = index % 2 === 0
@@ -22,7 +23,7 @@ const countPoints = (set: (number | null)[]) =>
     }, 0)
 
 const getTeamStats = (
-  results: [(number | null)[], (number | null)[]],
+  results: [ITeamResult[], ITeamResult[]],
   { poles, fastest }: IBonusPointSources
 ) => {
   const podiums = results

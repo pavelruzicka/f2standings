@@ -6,12 +6,18 @@ interface IStats {
   points: number
 }
 
+export interface ITeamResult {
+  position: number | null
+  pole: boolean
+  fastest: boolean
+}
+
 export interface ITeam {
   short: string
   name: string
   country: keyof typeof countries
   drivers: string[]
-  results: [(number | null)[], (number | null)[]]
+  results: [ITeamResult[], ITeamResult[]]
   poles: number
   fastest: number
 }
