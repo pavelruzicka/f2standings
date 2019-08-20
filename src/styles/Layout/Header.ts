@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { getRule } from "../util/viewports"
+import { getRule } from "../../util/viewports"
 
 export const HeaderWrapper = styled.header`
   display: flex;

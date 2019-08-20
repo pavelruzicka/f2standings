@@ -14,7 +14,7 @@ import {
   TableHeadInit,
   TableHeadCentered,
   TableHeadWrapper,
-} from "../styles/TableHead"
+} from "../styles/Layout/TableHead"
 
 export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
   return (

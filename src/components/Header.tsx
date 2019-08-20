@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 
 import { Logo } from "./Logo"
 
-import { MenuLink } from "../styles/MenuLink"
-import { HeaderWrapper, ImageWrapper } from "../styles/Header"
+import { MenuLink } from "../styles/Layout/MenuLink"
+import { HeaderWrapper, ImageWrapper } from "../styles/Layout/Header"
 
 export const Header = () => (
   <HeaderWrapper>

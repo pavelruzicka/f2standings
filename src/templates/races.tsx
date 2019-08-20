@@ -7,7 +7,11 @@ import { Icon } from "../components/Icon"
 
 import { IRacesContext } from "../interfaces/Context"
 
-import { TableHeadWrapper, TableHead, TableHeadInit } from "../styles/TableHead"
+import {
+  TableHeadWrapper,
+  TableHead,
+  TableHeadInit,
+} from "../styles/Layout/TableHead"
 
 export default ({
   pageContext: { drivers, teams, calendar },
