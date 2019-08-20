@@ -82,7 +82,7 @@ export default ({ pageContext: { teams, drivers, races } }: IPageContext) => {
         points: fuckingPoints,
         color: teamColours[team.short] || "#000",
         dotted: false,
-        label: team.name,
+        label: `<b>${team.name}</b>`,
         shortLabel: team.short,
       }
     })
