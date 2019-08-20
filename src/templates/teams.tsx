@@ -8,7 +8,7 @@ import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
 import TeamProfile from "../components/Teams/TeamProfile"
 
 import { IDriverBase } from "../interfaces/Driver"
-import { ITeam } from "../interfaces/Team"
+import { ITeam, ITeamResult } from "../interfaces/Team"
 import { IRace } from "../interfaces/Race"
 
 import { sortTeams } from "../services/teamsChampionship"
@@ -20,6 +20,7 @@ import {
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
+import { featurePoints, sprintPoints } from "../util/points"
 
 interface IPageContext {
   pageContext: {
@@ -29,24 +30,66 @@ interface IPageContext {
   }
 }
 
-export default ({ pageContext: { teams, drivers } }: IPageContext) => {
+export default ({ pageContext: { teams, drivers, races } }: IPageContext) => {
   const sortedTeams = sortTeams(teams)
 
   const dataRaces = drivers[0].results
     .filter(result => result.upcoming !== true)
     .map(race => race.location)
-  const data: IDataEntry[] = sortedTeams.map(team => {
-    // TODO: populate this
-    const points: [number, number][] = []
+  const data: IDataEntry[] = teams
+    .map(team => {
+      const points = team.results.map(result => {
+        return teams[0].results[0]
+          .map((_, index) => {
+            let points = 0
+            points += result[index].pole ? 4 : 0
+            points += result[index].fastest ? 2 : 0
+            const position = result[index].position
+            if (position !== null) {
+              points +=
+                (index % 2 === 0
+                  ? featurePoints[position]
+                  : sprintPoints[position]) || 0
+            }
+            return points
+          })
+          .reduce<number[]>((total, next, index) => {
+            if (index % 2 === 0) {
+              total.push(next)
+            } else {
+              total[total.length - 1] = total[total.length - 1] + next
+            }
+            return total
+          }, [])
+      })
 
-    return {
-      points,
-      color: teamColours[team.short] || "#000",
-      dotted: false,
-      label: team.name,
-      shortLabel: team.short,
-    }
-  })
+      const addedPoints = points[0].map(
+        (_, index) => points[0][index] + points[1][index]
+      )
+
+      const fuckingPoints = addedPoints.reduce<[number, number][]>(
+        (total, item, index) => {
+          const previousPoints = (total[index - 1] || [0, 0])[1]
+
+          total.push([index, previousPoints + item])
+
+          return total
+        },
+        []
+      )
+
+      return {
+        points: fuckingPoints,
+        color: teamColours[team.short] || "#000",
+        dotted: false,
+        label: team.name,
+        shortLabel: team.short,
+      }
+    })
+    .sort(
+      (a, b) =>
+        b.points[b.points.length - 1][1] - a.points[a.points.length - 1][1]
+    )
 
   return (
     <>
