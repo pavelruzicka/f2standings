@@ -40,19 +40,18 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
               <RaceHeader race={race} races={races} index={index} />
 
               <RaceConstraint>
-                <SectionWrapper>
-                  <RacePartition type={RaceType.Feature} padded={true} />
-                  <RacePartition type={RaceType.Sprint} padded={true} />
-                </SectionWrapper>
-
-                <SectionWrapper>
-                  {!race.upcoming ? (
-                    <>
+                {!race.upcoming ? (
+                  <>
+                    <SectionWrapper>
+                      <RacePartition type={RaceType.Feature} padded={true} />
+                      <RacePartition type={RaceType.Sprint} padded={true} />
+                    </SectionWrapper>
+                    <SectionWrapper>
                       <RaceResult result={race} type={RaceType.Feature} />
                       <RaceResult result={race} type={RaceType.Sprint} />
-                    </>
-                  ) : null}
-                </SectionWrapper>
+                    </SectionWrapper>
+                  </>
+                ) : null}
               </RaceConstraint>
             </RaceWrapper>
           ))}
