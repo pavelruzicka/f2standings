@@ -11,16 +11,16 @@ import RookieStatus from "../Drivers/RookieStatus"
 
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
-const RaceColumnWrapper = styled.td<{ mobile: boolean }>`
+const RaceColumnWrapper = styled.td<{ mobile: boolean | null }>`
   @media ${getRule("min", "mobileL")} {
     && {
-      display: ${p => (p.mobile ? `none` : `table-cell`)};
+      display: ${p => (p.mobile === null || !p.mobile ? `table-cell` : `none`)};
     }
   }
 
   @media ${getRule("max", "mobileL")} {
     && {
-      display: ${p => (p.mobile ? `flex` : `none`)};
+      display: ${p => (p.mobile === null || p.mobile ? `flex` : `none`)};
       justify-content: space-between;
       border-bottom: none;
       padding: 4px 6px;
@@ -44,7 +44,7 @@ interface IRaceColumn {
   teams: ITeam[]
   shortened?: boolean
   label?: string
-  mobile?: boolean
+  mobile: boolean | null
 }
 
 const RaceColumn = ({
@@ -54,7 +54,7 @@ const RaceColumn = ({
   teams,
   shortened = true,
   label,
-  mobile = false,
+  mobile = null,
 }: IRaceColumn) => {
   const boxes = occupants.map(o => drivers.find(d => d.short === o))
 

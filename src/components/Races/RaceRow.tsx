@@ -99,6 +99,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                   drivers={drivers}
                   teams={teams}
                   key={n}
+                  mobile={false}
                 />
               ))}
             </>
@@ -111,6 +112,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 occupants={[feature.fastest, sprint.fastest]}
                 drivers={drivers}
                 teams={teams}
+                mobile={false}
               />
 
               <RaceColumn
@@ -118,7 +120,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 occupants={[feature.fastest]}
                 drivers={drivers}
                 teams={teams}
-                label={"Fastest lap of feature race"}
+                label={"Fastest in feature"}
                 mobile={true}
               />
 
@@ -127,7 +129,7 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 occupants={[sprint.fastest]}
                 drivers={drivers}
                 teams={teams}
-                label={"Fastest lap of sprint race"}
+                label={"Fastest in sprint"}
                 mobile={true}
               />
             </>

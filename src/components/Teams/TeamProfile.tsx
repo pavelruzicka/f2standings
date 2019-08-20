@@ -51,6 +51,7 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
         teams={teams}
         shortened={false}
         label={"Drivers"}
+        mobile={null}
       />
 
       <RowBlock>
