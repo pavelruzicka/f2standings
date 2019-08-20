@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
+import { getRule } from "../util/viewports"
+
 import { countries } from "../util/countries"
 
 const FlagElement = styled.img<{
@@ -13,6 +15,14 @@ const FlagElement = styled.img<{
   position: ${p => (p.large ? "relative" : "static")};
   width: ${p => (p.large ? 24 : 21)}px;
   user-select: ${p => (p.countryCode === "empty" ? "none" : "auto")};
+
+  @media ${getRule("max", "mobileL")} {
+    && {
+      width: 18px;
+      bottom: 1px;
+      margin-right: 0 ${p => (p.space ? 0.35 : 0)}rem 0 0;
+    }
+  }
 `
 
 interface IFlagProps {
