@@ -1,7 +1,11 @@
 import { countries } from "../util/countries"
 
+export interface IDate {
+  day: number
+  month: string
+}
 interface IRaceBase {
-  date: string
+  date: IDate
 }
 
 interface IRaceHappened extends IRaceBase {
