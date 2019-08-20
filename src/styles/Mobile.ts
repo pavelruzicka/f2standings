@@ -23,6 +23,22 @@ export const MobileContent = styled.div`
   }
 `
 
+export const MobileContentReversed = styled(MobileContent)`
+  @media ${getRule("max", "mobileL")} {
+    && {
+      display: none;
+    }
+  }
+`
+
+export const MobileContentReversedSmall = styled(MobileContent)`
+  @media ${getRule("min", "mobileL")} {
+    && {
+      display: none;
+    }
+  }
+`
+
 export const RaceContentWrapper = styled.td`
   @media ${getRule("max", "mobileL")} {
     && {

@@ -23,7 +23,8 @@ import {
 } from "../../styles/TableRow"
 import {
   MobileLabel,
-  MobileContent,
+  MobileContentReversed,
+  MobileContentReversedSmall,
   RaceContentWrapper,
 } from "../../styles/Mobile"
 
@@ -48,8 +49,9 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
       <RaceDates feature={feature} sprint={sprint} mobile={false} />
 
       <RowLeftAligned border={true}>
-        <MobileLabel varied={true}>Round {index + 1}</MobileLabel>
-        <MobileContent>
+        <MobileLabel varied={true}>R{index + 1}</MobileLabel>
+
+        <MobileContentReversed>
           <Circuit>
             <Flag countryCode={race.short} large={true} />
             {race.circuit}
@@ -58,7 +60,18 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           <small>
             {race.city}, {race.country}
           </small>
-        </MobileContent>
+        </MobileContentReversed>
+
+        <MobileContentReversedSmall>
+          <Circuit>
+            <Flag countryCode={"empty"} large={true} />
+            {race.circuit}
+          </Circuit>
+          <Flag countryCode={race.short} large={true} />
+          <small>
+            {race.city}, {race.country}
+          </small>
+        </MobileContentReversedSmall>
       </RowLeftAligned>
 
       <RaceDates feature={feature} sprint={sprint} mobile={true} />

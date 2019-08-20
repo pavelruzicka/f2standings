@@ -20,7 +20,7 @@ const FlagElement = styled.img<{
     && {
       width: 18px;
       bottom: 1px;
-      margin-right: 0 ${p => (p.space ? 0.35 : 0)}rem 0 0;
+      margin: 0 ${p => (p.space ? 0.35 : 0)}rem 0 0;
     }
   }
 `
