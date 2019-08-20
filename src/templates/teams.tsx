@@ -6,8 +6,7 @@ import { Icon } from "../components/Icon"
 
 import TeamProfile from "../components/Teams/TeamProfile"
 
-import { IDriverBase } from "../interfaces/Driver"
-import { ITeam } from "../interfaces/Team"
+import { ITeamsContext } from "../interfaces/Context"
 
 import { sortTeams } from "../services/teamsChampionship"
 
@@ -18,14 +17,7 @@ import {
   TableHeadWrapper,
 } from "../styles/TableHead"
 
-interface IPageContext {
-  pageContext: {
-    teams: ITeam[]
-    drivers: IDriverBase[]
-  }
-}
-
-export default ({ pageContext: { teams, drivers } }: IPageContext) => {
+export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
   return (
     <>
       <Layout>

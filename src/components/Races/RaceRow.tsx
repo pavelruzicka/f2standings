@@ -10,9 +10,7 @@ import { Flag } from "../Flag"
 
 import { RaceType } from "../../enums/RaceType"
 
-import { IDriverBase } from "../../interfaces/Driver"
-import { IRace } from "../../interfaces/Race"
-import { ITeam } from "../../interfaces/Team"
+import { IRaceRowProps } from "../../interfaces/Props"
 
 import {
   RowInit,
@@ -21,6 +19,7 @@ import {
   RowEnd,
   RowFiller,
 } from "../../styles/TableRow"
+
 import {
   MobileLabel,
   MobileContentReversed,
@@ -31,13 +30,6 @@ import {
 const Circuit = styled.div`
   font-weight: 500;
 `
-
-interface IRaceRowProps {
-  race: IRace
-  index: number
-  drivers: IDriverBase[]
-  teams: ITeam[]
-}
 
 const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races

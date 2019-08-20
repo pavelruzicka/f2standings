@@ -3,8 +3,7 @@ import React from "react"
 import RookieStatus from "./RookieStatus"
 import { Flag } from "../Flag"
 
-import { IDriver } from "../../interfaces/Driver"
-import { ITeam } from "../../interfaces/Team"
+import { IContentProps, IDriverProps } from "../../interfaces/Props"
 
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
@@ -19,18 +18,6 @@ import {
   RowInitMobile,
   Team,
 } from "../../styles/TableRow"
-
-type ExpandFunc = () => void
-
-interface IContentProps {
-  driver: IDriver
-  team: ITeam
-  index: number
-}
-
-interface IDriverProps extends IContentProps {
-  expand: ExpandFunc
-}
 
 const RowContent = ({ driver, team, index }: IContentProps) => {
   const { country, name, lastName, stats } = driver

@@ -5,7 +5,7 @@ import { getRule } from "../../util/viewports"
 
 import { RaceType } from "../../enums/RaceType"
 
-import { IResult } from "../../interfaces/Driver"
+import { IRaceResultProps } from "../../interfaces/Props"
 
 const ResultWrapper = styled.div<{ active: boolean }>`
   flex-basis: 50%;
@@ -23,11 +23,6 @@ const ResultWrapper = styled.div<{ active: boolean }>`
 const ResultWrapperBold = styled(ResultWrapper)`
   font-weight: bold;
 `
-
-interface IRaceResultProps {
-  result: IResult
-  type: RaceType
-}
 
 const RaceResult = ({ result, type }: IRaceResultProps) => {
   const typeName = RaceType[type].toLowerCase()

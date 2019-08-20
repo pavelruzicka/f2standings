@@ -9,8 +9,7 @@ import RaceResult from "./RaceResult"
 
 import { RaceType } from "../../enums/RaceType"
 
-import { IResult } from "../../interfaces/Driver"
-import { IRace } from "../../interfaces/Race"
+import { IRacesRowProps } from "../../interfaces/Props"
 
 import {
   RowBase,
@@ -24,11 +23,6 @@ const RaceConstraint = styled.div`
     display: flex;
   }
 `
-
-interface IRacesRowProps {
-  results: IResult[]
-  races: IRace[]
-}
 
 const RacesRow = ({ results, races }: IRacesRowProps) => {
   return (

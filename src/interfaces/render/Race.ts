@@ -1,4 +1,7 @@
-import { countries } from "../util/countries"
+import { IDriverBase } from "./Driver"
+import { ITeam } from "./Team"
+
+import { countries } from "../../util/countries"
 
 export interface IDate {
   day: number
@@ -33,4 +36,14 @@ export interface IRace {
   country: string
   circuit: string
   races: IRaceWeekend
+}
+
+export interface IRaceColumn {
+  keys?: string[]
+  occupants: string[]
+  drivers: IDriverBase[]
+  teams: ITeam[]
+  shortened?: boolean
+  label?: string
+  mobile: boolean | null
 }

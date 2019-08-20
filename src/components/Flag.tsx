@@ -2,8 +2,9 @@ import React from "react"
 import styled from "styled-components"
 
 import { getRule } from "../util/viewports"
-
 import { countries } from "../util/countries"
+
+import { IFlagProps } from "../interfaces/Props"
 
 const FlagElement = styled.img<{
   countryCode: string
@@ -24,13 +25,6 @@ const FlagElement = styled.img<{
     }
   }
 `
-
-interface IFlagProps {
-  countryCode: keyof typeof countries
-  desc?: string
-  large: boolean
-  spaceless?: boolean
-}
 
 export const Flag = ({
   countryCode,

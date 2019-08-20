@@ -5,8 +5,8 @@ import { getRule } from "../../util/viewports"
 
 import { Flag } from "../Flag"
 
-import { IDriverBase } from "../../interfaces/Driver"
-import { ITeam } from "../../interfaces/Team"
+import { IRaceColumn } from "../../interfaces/Race/Display"
+
 import RookieStatus from "../Drivers/RookieStatus"
 
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
@@ -36,16 +36,6 @@ const Driver = styled.div`
     margin-bottom: 4px;
   }
 `
-
-interface IRaceColumn {
-  keys?: string[]
-  occupants: string[]
-  drivers: IDriverBase[]
-  teams: ITeam[]
-  shortened?: boolean
-  label?: string
-  mobile: boolean | null
-}
 
 const RaceColumn = ({
   keys,

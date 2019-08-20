@@ -5,8 +5,7 @@ import { getRule } from "../../util/viewports"
 
 import { Flag } from "../Flag"
 
-import { IResult } from "../../interfaces/Driver"
-import { IRace } from "../../interfaces/Race"
+import { IRaceHeaderProps } from "../../interfaces/Props"
 
 const LocationWrapperShortened = styled.div`
   padding: 0.3rem 0;
@@ -32,12 +31,6 @@ const Circuit = styled.span`
   font-size: 80%;
   font-weight: bold;
 `
-
-interface IRaceHeaderProps {
-  race: IResult
-  races: IRace[]
-  index: number
-}
 
 const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
   const { location } = race

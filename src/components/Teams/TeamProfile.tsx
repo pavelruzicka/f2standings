@@ -4,8 +4,7 @@ import { Flag } from "../Flag"
 
 import RaceColumn from "../Races/RaceColumn"
 
-import { IDriverBase } from "../../interfaces/Driver"
-import { ITeam, ITeamExpanded } from "../../interfaces/Team"
+import { ITeamProfileProps } from "../../interfaces/Props"
 
 import {
   RowWrapper,
@@ -18,13 +17,6 @@ import {
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
 import { getSuffix } from "../../util/ordinalSuffix"
-
-interface ITeamProfileProps {
-  team: ITeamExpanded
-  teams: ITeam[]
-  drivers: IDriverBase[]
-  index: number
-}
 
 const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
   const { stats } = team

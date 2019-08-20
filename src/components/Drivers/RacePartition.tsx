@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { getRule } from "../../util/viewports"
 
+import { IRacePartititon } from "../../interfaces/Props"
 import { RaceType } from "../../enums/RaceType"
 
 const PartitionWrapper = styled.div<{ padded: boolean }>`
@@ -30,12 +31,7 @@ const TypeExpanded = styled.small`
   }
 `
 
-interface IPartitionProps {
-  type: RaceType
-  padded: boolean
-}
-
-const RacePartition = ({ type, padded }: IPartitionProps) => {
+const RacePartition = ({ type, padded }: IRacePartititon) => {
   const abbr = (full: string) =>
     `${full
       .split(` `)

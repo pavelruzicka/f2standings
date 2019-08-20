@@ -1,6 +1,6 @@
 import React from "react"
 
-import { IRaceDatesProps } from "../../interfaces/Race"
+import { IRaceDatesProps } from "../../interfaces/render/Race"
 
 import {
   MobileLabel,

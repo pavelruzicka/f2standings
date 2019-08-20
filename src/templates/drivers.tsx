@@ -6,9 +6,7 @@ import { Icon } from "../components/Icon"
 
 import DriverProfile from "../components/Drivers/DriverProfile"
 
-import { IDriverBase } from "../interfaces/Driver"
-import { IRace } from "../interfaces/Race"
-import { ITeam } from "../interfaces/Team"
+import { IDriversContext } from "../interfaces/Context"
 
 import { sortDrivers } from "../services/driversChampionship"
 
@@ -19,15 +17,9 @@ import {
   TableHeadWrapper,
 } from "../styles/TableHead"
 
-interface IPageContext {
-  pageContext: {
-    drivers: IDriverBase[]
-    teams: ITeam[]
-    races: IRace[]
-  }
-}
-
-export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
+export default ({
+  pageContext: { drivers, teams, races },
+}: IDriversContext) => {
   return (
     <>
       <Layout>

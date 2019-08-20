@@ -1,4 +1,4 @@
-import { IDriverBase, IResult } from "../interfaces/Driver"
+import { IDriverBase, IResult } from "../interfaces/render/Driver"
 
 import { featurePoints, sprintPoints } from "../util/points"
 

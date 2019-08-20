@@ -6,23 +6,13 @@ import { Icon } from "../components/Icon"
 
 import RaceRow from "../components/Races/RaceRow"
 
-import { IDriverBase } from "../interfaces/Driver"
-import { IRace } from "../interfaces/Race"
-import { ITeam } from "../interfaces/Team"
+import { IRacesContext } from "../interfaces/Context"
 
 import { TableHeadWrapper, TableHead, TableHeadInit } from "../styles/TableHead"
 
-interface IPageContext {
-  pageContext: {
-    drivers: IDriverBase[]
-    teams: ITeam[]
-    calendar: IRace[]
-  }
-}
-
 export default ({
   pageContext: { drivers, teams, calendar },
-}: IPageContext) => {
+}: IRacesContext) => {
   return (
     <Layout>
       <SEO title="Races" />

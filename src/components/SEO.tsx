@@ -3,11 +3,7 @@ import Helmet from "react-helmet"
 
 import { graphql, useStaticQuery } from "gatsby"
 
-interface ISEOProps {
-  description?: string
-  lang?: string
-  title: string
-}
+import { ISEOProps } from "../interfaces/Props"
 
 export const SEO = ({ description, lang, title }: ISEOProps) => {
   const { site } = useStaticQuery(
