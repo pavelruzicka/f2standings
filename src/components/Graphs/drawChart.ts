@@ -98,10 +98,12 @@ export function drawLegend(
       .attr("font-size", 10)
       .attr("title", result.label)
 
+    const reversedData = data.slice().reverse()
+
     // Show tooltip
     group
       .on("mouseenter", () => {
-        drawLines(root, xScale, yScale, data, size, tooltip, result)
+        highlightLines(root, reversedData, result)
 
         tooltip
           .html(result.label)
@@ -121,7 +123,7 @@ export function drawLegend(
       })
       .on("mouseleave", () => {
         setTimeout(() => {
-          drawLines(root, xScale, yScale, data, size, tooltip, null)
+          highlightLines(root, reversedData, null)
         }, 0)
 
         tooltip
@@ -192,16 +194,30 @@ export function drawAxis(
     .call(yAxis.tickSize(0).tickFormat(s => String(s)))
 }
 
-export const drawLines = throttle((
+export const highlightLines = throttle(
+  (
+    root: d3.Selection<SVGGElement, unknown, null, undefined>,
+    data: IDataEntry[],
+    hovered: IDataEntry | null
+  ) => {
+    root
+      .select(".line-wrapper")
+      .selectAll(".line")
+      .data(data)
+      .attr("opacity", d => (hovered === null ? 1 : hovered === d ? 1 : 0.2))
+  },
+  10
+)
+
+export function drawLines(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
   size: ISize,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
-  hovered: IDataEntry | null
-) => {
+  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>
+) {
   // Remove existing lines
   root.select(".line-wrapper").remove()
 
@@ -227,19 +243,18 @@ export const drawLines = throttle((
       .attr("class", "line")
       .attr("stroke", result.color)
       .attr("stroke-dasharray", result.dotted ? "11 6" : "initial")
-      .attr("opacity", hovered === null ? 1 : hovered === result ? 1 : 0.2)
       .attr("d", createLine(result.points) || "")
+      .attr("data-indicator", result.shortLabel)
       .on("mouseenter", () => {
-        drawLines(root, xScale, yScale, data, size, tooltip, result)
+        highlightLines(root, data, result)
 
         const points = result.points[result.points.length - 1][1]
 
-        tooltip.style(
-          "transform",
-          `translate(${d3.event.pageX + 12}px, ${d3.event.pageY - 40}px)`
-        )
-
         tooltip
+          .style(
+            "transform",
+            `translate(${d3.event.pageX + 12}px, ${d3.event.pageY - 40}px)`
+          )
           .html(
             `${result.label.split("<br/>")[0]} | ${points} point${
               points === 1 ? "" : "s"
@@ -260,7 +275,7 @@ export const drawLines = throttle((
         )
       })
       .on("mouseleave", () => {
-        drawLines(root, xScale, yScale, data, size, tooltip, null)
+        highlightLines(root, data, null)
 
         tooltip
           .transition()
@@ -268,7 +283,7 @@ export const drawLines = throttle((
           .style("opacity", 0)
       })
   }
-}, 10)
+}
 
 export function drawSvg(svgElement: SVGSVGElement | null, size: ISize) {
   // Update the svg element to be responsive

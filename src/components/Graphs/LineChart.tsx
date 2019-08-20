@@ -90,7 +90,7 @@ export function LineChart({ data, races }: IProps) {
     drawGrid(svg, xAxis, yAxis, races, size)
     drawAxis(svg, xAxis, yAxis, races, size)
     drawLegend(svg, xScale, yScale, data, size, tooltip)
-    drawLines(svg, xScale, yScale, data.slice().reverse(), size, tooltip, null)
+    drawLines(svg, xScale, yScale, data.slice().reverse(), size, tooltip)
   }, [data, races, svgRef])
 
   return <SvgWrapper ref={svgRef} />
