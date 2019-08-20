@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import { Logo } from "./Logo"
 
-import { MenuLink } from "../styles/menuLink"
+import { MenuLink } from "../styles/MenuLink"
 import { HeaderWrapper, ImageWrapper } from "../styles/Header"
 
 export const Header = () => (
