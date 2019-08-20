@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 
 import {
@@ -75,7 +75,6 @@ const tooltip = createTooltip()
 
 export function LineChart({ data, races }: IProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [hovered, setHovered] = useState<IDataEntry | null>(null)
 
   useEffect(() => {
     const size = {
@@ -90,19 +89,9 @@ export function LineChart({ data, races }: IProps) {
     const svg = drawSvg(svgRef.current, size)
     drawGrid(svg, xAxis, yAxis, races, size)
     drawAxis(svg, xAxis, yAxis, races, size)
-    drawLegend(svg, data, tooltip, size, setHovered, () => setHovered(null))
-    drawLines(
-      svg,
-      xScale,
-      yScale,
-      data.slice().reverse(),
-      size,
-      tooltip,
-      setHovered,
-      () => setHovered(null),
-      hovered
-    )
-  }, [data, races, svgRef, hovered])
+    drawLegend(svg, xScale, yScale, data, size, tooltip)
+    drawLines(svg, xScale, yScale, data.slice().reverse(), size, tooltip, null)
+  }, [data, races, svgRef])
 
   return <SvgWrapper ref={svgRef} />
 }

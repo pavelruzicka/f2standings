@@ -1,6 +1,7 @@
 import * as d3 from "d3"
 
 import { IDataEntry } from "./LineChart"
+import { throttle } from "../../util/throttle"
 
 interface ISize {
   width: number
@@ -47,12 +48,12 @@ export function createTooltip() {
 
 export function drawLegend(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
+  xScale: d3.ScaleLinear<number, number>,
+  yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
   size: ISize,
-  onHoverOn: (dataEntry: IDataEntry) => void,
-  onHoverOff: () => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>
 ) {
   // Create root element for the legend
   const legend = root
@@ -99,22 +100,29 @@ export function drawLegend(
 
     // Show tooltip
     group
-      .on("mouseover", () => {
-        onHoverOn(result)
+      .on("mouseenter", () => {
+        drawLines(root, xScale, yScale, data, size, tooltip, result)
 
         tooltip
           .html(result.label)
           .transition()
           .duration(100)
           .style("opacity", 1)
+          .style(
+            "transform",
+            `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
+          )
       })
       .on("mousemove", () => {
-        tooltip
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 28 + "px")
+        tooltip.style(
+          "transform",
+          `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
+        )
       })
-      .on("mouseout", () => {
-        onHoverOff()
+      .on("mouseleave", () => {
+        setTimeout(() => {
+          drawLines(root, xScale, yScale, data, size, tooltip, null)
+        }, 0)
 
         tooltip
           .transition()
@@ -184,7 +192,7 @@ export function drawAxis(
     .call(yAxis.tickSize(0).tickFormat(s => String(s)))
 }
 
-export function drawLines(
+export const drawLines = throttle((
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
@@ -192,10 +200,11 @@ export function drawLines(
   size: ISize,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
-  onHoverOn: (dataEntry: IDataEntry) => void,
-  onHoverOff: () => void,
   hovered: IDataEntry | null
-) {
+) => {
+  // Remove existing lines
+  root.select(".line-wrapper").remove()
+
   // Create wrapper element for lines
   const lineWrapper = root
     .append("g")
@@ -220,10 +229,16 @@ export function drawLines(
       .attr("stroke-dasharray", result.dotted ? "11 6" : "initial")
       .attr("opacity", hovered === null ? 1 : hovered === result ? 1 : 0.2)
       .attr("d", createLine(result.points) || "")
-      .on("mouseover", () => {
-        onHoverOn(result)
+      .on("mouseenter", () => {
+        drawLines(root, xScale, yScale, data, size, tooltip, result)
 
         const points = result.points[result.points.length - 1][1]
+
+        tooltip.style(
+          "transform",
+          `translate(${d3.event.pageX + 12}px, ${d3.event.pageY - 40}px)`
+        )
+
         tooltip
           .html(
             `${result.label.split("<br/>")[0]} | ${points} point${
@@ -233,14 +248,19 @@ export function drawLines(
           .transition()
           .duration(100)
           .style("opacity", 1)
+          .style(
+            "transform",
+            `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
+          )
       })
       .on("mousemove", () => {
-        tooltip
-          .style("left", d3.event.pageX + "px")
-          .style("top", d3.event.pageY - 28 + "px")
+        tooltip.style(
+          "transform",
+          `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
+        )
       })
-      .on("mouseout", () => {
-        onHoverOff()
+      .on("mouseleave", () => {
+        drawLines(root, xScale, yScale, data, size, tooltip, null)
 
         tooltip
           .transition()
@@ -248,7 +268,7 @@ export function drawLines(
           .style("opacity", 0)
       })
   }
-}
+}, 10)
 
 export function drawSvg(svgElement: SVGSVGElement | null, size: ISize) {
   // Update the svg element to be responsive
