@@ -39,48 +39,47 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
     .map(race => race.location)
   const data: IDataEntry[] = teams
     .map(team => {
-      const points = team.results.map(result => {
-        return teams[0].results[0]
-          .map((_, index) => {
-            let points = 0
-            points += result[index].pole ? 4 : 0
-            points += result[index].fastest ? 2 : 0
-            const position = result[index].position
-            if (position !== null) {
-              points +=
-                (index % 2 === 0
-                  ? featurePoints[position]
-                  : sprintPoints[position]) || 0
-            }
-            return points
-          })
-          .reduce<number[]>((total, next, index) => {
-            if (index % 2 === 0) {
-              total.push(next)
-            } else {
-              total[total.length - 1] = total[total.length - 1] + next
-            }
-            return total
-          }, [])
-      })
+      const points = team.results.map(teamResult =>
+        teams[0].results[0].reduce<number[]>((pointsPerDriver, _, index) => {
+          let racePoints = 0
+          racePoints += teamResult[index].pole ? 4 : 0
+          racePoints += teamResult[index].fastest ? 2 : 0
 
-      const addedPoints = points[0].map(
-        (_, index) => points[0][index] + points[1][index]
+          const position = teamResult[index].position
+          const isFeatureRace = index % 2 === 0
+          if (position !== null) {
+            racePoints +=
+              (isFeatureRace
+                ? featurePoints[position]
+                : sprintPoints[position]) || 0
+          }
+
+          if (isFeatureRace) {
+            pointsPerDriver.push(racePoints)
+          } else {
+            const featureRacePoints =
+              pointsPerDriver[pointsPerDriver.length - 1]
+
+            pointsPerDriver[pointsPerDriver.length - 1] =
+              featureRacePoints + racePoints
+          }
+          return pointsPerDriver
+        }, [])
       )
 
-      const fuckingPoints = addedPoints.reduce<[number, number][]>(
-        (total, item, index) => {
-          const previousPoints = (total[index - 1] || [0, 0])[1]
+      const addedPoints = points[0].reduce<[number, number][]>(
+        (pointsPerTeam, _, index) => {
+          const teamPoints = points[0][index] + points[1][index]
+          const previousTeamPoints = (pointsPerTeam[index - 1] || [0, 0])[1]
 
-          total.push([index, previousPoints + item])
-
-          return total
+          pointsPerTeam.push([index, previousTeamPoints + teamPoints])
+          return pointsPerTeam
         },
         []
       )
 
       return {
-        points: fuckingPoints,
+        points: addedPoints,
         color: teamColours[team.short] || "#000",
         dotted: false,
         label: `<b>${team.name}</b>`,
