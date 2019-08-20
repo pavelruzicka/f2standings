@@ -3,11 +3,10 @@ import styled from "styled-components"
 
 import { getRule } from "../../util/viewports"
 
+import { RookieStatus } from "../Drivers/RookieStatus"
 import { Flag } from "../Flag"
 
-import { IRaceColumn } from "../../interfaces/Race/Display"
-
-import RookieStatus from "../Drivers/RookieStatus"
+import { IRaceColumn } from "../../interfaces/render/Race"
 
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
@@ -37,7 +36,7 @@ const Driver = styled.div`
   }
 `
 
-const RaceColumn = ({
+export const RaceColumn = ({
   keys,
   occupants,
   drivers,
@@ -79,5 +78,3 @@ const RaceColumn = ({
     </RaceColumnWrapper>
   )
 }
-
-export default RaceColumn

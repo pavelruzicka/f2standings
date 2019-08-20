@@ -14,10 +14,8 @@ const Status = styled.span<{ noWidth: boolean }>`
   cursor: default;
 `
 
-const RookieStatus = ({ noWidth = false }: { noWidth?: boolean }) => (
+export const RookieStatus = ({ noWidth = false }: { noWidth?: boolean }) => (
   <Status title={"Rookie"} noWidth={noWidth}>
     *
   </Status>
 )
-
-export default RookieStatus

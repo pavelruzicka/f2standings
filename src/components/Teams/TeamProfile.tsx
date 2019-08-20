@@ -1,8 +1,7 @@
 import React from "react"
 
+import { RaceColumn } from "../Races/RaceColumn"
 import { Flag } from "../Flag"
-
-import RaceColumn from "../Races/RaceColumn"
 
 import { ITeamProfileProps } from "../../interfaces/Props"
 
@@ -18,7 +17,12 @@ import { MobileLabel, MobileContent } from "../../styles/Mobile"
 
 import { getSuffix } from "../../util/ordinalSuffix"
 
-const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
+export const TeamProfile = ({
+  team,
+  teams,
+  drivers,
+  index,
+}: ITeamProfileProps) => {
   const { stats } = team
 
   return (
@@ -63,5 +67,3 @@ const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
     </RowWrapper>
   )
 }
-
-export default TeamProfile

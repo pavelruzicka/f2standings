@@ -2,9 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-import Logo from "./Logo"
+import { Logo } from "./Logo"
 
-import { MenuLink } from "../styles/menuLink"
+import { MenuLink } from "../styles/MenuLink"
 import { getRule } from "../util/viewports"
 
 const HeaderWrapper = styled.header`

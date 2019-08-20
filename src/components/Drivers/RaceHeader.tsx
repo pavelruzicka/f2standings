@@ -32,7 +32,7 @@ const Circuit = styled.span`
   font-weight: bold;
 `
 
-const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
+export const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
   const { location } = race
   const raceInfo = races.find(r => r.short === location)
 
@@ -71,5 +71,3 @@ const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
 
   return <LocationWrapperShortened />
 }
-
-export default RaceHeader

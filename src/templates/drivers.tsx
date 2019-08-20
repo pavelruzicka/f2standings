@@ -1,10 +1,9 @@
 import React from "react"
 
+import { DriverProfile } from "../components/Drivers/DriverProfile"
 import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
 import { Icon } from "../components/Icon"
-
-import DriverProfile from "../components/Drivers/DriverProfile"
 
 import { IDriversContext } from "../interfaces/Context"
 

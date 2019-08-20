@@ -11,7 +11,7 @@ import {
 
 import { formatDate } from "../../services/formatDate"
 
-const RaceDates = ({ feature, sprint, mobile }: IRaceDatesProps) => {
+export const RaceDates = ({ feature, sprint, mobile }: IRaceDatesProps) => {
   return (
     <>
       {mobile ? (
@@ -31,5 +31,3 @@ const RaceDates = ({ feature, sprint, mobile }: IRaceDatesProps) => {
     </>
   )
 }
-
-export default RaceDates

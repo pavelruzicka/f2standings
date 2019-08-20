@@ -1,6 +1,6 @@
 import React from "react"
 
-import RookieStatus from "./RookieStatus"
+import { RookieStatus } from "./RookieStatus"
 import { Flag } from "../Flag"
 
 import { IContentProps, IDriverProps } from "../../interfaces/Props"
@@ -63,7 +63,7 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
   )
 }
 
-const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
+export const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
   return (
     <RowWrapperClickable onClick={() => expand()}>
       <RowInit>#{index + 1}</RowInit>
@@ -72,5 +72,3 @@ const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
     </RowWrapperClickable>
   )
 }
-
-export default DriverRow

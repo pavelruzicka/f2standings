@@ -31,7 +31,7 @@ const TypeExpanded = styled.small`
   }
 `
 
-const RacePartition = ({ type, padded }: IRacePartititon) => {
+export const RacePartition = ({ type, padded }: IRacePartititon) => {
   const abbr = (full: string) =>
     `${full
       .split(` `)
@@ -47,5 +47,3 @@ const RacePartition = ({ type, padded }: IRacePartititon) => {
     </PartitionWrapper>
   )
 }
-
-export default RacePartition

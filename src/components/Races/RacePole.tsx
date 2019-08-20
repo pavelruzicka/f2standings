@@ -12,7 +12,7 @@ const Driver = styled.div`
   font-weight: 500;
 `
 
-const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
+export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
   const driver = drivers.find(d => d.short === feature.pole)
 
   if (!feature.pole || !driver) {
@@ -44,5 +44,3 @@ const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
 
   return <td />
 }
-
-export default RacePole

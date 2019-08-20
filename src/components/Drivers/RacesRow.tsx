@@ -3,9 +3,9 @@ import styled from "styled-components"
 
 import { getRule } from "../../util/viewports"
 
-import RaceHeader from "./RaceHeader"
-import RacePartition from "./RacePartition"
-import RaceResult from "./RaceResult"
+import { RaceHeader } from "./RaceHeader"
+import { RacePartition } from "./RacePartition"
+import { RaceResult } from "./RaceResult"
 
 import { RaceType } from "../../enums/RaceType"
 
@@ -24,7 +24,7 @@ const RaceConstraint = styled.div`
   }
 `
 
-const RacesRow = ({ results, races }: IRacesRowProps) => {
+export const RacesRow = ({ results, races }: IRacesRowProps) => {
   return (
     <tr>
       <RowBase colSpan={6}>
@@ -54,5 +54,3 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
     </tr>
   )
 }
-
-export default RacesRow

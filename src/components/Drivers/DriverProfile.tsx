@@ -1,11 +1,16 @@
 import React, { useState } from "react"
 
-import DriverRow from "./DriverRow"
-import RacesRow from "./RacesRow"
+import { DriverRow } from "./DriverRow"
+import { RacesRow } from "./RacesRow"
 
 import { IProfileProps } from "../../interfaces/Props"
 
-const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
+export const DriverProfile = ({
+  driver,
+  teams,
+  races,
+  index,
+}: IProfileProps) => {
   const [racesVisible, updateVisibility] = useState(index === 0)
 
   const { results } = driver
@@ -31,5 +36,3 @@ const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
 
   return <div />
 }
-
-export default DriverProfile

@@ -1,10 +1,9 @@
 import React from "react"
 
+import { TeamProfile } from "../components/Teams/TeamProfile"
 import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
 import { Icon } from "../components/Icon"
-
-import TeamProfile from "../components/Teams/TeamProfile"
 
 import { ITeamsContext } from "../interfaces/Context"
 

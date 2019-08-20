@@ -24,7 +24,7 @@ const ResultWrapperBold = styled(ResultWrapper)`
   font-weight: bold;
 `
 
-const RaceResult = ({ result, type }: IRaceResultProps) => {
+export const RaceResult = ({ result, type }: IRaceResultProps) => {
   const typeName = RaceType[type].toLowerCase()
   const race = typeName === "feature" ? result["feature"] : result["sprint"]
 
@@ -40,5 +40,3 @@ const RaceResult = ({ result, type }: IRaceResultProps) => {
     return <ResultWrapper active={true}>{`P${race.position}`}</ResultWrapper>
   }
 }
-
-export default RaceResult

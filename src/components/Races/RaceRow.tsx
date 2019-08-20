@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 
-import RaceDates from "./RaceDates"
-import RacePole from "./RacePole"
-import RacePartition from "../Drivers/RacePartition"
-import RaceColumn from "./RaceColumn"
-
+import { RaceDates } from "./RaceDates"
+import { RacePole } from "./RacePole"
+import { RacePartition } from "../Drivers/RacePartition"
+import { RaceColumn } from "./RaceColumn"
 import { Flag } from "../Flag"
 
 import { RaceType } from "../../enums/RaceType"
@@ -31,7 +30,7 @@ const Circuit = styled.div`
   font-weight: 500;
 `
 
-const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
+export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races
 
   return (
@@ -154,5 +153,3 @@ const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
     </RowWrapper>
   )
 }
-
-export default RaceRow

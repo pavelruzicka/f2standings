@@ -1,10 +1,9 @@
 import React from "react"
 
+import { RaceRow } from "../components/Races/RaceRow"
 import { Layout } from "../components/Layout"
 import { SEO } from "../components/SEO"
 import { Icon } from "../components/Icon"
-
-import RaceRow from "../components/Races/RaceRow"
 
 import { IRacesContext } from "../interfaces/Context"
 
