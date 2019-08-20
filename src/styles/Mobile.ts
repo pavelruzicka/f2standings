@@ -38,26 +38,3 @@ export const MobileContentReversedSmall = styled(MobileContent)`
     }
   }
 `
-
-export const RaceContentWrapper = styled.td`
-  @media ${getRule("max", "mobileL")} {
-    && {
-      display: none;
-    }
-  }
-`
-
-export const RaceContentWrapperMobile = styled.td`
-  &&  {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: none;
-    padding: 4px 6px;
-  }
-
-  @media ${getRule("min", "mobileL")} {
-    && {
-      display: none;
-    }
-  }
-`

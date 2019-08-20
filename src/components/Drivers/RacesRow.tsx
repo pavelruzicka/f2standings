@@ -1,7 +1,4 @@
 import React from "react"
-import styled from "styled-components"
-
-import { getRule } from "../../util/viewports"
 
 import { RaceHeader } from "./RaceHeader"
 import { RacePartition } from "./RacePartition"
@@ -11,18 +8,10 @@ import { RaceType } from "../../enums/RaceType"
 
 import { IRacesRowProps } from "../../interfaces/Props"
 
-import {
-  RowBase,
-  RowTable,
-  RaceWrapper,
-  SectionWrapper,
-} from "../../styles/RacesRow"
-
-const RaceConstraint = styled.div`
-  @media ${getRule("max", "tablet")} {
-    display: flex;
-  }
-`
+import { RowBase } from "../../styles/Row/Base"
+import { RowTable } from "../../styles/Row/Table"
+import { RaceWrapper, SectionWrapper } from "../../styles/Race/Row"
+import { RaceConstraint } from "../../styles/Race/Constraint"
 
 export const RacesRow = ({ results, races }: IRacesRowProps) => {
   return (

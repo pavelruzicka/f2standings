@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 
 import { RaceDates } from "./RaceDates"
 import { RacePole } from "./RacePole"
@@ -12,23 +11,17 @@ import { RaceType } from "../../enums/RaceType"
 import { IRaceRowProps } from "../../interfaces/Props"
 
 import {
-  RowInit,
-  RowLeftAligned,
-  RowWrapper,
-  RowEnd,
-  RowFiller,
-} from "../../styles/TableRow"
-
-import {
   MobileLabel,
   MobileContentReversed,
   MobileContentReversedSmall,
-  RaceContentWrapper,
 } from "../../styles/Mobile"
 
-const Circuit = styled.div`
-  font-weight: 500;
-`
+import { RowInit } from "../../styles/Row/Init"
+import { RowEnd } from "../../styles/Row/End"
+import { RowWrapper } from "../../styles/Row/Wrapper"
+import { RowLeftAligned, RowFiller } from "../../styles/Row/Misc"
+import { RaceWrapper } from "../../styles/Race/Wrapper"
+import { Circuit } from "../../styles/Race/Misc"
 
 export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races
@@ -71,10 +64,10 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
         <>
           <RacePole feature={feature} drivers={drivers} teams={teams} />
 
-          <RaceContentWrapper>
+          <RaceWrapper>
             <RacePartition type={RaceType.Feature} padded={false} />
             <RacePartition type={RaceType.Sprint} padded={false} />
-          </RaceContentWrapper>
+          </RaceWrapper>
 
           {feature.podium && sprint.podium ? (
             <>

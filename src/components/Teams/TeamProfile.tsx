@@ -5,15 +5,11 @@ import { Flag } from "../Flag"
 
 import { ITeamProfileProps } from "../../interfaces/Props"
 
-import {
-  RowWrapper,
-  RowInitMobile,
-  RowInitVert,
-  RowVert,
-  RowBlock,
-  RowEnd,
-} from "../../styles/TableRow"
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
+import { RowBlock, RowBlockVert } from "../../styles/Row/Block"
+import { RowInitMobile, RowInitVert } from "../../styles/Row/Init"
+import { RowEnd } from "../../styles/Row/End"
+import { RowWrapper } from "../../styles/Row/Wrapper"
 
 import { getSuffix } from "../../util/ordinalSuffix"
 
@@ -29,12 +25,12 @@ export const TeamProfile = ({
     <RowWrapper>
       <RowInitVert>#{index + 1}</RowInitVert>
 
-      <RowVert>
+      <RowBlockVert>
         <MobileLabel>Team</MobileLabel>
         <MobileContent>
           <Flag countryCode={team.country} large={true} /> {team.name}
         </MobileContent>
-      </RowVert>
+      </RowBlockVert>
 
       <RowInitMobile>
         <MobileLabel>Championship position</MobileLabel>

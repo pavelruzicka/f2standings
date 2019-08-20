@@ -1,16 +1,12 @@
 import React from "react"
-import styled from "styled-components"
 
 import { Flag } from "../Flag"
 
 import { IPoleProps } from "../../interfaces/Props"
 
-import { RowLeftAligned } from "../../styles/TableRow"
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
-
-const Driver = styled.div`
-  font-weight: 500;
-`
+import { RowLeftAligned } from "../../styles/Row/Misc"
+import { Driver } from "../../styles/Race/Column"
 
 export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
   const driver = drivers.find(d => d.short === feature.pole)

@@ -1,36 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
 
 import { Logo } from "./Logo"
 
-import { MenuLink } from "../styles/MenuLink"
-import { getRule } from "../util/viewports"
-
-const HeaderWrapper = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem auto 2.5rem;
-
-  @media ${getRule("max", "mobileL")} {
-    flex-direction: column;
-  }
-
-  h3 {
-    margin: 0;
-  }
-
-  link {
-    display: flex;
-    text-decoration: none;
-  }
-`
-
-const ImageWrapper = styled.div`
-  width: 60px;
-  margin: 1rem 0.5rem;
-`
+import { MenuLink } from "../styles/menuLink"
+import { HeaderWrapper, ImageWrapper } from "../styles/Header"
 
 export const Header = () => (
   <HeaderWrapper>

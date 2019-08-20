@@ -5,19 +5,15 @@ import { Flag } from "../Flag"
 
 import { IContentProps, IDriverProps } from "../../interfaces/Props"
 
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
-
 import { getSuffix } from "../../util/ordinalSuffix"
 
-import {
-  RowInit,
-  RowBlock,
-  RowStart,
-  RowEnd,
-  RowWrapperClickable,
-  RowInitMobile,
-  Team,
-} from "../../styles/TableRow"
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
+import { RowBlock } from "../../styles/Row/Block"
+import { RowInit, RowInitMobile } from "../../styles/Row/Init"
+import { RowStart } from "../../styles/Row/Start"
+import { RowEnd } from "../../styles/Row/End"
+import { RowWrapperClickable } from "../../styles/Row/Wrapper"
+import { RowBold } from "../../styles/Row/Misc"
 
 const RowContent = ({ driver, team, index }: IContentProps) => {
   const { country, name, lastName, stats } = driver
@@ -33,12 +29,12 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
         </MobileContent>
       </RowStart>
 
-      <Team>
+      <RowBold>
         <MobileLabel>Team</MobileLabel>
         <MobileContent>
           <Flag countryCode={team.country} large={true} /> {team.name}
         </MobileContent>
-      </Team>
+      </RowBold>
 
       <RowInitMobile>
         <MobileLabel>Championship position</MobileLabel>

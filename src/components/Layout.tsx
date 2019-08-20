@@ -1,32 +1,11 @@
 import React from "react"
-import styled from "styled-components"
 
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Header } from "./Header"
 
 import "../styles/layout.css"
-
-const Footer = styled.footer`
-  margin: 2.5rem 0 6rem;
-  padding: 1.5rem 0;
-`
-
-const FooterLine = styled.p`
-  font-size: 15.5px;
-  margin-bottom: 0;
-  text-align: center;
-`
-
-const FooterLink = styled.a`
-  color: #273746;
-  text-decoration: underline;
-
-  :hover {
-    color: #273746;
-    text-decoration: none;
-  }
-`
+import { Footer, FooterLine, FooterLink } from "../styles/Footer"
 
 export const Layout: React.FunctionComponent = ({ children }) => {
   const data = useStaticQuery(graphql`
