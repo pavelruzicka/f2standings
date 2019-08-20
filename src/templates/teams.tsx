@@ -15,6 +15,7 @@ import {
   TableHeadCentered,
   TableHeadWrapper,
 } from "../styles/Layout/TableHead"
+import { RookieExpl } from "../styles/RookieExpl"
 
 export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
   return (
@@ -50,6 +51,11 @@ export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
             ))}
           </tbody>
         </table>
+
+        <RookieExpl>
+          The &#42; besides a driver's name denotes them being a rookie in
+          Formula 2.
+        </RookieExpl>
       </Layout>
     </>
   )

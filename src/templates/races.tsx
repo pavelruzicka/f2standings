@@ -12,6 +12,7 @@ import {
   TableHead,
   TableHeadInit,
 } from "../styles/Layout/TableHead"
+import { RookieExpl } from "../styles/RookieExpl"
 
 export default ({
   pageContext: { drivers, teams, calendar },
@@ -51,6 +52,11 @@ export default ({
           ))}
         </tbody>
       </table>
+
+      <RookieExpl>
+        The &#42; besides a driver's name denotes them being a rookie in Formula
+        2.
+      </RookieExpl>
     </Layout>
   )
 }
