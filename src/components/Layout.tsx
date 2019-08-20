@@ -1,5 +1,4 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
 
 import { Header } from "./Header"
 
@@ -7,17 +6,6 @@ import "../styles/layout.css"
 import { Footer, FooterLine, FooterLink } from "../styles/Layout/Footer"
 
 export const Layout: React.FunctionComponent = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-          description
-        }
-      }
-    }
-  `)
-
   return (
     <div className="uk-container">
       <Header />

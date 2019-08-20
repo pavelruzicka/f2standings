@@ -9,9 +9,8 @@ export const RaceWrapper = styled.td`
     }
   }
 `
-
 export const RaceWrapperMobile = styled.td`
-  &&  {
+  && {
     display: flex;
     justify-content: space-between;
     border-bottom: none;
