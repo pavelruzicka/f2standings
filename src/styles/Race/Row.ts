@@ -5,7 +5,7 @@ import { getRule } from "../../util/viewports"
 export const RaceWrapper = styled.div`
   flex: 1 1 0;
 
-  @media ${getRule("max", "tablet")} {
+  @media ${getRule("max", "laptop")} {
     padding: 10px 0;
     height: 85px;
 
@@ -14,7 +14,7 @@ export const RaceWrapper = styled.div`
     }
   }
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     height: 75px;
   }
 `
@@ -23,7 +23,7 @@ export const SectionWrapper = styled.div`
   display: flex;
   padding: 0 0.35rem;
 
-  @media ${getRule("max", "tablet")} {
+  @media ${getRule("max", "laptop")} {
     display: flex;
     flex-direction: column;
     width: 50%;

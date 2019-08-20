@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.header`
   align-items: center;
   margin: 1rem auto 2.5rem;
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     flex-direction: column;
   }
 

@@ -8,7 +8,7 @@ export const ResultWrapper = styled.div<{ active: boolean }>`
   padding: 0.3rem 0;
   text-align: center;
 
-  @media ${getRule("max", "tablet")} {
+  @media ${getRule("max", "laptop")} {
     text-align: right;
     padding: 0 6px 0 0;
   }

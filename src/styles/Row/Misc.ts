@@ -8,7 +8,7 @@ export const RowLeftAligned = styled(RowBlock)<{ border?: boolean }>`
     text-align: left;
   }
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       font-weight: 400;
       display: flex;
@@ -22,7 +22,7 @@ export const RowLeftAligned = styled(RowBlock)<{ border?: boolean }>`
 `
 
 export const RowFiller = styled.td`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       display: none;
     }
@@ -32,7 +32,7 @@ export const RowFiller = styled.td`
 export const RowBold = styled.td`
   font-weight: 500;
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       display: flex;
       justify-content: space-between;

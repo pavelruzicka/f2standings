@@ -6,7 +6,7 @@ export const RowTable = styled.div`
   display: flex;
   margin-bottom: 0;
 
-  @media ${getRule("max", "tablet")} {
+  @media ${getRule("max", "laptop")} {
     flex-direction: column;
     flex-wrap: wrap;
   }

@@ -7,7 +7,7 @@ export const RowBlock = styled.td`
     vertical-align: middle;
   }
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       font-weight: 500;
       display: flex;
@@ -25,7 +25,7 @@ export const RowBlockVert = styled.td`
     vertical-align: middle;
   }
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       font-weight: 500;
       display: flex;

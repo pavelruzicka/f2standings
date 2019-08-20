@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { getRule } from "../../util/viewports"
 
 export const RaceWrapper = styled.td`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       display: none;
     }
@@ -18,7 +18,7 @@ export const RaceWrapperMobile = styled.td`
     padding: 4px 6px;
   }
 
-  @media ${getRule("min", "mobileL")} {
+  @media ${getRule("min", "laptop")} {
     && {
       display: none;
     }

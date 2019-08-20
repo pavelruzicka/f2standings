@@ -13,7 +13,7 @@ export const FlagElement = styled.img<{
   width: ${p => (p.large ? 24 : 21)}px;
   user-select: ${p => (p.countryCode === "empty" ? "none" : "auto")};
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       width: 18px;
       bottom: 1px;

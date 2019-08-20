@@ -10,13 +10,13 @@ export const MobileLabel = styled.span<{ varied?: boolean }>`
   color: ${p => (p.varied ? "black" : "#565656")};
   text-transform: uppercase;
 
-  @media ${getRule("min", "mobileL")} {
+  @media ${getRule("min", "laptop")} {
     display: none;
   }
 `
 
 export const MobileContent = styled.div`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       text-align: right;
     }
@@ -24,7 +24,7 @@ export const MobileContent = styled.div`
 `
 
 export const MobileContentReversed = styled(MobileContent)`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       display: none;
     }
@@ -32,7 +32,7 @@ export const MobileContentReversed = styled(MobileContent)`
 `
 
 export const MobileContentReversedSmall = styled(MobileContent)`
-  @media ${getRule("min", "mobileL")} {
+  @media ${getRule("min", "laptop")} {
     && {
       display: none;
     }

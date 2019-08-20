@@ -21,7 +21,7 @@ export const TableHeadCentered = styled(TableHead)`
 `
 
 export const TableHeadWrapper = styled.thead`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     display: none;
   }
 `

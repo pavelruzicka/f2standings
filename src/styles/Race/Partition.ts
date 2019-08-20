@@ -6,14 +6,14 @@ export const PartitionWrapper = styled.div<{ padded: boolean }>`
   padding: ${p => (p.padded ? "0.3rem 0" : 0)};
   text-align: center;
 
-  @media ${getRule("max", "tablet")} {
+  @media ${getRule("max", "laptop")} {
     text-align: left;
     padding: 0 0 0 6px;
   }
 `
 
 export const TypeShortened = styled.small`
-  @media ${getRule("max", "tablet")} {
+  @media ${getRule("max", "laptop")} {
     display: none;
   }
 `
@@ -21,7 +21,7 @@ export const TypeShortened = styled.small`
 export const TypeExpanded = styled.small`
   text-transform: uppercase;
 
-  @media ${getRule("min", "tablet")} {
+  @media ${getRule("min", "laptop")} {
     display: none;
   }
 `

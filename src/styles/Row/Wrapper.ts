@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { getRule } from "../../util/viewports"
 
 export const RowWrapper = styled.tr`
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     display: block;
 
     & > * {

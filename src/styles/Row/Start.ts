@@ -8,7 +8,7 @@ export const RowStart = styled(RowBlock)`
     text-align: left;
   }
 
-  @media ${getRule("max", "mobileL")} {
+  @media ${getRule("max", "laptop")} {
     && {
       display: flex;
       justify-content: space-between;
@@ -21,7 +21,7 @@ export const RowStart = styled(RowBlock)`
 `
 
 export const RowStartVert = styled(RowStart)`
-  @media ${getRule("min", "mobileL")} {
+  @media ${getRule("min", "laptop")} {
     && {
       vertical-align: middle;
     }
