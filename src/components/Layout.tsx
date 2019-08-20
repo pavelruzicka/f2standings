@@ -28,13 +28,17 @@ export const Layout: React.FunctionComponent = ({ children }) => {
       >
         <main>{children}</main>
         <Footer>
-          <FooterLine>{data.site.siteMetadata.description}</FooterLine>
+          <FooterLine>
+            The number one destination for FIA&nbsp;Formula&nbsp;2
+            championship&nbsp;standings, race&nbsp;reports, and
+            team&nbsp;overviews.
+          </FooterLine>
           <FooterLine>
             Crafted in 2019 by{" "}
             <FooterLink href="https://pavelruzicka.com/" target="_blank">
               Pavel&nbsp;Růžička
-            </FooterLink>{" "}
-            and{" "}
+            </FooterLink>
+            &nbsp;and&nbsp;
             <FooterLink href="https://ruigrok.info/" target="_blank">
               Christian&nbsp;Ruigrok
             </FooterLink>
