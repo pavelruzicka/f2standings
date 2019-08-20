@@ -21,6 +21,7 @@ import {
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
+import { Tooltip } from "../styles/Tooltip"
 
 interface IPageContext {
   pageContext: {
@@ -95,6 +96,8 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
     <>
       <Layout>
         <Head title="Teams" />
+
+        <Tooltip className="tooltip" />
 
         <LineChart races={dataRaces} data={data} />
 

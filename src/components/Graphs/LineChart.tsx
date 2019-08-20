@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import styled from "styled-components"
 
 import {
   drawLegend,
@@ -9,10 +8,9 @@ import {
   drawSvg,
   getLeftAxis,
   getBottomAxis,
-  createTooltip,
 } from "./drawChart"
 
-import "./chart.css"
+import { LineChartSvg } from "../../styles/LineChartSvg"
 
 export interface IDataEntry {
   points: [number, number][]
@@ -26,52 +24,6 @@ interface IProps {
   data: IDataEntry[]
   races: string[]
 }
-
-const SvgWrapper = styled.svg`
-  width: 100%;
-
-  text {
-    font-family: "Red Hat Display", sans-serif;
-  }
-
-  .legend circle {
-    stroke-width: 2;
-  }
-
-  .legend text {
-    font-weight: 500;
-    fill: rgba(0, 0, 0, 0.7);
-  }
-
-  .line {
-    stroke-linecap: round;
-    stroke-width: 2.25;
-    fill: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .grid .tick line {
-    opacity: 0.1;
-    stroke-width: 0.75;
-  }
-
-  .axis-y .tick text {
-    fill: rgba(0, 0, 0, 0.7);
-    font-weight: 500;
-    transform: translateX(-10px);
-  }
-
-  .axis-x .tick text {
-    font-weight: 600;
-    transform: translateY(10px);
-  }
-
-  .domain {
-    display: none;
-  }
-`
-
-const tooltip = createTooltip()
 
 export function LineChart({ data, races }: IProps) {
   const svgRef = useRef<SVGSVGElement | null>(null)
@@ -89,9 +41,9 @@ export function LineChart({ data, races }: IProps) {
     const svg = drawSvg(svgRef.current, size)
     drawGrid(svg, xAxis, yAxis, races, size)
     drawAxis(svg, xAxis, yAxis, races, size)
-    drawLegend(svg, xScale, yScale, data, size, tooltip)
-    drawLines(svg, xScale, yScale, data.slice().reverse(), size, tooltip)
+    drawLegend(svg, xScale, yScale, data, size)
+    drawLines(svg, xScale, yScale, data.slice().reverse(), size)
   }, [data, races, svgRef])
 
-  return <SvgWrapper ref={svgRef} />
+  return <LineChartSvg ref={svgRef} />
 }

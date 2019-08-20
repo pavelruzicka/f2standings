@@ -38,22 +38,12 @@ export function getLeftAxis(data: IDataEntry[], size: ISize) {
   return { yScale, yAxis }
 }
 
-export function createTooltip() {
-  return d3
-    .select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0)
-}
-
 export function drawLegend(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
-  size: ISize,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>
+  size: ISize
 ) {
   // Create root element for the legend
   const legend = root
@@ -99,6 +89,7 @@ export function drawLegend(
       .attr("title", result.label)
 
     const reversedData = data.slice().reverse()
+    const tooltip = d3.select(".tooltip")
 
     // Show tooltip
     group
@@ -214,9 +205,7 @@ export function drawLines(
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
-  size: ISize,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>
+  size: ISize
 ) {
   // Remove existing lines
   root.select(".line-wrapper").remove()
@@ -235,6 +224,8 @@ export function drawLines(
     .x(([x]) => xScale(x))
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .y(([_, y]) => yScale(y))
+
+  const tooltip = d3.select(".tooltip")
 
   for (const result of data) {
     // Create and draw line
