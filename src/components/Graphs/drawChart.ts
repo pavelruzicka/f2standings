@@ -24,6 +24,7 @@ export function getBottomAxis(races: string[], size: ISize) {
 
 export function getLeftAxis(data: IDataEntry[], size: ISize) {
   // Create math functions for vertical y axis with points count
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const maxY = d3.max(data, d => d3.max(d.points, ([_, x]) => x)) || 0
 
   const yScale = d3
@@ -47,6 +48,7 @@ export function createTooltip() {
 export function drawLegend(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   data: IDataEntry[],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
   size: ISize,
   onHoverOn: (dataEntry: IDataEntry) => void,
@@ -188,6 +190,7 @@ export function drawLines(
   yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
   size: ISize,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tooltip: d3.Selection<HTMLDivElement, unknown, HTMLElement, any>,
   onHoverOn: (dataEntry: IDataEntry) => void,
   onHoverOff: () => void,
@@ -205,6 +208,7 @@ export function drawLines(
     .line()
     .curve(d3.curveBasis)
     .x(([x]) => xScale(x))
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .y(([_, y]) => yScale(y))
 
   for (const result of data) {

@@ -8,19 +8,19 @@ import { LineChart, IDataEntry } from "../components/Graphs/LineChart"
 import TeamProfile from "../components/Teams/TeamProfile"
 
 import { IDriverBase } from "../interfaces/Driver"
-import { ITeam, ITeamResult } from "../interfaces/Team"
+import { ITeam } from "../interfaces/Team"
 import { IRace } from "../interfaces/Race"
 
 import { sortTeams } from "../services/teamsChampionship"
 
 import { teamColours } from "../util/colours"
+import { featurePoints, sprintPoints } from "../util/points"
 
 import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
-import { featurePoints, sprintPoints } from "../util/points"
 
 interface IPageContext {
   pageContext: {
@@ -30,7 +30,7 @@ interface IPageContext {
   }
 }
 
-export default ({ pageContext: { teams, drivers, races } }: IPageContext) => {
+export default ({ pageContext: { teams, drivers } }: IPageContext) => {
   const sortedTeams = sortTeams(teams)
 
   const dataRaces = drivers[0].results

@@ -81,7 +81,7 @@ export function LineChart({ data, races }: IProps) {
     const size = {
       width: 700,
       height: 400,
-      padding: 30,
+      padding: 40,
     }
 
     const { xScale, xAxis } = getBottomAxis(races, size)
