@@ -43,10 +43,40 @@ export function getLeftAxis(data: IDataEntry[], size: ISize) {
   return { yScale, yAxis }
 }
 
+function showTooltip(
+  tooltip: d3.Selection<d3.BaseType, unknown, HTMLElement, null>,
+  html: string
+) {
+  tooltip
+    .html(html)
+    .transition()
+    .duration(100)
+    .style("opacity", 1)
+}
+
+function positionTooltip(
+  tooltip: d3.Selection<d3.BaseType, unknown, HTMLElement, null>
+) {
+  const tool = tooltip.node() as HTMLDivElement
+  const onLeft = document.body.clientWidth < d3.event.pageX + tool.offsetWidth
+
+  const x = d3.event.pageX - (onLeft ? tool.offsetWidth : 0)
+  const y = d3.event.pageY - 28
+
+  tooltip.style("transform", `translate(${x}px, ${y}px)`)
+}
+
+function hideTooltip(
+  tooltip: d3.Selection<d3.BaseType, unknown, HTMLElement, null>
+) {
+  tooltip
+    .transition()
+    .duration(100)
+    .style("opacity", 0)
+}
+
 export function drawLegend(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
-  xScale: d3.ScaleLinear<number, number>,
-  yScale: d3.ScaleLinear<number, number>,
   data: IDataEntry[],
   size: ISize
 ) {
@@ -102,29 +132,15 @@ export function drawLegend(
       .on("mouseenter", () => {
         highlightLines(root, reversedData, result)
 
-        tooltip
-          .html(result.label)
-          .transition()
-          .duration(100)
-          .style("opacity", 1)
-          .style(
-            "transform",
-            `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
-          )
+        showTooltip(tooltip, result.label)
       })
       .on("mousemove", () => {
-        tooltip.style(
-          "transform",
-          `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
-        )
+        positionTooltip(tooltip)
       })
       .on("mouseleave", () => {
         highlightLines(root, reversedData, null)
 
-        tooltip
-          .transition()
-          .duration(100)
-          .style("opacity", 0)
+        hideTooltip(tooltip)
       })
   })
 }
@@ -166,7 +182,7 @@ export function drawAxis(
   // Create x axis with race location names
   root
     .append("g")
-    .attr("transform", `translate(${10}, ${size.height})`)
+    .attr("transform", `translate(10, ${size.height})`)
     .attr("class", "axis axis-x")
     .call(xAxis.tickSize(0).tickFormat(s => races[s.valueOf()]))
 
@@ -245,37 +261,19 @@ export function drawLines(
       .on("mouseenter", () => {
         highlightLines(root, data, result)
 
-        const points = result.points[result.points.length - 1][1]
         const name = result.label.split("<br/>")[0]
+        const points = result.points[result.points.length - 1][1]
         const plural = points === 1 ? "" : "s"
 
-        tooltip
-          .style(
-            "transform",
-            `translate(${d3.event.pageX + 12}px, ${d3.event.pageY - 40}px)`
-          )
-          .html(`${name} | ${points} point${plural}`)
-          .transition()
-          .duration(100)
-          .style("opacity", 1)
-          .style(
-            "transform",
-            `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
-          )
+        showTooltip(tooltip, `${name} | ${points} point${plural}`)
       })
       .on("mousemove", () => {
-        tooltip.style(
-          "transform",
-          `translate(${d3.event.pageX}px, ${d3.event.pageY - 28}px)`
-        )
+        positionTooltip(tooltip)
       })
       .on("mouseleave", () => {
         highlightLines(root, data, null)
 
-        tooltip
-          .transition()
-          .duration(100)
-          .style("opacity", 0)
+        hideTooltip(tooltip)
       })
   }
 }
