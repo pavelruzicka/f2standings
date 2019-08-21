@@ -6,14 +6,14 @@ import { Icon } from "../components/Icon"
 
 import TeamProfile from "../components/Teams/TeamProfile"
 import { LineChart } from "../components/Graphs/LineChart"
-import { getChartTeamPoints } from "../components/Graphs/chartTeamPoints"
-import { getChartRaces } from "../components/Graphs/chartRaces"
 
 import { IDriverBase } from "../interfaces/Driver"
 import { ITeam } from "../interfaces/Team"
 import { IRace } from "../interfaces/Race"
 
-import { sortTeams } from "../services/teamsChampionship"
+import { sortTeams } from "../services/championship/teamsChampionship"
+import { getChartTeamPoints } from "../services/graphs/chartTeamPoints"
+import { getChartRaces } from "../services/graphs/chartRaces"
 
 import {
   TableHead,

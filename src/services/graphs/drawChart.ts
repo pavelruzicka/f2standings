@@ -1,7 +1,14 @@
 import * as d3 from "d3"
 
-import { IDataEntry } from "./LineChart"
 import { throttle } from "../../util/throttle"
+
+export interface IDataEntry {
+  points: [number, number][]
+  shortLabel: string
+  label: string
+  dotted: boolean
+  color: string
+}
 
 interface ISize {
   width: number

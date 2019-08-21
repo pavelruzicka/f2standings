@@ -8,17 +8,10 @@ import {
   drawSvg,
   getLeftAxis,
   getBottomAxis,
-} from "./drawChart"
+  IDataEntry,
+} from "../../services/graphs/drawChart"
 
 import { LineChartSvg } from "../../styles/LineChartSvg"
-
-export interface IDataEntry {
-  points: [number, number][]
-  shortLabel: string
-  label: string
-  dotted: boolean
-  color: string
-}
 
 interface IProps {
   data: IDataEntry[]

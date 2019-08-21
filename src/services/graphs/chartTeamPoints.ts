@@ -1,9 +1,9 @@
+import { IDataEntry } from "./drawChart"
+
 import { ITeam } from "../../interfaces/Team"
 
 import { featurePoints, sprintPoints } from "../../util/points"
 import { teamColours } from "../../util/colours"
-
-import { IDataEntry } from "./LineChart"
 
 export function getChartTeamPoints(teams: ITeam[]) {
   return teams

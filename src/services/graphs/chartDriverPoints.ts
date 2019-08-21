@@ -1,10 +1,10 @@
+import { IDataEntry } from "./drawChart"
+
 import { IDriverBase } from "../../interfaces/Driver"
 import { ITeam } from "../../interfaces/Team"
 
 import { featurePoints, sprintPoints } from "../../util/points"
 import { teamColours } from "../../util/colours"
-
-import { IDataEntry } from "./LineChart"
 
 function isSecondDriver(teams: ITeam[], driver: IDriverBase) {
   const team = teams.find(team => team.short === driver.team)

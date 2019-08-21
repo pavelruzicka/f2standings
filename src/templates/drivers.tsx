@@ -6,14 +6,14 @@ import { Icon } from "../components/Icon"
 
 import DriverProfile from "../components/Drivers/DriverProfile"
 import { LineChart } from "../components/Graphs/LineChart"
-import { getChartDriverPoints } from "../components/Graphs/chartDriverPoints"
-import { getChartRaces } from "../components/Graphs/chartRaces"
 
 import { IDriverBase } from "../interfaces/Driver"
 import { IRace } from "../interfaces/Race"
 import { ITeam } from "../interfaces/Team"
 
-import { sortDrivers } from "../services/driversChampionship"
+import { sortDrivers } from "../services/championship/driversChampionship"
+import { getChartDriverPoints } from "../services/graphs/chartDriverPoints"
+import { getChartRaces } from "../services/graphs/chartRaces"
 
 import {
   TableHead,
