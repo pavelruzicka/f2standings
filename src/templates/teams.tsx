@@ -1,35 +1,68 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
 import TeamProfile from "../components/Teams/TeamProfile"
+import { LineChart } from "../components/Graphs/LineChart"
+import { Header } from "../components/Header"
 
 import { IDriverBase } from "../interfaces/Driver"
 import { ITeam } from "../interfaces/Team"
+import { IRace } from "../interfaces/Race"
 
-import { sortTeams } from "../services/teamsChampionship"
+import { sortTeams } from "../services/championship/teamsChampionship"
+import { getChartTeamPoints } from "../services/graphs/chartTeamPoints"
+import { getChartRaces } from "../services/graphs/chartRaces"
 
 import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
 } from "../styles/TableHead"
+import { Tooltip } from "../styles/Tooltip"
+import { SubMenuLink } from "../styles/menuLink"
 
 interface IPageContext {
   pageContext: {
-    teams: ITeam[]
     drivers: IDriverBase[]
+    teams: ITeam[]
+    races: IRace[]
+    chart: boolean
   }
 }
 
-export default ({ pageContext: { teams, drivers } }: IPageContext) => {
-  return (
-    <>
-      <Layout>
-        <SEO title="Teams" />
+export default ({ pageContext: { teams, drivers, chart } }: IPageContext) => {
+  const sortedTeams = sortTeams(teams)
 
+  return (
+    <Layout>
+      <Head title="Teams" />
+
+      <Header logo={false} smallMargin={true}>
+        <Link to="/teams" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
+          Table
+        </Link>
+        <Link
+          to="/teams/chart"
+          style={SubMenuLink}
+          activeStyle={{ opacity: 1 }}
+        >
+          Chart
+        </Link>
+      </Header>
+
+      {chart ? (
+        <>
+          <Tooltip data-tooltip />
+          <LineChart
+            races={getChartRaces(drivers)}
+            data={getChartTeamPoints(sortedTeams)}
+          />
+        </>
+      ) : (
         <table className="uk-table uk-table-small">
           <thead>
             <tr>
@@ -47,7 +80,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
           </thead>
 
           <tbody>
-            {sortTeams(teams).map((team, index) => (
+            {sortedTeams.map((team, index) => (
               <TeamProfile
                 team={team}
                 teams={teams}
@@ -58,7 +91,7 @@ export default ({ pageContext: { teams, drivers } }: IPageContext) => {
             ))}
           </tbody>
         </table>
-      </Layout>
-    </>
+      )}
+    </Layout>
   )
 }

@@ -1,6 +1,6 @@
-import { IDriverBase, IResult } from "../interfaces/Driver"
+import { IDriverBase, IResult } from "../../interfaces/Driver"
 
-import { featurePoints, sprintPoints } from "../util/points"
+import { featurePoints, sprintPoints } from "../../util/points"
 
 const countPoles = (results: IResult[]) =>
   results.reduce((acc, curr) => {

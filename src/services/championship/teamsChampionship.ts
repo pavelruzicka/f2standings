@@ -1,7 +1,7 @@
-import { ITeamResult, ITeam } from "../interfaces/Team"
-import { IBonusPointSources } from "../interfaces/General"
+import { ITeamResult, ITeam } from "../../interfaces/Team"
+import { IBonusPointSources } from "../../interfaces/General"
 
-import { featurePoints, sprintPoints } from "../util/points"
+import { featurePoints, sprintPoints } from "../../util/points"
 
 const countCarPodiums = (set: ITeamResult[]) =>
   set.filter(placement => placement.position && placement.position < 4).length

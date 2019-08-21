@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const TableHead = styled.th`
   && {
     color: black;
+    opacity: 0.7;
   }
 `
 

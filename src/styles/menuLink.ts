@@ -5,3 +5,10 @@ export const MenuLink: React.CSSProperties = {
   opacity: 0.35,
   textDecoration: `none`,
 }
+
+export const SubMenuLink: React.CSSProperties = {
+  ...MenuLink,
+  fontSize: "16px",
+  fontWeight: 700,
+  textTransform: "uppercase",
+}

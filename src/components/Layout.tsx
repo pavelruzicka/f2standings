@@ -1,9 +1,10 @@
 import React from "react"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import styled from "styled-components"
 
-import { graphql, useStaticQuery } from "gatsby"
-
 import { Header } from "./Header"
+
+import { MenuLink } from "../styles/menuLink"
 
 import "../styles/layout.css"
 
@@ -42,7 +43,32 @@ export const Layout: React.FunctionComponent = ({ children }) => {
 
   return (
     <div className="uk-container">
-      <Header />
+      <Header>
+        <Link
+          to="/drivers"
+          style={MenuLink}
+          activeStyle={{ opacity: 1 }}
+          partiallyActive={true}
+        >
+          Drivers
+        </Link>
+        <Link
+          to="/teams"
+          style={MenuLink}
+          activeStyle={{ opacity: 1 }}
+          partiallyActive={true}
+        >
+          Teams
+        </Link>
+        <Link
+          to="/races"
+          style={MenuLink}
+          activeStyle={{ opacity: 1 }}
+          partiallyActive={true}
+        >
+          Races
+        </Link>
+      </Header>
       <div
         style={{
           margin: `0 auto`,
@@ -53,11 +79,19 @@ export const Layout: React.FunctionComponent = ({ children }) => {
           <FooterLine>{data.site.siteMetadata.description}</FooterLine>
           <FooterLine>
             Crafted in 2019 by{" "}
-            <FooterLink href="https://pavelruzicka.com/" target="_blank">
+            <FooterLink
+              href="https://pavelruzicka.com/"
+              rel="noopener"
+              target="_blank"
+            >
               Pavel Růžička
             </FooterLink>{" "}
             and{" "}
-            <FooterLink href="https://ruigrok.info/" target="_blank">
+            <FooterLink
+              href="https://ruigrok.info/"
+              rel="noopener"
+              target="_blank"
+            >
               Christian Ruigrok
             </FooterLink>
             .

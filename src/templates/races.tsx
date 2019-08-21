@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
 import RaceRow from "../components/Races/RaceRow"
@@ -16,16 +16,14 @@ interface IPageContext {
   pageContext: {
     drivers: IDriverBase[]
     teams: ITeam[]
-    calendar: IRace[]
+    races: IRace[]
   }
 }
 
-export default ({
-  pageContext: { drivers, teams, calendar },
-}: IPageContext) => {
+export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
   return (
     <Layout>
-      <SEO title="Races" />
+      <Head title="Races" />
 
       <table className="uk-table uk-table-small">
         <thead>
@@ -47,7 +45,7 @@ export default ({
         </thead>
 
         <tbody>
-          {calendar.map((race, index) => (
+          {races.map((race, index) => (
             <RaceRow
               race={race}
               index={index}

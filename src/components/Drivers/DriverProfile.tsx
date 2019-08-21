@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
+import { useBoolean } from "react-hanger"
 
 import DriverRow from "./DriverRow"
 import RacesRow from "./RacesRow"
@@ -15,14 +16,10 @@ interface IProfileProps {
 }
 
 const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
-  const [racesVisible, updateVisibility] = useState(index === 0)
+  const racesVisible = useBoolean(index === 0)
 
   const { results } = driver
   const team = teams.find(t => t.short === driver.team)
-
-  const expandProfile = () => {
-    updateVisibility(!racesVisible)
-  }
 
   if (team) {
     return (
@@ -31,9 +28,11 @@ const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
           driver={driver}
           team={team}
           index={index}
-          expand={expandProfile}
+          expand={racesVisible.toggle}
         />
-        {racesVisible ? <RacesRow results={results} races={races} /> : null}
+        {racesVisible.value ? (
+          <RacesRow results={results} races={races} />
+        ) : null}
       </>
     )
   }
