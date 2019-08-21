@@ -223,28 +223,37 @@ export function drawLines(
   const tooltip = d3.select("div[data-tooltip]")
 
   for (const result of data) {
+    const line = createLine(result.points)
+
     // Create and draw line
     lineWrapper
       .append("path")
       .attr("class", "line")
       .attr("stroke", result.color)
       .attr("stroke-dasharray", result.dotted ? "11 6" : "initial")
-      .attr("d", createLine(result.points) || "")
+      .attr("d", line || "")
+
+    lineWrapper
+      .append("path")
+      .attr("stroke-width", 10)
+      .attr("stroke", "black")
+      .attr("fill", "none")
+      .attr("class", "hover-line")
+      .attr("d", line || "")
+      .attr("opacity", 0)
       .on("mouseenter", () => {
         highlightLines(root, data, result)
 
         const points = result.points[result.points.length - 1][1]
+        const name = result.label.split("<br/>")[0]
+        const plural = points === 1 ? "" : "s"
 
         tooltip
           .style(
             "transform",
             `translate(${d3.event.pageX + 12}px, ${d3.event.pageY - 40}px)`
           )
-          .html(
-            `${result.label.split("<br/>")[0]} | ${points} point${
-              points === 1 ? "" : "s"
-            }`
-          )
+          .html(`${name} | ${points} point${plural}`)
           .transition()
           .duration(100)
           .style("opacity", 1)
