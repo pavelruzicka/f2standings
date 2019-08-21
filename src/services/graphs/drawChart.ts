@@ -291,7 +291,7 @@ export function drawSvg(svgElement: SVGSVGElement | null, size: ISize) {
     .attr("preserveAspectRatio", "xMinYMin meet")
     .attr(
       "viewBox",
-      `0 0 ${size.width + size.padding * 2} ${size.height + size.padding * 2}`
+      `0 0 ${size.width + size.padding * 2} ${size.height + size.padding}`
     )
 
   // Remove all the pre-existing children
@@ -300,5 +300,5 @@ export function drawSvg(svgElement: SVGSVGElement | null, size: ISize) {
   // Return the root element with padding
   return svg
     .append("g")
-    .attr("transform", `translate(${size.padding}, ${size.padding})`)
+    .attr("transform", `translate(${size.padding}, ${size.padding / 4})`)
 }

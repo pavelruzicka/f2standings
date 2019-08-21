@@ -1,9 +1,11 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import { Layout } from "../components/Layout"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
+import { Header } from "../components/Header"
 import DriverProfile from "../components/Drivers/DriverProfile"
 import { LineChart } from "../components/Graphs/LineChart"
 
@@ -21,29 +23,48 @@ import {
   TableHeadCentered,
 } from "../styles/TableHead"
 import { Tooltip } from "../styles/Tooltip"
+import { SubMenuLink } from "../styles/menuLink"
 
 interface IPageContext {
   pageContext: {
     drivers: IDriverBase[]
     teams: ITeam[]
     races: IRace[]
+    chart: boolean
   }
 }
 
-export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
+export default ({
+  pageContext: { drivers, teams, races, chart },
+}: IPageContext) => {
   const sortedDrivers = sortDrivers(drivers)
 
-  const dataRaces = getChartRaces(drivers)
-  const data = getChartDriverPoints(drivers, teams)
-
   return (
-    <>
-      <Layout>
-        <Head title="Drivers" />
+    <Layout>
+      <Head title="Drivers" />
 
-        <Tooltip data-tooltip />
-        <LineChart races={dataRaces} data={data} />
+      <Header logo={false} smallMargin={true}>
+        <Link to="/drivers" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
+          Table
+        </Link>
+        <Link
+          to="/drivers/chart"
+          style={SubMenuLink}
+          activeStyle={{ opacity: 1 }}
+        >
+          Chart
+        </Link>
+      </Header>
 
+      {chart ? (
+        <>
+          <Tooltip data-tooltip />
+          <LineChart
+            races={getChartRaces(sortedDrivers)}
+            data={getChartDriverPoints(sortedDrivers, teams)}
+          />
+        </>
+      ) : (
         <table className="uk-table uk-table-small">
           <thead>
             <tr>
@@ -72,7 +93,7 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
             ))}
           </tbody>
         </table>
-      </Layout>
-    </>
+      )}
+    </Layout>
   )
 }

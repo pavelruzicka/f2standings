@@ -1,16 +1,14 @@
-import { Link } from "gatsby"
 import React from "react"
+import { Link } from "gatsby"
 import styled from "styled-components"
 
 import Logo from "./Logo"
 
-import { MenuLink } from "../styles/menuLink"
-
-const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.header<{ smallMargin: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem auto 2.5rem;
+  margin: 1rem auto ${p => (p.smallMargin ? 1 : 2.5)}rem;
 
   h3 {
     margin: 0;
@@ -20,6 +18,10 @@ const HeaderWrapper = styled.header`
     display: flex;
     text-decoration: none;
   }
+
+  > div {
+    margin-left: auto;
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -27,26 +29,28 @@ const ImageWrapper = styled.div`
   margin: 1rem 0.5rem;
 `
 
-export const Header = () => (
-  <HeaderWrapper>
-    <h3>
-      <Link to="/">
-        <ImageWrapper>
-          <Logo />
-        </ImageWrapper>
-      </Link>
-    </h3>
+interface IProps {
+  logo?: boolean
+  smallMargin?: boolean
+  children: React.ReactNode
+}
 
-    <div>
-      <Link to="/" style={MenuLink} activeStyle={{ opacity: 1 }}>
-        Drivers
-      </Link>
-      <Link to="/teams" style={MenuLink} activeStyle={{ opacity: 1 }}>
-        Teams
-      </Link>
-      <Link to="/races" style={MenuLink} activeStyle={{ opacity: 1 }}>
-        Races
-      </Link>
-    </div>
+export const Header = ({
+  logo = true,
+  smallMargin = false,
+  children,
+}: IProps) => (
+  <HeaderWrapper smallMargin={smallMargin}>
+    {logo ? (
+      <h3>
+        <Link to="/drivers" title="F2 Standings">
+          <ImageWrapper>
+            <Logo />
+          </ImageWrapper>
+        </Link>
+      </h3>
+    ) : null}
+
+    <div>{children}</div>
   </HeaderWrapper>
 )

@@ -35,7 +35,7 @@ export const LineChartSvg = styled.svg`
   }
 
   .axis-x .tick text {
-    font-weight: 600;
+    font-weight: 700;
     transform: translateY(10px);
   }
 
