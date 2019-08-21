@@ -1,7 +1,5 @@
 import * as d3 from "d3"
 
-import { throttle } from "../../util/throttle"
-
 export interface IDataEntry {
   points: [number, number][]
   shortLabel: string
@@ -120,9 +118,7 @@ export function drawLegend(
         )
       })
       .on("mouseleave", () => {
-        setTimeout(() => {
-          highlightLines(root, reversedData, null)
-        }, 0)
+        highlightLines(root, reversedData, null)
 
         tooltip
           .transition()
@@ -192,37 +188,29 @@ export function drawAxis(
     .call(yAxis.tickSize(0).tickFormat(s => String(s)))
 }
 
-export const highlightLines = throttle(
-  (
-    root: d3.Selection<SVGGElement, unknown, null, undefined>,
-    data: IDataEntry[],
-    hovered: IDataEntry | null
-  ) => {
-    root
-      .select(".line-wrapper")
-      .selectAll(".line")
-      .data(data)
-      .attr("opacity", d => (hovered === null ? 1 : hovered === d ? 1 : 0.2))
-  },
-  10
-)
+export function highlightLines(
+  root: d3.Selection<SVGGElement, unknown, null, undefined>,
+  data: IDataEntry[],
+  hovered: IDataEntry | null
+) {
+  root
+    .select(".line-wrapper")
+    .selectAll(".line")
+    .data(data)
+    .attr("opacity", d => (hovered === null ? 1 : hovered === d ? 1 : 0.2))
+}
 
 export function drawLines(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   xScale: d3.ScaleLinear<number, number>,
   yScale: d3.ScaleLinear<number, number>,
-  data: IDataEntry[],
-  size: ISize
+  data: IDataEntry[]
 ) {
   // Remove existing lines
   root.select(".line-wrapper").remove()
 
   // Create wrapper element for lines
-  const lineWrapper = root
-    .append("g")
-    .attr("class", "line-wrapper")
-    .attr("width", size.width)
-    .attr("height", size.height)
+  const lineWrapper = root.append("g").attr("class", "line-wrapper")
 
   // Create function to calculate points locations with
   const createLine = d3
@@ -242,7 +230,6 @@ export function drawLines(
       .attr("stroke", result.color)
       .attr("stroke-dasharray", result.dotted ? "11 6" : "initial")
       .attr("d", createLine(result.points) || "")
-      .attr("data-indicator", result.shortLabel)
       .on("mouseenter", () => {
         highlightLines(root, data, result)
 

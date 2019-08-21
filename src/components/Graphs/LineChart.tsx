@@ -35,7 +35,7 @@ export function LineChart({ data, races }: IProps) {
     drawGrid(svg, xAxis, yAxis, races, size)
     drawAxis(svg, xAxis, yAxis, races, size)
     drawLegend(svg, xScale, yScale, data, size)
-    drawLines(svg, xScale, yScale, data.slice().reverse(), size)
+    drawLines(svg, xScale, yScale, data.slice().reverse())
   }, [data, races, svgRef])
 
   return <LineChartSvg ref={svgRef} />
