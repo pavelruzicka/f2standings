@@ -1,12 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import { Header } from "./Header"
+import { Header } from "../Header"
 
-import { MenuLink } from "../styles/Layout/MenuLink"
-
-import "../styles/layout.css"
-import { Footer, FooterLine, FooterLink } from "../styles/Layout/Footer"
+import { Footer, FooterLine, FooterLink } from "../../styles/Layout/Footer"
+import { MenuLink } from "../../styles/Layout/MenuLink"
+import "../../styles/layout.css"
 
 export const Layout: React.FunctionComponent = ({ children }) => {
   return (

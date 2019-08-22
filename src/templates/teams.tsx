@@ -1,11 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import { TeamProfile } from "../components/Teams/TeamProfile"
-import { Layout } from "../components/Layout"
+import { Layout } from "../components/Layout/Main"
+import { SubMenu } from "../components/Layout/SubMenu"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
-import { Header } from "../components/Header"
 import { LineChart } from "../components/Charts/LineChart"
 
 import { ITeamsContext } from "../interfaces/Context"
@@ -22,7 +21,6 @@ import {
 } from "../styles/Layout/TableHead"
 import { RookieExpl } from "../styles/RookieExpl"
 import { Tooltip } from "../styles/Tooltip"
-import { SubMenuLink } from "../styles/Layout/MenuLink"
 
 export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
   const sortedTeams = sortTeams(teams)
@@ -31,18 +29,7 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
     <Layout>
       <Head title="Teams" />
 
-      <Header logo={false} subStyling={true}>
-        <Link to="/teams" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
-          Table
-        </Link>
-        <Link
-          to="/teams/chart"
-          style={SubMenuLink}
-          activeStyle={{ opacity: 1 }}
-        >
-          Chart
-        </Link>
-      </Header>
+      <SubMenu origin={"teams"} />
 
       {chart ? (
         <>

@@ -1,7 +1,7 @@
 import React from "react"
 
 import { RaceRow } from "../components/Races/RaceRow"
-import { Layout } from "../components/Layout"
+import { Layout } from "../components/Layout/Main"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 

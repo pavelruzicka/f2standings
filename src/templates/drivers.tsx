@@ -1,14 +1,13 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import { DriverProfile } from "../components/Drivers/DriverProfile"
-import { Layout } from "../components/Layout"
+import { Layout } from "../components/Layout/Main"
+import { SubMenu } from "../components/Layout/SubMenu"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
+import { LineChart } from "../components/Charts/LineChart"
 
 import { IDriversContext } from "../interfaces/Context"
-import { Header } from "../components/Header"
-import { LineChart } from "../components/Charts/LineChart"
 
 import { sortDrivers } from "../services/championship/driversChampionship"
 import { getChartDriverPoints } from "../services/charts/chartDriverPoints"
@@ -22,7 +21,6 @@ import {
 } from "../styles/Layout/TableHead"
 import { RookieExpl } from "../styles/RookieExpl"
 import { Tooltip } from "../styles/Tooltip"
-import { SubMenuLink } from "../styles/Layout/MenuLink"
 
 export default ({
   pageContext: { drivers, teams, races, chart },
@@ -34,18 +32,7 @@ export default ({
     <Layout>
       <Head title="Drivers" />
 
-      <Header logo={false} subStyling={true}>
-        <Link to="/drivers" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
-          Table
-        </Link>
-        <Link
-          to="/drivers/chart"
-          style={SubMenuLink}
-          activeStyle={{ opacity: 1 }}
-        >
-          Chart
-        </Link>
-      </Header>
+      <SubMenu origin={"drivers"} />
 
       {chart ? (
         <>
