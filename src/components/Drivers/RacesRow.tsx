@@ -13,10 +13,10 @@ import { RowTable } from "../../styles/Row/Table"
 import { RaceWrapper, SectionWrapper } from "../../styles/Race/Row"
 import { RaceConstraint } from "../../styles/Race/Constraint"
 
-export const RacesRow = ({ results, races }: IRacesRowProps) => {
+export const RacesRow = ({ results, races, driver }: IRacesRowProps) => {
   return (
     <tr>
-      <RowBase colSpan={6}>
+      <RowBase colSpan={6} short={driver.short}>
         <RowTable>
           {results.map((race, index) => (
             <RaceWrapper key={race.location}>

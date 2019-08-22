@@ -61,7 +61,7 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
 
 export const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
   return (
-    <RowWrapperClickable onClick={() => expand()}>
+    <RowWrapperClickable onClick={() => expand()} short={driver.short}>
       <RowInit>#{index + 1}</RowInit>
 
       <RowContent driver={driver} team={team} index={index} />

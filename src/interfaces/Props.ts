@@ -12,6 +12,7 @@ export interface IProfileProps {
   teams: ITeam[]
   races: IRace[]
   index: number
+  open: number[]
 }
 
 export interface IContentProps {
@@ -43,6 +44,7 @@ export interface IRaceResultProps {
 export interface IRacesRowProps {
   results: IResult[]
   races: IRace[]
+  driver: IDriverBase
 }
 
 export interface IPoleProps {

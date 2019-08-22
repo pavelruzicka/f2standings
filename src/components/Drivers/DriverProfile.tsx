@@ -10,8 +10,9 @@ export const DriverProfile = ({
   teams,
   races,
   index,
+  open,
 }: IProfileProps) => {
-  const [racesVisible, updateVisibility] = useState(index === 0)
+  const [racesVisible, updateVisibility] = useState(open.includes(index))
 
   const { results } = driver
   const team = teams.find(t => t.short === driver.team)
@@ -29,7 +30,9 @@ export const DriverProfile = ({
           index={index}
           expand={expandProfile}
         />
-        {racesVisible ? <RacesRow results={results} races={races} /> : null}
+        {racesVisible ? (
+          <RacesRow results={results} races={races} driver={driver} />
+        ) : null}
       </>
     )
   }

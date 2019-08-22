@@ -20,6 +20,8 @@ import { RookieExpl } from "../styles/RookieExpl"
 export default ({
   pageContext: { drivers, teams, races },
 }: IDriversContext) => {
+  const open = [0, drivers.length - 1]
+
   return (
     <>
       <Layout>
@@ -48,6 +50,7 @@ export default ({
                 teams={teams}
                 races={races}
                 index={index}
+                open={open}
                 key={driver.short}
               />
             ))}
