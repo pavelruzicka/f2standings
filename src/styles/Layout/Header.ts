@@ -2,11 +2,11 @@ import styled from "styled-components"
 
 import { getRule } from "../../util/viewports"
 
-export const HeaderWrapper = styled.header<{ smallMargin: boolean }>`
+export const HeaderWrapper = styled.header<{ subStyling: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem auto ${p => (p.smallMargin ? 1 : 2.5)}rem;
+  margin: 1rem auto ${p => (p.subStyling ? 1 : 2.5)}rem;
 
   @media ${getRule("max", "laptop")} {
     flex-direction: column;
@@ -22,7 +22,13 @@ export const HeaderWrapper = styled.header<{ smallMargin: boolean }>`
   }
 
   > div {
-    margin: 0 0 0 auto;
+    @media ${getRule("max", "laptop")} {
+      margin: 0 ${p => (p.subStyling ? 0 : "auto")} 0 auto;
+    }
+
+    @media ${getRule("min", "laptop")} {
+      margin-left: auto;
+    }
   }
 `
 

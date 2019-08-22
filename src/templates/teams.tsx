@@ -31,7 +31,7 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
     <Layout>
       <Head title="Teams" />
 
-      <Header logo={false} smallMargin={true}>
+      <Header logo={false} subStyling={true}>
         <Link to="/teams" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
           Table
         </Link>

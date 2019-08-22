@@ -88,6 +88,6 @@ export interface ISEOProps {
 
 export interface IHeaderProps {
   logo?: boolean
-  smallMargin?: boolean
+  subStyling?: boolean
   children: React.ReactNode
 }

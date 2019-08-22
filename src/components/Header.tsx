@@ -9,10 +9,10 @@ import { HeaderWrapper, ImageWrapper } from "../styles/Layout/Header"
 
 export const Header = ({
   logo = true,
-  smallMargin = false,
+  subStyling = false,
   children,
 }: IHeaderProps) => (
-  <HeaderWrapper smallMargin={smallMargin}>
+  <HeaderWrapper subStyling={subStyling}>
     {logo ? (
       <h3>
         <Link to="/drivers" title="F2 Standings">

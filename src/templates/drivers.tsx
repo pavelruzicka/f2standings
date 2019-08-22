@@ -34,7 +34,7 @@ export default ({
     <Layout>
       <Head title="Drivers" />
 
-      <Header logo={false} smallMargin={true}>
+      <Header logo={false} subStyling={true}>
         <Link to="/drivers" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
           Table
         </Link>
