@@ -28,7 +28,7 @@ exports.createPages = async ({ actions: { createPage, createRedirect } }) => {
 
   createRedirect({
     fromPath: `/`,
-    isPermantent: true,
+    isPermanent: true,
     redirectInBrowser: true,
     toPath: `/drivers`,
   })
