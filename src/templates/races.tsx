@@ -2,7 +2,7 @@ import React from "react"
 
 import { RaceRow } from "../components/Races/RaceRow"
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
 import { IRacesContext } from "../interfaces/Context"
@@ -14,12 +14,10 @@ import {
 } from "../styles/Layout/TableHead"
 import { RookieExpl } from "../styles/RookieExpl"
 
-export default ({
-  pageContext: { drivers, teams, calendar },
-}: IRacesContext) => {
+export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
   return (
     <Layout>
-      <SEO title="Races" />
+      <Head title="Races" />
 
       <table className="uk-table uk-table-small">
         <TableHeadWrapper>
@@ -41,7 +39,7 @@ export default ({
         </TableHeadWrapper>
 
         <tbody>
-          {calendar.map((race, index) => (
+          {races.map((race, index) => (
             <RaceRow
               race={race}
               index={index}

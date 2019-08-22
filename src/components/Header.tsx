@@ -3,29 +3,26 @@ import { Link } from "gatsby"
 
 import { Logo } from "./Logo"
 
-import { MenuLink } from "../styles/Layout/MenuLink"
+import { IHeaderProps } from "../interfaces/Props"
+
 import { HeaderWrapper, ImageWrapper } from "../styles/Layout/Header"
 
-export const Header = () => (
-  <HeaderWrapper>
-    <h3>
-      <Link to="/">
-        <ImageWrapper>
-          <Logo />
-        </ImageWrapper>
-      </Link>
-    </h3>
+export const Header = ({
+  logo = true,
+  smallMargin = false,
+  children,
+}: IHeaderProps) => (
+  <HeaderWrapper smallMargin={smallMargin}>
+    {logo ? (
+      <h3>
+        <Link to="/drivers" title="F2 Standings">
+          <ImageWrapper>
+            <Logo />
+          </ImageWrapper>
+        </Link>
+      </h3>
+    ) : null}
 
-    <div>
-      <Link to="/" style={MenuLink} activeStyle={{ opacity: 1 }}>
-        Drivers
-      </Link>
-      <Link to="/teams" style={MenuLink} activeStyle={{ opacity: 1 }}>
-        Teams
-      </Link>
-      <Link to="/races" style={MenuLink} activeStyle={{ opacity: 1 }}>
-        Races
-      </Link>
-    </div>
+    <div>{children}</div>
   </HeaderWrapper>
 )

@@ -85,3 +85,9 @@ export interface ISEOProps {
   lang?: string
   title: string
 }
+
+export interface IHeaderProps {
+  logo?: boolean
+  smallMargin?: boolean
+  children: React.ReactNode
+}

@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from "gatsby"
 
 import { ISEOProps } from "../interfaces/Props"
 
-export const SEO = ({ description, lang, title }: ISEOProps) => {
+export const Head = ({ description, lang = "en", title }: ISEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {

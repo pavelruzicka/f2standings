@@ -1,13 +1,18 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import { TeamProfile } from "../components/Teams/TeamProfile"
 import { Layout } from "../components/Layout"
-import { SEO } from "../components/SEO"
+import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
+import { Header } from "../components/Header"
+import { LineChart } from "../components/Charts/LineChart"
 
 import { ITeamsContext } from "../interfaces/Context"
 
-import { sortTeams } from "../services/teamsChampionship"
+import { sortTeams } from "../services/championship/teamsChampionship"
+import { getChartTeamPoints } from "../services/charts/chartTeamPoints"
+import { getChartRaces } from "../services/charts/chartRaces"
 
 import {
   TableHead,
@@ -16,13 +21,38 @@ import {
   TableHeadWrapper,
 } from "../styles/Layout/TableHead"
 import { RookieExpl } from "../styles/RookieExpl"
+import { Tooltip } from "../styles/Tooltip"
+import { SubMenuLink } from "../styles/Layout/MenuLink"
 
-export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
+export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
+  const sortedTeams = sortTeams(teams)
+
   return (
-    <>
-      <Layout>
-        <SEO title="Teams" />
+    <Layout>
+      <Head title="Teams" />
 
+      <Header logo={false} smallMargin={true}>
+        <Link to="/teams" style={SubMenuLink} activeStyle={{ opacity: 1 }}>
+          Table
+        </Link>
+        <Link
+          to="/teams/chart"
+          style={SubMenuLink}
+          activeStyle={{ opacity: 1 }}
+        >
+          Chart
+        </Link>
+      </Header>
+
+      {chart ? (
+        <>
+          <Tooltip data-tooltip />
+          <LineChart
+            races={getChartRaces(drivers)}
+            data={getChartTeamPoints(sortedTeams)}
+          />
+        </>
+      ) : (
         <table className="uk-table uk-table-small">
           <TableHeadWrapper>
             <tr>
@@ -40,7 +70,7 @@ export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
           </TableHeadWrapper>
 
           <tbody>
-            {sortTeams(teams).map((team, index) => (
+            {sortedTeams.map((team, index) => (
               <TeamProfile
                 team={team}
                 teams={teams}
@@ -51,12 +81,11 @@ export default ({ pageContext: { teams, drivers } }: ITeamsContext) => {
             ))}
           </tbody>
         </table>
-
-        <RookieExpl>
-          The &#42; besides a driver's name denotes them being a rookie in
-          Formula 2.
-        </RookieExpl>
-      </Layout>
-    </>
+      )}
+      <RookieExpl>
+        The &#42; besides a driver's name denotes them being a rookie in
+        Formula&nbsp;2.
+      </RookieExpl>
+    </Layout>
   )
 }

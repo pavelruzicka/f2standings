@@ -5,6 +5,7 @@ import { getRule } from "../../util/viewports"
 export const TableHead = styled.th`
   && {
     color: black;
+    opacity: 0.7;
   }
 `
 

@@ -7,6 +7,7 @@ export interface IDriversContext {
     drivers: IDriverBase[]
     teams: ITeam[]
     races: IRace[]
+    chart: boolean
   }
 }
 
@@ -14,7 +15,7 @@ export interface IRacesContext {
   pageContext: {
     drivers: IDriverBase[]
     teams: ITeam[]
-    calendar: IRace[]
+    races: IRace[]
   }
 }
 
@@ -22,5 +23,6 @@ export interface ITeamsContext {
   pageContext: {
     teams: ITeam[]
     drivers: IDriverBase[]
+    chart: boolean
   }
 }
