@@ -1,62 +1,41 @@
 import React from "react"
-import styled from "styled-components"
 
-import RaceHeader from "./RaceHeader"
-import RacePartition from "./RacePartition"
-import RaceResult from "./RaceResult"
+import { RaceHeader } from "./RaceHeader"
+import { RacePartition } from "./RacePartition"
+import { RaceResult } from "./RaceResult"
 
 import { RaceType } from "../../enums/RaceType"
 
-import { IResult } from "../../interfaces/Driver"
-import { IRace } from "../../interfaces/Race"
+import { IRacesRowProps } from "../../interfaces/Props"
 
-const RowBase = styled.td`
-  padding: 0 !important;
-  background: #f7f6f6;
-  border-bottom: 2px solid hsla(0, 0%, 0%, 0.12);
-`
+import { RowBase } from "../../styles/Row/Base"
+import { RowTable } from "../../styles/Row/Table"
+import { RaceWrapper, SectionWrapper } from "../../styles/Race/Row"
+import { RaceConstraint } from "../../styles/Race/Constraint"
 
-const RowTable = styled.div`
-  display: flex;
-  margin-bottom: 0;
-`
-
-const RaceWrapper = styled.div`
-  flex: 1 1 0;
-`
-
-const SectionWrapper = styled.div`
-  display: flex;
-  padding: 0 0.35rem;
-`
-
-interface IRacesRowProps {
-  results: IResult[]
-  races: IRace[]
-}
-
-const RacesRow = ({ results, races }: IRacesRowProps) => {
+export const RacesRow = ({ results, races, driver }: IRacesRowProps) => {
   return (
     <tr>
-      <RowBase colSpan={6}>
+      <RowBase colSpan={6} short={driver.short}>
         <RowTable>
-          {results.map(race => (
+          {results.map((race, index) => (
             <RaceWrapper key={race.location}>
-              <RaceHeader race={race} races={races} />
+              <RaceHeader race={race} races={races} index={index} />
 
-              <SectionWrapper>
-                <RacePartition type={RaceType.Feature} padded={true} />
-                <RacePartition type={RaceType.Sprint} padded={true} />
-              </SectionWrapper>
-
-              <SectionWrapper>
+              <RaceConstraint>
                 {!race.upcoming ? (
                   <>
-                    <RaceResult result={race} type={RaceType.Feature} />
-                    <RaceResult result={race} type={RaceType.Sprint} />
+                    <SectionWrapper>
+                      <RacePartition type={RaceType.Feature} padded={true} />
+                      <RacePartition type={RaceType.Sprint} padded={true} />
+                    </SectionWrapper>
+                    <SectionWrapper>
+                      <RaceResult result={race} type={RaceType.Feature} />
+                      <RaceResult result={race} type={RaceType.Sprint} />
+                    </SectionWrapper>
                   </>
                 ) : null}
-              </SectionWrapper>
+              </RaceConstraint>
             </RaceWrapper>
           ))}
         </RowTable>
@@ -64,5 +43,3 @@ const RacesRow = ({ results, races }: IRacesRowProps) => {
     </tr>
   )
 }
-
-export default RacesRow

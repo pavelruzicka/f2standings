@@ -1,6 +1,6 @@
 import { IDataEntry } from "./drawChart"
 
-import { ITeam } from "../../interfaces/Team"
+import { ITeam } from "../../interfaces/render/Team"
 
 import { featurePoints, sprintPoints } from "../../util/points"
 import { teamColours } from "../../util/colours"

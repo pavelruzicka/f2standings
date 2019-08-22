@@ -1,22 +1,19 @@
 import React from "react"
 import { useBoolean } from "react-hanger"
 
-import DriverRow from "./DriverRow"
-import RacesRow from "./RacesRow"
+import { DriverRow } from "./DriverRow"
+import { RacesRow } from "./RacesRow"
 
-import { IDriver } from "../../interfaces/Driver"
-import { IRace } from "../../interfaces/Race"
-import { ITeam } from "../../interfaces/Team"
+import { IProfileProps } from "../../interfaces/Props"
 
-interface IProfileProps {
-  driver: IDriver
-  teams: ITeam[]
-  races: IRace[]
-  index: number
-}
-
-const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
-  const racesVisible = useBoolean(index === 0)
+export const DriverProfile = ({
+  driver,
+  teams,
+  races,
+  index,
+  open,
+}: IProfileProps) => {
+  const racesVisible = useBoolean(open.includes(index))
 
   const { results } = driver
   const team = teams.find(t => t.short === driver.team)
@@ -31,7 +28,7 @@ const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
           expand={racesVisible.toggle}
         />
         {racesVisible.value ? (
-          <RacesRow results={results} races={races} />
+          <RacesRow results={results} races={races} driver={driver} />
         ) : null}
       </>
     )
@@ -39,5 +36,3 @@ const DriverProfile = ({ driver, teams, races, index }: IProfileProps) => {
 
   return <div />
 }
-
-export default DriverProfile

@@ -1,46 +1,14 @@
 import React from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
-import styled from "styled-components"
+import { Link } from "gatsby"
 
 import { Header } from "./Header"
 
-import { MenuLink } from "../styles/menuLink"
+import { MenuLink } from "../styles/Layout/MenuLink"
 
 import "../styles/layout.css"
-
-const Footer = styled.footer`
-  margin: 2.5rem 0 6rem;
-  padding: 1.5rem 0;
-`
-
-const FooterLine = styled.p`
-  font-size: 15.5px;
-  margin-bottom: 0;
-  text-align: center;
-`
-
-const FooterLink = styled.a`
-  color: #273746;
-  text-decoration: underline;
-
-  :hover {
-    color: #273746;
-    text-decoration: none;
-  }
-`
+import { Footer, FooterLine, FooterLink } from "../styles/Layout/Footer"
 
 export const Layout: React.FunctionComponent = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-          description
-        }
-      }
-    }
-  `)
-
   return (
     <div className="uk-container">
       <Header>
@@ -76,7 +44,11 @@ export const Layout: React.FunctionComponent = ({ children }) => {
       >
         <main>{children}</main>
         <Footer>
-          <FooterLine>{data.site.siteMetadata.description}</FooterLine>
+          <FooterLine>
+            The number one destination for FIA&nbsp;Formula&nbsp;2
+            championship&nbsp;standings, race&nbsp;reports, and
+            team&nbsp;overviews.
+          </FooterLine>
           <FooterLine>
             Crafted in 2019 by{" "}
             <FooterLink
@@ -84,15 +56,15 @@ export const Layout: React.FunctionComponent = ({ children }) => {
               rel="noopener"
               target="_blank"
             >
-              Pavel Růžička
-            </FooterLink>{" "}
-            and{" "}
+              Pavel&nbsp;Růžička
+            </FooterLink>
+            &nbsp;and&nbsp;
             <FooterLink
               href="https://ruigrok.info/"
               rel="noopener"
               target="_blank"
             >
-              Christian Ruigrok
+              Christian&nbsp;Ruigrok
             </FooterLink>
             .
           </FooterLine>

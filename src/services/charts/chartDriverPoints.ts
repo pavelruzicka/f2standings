@@ -1,7 +1,7 @@
 import { IDataEntry } from "./drawChart"
 
-import { IDriverBase } from "../../interfaces/Driver"
-import { ITeam } from "../../interfaces/Team"
+import { IDriverBase } from "../../interfaces/render/Driver"
+import { ITeam } from "../../interfaces/render/Team"
 
 import { featurePoints, sprintPoints } from "../../util/points"
 import { teamColours } from "../../util/colours"

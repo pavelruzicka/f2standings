@@ -1,4 +1,7 @@
-import { countries } from "../util/countries"
+import { IDriverBase } from "./Driver"
+import { ITeam } from "./Team"
+
+import { countries } from "../../util/countries"
 
 export interface IDate {
   day: number
@@ -10,7 +13,7 @@ interface IRaceBase {
 
 interface IRaceHappened extends IRaceBase {
   fastest?: string
-  podium?: string[]
+  podium: string[]
 }
 
 export interface IRacePartition extends IRaceHappened {
@@ -18,9 +21,13 @@ export interface IRacePartition extends IRaceHappened {
   poleTime?: string
 }
 
-export interface IRaceWeekend {
+interface IRaceWeekend {
   feature: IRacePartition
   sprint: IRacePartition
+}
+
+export interface IRaceDatesProps extends IRaceWeekend {
+  mobile: boolean
 }
 
 export interface IRace {
@@ -29,4 +36,14 @@ export interface IRace {
   country: string
   circuit: string
   races: IRaceWeekend
+}
+
+export interface IRaceColumn {
+  keys?: string[]
+  occupants: string[]
+  drivers: IDriverBase[]
+  teams: ITeam[]
+  shortened?: boolean
+  label?: string
+  mobile: boolean | null
 }

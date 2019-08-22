@@ -1,49 +1,70 @@
 import React from "react"
-import styled from "styled-components"
 
-import RookieStatus from "./RookieStatus"
+import { RookieStatus } from "./RookieStatus"
 import { Flag } from "../Flag"
 
-import { IDriver } from "../../interfaces/Driver"
-import { ITeam } from "../../interfaces/Team"
+import { IContentProps, IDriverProps } from "../../interfaces/Props"
 
-import { RowInit, RowBlock, RowWrapper } from "../../styles/TableRow"
+import { getSuffix } from "../../util/ordinalSuffix"
 
-const Team = styled.td`
-  font-weight: 500;
-`
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
+import { RowBlock } from "../../styles/Row/Block"
+import { RowInit, RowInitMobile } from "../../styles/Row/Init"
+import { RowStart } from "../../styles/Row/Start"
+import { RowEnd } from "../../styles/Row/End"
+import { RowWrapperClickable } from "../../styles/Row/Wrapper"
+import { RowBold } from "../../styles/Row/Misc"
 
-type ExpandFunc = () => void
-
-interface IDriverProps {
-  driver: IDriver
-  team: ITeam
-  index: number
-  expand: ExpandFunc
-}
-
-const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
+const RowContent = ({ driver, team, index }: IContentProps) => {
   const { country, name, lastName, stats } = driver
 
   return (
-    <RowWrapper onClick={() => expand()}>
-      <RowInit>#{index + 1}</RowInit>
+    <>
+      <RowStart>
+        <MobileLabel>Driver</MobileLabel>
+        <MobileContent>
+          <Flag countryCode={country} large={true} /> {`${name} `}
+          <strong>{lastName}</strong>
+          {driver.rookie ? <RookieStatus /> : null}
+        </MobileContent>
+      </RowStart>
 
-      <td>
-        <Flag countryCode={country} large={true} /> {`${name} `}
-        <strong>{lastName}</strong>
-        {driver.rookie ? <RookieStatus /> : null}
-      </td>
+      <RowBold>
+        <MobileLabel>Team</MobileLabel>
+        <MobileContent>
+          <Flag countryCode={team.country} large={true} /> {team.name}
+        </MobileContent>
+      </RowBold>
 
-      <Team>
-        <Flag countryCode={team.country} large={true} /> {team.name}
-      </Team>
+      <RowInitMobile>
+        <MobileLabel>Championship position</MobileLabel>
+        <MobileContent>{getSuffix(index + 1)}</MobileContent>
+      </RowInitMobile>
 
-      <RowBlock>{stats.poles}</RowBlock>
-      <RowBlock>{stats.fastest}</RowBlock>
-      <RowBlock>{stats.points}</RowBlock>
-    </RowWrapper>
+      <RowBlock>
+        <MobileLabel>Pole positions</MobileLabel>
+        <MobileContent>{stats.poles}</MobileContent>
+      </RowBlock>
+
+      <RowBlock>
+        <MobileLabel>Fastest laps</MobileLabel>
+        <MobileContent>{stats.fastest}</MobileContent>
+      </RowBlock>
+
+      <RowEnd>
+        <MobileLabel>Points</MobileLabel>
+        <MobileContent>{stats.points}</MobileContent>
+      </RowEnd>
+    </>
   )
 }
 
-export default DriverRow
+export const DriverRow = ({ driver, team, index, expand }: IDriverProps) => {
+  return (
+    <RowWrapperClickable onClick={() => expand()} short={driver.short}>
+      <RowInit>#{index + 1}</RowInit>
+
+      <RowContent driver={driver} team={team} index={index} />
+    </RowWrapperClickable>
+  )
+}

@@ -1,32 +1,26 @@
 import React from "react"
 
+import { RaceRow } from "../components/Races/RaceRow"
 import { Layout } from "../components/Layout"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
-import RaceRow from "../components/Races/RaceRow"
+import { IRacesContext } from "../interfaces/Context"
 
-import { IDriverBase } from "../interfaces/Driver"
-import { IRace } from "../interfaces/Race"
-import { ITeam } from "../interfaces/Team"
+import {
+  TableHeadWrapper,
+  TableHead,
+  TableHeadInit,
+} from "../styles/Layout/TableHead"
+import { RookieExpl } from "../styles/RookieExpl"
 
-import { TableHead, TableHeadInit } from "../styles/TableHead"
-
-interface IPageContext {
-  pageContext: {
-    drivers: IDriverBase[]
-    teams: ITeam[]
-    races: IRace[]
-  }
-}
-
-export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
+export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
   return (
     <Layout>
       <Head title="Races" />
 
       <table className="uk-table uk-table-small">
-        <thead>
+        <TableHeadWrapper>
           <tr>
             <TableHeadInit scope="col">No</TableHeadInit>
             <TableHead scope="col">Race dates</TableHead>
@@ -42,7 +36,7 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
               <Icon type={"fastest"} singular={true} />
             </TableHead>
           </tr>
-        </thead>
+        </TableHeadWrapper>
 
         <tbody>
           {races.map((race, index) => (
@@ -56,6 +50,11 @@ export default ({ pageContext: { drivers, teams, races } }: IPageContext) => {
           ))}
         </tbody>
       </table>
+
+      <RookieExpl>
+        The &#42; besides a driver's name denotes them being a rookie in Formula
+        2.
+      </RookieExpl>
     </Layout>
   )
 }

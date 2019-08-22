@@ -1,20 +1,15 @@
 import React from "react"
-import styled from "styled-components"
 
+import { IRacePartititon } from "../../interfaces/Props"
 import { RaceType } from "../../enums/RaceType"
 
-const PartitionWrapper = styled.div<{ padded: boolean }>`
-  flex-basis: 50%;
-  padding: ${p => (p.padded ? "0.3rem 0" : 0)};
-  text-align: center;
-`
+import {
+  PartitionWrapper,
+  TypeShortened,
+  TypeExpanded,
+} from "../../styles/Race/Partition"
 
-interface IPartitionProps {
-  type: RaceType
-  padded: boolean
-}
-
-const RacePartition = ({ type, padded }: IPartitionProps) => {
+export const RacePartition = ({ type, padded }: IRacePartititon) => {
   const abbr = (full: string) =>
     `${full
       .split(` `)
@@ -23,11 +18,10 @@ const RacePartition = ({ type, padded }: IPartitionProps) => {
 
   return (
     <PartitionWrapper padded={padded}>
-      <small>
+      <TypeShortened>
         <abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</abbr>
-      </small>
+      </TypeShortened>
+      <TypeExpanded>{`${RaceType[type]} Race`}</TypeExpanded>
     </PartitionWrapper>
   )
 }
-
-export default RacePartition

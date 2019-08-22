@@ -1,45 +1,51 @@
 import React from "react"
-import styled from "styled-components"
 
 import { Flag } from "../Flag"
 
-import { IResult } from "../../interfaces/Driver"
-import { IRace } from "../../interfaces/Race"
+import { IRaceHeaderProps } from "../../interfaces/Props"
 
-const LocationWrapper = styled.div`
-  padding: 0.3rem 0;
-  text-align: center;
-`
+import {
+  LocationWrapperShortened,
+  LocationWrapperExpanded,
+  Circuit,
+} from "../../styles/Race/Header"
 
-const Circuit = styled.span`
-  font-size: 80%;
-  font-weight: bold;
-`
-
-interface IRaceHeaderProps {
-  race: IResult
-  races: IRace[]
-}
-
-const RaceHeader = ({ race, races }: IRaceHeaderProps) => {
+export const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
   const { location } = race
   const raceInfo = races.find(r => r.short === location)
 
   if (raceInfo) {
     return (
-      <LocationWrapper>
-        <Flag countryCode={location} large={false} desc={raceInfo.country} />
+      <>
+        <LocationWrapperShortened>
+          <Flag countryCode={location} large={false} desc={raceInfo.country} />
 
-        <Circuit>
-          <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>
-            {location}
-          </abbr>
-        </Circuit>
-      </LocationWrapper>
+          <Circuit>
+            <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>
+              {location}
+            </abbr>
+          </Circuit>
+        </LocationWrapperShortened>
+
+        <LocationWrapperExpanded>
+          <Circuit>
+            <span>
+              Round {index + 1} — {raceInfo.country}
+            </span>
+          </Circuit>
+
+          <div>
+            <Flag
+              countryCode={location}
+              large={false}
+              desc={raceInfo.country}
+              spaceless={true}
+            />
+          </div>
+        </LocationWrapperExpanded>
+      </>
     )
   }
 
-  return <LocationWrapper />
+  return <LocationWrapperShortened />
 }
-
-export default RaceHeader

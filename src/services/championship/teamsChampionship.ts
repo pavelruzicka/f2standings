@@ -1,4 +1,4 @@
-import { ITeamResult, ITeam } from "../../interfaces/Team"
+import { ITeamResult, ITeam } from "../../interfaces/render/Team"
 import { IBonusPointSources } from "../../interfaces/General"
 
 import { featurePoints, sprintPoints } from "../../util/points"

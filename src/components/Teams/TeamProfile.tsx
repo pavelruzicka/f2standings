@@ -1,45 +1,65 @@
 import React from "react"
 
+import { RaceColumn } from "../Races/RaceColumn"
 import { Flag } from "../Flag"
 
-import RaceColumn from "../Races/RaceColumn"
+import { ITeamProfileProps } from "../../interfaces/Props"
 
-import { IDriverBase } from "../../interfaces/Driver"
-import { ITeam, ITeamExpanded } from "../../interfaces/Team"
+import { MobileLabel, MobileContent } from "../../styles/Mobile"
+import { RowBlock, RowBlockVert } from "../../styles/Row/Block"
+import { RowInitMobile, RowInitVert } from "../../styles/Row/Init"
+import { RowEnd } from "../../styles/Row/End"
+import { RowWrapper } from "../../styles/Row/Wrapper"
 
-import { RowInitVert, RowVert, RowBlock } from "../../styles/TableRow"
+import { getSuffix } from "../../util/ordinalSuffix"
 
-interface ITeamProfileProps {
-  team: ITeamExpanded
-  teams: ITeam[]
-  drivers: IDriverBase[]
-  index: number
-}
-
-const TeamProfile = ({ team, teams, drivers, index }: ITeamProfileProps) => {
+export const TeamProfile = ({
+  team,
+  teams,
+  drivers,
+  index,
+}: ITeamProfileProps) => {
   const { stats } = team
 
   return (
-    <tr>
+    <RowWrapper>
       <RowInitVert>#{index + 1}</RowInitVert>
 
-      <RowVert>
-        <Flag countryCode={team.country} large={true} />{" "}
-        <strong>{team.name}</strong>
-      </RowVert>
+      <RowBlockVert>
+        <MobileLabel>Team</MobileLabel>
+        <MobileContent>
+          <Flag countryCode={team.country} large={true} /> {team.name}
+        </MobileContent>
+      </RowBlockVert>
+
+      <RowInitMobile>
+        <MobileLabel>Championship position</MobileLabel>
+        <MobileContent>{getSuffix(index + 1)}</MobileContent>
+      </RowInitMobile>
 
       <RaceColumn
         occupants={team.drivers}
         drivers={drivers}
         teams={teams}
         shortened={false}
+        label={"Drivers"}
+        mobile={null}
       />
 
-      <RowBlock>{stats.podiums}</RowBlock>
-      <RowBlock>{stats.wins}</RowBlock>
-      <RowBlock>{stats.points}</RowBlock>
-    </tr>
+      <RowBlock>
+        <MobileLabel>Podium finishes</MobileLabel>
+        <MobileContent>{stats.podiums}</MobileContent>
+      </RowBlock>
+
+      <RowBlock>
+        <MobileLabel>Race wins</MobileLabel>
+        <MobileContent>{stats.wins}</MobileContent>
+      </RowBlock>
+
+      <RowEnd>
+        <MobileLabel>Points</MobileLabel>
+        <MobileContent>{stats.points}</MobileContent>
+      </RowEnd>
+    </RowWrapper>
   )
 }
-
-export default TeamProfile

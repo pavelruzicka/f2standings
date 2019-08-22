@@ -9,7 +9,7 @@ import {
   getLeftAxis,
   getBottomAxis,
   IDataEntry,
-} from "../../services/graphs/drawChart"
+} from "../../services/charts/drawChart"
 
 import { LineChartSvg } from "../../styles/LineChartSvg"
 

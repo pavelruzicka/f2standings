@@ -1,20 +1,10 @@
 import React from "react"
-import styled from "styled-components"
 
 import { iconTypes } from "../util/icons"
 
-const IconElement = styled.img<{ size: number }>`
-  bottom: 2px;
-  margin: 0;
-  position: relative;
-  width: ${p => p.size}px;
-`
+import { IIconProps } from "../interfaces/Props"
 
-interface IIconProps {
-  type: keyof typeof iconTypes
-  singular: boolean
-  size?: number
-}
+import { IconElement } from "../styles/Icon"
 
 export const Icon = ({ type, singular, size = 20 }: IIconProps) => {
   const { desc, pluralizer } = iconTypes[type]

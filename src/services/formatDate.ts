@@ -1,4 +1,4 @@
-import { IDate } from "../interfaces/Race"
+import { IDate } from "../interfaces/render/Race"
 
 export const formatDate = ({
   date,

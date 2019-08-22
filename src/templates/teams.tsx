@@ -1,40 +1,30 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import { TeamProfile } from "../components/Teams/TeamProfile"
 import { Layout } from "../components/Layout"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
-
-import TeamProfile from "../components/Teams/TeamProfile"
-import { LineChart } from "../components/Graphs/LineChart"
 import { Header } from "../components/Header"
+import { LineChart } from "../components/Charts/LineChart"
 
-import { IDriverBase } from "../interfaces/Driver"
-import { ITeam } from "../interfaces/Team"
-import { IRace } from "../interfaces/Race"
+import { ITeamsContext } from "../interfaces/Context"
 
 import { sortTeams } from "../services/championship/teamsChampionship"
-import { getChartTeamPoints } from "../services/graphs/chartTeamPoints"
-import { getChartRaces } from "../services/graphs/chartRaces"
+import { getChartTeamPoints } from "../services/charts/chartTeamPoints"
+import { getChartRaces } from "../services/charts/chartRaces"
 
 import {
   TableHead,
   TableHeadInit,
   TableHeadCentered,
-} from "../styles/TableHead"
+  TableHeadWrapper,
+} from "../styles/Layout/TableHead"
+import { RookieExpl } from "../styles/RookieExpl"
 import { Tooltip } from "../styles/Tooltip"
-import { SubMenuLink } from "../styles/menuLink"
+import { SubMenuLink } from "../styles/Layout/MenuLink"
 
-interface IPageContext {
-  pageContext: {
-    drivers: IDriverBase[]
-    teams: ITeam[]
-    races: IRace[]
-    chart: boolean
-  }
-}
-
-export default ({ pageContext: { teams, drivers, chart } }: IPageContext) => {
+export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
   const sortedTeams = sortTeams(teams)
 
   return (
@@ -64,7 +54,7 @@ export default ({ pageContext: { teams, drivers, chart } }: IPageContext) => {
         </>
       ) : (
         <table className="uk-table uk-table-small">
-          <thead>
+          <TableHeadWrapper>
             <tr>
               <TableHeadInit scope="col">Pos</TableHeadInit>
               <TableHead scope="col">Team</TableHead>
@@ -77,7 +67,7 @@ export default ({ pageContext: { teams, drivers, chart } }: IPageContext) => {
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>
-          </thead>
+          </TableHeadWrapper>
 
           <tbody>
             {sortedTeams.map((team, index) => (
@@ -92,6 +82,10 @@ export default ({ pageContext: { teams, drivers, chart } }: IPageContext) => {
           </tbody>
         </table>
       )}
+      <RookieExpl>
+        The &#42; besides a driver's name denotes them being a rookie in
+        Formula&nbsp;2.
+      </RookieExpl>
     </Layout>
   )
 }

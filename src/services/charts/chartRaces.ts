@@ -1,4 +1,4 @@
-import { IDriverBase } from "../../interfaces/Driver"
+import { IDriverBase } from "../../interfaces/render/Driver"
 
 export function getChartRaces(drivers: IDriverBase[]) {
   return drivers[0].results

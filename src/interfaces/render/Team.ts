@@ -1,4 +1,4 @@
-import { countries } from "../util/countries"
+import { countries } from "../../util/countries"
 
 interface IStats {
   podiums: number

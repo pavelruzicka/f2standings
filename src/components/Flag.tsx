@@ -1,23 +1,16 @@
 import React from "react"
-import styled from "styled-components"
-
 import { countries } from "../util/countries"
 
-const FlagElement = styled.img<{ countryCode: string; large: boolean }>`
-  bottom: ${p => (p.large ? 2 : 0)}px;
-  margin: 0 0.5rem 0 0;
-  position: ${p => (p.large ? "relative" : "static")};
-  width: ${p => (p.large ? 24 : 21)}px;
-  user-select: ${p => (p.countryCode === "empty" ? "none" : "auto")};
-`
+import { IFlagProps } from "../interfaces/Props"
 
-interface IFlagProps {
-  countryCode: keyof typeof countries
-  desc?: string
-  large: boolean
-}
+import { FlagElement } from "../styles/Flag"
 
-export const Flag = ({ countryCode, desc, large }: IFlagProps) => {
+export const Flag = ({
+  countryCode,
+  desc,
+  large,
+  spaceless = false,
+}: IFlagProps) => {
   const description = desc || countries[countryCode]
 
   return (
@@ -27,6 +20,7 @@ export const Flag = ({ countryCode, desc, large }: IFlagProps) => {
       alt={description}
       title={description}
       large={large}
+      space={!spaceless}
     />
   )
 }
