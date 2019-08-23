@@ -20,6 +20,14 @@ module.exports = {
         icon: `static/images/f2-logo.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: "UA-146348826-1",
+        head: false,
+        anonymize: true,
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
