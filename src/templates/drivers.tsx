@@ -10,8 +10,8 @@ import { LineChart } from "../components/Charts/LineChart"
 import { IDriversContext } from "../interfaces/Context"
 
 import { sortDrivers } from "../services/championship/driversChampionship"
-import { getChartDriverPoints } from "../services/charts/chartDriverPoints"
-import { getChartRaces } from "../services/charts/chartRaces"
+import { getChartDriverPoints } from "../services/charts/lineChartDriverPoints"
+import { getFinishedRaces } from "../services/finishedRaces"
 
 import {
   TableHead,
@@ -38,7 +38,7 @@ export default ({
         <>
           <Tooltip data-tooltip />
           <LineChart
-            races={getChartRaces(sortedDrivers)}
+            races={getFinishedRaces(sortedDrivers)}
             data={getChartDriverPoints(sortedDrivers, teams)}
           />
         </>
