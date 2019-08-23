@@ -1,6 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Red+Hat+Display:400,500,700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/css/uikit.min.css");
 
+::selection {
+  background: rgba(31, 76, 134, 0.75);
+  color: white;
+}
+::-moz-selection {
+  background: rgba(31, 76, 134, 0.75);
+  color: white;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -595,13 +604,13 @@ ul li {
   padding-left: 0;
 }
 
-li>ol {
+li > ol {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
 }
 
-li>ul {
+li > ul {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
@@ -619,7 +628,7 @@ p *:last-child {
   margin-bottom: 0;
 }
 
-li>p {
+li > p {
   margin-bottom: calc(1.45rem / 2);
 }
 
