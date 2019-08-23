@@ -28,6 +28,12 @@ module.exports = {
         anonymize: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-7605517671694120`,
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
