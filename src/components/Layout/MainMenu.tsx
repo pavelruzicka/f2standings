@@ -5,13 +5,15 @@ import { Header } from "../Header"
 
 import { MenuLink } from "../../styles/Layout/MenuLink"
 
-export function MainMenu() {
-  const onChartSubPage = window.location.pathname.includes("/chart")
+interface IProps {
+  onChartPage: boolean
+}
 
+export function MainMenu({ onChartPage }: IProps) {
   return (
     <Header logo>
       <Link
-        to={`/drivers${onChartSubPage ? "/chart" : ""}`}
+        to={`/drivers${onChartPage ? "/chart" : ""}`}
         style={MenuLink}
         activeStyle={{ opacity: 1 }}
         partiallyActive
@@ -19,7 +21,7 @@ export function MainMenu() {
         Drivers
       </Link>
       <Link
-        to={`/teams${onChartSubPage ? "/chart" : ""}`}
+        to={`/teams${onChartPage ? "/chart" : ""}`}
         style={MenuLink}
         activeStyle={{ opacity: 1 }}
         partiallyActive

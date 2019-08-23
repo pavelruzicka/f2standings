@@ -5,10 +5,15 @@ import { MainMenu } from "./MainMenu"
 import { Footer, FooterLine, FooterLink } from "../../styles/Layout/Footer"
 import "../../styles/layout.css"
 
-export const Layout: React.FunctionComponent = ({ children }) => {
+interface IProps {
+  children: React.ReactNode
+  onChartPage: boolean
+}
+
+export function Layout({ children, onChartPage }: IProps) {
   return (
     <div className="uk-container">
-      <MainMenu />
+      <MainMenu onChartPage={onChartPage} />
       <div
         style={{
           margin: `0 auto`,

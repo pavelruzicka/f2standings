@@ -72,7 +72,7 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           {feature.podium && sprint.podium ? (
             <>
               <RaceColumn
-                keys={["feature"]}
+                keys={["fp1", "fp2", "fp3"]}
                 occupants={[0, 1, 2].map(n => feature.podium[n])}
                 drivers={drivers}
                 teams={teams}
@@ -82,7 +82,7 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
               />
 
               <RaceColumn
-                keys={["sprint"]}
+                keys={["sp1", "sp2", "sp3"]}
                 occupants={[0, 1, 2].map(n => sprint.podium[n])}
                 drivers={drivers}
                 teams={teams}
