@@ -16,7 +16,6 @@ export const Flag = ({
   return (
     <FlagElement
       src={`/flags/${countryCode}.svg`}
-      countryCode={countryCode}
       alt={description}
       title={description}
       large={large}

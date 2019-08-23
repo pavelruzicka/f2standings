@@ -13,7 +13,6 @@ export const LineChartSvg = styled.svg`
 
   .legend text {
     font-weight: 500;
-    fill: rgba(0, 0, 0, 0.7);
   }
 
   .line {
@@ -29,7 +28,6 @@ export const LineChartSvg = styled.svg`
   }
 
   .axis-y .tick text {
-    fill: rgba(0, 0, 0, 0.7);
     font-weight: 500;
     transform: translateX(-10px);
   }
