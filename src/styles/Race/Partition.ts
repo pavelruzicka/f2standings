@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { getRule } from "../../util/viewports"
 
-export const PartitionWrapper = styled.div<{ padded: boolean }>`
+export const PartitionWrapper = styled.div<{ padded?: boolean }>`
   flex-basis: 50%;
   padding: ${p => (p.padded ? "0.3rem 0" : 0)};
   text-align: center;
@@ -12,7 +12,7 @@ export const PartitionWrapper = styled.div<{ padded: boolean }>`
   }
 `
 
-export const TypeShortened = styled.small`
+export const TypeShortened = styled.span`
   @media ${getRule("max", "laptop")} {
     display: none;
   }

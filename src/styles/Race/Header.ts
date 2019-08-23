@@ -22,6 +22,6 @@ export const LocationWrapperExpanded = styled.div`
 `
 
 export const Circuit = styled.span`
-  font-size: 80%;
+  font-size: 90%;
   font-weight: bold;
 `

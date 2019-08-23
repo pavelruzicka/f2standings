@@ -15,7 +15,7 @@ export const RaceWrapper = styled.div`
   }
 
   @media ${getRule("max", "laptop")} {
-    height: 75px;
+    height: 80px;
   }
 `
 
