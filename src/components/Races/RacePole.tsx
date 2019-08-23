@@ -24,7 +24,7 @@ export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
         <MobileContent>
           <Driver>
             <div>
-              <Flag countryCode={driver.country} large={true} />
+              <Flag countryCode={driver.country} large />
               <abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
                 {driver.short}
               </abbr>

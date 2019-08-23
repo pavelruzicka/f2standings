@@ -5,9 +5,13 @@ import { Header } from "../Header"
 
 import { SubMenuLink } from "../../styles/Layout/MenuLink"
 
-export const SubMenu = ({ origin }: { origin: "drivers" | "teams" }) => {
+interface IProps {
+  origin: "drivers" | "teams"
+}
+
+export const SubMenu = ({ origin }: IProps) => {
   return (
-    <Header logo={false} subStyling={true}>
+    <Header subStyling>
       <Link to={`/${origin}`} style={SubMenuLink} activeStyle={{ opacity: 1 }}>
         Table
       </Link>

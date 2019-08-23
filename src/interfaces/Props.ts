@@ -33,7 +33,7 @@ export interface IRaceHeaderProps {
 
 export interface IRacePartititon {
   type: RaceType
-  padded: boolean
+  padded?: boolean
 }
 
 export interface IRaceResultProps {
@@ -70,13 +70,13 @@ export interface IRaceRowProps {
 export interface IFlagProps {
   countryCode: keyof typeof countries
   desc?: string
-  large: boolean
+  large?: boolean
   spaceless?: boolean
 }
 
 export interface IIconProps {
   type: keyof typeof iconTypes
-  singular: boolean
+  singular?: boolean
   size?: number
 }
 

@@ -1,41 +1,19 @@
 import React from "react"
-import { Link } from "gatsby"
 
-import { Header } from "../Header"
+import { MainMenu } from "./MainMenu"
 
 import { Footer, FooterLine, FooterLink } from "../../styles/Layout/Footer"
-import { MenuLink } from "../../styles/Layout/MenuLink"
 import "../../styles/layout.css"
 
-export const Layout: React.FunctionComponent = ({ children }) => {
+interface IProps {
+  children: React.ReactNode
+  onChartPage: boolean
+}
+
+export function Layout({ children, onChartPage }: IProps) {
   return (
     <div className="uk-container">
-      <Header>
-        <Link
-          to="/drivers"
-          style={MenuLink}
-          activeStyle={{ opacity: 1 }}
-          partiallyActive={true}
-        >
-          Drivers
-        </Link>
-        <Link
-          to="/teams"
-          style={MenuLink}
-          activeStyle={{ opacity: 1 }}
-          partiallyActive={true}
-        >
-          Teams
-        </Link>
-        <Link
-          to="/races"
-          style={MenuLink}
-          activeStyle={{ opacity: 1 }}
-          partiallyActive={true}
-        >
-          Races
-        </Link>
-      </Header>
+      <MainMenu onChartPage={onChartPage} />
       <div
         style={{
           margin: `0 auto`,

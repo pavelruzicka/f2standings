@@ -1,7 +1,7 @@
 import React from "react"
 
 import { TeamProfile } from "../components/Teams/TeamProfile"
-import { Layout } from "../components/Layout/Main"
+import { Layout } from "../components/Layout/Layout"
 import { SubMenu } from "../components/Layout/SubMenu"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
@@ -26,7 +26,7 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
   const sortedTeams = sortTeams(teams)
 
   return (
-    <Layout>
+    <Layout onChartPage={chart}>
       <Head title="Teams" />
 
       <SubMenu origin={"teams"} />
@@ -47,10 +47,10 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
               <TableHead scope="col">Team</TableHead>
               <TableHead scope="col">Drivers</TableHead>
               <TableHeadCentered scope="col">
-                <Icon type={"podium"} singular={false} />
+                <Icon type={"podium"} />
               </TableHeadCentered>
               <TableHeadCentered>
-                <Icon type={"win"} size={18} singular={false} />
+                <Icon type={"win"} size={18} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>

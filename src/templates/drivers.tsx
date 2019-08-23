@@ -1,7 +1,7 @@
 import React from "react"
 
 import { DriverProfile } from "../components/Drivers/DriverProfile"
-import { Layout } from "../components/Layout/Main"
+import { Layout } from "../components/Layout/Layout"
 import { SubMenu } from "../components/Layout/SubMenu"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
@@ -29,7 +29,7 @@ export default ({
   const sortedDrivers = sortDrivers(drivers)
 
   return (
-    <Layout>
+    <Layout onChartPage={chart}>
       <Head title="Drivers" />
 
       <SubMenu origin={"drivers"} />
@@ -50,10 +50,10 @@ export default ({
               <TableHead scope="col">Driver</TableHead>
               <TableHead scope="col">Team</TableHead>
               <TableHeadCentered scope="col">
-                <Icon type={"pole"} singular={false} />
+                <Icon type={"pole"} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">
-                <Icon type={"fastest"} singular={false} />
+                <Icon type={"fastest"} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>

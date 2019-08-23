@@ -1,7 +1,7 @@
 import React from "react"
 
 import { RaceRow } from "../components/Races/RaceRow"
-import { Layout } from "../components/Layout/Main"
+import { Layout } from "../components/Layout/Layout"
 import { Head } from "../components/Head"
 import { Icon } from "../components/Icon"
 
@@ -16,7 +16,7 @@ import { RookieExpl } from "../styles/RookieExpl"
 
 export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
   return (
-    <Layout>
+    <Layout onChartPage={false}>
       <Head title="Races" />
 
       <table className="uk-table uk-table-small">
@@ -26,14 +26,14 @@ export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
             <TableHead scope="col">Race dates</TableHead>
             <TableHead scope="col">Location</TableHead>
             <TableHead scope="col">
-              <Icon type={"pole"} singular={true} />
+              <Icon type={"pole"} singular />
             </TableHead>
             <TableHead scope="col" />
             <TableHead scope="col" colSpan={3}>
               Podium
             </TableHead>
             <TableHead scope="col">
-              <Icon type={"fastest"} singular={true} />
+              <Icon type={"fastest"} singular />
             </TableHead>
           </tr>
         </TableHeadWrapper>

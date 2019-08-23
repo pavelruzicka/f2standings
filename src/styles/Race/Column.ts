@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { getRule } from "../../util/viewports"
 
-export const RaceColumnWrapper = styled.td<{ mobile: boolean | null }>`
+export const RaceColumnWrapper = styled.td<{ mobile?: boolean }>`
   @media ${getRule("min", "laptop")} {
     && {
       display: ${p => (p.mobile === null || !p.mobile ? `table-cell` : `none`)};

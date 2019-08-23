@@ -27,7 +27,7 @@ interface IRaceWeekend {
 }
 
 export interface IRaceDatesProps extends IRaceWeekend {
-  mobile: boolean
+  mobile?: boolean
 }
 
 export interface IRace {
@@ -45,5 +45,5 @@ export interface IRaceColumn {
   teams: ITeam[]
   shortened?: boolean
   label?: string
-  mobile: boolean | null
+  mobile?: boolean
 }

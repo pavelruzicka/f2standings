@@ -28,7 +28,7 @@ export const TeamProfile = ({
       <RowBlockVert>
         <MobileLabel>Team</MobileLabel>
         <MobileContent>
-          <Flag countryCode={team.country} large={true} /> {team.name}
+          <Flag countryCode={team.country} large /> {team.name}
         </MobileContent>
       </RowBlockVert>
 
@@ -41,9 +41,7 @@ export const TeamProfile = ({
         occupants={team.drivers}
         drivers={drivers}
         teams={teams}
-        shortened={false}
         label={"Drivers"}
-        mobile={null}
       />
 
       <RowBlock>

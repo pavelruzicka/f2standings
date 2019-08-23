@@ -8,7 +8,7 @@ import { FlagElement } from "../styles/Flag"
 export const Flag = ({
   countryCode,
   desc,
-  large,
+  large = false,
   spaceless = false,
 }: IFlagProps) => {
   const description = desc || countries[countryCode]

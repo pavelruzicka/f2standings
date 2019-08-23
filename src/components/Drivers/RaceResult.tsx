@@ -11,14 +11,12 @@ export const RaceResult = ({ result, type }: IRaceResultProps) => {
   const race = typeName === "feature" ? result["feature"] : result["sprint"]
 
   if (race === null) {
-    return <ResultWrapper active={false}>—</ResultWrapper>
+    return <ResultWrapper>—</ResultWrapper>
   }
 
   if (race.position < 4) {
-    return (
-      <ResultWrapperBold active={true}>{`P${race.position}`}</ResultWrapperBold>
-    )
+    return <ResultWrapperBold active>{`P${race.position}`}</ResultWrapperBold>
   } else {
-    return <ResultWrapper active={true}>{`P${race.position}`}</ResultWrapper>
+    return <ResultWrapper active>{`P${race.position}`}</ResultWrapper>
   }
 }

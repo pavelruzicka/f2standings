@@ -8,7 +8,7 @@ import { IHeaderProps } from "../interfaces/Props"
 import { HeaderWrapper, ImageWrapper } from "../styles/Layout/Header"
 
 export const Header = ({
-  logo = true,
+  logo = false,
   subStyling = false,
   children,
 }: IHeaderProps) => (

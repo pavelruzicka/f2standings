@@ -13,9 +13,9 @@ export const RaceColumn = ({
   occupants,
   drivers,
   teams,
-  shortened = true,
   label,
-  mobile = null,
+  mobile = false,
+  shortened = false,
 }: IRaceColumn) => {
   const boxes = occupants.map(o => drivers.find(d => d.short === o))
 
@@ -30,7 +30,7 @@ export const RaceColumn = ({
             if (team) {
               return (
                 <ColumnDriver key={keys ? keys[index] : driver.short}>
-                  <Flag countryCode={driver.country} large={true} />
+                  <Flag countryCode={driver.country} large />
                   {shortened ? (
                     <abbr
                       title={`${driver.name} ${driver.lastName} | ${team.name}`}
