@@ -21,14 +21,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingId: "UA-146348826-1",
-        head: false,
-        anonymize: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-adsense`,
       options: {
         publisherId: `ca-pub-7605517671694120`,
@@ -36,8 +28,11 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-146348826-1",
+      },
+    },
   ],
 }
