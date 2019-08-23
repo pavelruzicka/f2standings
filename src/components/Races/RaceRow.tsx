@@ -30,17 +30,17 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
     <RowWrapper>
       <RowInit>#{index + 1}</RowInit>
 
-      <RaceDates feature={feature} sprint={sprint} mobile={false} />
+      <RaceDates feature={feature} sprint={sprint} />
 
-      <RowLeftAligned border={true}>
-        <MobileLabel varied={true}>R{index + 1}</MobileLabel>
+      <RowLeftAligned border>
+        <MobileLabel varied>R{index + 1}</MobileLabel>
 
         <MobileContentReversed>
           <Circuit>
-            <Flag countryCode={race.short} large={true} />
+            <Flag countryCode={race.short} large />
             {race.circuit}
           </Circuit>
-          <Flag countryCode={"empty"} large={true} />
+          <Flag countryCode={"empty"} large />
           <small>
             {race.city}, {race.country}
           </small>
@@ -48,25 +48,25 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
 
         <MobileContentReversedSmall>
           <Circuit>
-            <Flag countryCode={"empty"} large={true} />
+            <Flag countryCode={"empty"} large />
             {race.circuit}
           </Circuit>
-          <Flag countryCode={race.short} large={true} />
+          <Flag countryCode={race.short} large />
           <small>
             {race.city}, {race.country}
           </small>
         </MobileContentReversedSmall>
       </RowLeftAligned>
 
-      <RaceDates feature={feature} sprint={sprint} mobile={true} />
+      <RaceDates feature={feature} sprint={sprint} mobile />
 
       {feature.pole ? (
         <>
           <RacePole feature={feature} drivers={drivers} teams={teams} />
 
           <RaceWrapper>
-            <RacePartition type={RaceType.Feature} padded={false} />
-            <RacePartition type={RaceType.Sprint} padded={false} />
+            <RacePartition type={RaceType.Feature} />
+            <RacePartition type={RaceType.Sprint} />
           </RaceWrapper>
 
           {feature.podium && sprint.podium ? (
@@ -77,7 +77,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 drivers={drivers}
                 teams={teams}
                 label={"Feature race podium"}
-                mobile={true}
+                mobile
+                shortened
               />
 
               <RaceColumn
@@ -86,7 +87,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 drivers={drivers}
                 teams={teams}
                 label={"Sprint race podium"}
-                mobile={true}
+                mobile
+                shortened
               />
 
               {[0, 1, 2].map(n => (
@@ -96,7 +98,7 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                   drivers={drivers}
                   teams={teams}
                   key={n}
-                  mobile={false}
+                  shortened
                 />
               ))}
             </>
@@ -109,7 +111,7 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 occupants={[feature.fastest, sprint.fastest]}
                 drivers={drivers}
                 teams={teams}
-                mobile={false}
+                shortened
               />
 
               <RaceColumn
@@ -118,7 +120,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 drivers={drivers}
                 teams={teams}
                 label={"Fastest in feature"}
-                mobile={true}
+                mobile
+                shortened
               />
 
               <RaceColumn
@@ -127,7 +130,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 drivers={drivers}
                 teams={teams}
                 label={"Fastest in sprint"}
-                mobile={true}
+                mobile
+                shortened
               />
             </>
           ) : (

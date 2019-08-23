@@ -47,10 +47,10 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
               <TableHead scope="col">Team</TableHead>
               <TableHead scope="col">Drivers</TableHead>
               <TableHeadCentered scope="col">
-                <Icon type={"podium"} singular={false} />
+                <Icon type={"podium"} />
               </TableHeadCentered>
               <TableHeadCentered>
-                <Icon type={"win"} size={18} singular={false} />
+                <Icon type={"win"} size={18} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
             </tr>

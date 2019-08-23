@@ -23,7 +23,7 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
       <RowStart>
         <MobileLabel>Driver</MobileLabel>
         <MobileContent>
-          <Flag countryCode={country} large={true} /> {`${name} `}
+          <Flag countryCode={country} large /> {`${name} `}
           <strong>{lastName}</strong>
           {driver.rookie ? <RookieStatus /> : null}
         </MobileContent>
@@ -32,7 +32,7 @@ const RowContent = ({ driver, team, index }: IContentProps) => {
       <RowBold>
         <MobileLabel>Team</MobileLabel>
         <MobileContent>
-          <Flag countryCode={team.country} large={true} /> {team.name}
+          <Flag countryCode={team.country} large /> {team.name}
         </MobileContent>
       </RowBold>
 

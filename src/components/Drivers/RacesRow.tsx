@@ -26,8 +26,8 @@ export const RacesRow = ({ results, races, driver }: IRacesRowProps) => {
                 {!race.upcoming ? (
                   <>
                     <SectionWrapper>
-                      <RacePartition type={RaceType.Feature} padded={true} />
-                      <RacePartition type={RaceType.Sprint} padded={true} />
+                      <RacePartition type={RaceType.Feature} padded />
+                      <RacePartition type={RaceType.Sprint} padded />
                     </SectionWrapper>
                     <SectionWrapper>
                       <RaceResult result={race} type={RaceType.Feature} />

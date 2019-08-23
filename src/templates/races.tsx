@@ -26,14 +26,14 @@ export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
             <TableHead scope="col">Race dates</TableHead>
             <TableHead scope="col">Location</TableHead>
             <TableHead scope="col">
-              <Icon type={"pole"} singular={true} />
+              <Icon type={"pole"} singular />
             </TableHead>
             <TableHead scope="col" />
             <TableHead scope="col" colSpan={3}>
               Podium
             </TableHead>
             <TableHead scope="col">
-              <Icon type={"fastest"} singular={true} />
+              <Icon type={"fastest"} singular />
             </TableHead>
           </tr>
         </TableHeadWrapper>

@@ -18,7 +18,7 @@ export const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
     return (
       <>
         <LocationWrapperShortened>
-          <Flag countryCode={location} large={false} desc={raceInfo.country} />
+          <Flag countryCode={location} desc={raceInfo.country} />
 
           <Circuit>
             <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>
@@ -35,12 +35,7 @@ export const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
           </Circuit>
 
           <div>
-            <Flag
-              countryCode={location}
-              large={false}
-              desc={raceInfo.country}
-              spaceless={true}
-            />
+            <Flag countryCode={location} desc={raceInfo.country} spaceless />
           </div>
         </LocationWrapperExpanded>
       </>
