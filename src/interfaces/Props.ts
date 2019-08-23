@@ -27,7 +27,6 @@ export interface IDriverProps extends IContentProps {
 
 export interface IRaceHeaderProps {
   race: IResult
-  races: IRace[]
   index: number
 }
 
@@ -43,7 +42,6 @@ export interface IRaceResultProps {
 
 export interface IRacesRowProps {
   results: IResult[]
-  races: IRace[]
   driver: IDriverBase
 }
 

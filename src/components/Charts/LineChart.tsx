@@ -9,13 +9,15 @@ import {
   getLeftAxis,
   getBottomAxis,
   IDataEntry,
-} from "../../services/charts/drawChart"
+} from "../../services/charts/drawLineChart"
+
+import { IResult } from "../../interfaces/render/Driver"
 
 import { LineChartSvg } from "../../styles/LineChartSvg"
 
 interface IProps {
   data: IDataEntry[]
-  races: string[]
+  races: IResult[]
 }
 
 export function LineChart({ data, races }: IProps) {
@@ -28,12 +30,12 @@ export function LineChart({ data, races }: IProps) {
       padding: 40,
     }
 
-    const { xScale, xAxis } = getBottomAxis(races, size)
+    const { xScale, xAxis } = getBottomAxis(races.length, size)
     const { yScale, yAxis } = getLeftAxis(data, size)
 
     const svg = drawSvg(svgRef.current, size)
-    drawGrid(svg, xAxis, yAxis, races, size)
-    drawAxis(svg, xAxis, yAxis, races, size)
+    drawGrid(svg, xAxis, yAxis, races.length, size)
+    drawAxis(svg, xAxis, yAxis, races.map(race => race.location), size)
     drawLegend(svg, data, size)
     drawLines(svg, xScale, yScale, data.slice().reverse())
   }, [data, races, svgRef])

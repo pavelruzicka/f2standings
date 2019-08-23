@@ -1,4 +1,4 @@
-import { IDataEntry } from "./drawChart"
+import { IDataEntry } from "./drawLineChart"
 
 import { ITeam } from "../../interfaces/render/Team"
 

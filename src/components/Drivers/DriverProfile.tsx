@@ -9,7 +9,6 @@ import { IProfileProps } from "../../interfaces/Props"
 export const DriverProfile = ({
   driver,
   teams,
-  races,
   index,
   open,
 }: IProfileProps) => {
@@ -28,7 +27,7 @@ export const DriverProfile = ({
           expand={racesVisible.toggle}
         />
         {racesVisible.value ? (
-          <RacesRow results={results} races={races} driver={driver} />
+          <RacesRow results={results} driver={driver} />
         ) : null}
       </>
     )
