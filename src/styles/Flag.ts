@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { getRule } from "../util/viewports"
 
 export const FlagElement = styled.img<{
-  countryCode: string
   large: boolean
   space: boolean
 }>`
@@ -11,7 +10,7 @@ export const FlagElement = styled.img<{
   margin: 0 ${p => (p.space ? 0.5 : 0)}rem 0 0;
   position: ${p => (p.large ? "relative" : "static")};
   width: ${p => (p.large ? 24 : 21)}px;
-  user-select: ${p => (p.countryCode === "empty" ? "none" : "auto")};
+  user-select: none;
 
   @media ${getRule("max", "laptop")} {
     && {
