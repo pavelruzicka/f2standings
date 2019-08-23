@@ -6,10 +6,12 @@ import { Header } from "../Header"
 import { MenuLink } from "../../styles/Layout/MenuLink"
 
 export function MainMenu() {
+  const onChartSubPage = window.location.pathname.includes("/chart")
+
   return (
     <Header logo>
       <Link
-        to="/drivers"
+        to={`/drivers${onChartSubPage ? "/chart" : ""}`}
         style={MenuLink}
         activeStyle={{ opacity: 1 }}
         partiallyActive
@@ -17,7 +19,7 @@ export function MainMenu() {
         Drivers
       </Link>
       <Link
-        to="/teams"
+        to={`/teams${onChartSubPage ? "/chart" : ""}`}
         style={MenuLink}
         activeStyle={{ opacity: 1 }}
         partiallyActive
