@@ -1,0 +1,15 @@
+export const cities = {
+  BHR: "Sakhir",
+  AZE: "Baku",
+  ESP: "Montmeló",
+  MCO: "Monte Carlo",
+  FRA: "Le Castellet",
+  AUT: "Spielberg",
+  GBR: "Silverstone",
+  HUN: "Mogyoród",
+  BEL: "Stavelot",
+  ITA: "Monza",
+  RUS: "Sochi",
+  ARE: "Abu Dhabi",
+  empty: "",
+}

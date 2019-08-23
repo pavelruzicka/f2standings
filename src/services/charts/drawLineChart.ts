@@ -203,8 +203,8 @@ export function drawAxis(
     .select(".axis-x")
     .selectAll(".tick")
     .data(races)
-    .on("mouseenter", country => {
-      showTooltip(tooltip, countries[country])
+    .on("mouseenter", (country, index) => {
+      showTooltip(tooltip, `R${index + 1}: ${countries[country]}`)
     })
     .on("mousemove", () => {
       positionTooltip(tooltip)

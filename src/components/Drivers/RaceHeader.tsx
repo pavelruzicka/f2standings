@@ -9,38 +9,35 @@ import {
   LocationWrapperExpanded,
   Circuit,
 } from "../../styles/Race/Header"
+import { countries } from "../../util/countries"
+import { circuits } from "../../util/circuits"
 
-export const RaceHeader = ({ race, races, index }: IRaceHeaderProps) => {
+export const RaceHeader = ({ race, index }: IRaceHeaderProps) => {
   const { location } = race
-  const raceInfo = races.find(r => r.short === location)
+  const country = countries[location]
+  const circuit = circuits[location as keyof typeof circuits]
 
-  if (raceInfo) {
-    return (
-      <>
-        <LocationWrapperShortened>
-          <Flag countryCode={location} desc={raceInfo.country} />
+  return (
+    <>
+      <LocationWrapperShortened>
+        <Flag countryCode={location} desc={country} />
 
-          <Circuit>
-            <abbr title={`${raceInfo.circuit} | ${raceInfo.country}`}>
-              {location}
-            </abbr>
-          </Circuit>
-        </LocationWrapperShortened>
+        <Circuit>
+          <abbr title={`${circuit} | ${country}`}>{location}</abbr>
+        </Circuit>
+      </LocationWrapperShortened>
 
-        <LocationWrapperExpanded>
-          <Circuit>
-            <span>
-              Round {index + 1} — {raceInfo.country}
-            </span>
-          </Circuit>
+      <LocationWrapperExpanded>
+        <Circuit>
+          <span>
+            Round {index + 1} — {country}
+          </span>
+        </Circuit>
 
-          <div>
-            <Flag countryCode={location} desc={raceInfo.country} spaceless />
-          </div>
-        </LocationWrapperExpanded>
-      </>
-    )
-  }
-
-  return <LocationWrapperShortened />
+        <div>
+          <Flag countryCode={location} desc={country} spaceless />
+        </div>
+      </LocationWrapperExpanded>
+    </>
+  )
 }

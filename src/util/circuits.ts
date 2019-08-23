@@ -1,0 +1,15 @@
+export const circuits = {
+  BHR: "Bahrain International Circuit",
+  AZE: "Baku City Circuit",
+  ESP: "Circuit de Barcelona-Catalunya",
+  MCO: "Circuit de Monaco",
+  FRA: "Circuit Paul Ricard",
+  AUT: "Red Bull Ring",
+  GBR: "Silverstone Circuit",
+  HUN: "Hungaroring",
+  BEL: "Circuit de Spa-Francorchamps",
+  ITA: "Autodromo Nazionale Monza",
+  RUS: "Sochi Autodrom",
+  ARE: "Yas Marina Circuit",
+  empty: "",
+}
