@@ -91,6 +91,7 @@ export function drawLegend(
       .text(result.shortLabel)
       .attr("y", y)
       .attr("font-size", 10)
+      .attr("fill", "currentColor")
       .attr("title", result.label)
 
     const reversedData = data.slice().reverse()
