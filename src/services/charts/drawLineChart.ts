@@ -1,4 +1,5 @@
 import * as d3 from "d3"
+import { countries } from "../../util/countries"
 
 export interface IDataEntry {
   points: [number, number][]
@@ -14,13 +15,11 @@ interface ISize {
   padding: number
 }
 
-export function getBottomAxis(races: string[], size: ISize) {
-  // Create math functions for horizontal x axis with flags and race locations
-  const maxX = races.length - 1
-
+export function getBottomAxis(races: number, size: ISize) {
+  // Create math functions for horizontal x axis with flags and race locations;
   const xScale = d3
     .scaleLinear()
-    .domain([0, maxX])
+    .domain([0, races - 1])
     .range([0, size.width - size.padding])
 
   const xAxis = d3.axisBottom(xScale)
@@ -149,7 +148,7 @@ export function drawGrid(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   xAxis: d3.Axis<number | { valueOf(): number }>,
   yAxis: d3.Axis<number | { valueOf(): number }>,
-  races: string[],
+  races: number,
   size: ISize
 ) {
   // Create grid lines for the y axis
@@ -166,7 +165,7 @@ export function drawGrid(
     .attr("transform", `translate(0, ${size.height})`)
     .call(
       xAxis
-        .ticks(races.length - 1)
+        .ticks(races - 1)
         .tickSize(-size.height)
         .tickFormat(() => "")
     )
@@ -176,15 +175,17 @@ export function drawAxis(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   xAxis: d3.Axis<number | { valueOf(): number }>,
   yAxis: d3.Axis<number | { valueOf(): number }>,
-  races: string[],
+  races: (keyof typeof countries)[],
   size: ISize
 ) {
+  const tooltip = d3.select("div[data-tooltip]")
+
   // Create x axis with race location names
   root
     .append("g")
     .attr("transform", `translate(10, ${size.height})`)
     .attr("class", "axis axis-x")
-    .call(xAxis.tickSize(0).tickFormat(s => races[s.valueOf()]))
+    .call(xAxis.tickSize(0).tickFormat(country => races[country.valueOf()]))
 
   // Add flags to the x axis
   root
@@ -192,12 +193,25 @@ export function drawAxis(
     .selectAll(".tick")
     .append("svg:image")
     .data(races)
-    .attr("xlink:href", s => `/flags/${s}.svg`)
+    .attr("xlink:href", country => `/flags/${country}.svg`)
     .attr("width", 14)
     .attr("height", 10)
     .attr("x", -30)
     .attr("y", 11.5)
 
+  root
+    .select(".axis-x")
+    .selectAll(".tick")
+    .data(races)
+    .on("mouseenter", country => {
+      showTooltip(tooltip, countries[country])
+    })
+    .on("mousemove", () => {
+      positionTooltip(tooltip)
+    })
+    .on("mouseleave", () => {
+      hideTooltip(tooltip)
+    })
   // Create y axis with points count
   root
     .append("g")
