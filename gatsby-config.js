@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   siteMetadata: {
     title: `Formula 2 Standings`,
     description: `The number one destination for FIA Formula 2 championship standings, race reports, and team overviews.`,
@@ -20,19 +20,24 @@ module.exports = {
         icon: `static/images/f2-logo.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: `ca-pub-7605517671694120`,
-      },
-    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-146348826-1",
-      },
-    },
   ],
 }
+
+if (process.env.NODE_ENV === "production") {
+  config.plugins.push({
+    resolve: `gatsby-plugin-google-adsense`,
+    options: {
+      publisherId: `ca-pub-7605517671694120`,
+    },
+  })
+  config.plugins.push({
+    resolve: `gatsby-plugin-google-analytics`,
+    options: {
+      trackingId: "UA-146348826-1",
+    },
+  })
+}
+
+module.exports = config
