@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 import { getRule } from "../util/viewports"
+import { ColumnDriver } from "./Race/Column"
 
 export const MobileLabel = styled.span<{ varied?: boolean }>`
   display: block;
@@ -9,6 +10,7 @@ export const MobileLabel = styled.span<{ varied?: boolean }>`
   font-weight: ${p => (p.varied ? "bold" : "normal")};
   color: ${p => (p.varied ? "black" : "#565656")};
   text-transform: uppercase;
+  margin-top: 0.8rem;
 
   span {
     font-size: 0.875rem;
@@ -26,21 +28,35 @@ export const MobileLabel = styled.span<{ varied?: boolean }>`
   }
 `
 
-export const MobileContent = styled.div`
+export const TableContent = styled.div<{ horizontal?: boolean }>`
   vertical-align: middle;
 
   @media ${getRule("max", "laptop")} {
     text-align: right;
+    display: ${p => (p.horizontal ? "flex" : "static")};
+    flex-flow: ${p => (p.horizontal ? "row" : "column")} nowrap;
+
+    ${ColumnDriver} {
+      margin: 0 0.6rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 `
 
-export const MobileContentReversed = styled(MobileContent)`
+export const DesktopContent = styled(TableContent)`
   @media ${getRule("max", "laptop")} {
     display: none;
   }
 `
 
-export const MobileContentReversedSmall = styled(MobileContent)`
+export const MobileContent = styled(TableContent)`
   @media ${getRule("min", "laptop")} {
     display: none;
   }

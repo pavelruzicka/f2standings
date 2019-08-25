@@ -20,7 +20,3 @@ export const RaceWrapperMobile = styled(TableItem)`
     display: none;
   }
 `
-
-export const RaceDate = styled.div`
-  font-size: 0.9rem;
-`

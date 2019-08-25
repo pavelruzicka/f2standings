@@ -10,17 +10,10 @@ import { RaceType } from "../../enums/RaceType"
 
 import { IRaceRowProps } from "../../interfaces/Props"
 
-import {
-  MobileLabel,
-  MobileContentReversed,
-  MobileContentReversedSmall,
-} from "../../styles/Mobile"
-import { RowWrapper } from "../../styles/Row/Wrapper"
-import { RowFiller } from "../../styles/Row/Misc"
+import { MobileLabel, DesktopContent, MobileContent } from "../../styles/Mobile"
+import { RowWrapper, RowFiller, RowStart, RowBlock } from "../../styles/Row"
 import { Circuit } from "../../styles/Race/Misc"
 import { RaceColumnWrapper } from "../../styles/Race/Column"
-import { RowBlock } from "../../styles/Row/Block"
-import { RowStart } from "../../styles/Row/Start"
 
 export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races
@@ -37,7 +30,7 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           <b>{index + 1}</b>
         </MobileLabel>
 
-        <MobileContentReversed>
+        <DesktopContent>
           <Circuit>
             <Flag countryCode={race.short} large />
             {race.circuit}
@@ -46,15 +39,15 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           <small>
             {race.city}, {race.country}
           </small>
-        </MobileContentReversed>
+        </DesktopContent>
 
-        <MobileContentReversedSmall>
+        <MobileContent>
           <Circuit>{race.circuit}</Circuit>
           <Flag countryCode={race.short} large />
           <small>
             {race.city}, {race.country}
           </small>
-        </MobileContentReversedSmall>
+        </MobileContent>
       </RowBlock>
 
       <RaceDates feature={feature} sprint={sprint} mobile />
@@ -124,7 +117,6 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 teams={teams}
                 label={"Fastest in feature"}
                 mobile
-                shortened
               />
 
               <RaceColumn
@@ -134,7 +126,6 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 teams={teams}
                 label={"Fastest in sprint"}
                 mobile
-                shortened
               />
             </>
           ) : (

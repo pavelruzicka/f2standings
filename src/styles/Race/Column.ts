@@ -8,7 +8,7 @@ export const RaceColumnWrapper = styled(TableItem)<{ mobile?: boolean }>`
   }
 
   @media ${getRule("max", "laptop")} {
-    display: ${p => (p.mobile === null || p.mobile ? `flex` : `none`)};
+    display: ${p => (p.mobile ? `flex` : `none`)};
     justify-content: space-between;
     border-bottom: none;
     padding: 4px 6px;
@@ -16,6 +16,7 @@ export const RaceColumnWrapper = styled(TableItem)<{ mobile?: boolean }>`
 `
 
 export const Driver = styled.div`
+  text-align: left;
   font-weight: 500;
 `
 
@@ -25,4 +26,14 @@ export const ColumnDriver = styled(Driver)`
   @media ${getRule("max", "laptop")} {
     margin-bottom: 4px;
   }
+`
+
+export const PoleTime = styled.span`
+  margin-left: 1rem;
+`
+
+export const PoleSitter = styled.span`
+  display: inline-block;
+  font-weight: 500;
+  margin-right: 1rem;
 `

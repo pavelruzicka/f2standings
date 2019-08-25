@@ -5,7 +5,7 @@ import { Flag } from "../Flag"
 
 import { IRaceColumn } from "../../interfaces/render/Race"
 
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
+import { MobileLabel, TableContent, MobileContent } from "../../styles/Mobile"
 import { RaceColumnWrapper, ColumnDriver } from "../../styles/Race/Column"
 import { Abbr } from "../../styles/Global"
 
@@ -21,33 +21,42 @@ export const RaceColumn = ({
   const boxes = occupants.map(o => drivers.find(d => d.short === o))
 
   return (
-    <RaceColumnWrapper mobile={mobile}>
-      <MobileLabel>{label || ``}</MobileLabel>
+    <>
       <MobileContent>
-        {boxes.map((driver, index) => {
-          if (driver) {
-            const team = teams.find(t => t.drivers.includes(driver.short))
-
-            if (team) {
-              return (
-                <ColumnDriver key={keys ? keys[index] : driver.short}>
-                  <Flag countryCode={driver.country} large />
-                  {shortened ? (
-                    <Abbr
-                      title={`${driver.name} ${driver.lastName} | ${team.name}`}
-                    >
-                      {driver.short}
-                    </Abbr>
-                  ) : (
-                    `${driver.name} ${driver.lastName}`
-                  )}
-                  {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
-                </ColumnDriver>
-              )
-            }
-          }
-        })}
+        <RaceColumnWrapper mobile={mobile}>
+          <MobileLabel>{label || ""}</MobileLabel>
+        </RaceColumnWrapper>
       </MobileContent>
-    </RaceColumnWrapper>
+      <RaceColumnWrapper mobile={mobile}>
+        <TableContent horizontal>
+          {boxes.map((driver, index) => {
+            if (!driver) {
+              return null
+            }
+
+            const team = teams.find(t => t.drivers.includes(driver.short))
+            if (!team) {
+              return null
+            }
+
+            return (
+              <ColumnDriver key={keys ? keys[index] : driver.short}>
+                <Flag countryCode={driver.country} large />
+                {shortened ? (
+                  <Abbr
+                    title={`${driver.name} ${driver.lastName} | ${team.name}`}
+                  >
+                    {driver.short}
+                  </Abbr>
+                ) : (
+                  `${driver.name} ${driver.lastName}`
+                )}
+                {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
+              </ColumnDriver>
+            )
+          })}
+        </TableContent>
+      </RaceColumnWrapper>
+    </>
   )
 }

@@ -4,11 +4,12 @@ import { Flag } from "../Flag"
 
 import { IPoleProps } from "../../interfaces/Props"
 
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
-import { Driver } from "../../styles/Race/Column"
+import { MobileLabel, DesktopContent, MobileContent } from "../../styles/Mobile"
+import { Driver, PoleTime, PoleSitter } from "../../styles/Race/Column"
 import { Abbr } from "../../styles/Global"
 import { TableItem } from "../../styles/Layout/Table"
-import { RowBlock } from "../../styles/Row/Block"
+import { RowBlock } from "../../styles/Row"
+import { RookieStatus } from "../Drivers/RookieStatus"
 
 export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
   const driver = drivers.find(d => d.short === feature.pole)
@@ -23,21 +24,37 @@ export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
   }
 
   return (
-    <RowBlock alignLeft>
-      <MobileLabel>Pole</MobileLabel>
+    <>
       <MobileContent>
-        <Driver>
-          <div>
-            <Flag countryCode={driver.country} large />
-            <Abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
-              {driver.short}
-            </Abbr>
-          </div>
-          <div>
-            <small>{feature.poleTime}</small>
-          </div>
-        </Driver>
+        <RowBlock>
+          <MobileLabel>Pole</MobileLabel>
+        </RowBlock>
       </MobileContent>
-    </RowBlock>
+      <RowBlock alignLeft>
+        <Driver>
+          <DesktopContent>
+            <div>
+              <Flag countryCode={driver.country} large />
+              <Abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
+                {driver.short}
+              </Abbr>
+            </div>
+            <div>
+              <small>{feature.poleTime}</small>
+            </div>
+          </DesktopContent>
+
+          <MobileContent>
+            <Flag countryCode={driver.country} large />
+            <PoleSitter>
+              {driver.name} {driver.lastName}
+              {driver.rookie ? <RookieStatus /> : null}
+            </PoleSitter>
+            <span>-</span>
+            <PoleTime>{feature.poleTime}</PoleTime>
+          </MobileContent>
+        </Driver>
+      </RowBlock>
+    </>
   )
 }

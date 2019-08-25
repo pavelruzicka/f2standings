@@ -8,8 +8,7 @@ import { RaceType } from "../../enums/RaceType"
 
 import { IRacesRowProps } from "../../interfaces/Props"
 
-import { RowBase } from "../../styles/Row/Base"
-import { RowTable } from "../../styles/Row/Table"
+import { RowBase, RowTable } from "../../styles/Row"
 import { RaceWrapper, SectionWrapper } from "../../styles/Race/Row"
 import { RaceConstraint } from "../../styles/Race/Constraint"
 import { TableRow } from "../../styles/Layout/Table"

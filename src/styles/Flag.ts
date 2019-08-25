@@ -14,7 +14,7 @@ export const FlagElement = styled.img<{
   user-select: none;
 
   @media ${getRule("max", "laptopM")} {
-    width: 18px;
+    width: 21px;
     margin: 0 ${p => (p.space ? 0.35 : 0)}rem 0 0;
   }
 `

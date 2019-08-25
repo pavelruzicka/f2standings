@@ -4,10 +4,8 @@ import { useBoolean } from "react-hanger"
 import { RacesRow } from "./RacesRow"
 
 import { IProfileProps } from "../../interfaces/Props"
-import { RowWrapperClickable } from "../../styles/Row/Wrapper"
-import { RowBlock } from "../../styles/Row/Block"
-import { RowStart } from "../../styles/Row/Start"
-import { MobileContent, MobileLabel } from "../../styles/Mobile"
+import { RowStart, RowBlock, RowWrapperClickable } from "../../styles/Row"
+import { TableContent, MobileLabel } from "../../styles/Mobile"
 import { Flag } from "../Flag"
 import { RookieStatus } from "./RookieStatus"
 
@@ -33,34 +31,34 @@ export const DriverProfile = ({
           <MobileLabel>
             #<b>{index + 1}</b>
           </MobileLabel>
-          <MobileContent>
+          <TableContent>
             <Flag countryCode={driver.country} large /> {`${name} `}
             <span>{driver.name} </span>
             <strong>{driver.lastName}</strong>
             {driver.rookie ? <RookieStatus /> : null}
-          </MobileContent>
+          </TableContent>
         </RowBlock>
 
         <RowBlock alignLeft bold>
           <MobileLabel>Team</MobileLabel>
-          <MobileContent>
+          <TableContent>
             <Flag countryCode={team.country} large /> {team.name}
-          </MobileContent>
+          </TableContent>
         </RowBlock>
 
         <RowBlock>
           <MobileLabel>Pole positions</MobileLabel>
-          <MobileContent>{driver.stats.poles}</MobileContent>
+          <TableContent>{driver.stats.poles}</TableContent>
         </RowBlock>
 
         <RowBlock>
           <MobileLabel>Fastest laps</MobileLabel>
-          <MobileContent>{driver.stats.fastest}</MobileContent>
+          <TableContent>{driver.stats.fastest}</TableContent>
         </RowBlock>
 
         <RowBlock>
           <MobileLabel>Points</MobileLabel>
-          <MobileContent>{driver.stats.points}</MobileContent>
+          <TableContent>{driver.stats.points}</TableContent>
         </RowBlock>
       </RowWrapperClickable>
 

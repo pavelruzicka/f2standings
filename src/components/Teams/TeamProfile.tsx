@@ -5,10 +5,8 @@ import { Flag } from "../Flag"
 
 import { ITeamProfileProps } from "../../interfaces/Props"
 
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
-import { RowBlock } from "../../styles/Row/Block"
-import { RowWrapper } from "../../styles/Row/Wrapper"
-import { RowStart } from "../../styles/Row/Start"
+import { MobileLabel, TableContent } from "../../styles/Mobile"
+import { RowWrapper, RowStart, RowBlock } from "../../styles/Row"
 
 export const TeamProfile = ({
   team,
@@ -26,9 +24,9 @@ export const TeamProfile = ({
         <MobileLabel>
           #<b>{index + 1}</b>
         </MobileLabel>
-        <MobileContent>
+        <TableContent>
           <Flag countryCode={team.country} large /> {team.name}
-        </MobileContent>
+        </TableContent>
       </RowBlock>
 
       <RaceColumn
@@ -40,17 +38,17 @@ export const TeamProfile = ({
 
       <RowBlock>
         <MobileLabel>Podium finishes</MobileLabel>
-        <MobileContent>{stats.podiums}</MobileContent>
+        <TableContent>{stats.podiums}</TableContent>
       </RowBlock>
 
       <RowBlock>
         <MobileLabel>Race wins</MobileLabel>
-        <MobileContent>{stats.wins}</MobileContent>
+        <TableContent>{stats.wins}</TableContent>
       </RowBlock>
 
       <RowBlock>
         <MobileLabel>Points</MobileLabel>
-        <MobileContent>{stats.points}</MobileContent>
+        <TableContent>{stats.points}</TableContent>
       </RowBlock>
     </RowWrapper>
   )
