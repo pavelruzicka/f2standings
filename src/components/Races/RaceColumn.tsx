@@ -7,6 +7,7 @@ import { IRaceColumn } from "../../interfaces/render/Race"
 
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
 import { RaceColumnWrapper, ColumnDriver } from "../../styles/Race/Column"
+import { Abbr } from "../../styles/Global"
 
 export const RaceColumn = ({
   keys,
@@ -32,11 +33,11 @@ export const RaceColumn = ({
                 <ColumnDriver key={keys ? keys[index] : driver.short}>
                   <Flag countryCode={driver.country} large />
                   {shortened ? (
-                    <abbr
+                    <Abbr
                       title={`${driver.name} ${driver.lastName} | ${team.name}`}
                     >
                       {driver.short}
-                    </abbr>
+                    </Abbr>
                   ) : (
                     `${driver.name} ${driver.lastName}`
                   )}

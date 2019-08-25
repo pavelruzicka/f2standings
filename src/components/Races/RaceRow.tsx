@@ -15,25 +15,27 @@ import {
   MobileContentReversed,
   MobileContentReversedSmall,
 } from "../../styles/Mobile"
-
-import { RowInit } from "../../styles/Row/Init"
-import { RowEnd } from "../../styles/Row/End"
 import { RowWrapper } from "../../styles/Row/Wrapper"
-import { RowLeftAligned, RowFiller } from "../../styles/Row/Misc"
-import { RaceWrapper } from "../../styles/Race/Wrapper"
+import { RowFiller } from "../../styles/Row/Misc"
 import { Circuit } from "../../styles/Race/Misc"
+import { RaceColumnWrapper } from "../../styles/Race/Column"
+import { RowBlock } from "../../styles/Row/Block"
+import { RowStart } from "../../styles/Row/Start"
 
 export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races
 
   return (
     <RowWrapper>
-      <RowInit>#{index + 1}</RowInit>
+      <RowStart>#{index + 1}</RowStart>
 
       <RaceDates feature={feature} sprint={sprint} />
 
-      <RowLeftAligned border>
-        <MobileLabel varied>R{index + 1}</MobileLabel>
+      <RowBlock alignLeft>
+        <MobileLabel varied>
+          <span>R</span>
+          <b>{index + 1}</b>
+        </MobileLabel>
 
         <MobileContentReversed>
           <Circuit>
@@ -47,16 +49,13 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
         </MobileContentReversed>
 
         <MobileContentReversedSmall>
-          <Circuit>
-            <Flag countryCode={"empty"} large />
-            {race.circuit}
-          </Circuit>
+          <Circuit>{race.circuit}</Circuit>
           <Flag countryCode={race.short} large />
           <small>
             {race.city}, {race.country}
           </small>
         </MobileContentReversedSmall>
-      </RowLeftAligned>
+      </RowBlock>
 
       <RaceDates feature={feature} sprint={sprint} mobile />
 
@@ -64,10 +63,12 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
         <>
           <RacePole feature={feature} drivers={drivers} teams={teams} />
 
-          <RaceWrapper>
+          <RowFiller />
+
+          <RaceColumnWrapper>
             <RacePartition type={RaceType.Feature} />
             <RacePartition type={RaceType.Sprint} />
-          </RaceWrapper>
+          </RaceColumnWrapper>
 
           {feature.podium && sprint.podium ? (
             <>
@@ -104,6 +105,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
             </>
           ) : null}
 
+          <RowFiller />
+
           {feature.fastest && sprint.fastest ? (
             <>
               <RaceColumn
@@ -135,18 +138,12 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
               />
             </>
           ) : (
-            <RowEnd />
+            <RowFiller />
           )}
         </>
       ) : (
-        <>
-          {[0, 1, 2, 3, 4].map(n => (
-            <RowFiller key={n} />
-          ))}
-        </>
+        <RowFiller colSpan={8} />
       )}
-
-      <RowEnd />
     </RowWrapper>
   )
 }

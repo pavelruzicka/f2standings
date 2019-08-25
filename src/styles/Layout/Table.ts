@@ -1,0 +1,62 @@
+import styled from "styled-components"
+
+import { getRule } from "../../util/viewports"
+
+export const Table = styled.table`
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+`
+
+export const TableHead = styled.th`
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 400;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 12px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+`
+
+export const TableHeadAlignRight = styled(TableHead)`
+  text-align: right;
+`
+
+export const TableHeadCentered = styled(TableHead)`
+  text-align: center;
+`
+
+export const TableHeadWrapper = styled.thead`
+  @media ${getRule("max", "laptop")} {
+    display: none;
+  }
+`
+
+export const TableRow = styled.tr`
+  transition: background-color 0.1s;
+`
+
+export const TableItem = styled.td`
+  padding: 10px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+
+  @media ${getRule("min", "laptop")} {
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+`

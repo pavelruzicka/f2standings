@@ -4,13 +4,15 @@ import { Flag } from "../Flag"
 
 import { IRaceHeaderProps } from "../../interfaces/Props"
 
+import { countries } from "../../util/countries"
+import { circuits } from "../../util/circuits"
+
+import { Abbr } from "../../styles/Global"
 import {
   LocationWrapperShortened,
   LocationWrapperExpanded,
   Circuit,
 } from "../../styles/Race/Header"
-import { countries } from "../../util/countries"
-import { circuits } from "../../util/circuits"
 
 export const RaceHeader = ({ race, index }: IRaceHeaderProps) => {
   const { location } = race
@@ -23,7 +25,7 @@ export const RaceHeader = ({ race, index }: IRaceHeaderProps) => {
         <Flag countryCode={location} desc={country} />
 
         <Circuit>
-          <abbr title={`${circuit} | ${country}`}>{location}</abbr>
+          <Abbr title={`${circuit} | ${country}`}>{location}</Abbr>
         </Circuit>
       </LocationWrapperShortened>
 

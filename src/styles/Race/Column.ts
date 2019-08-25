@@ -1,20 +1,17 @@
 import styled from "styled-components"
 import { getRule } from "../../util/viewports"
+import { TableItem } from "../Layout/Table"
 
-export const RaceColumnWrapper = styled.td<{ mobile?: boolean }>`
+export const RaceColumnWrapper = styled(TableItem)<{ mobile?: boolean }>`
   @media ${getRule("min", "laptop")} {
-    && {
-      display: ${p => (p.mobile === null || !p.mobile ? `table-cell` : `none`)};
-    }
+    display: ${p => (p.mobile === null || !p.mobile ? `table-cell` : `none`)};
   }
 
   @media ${getRule("max", "laptop")} {
-    && {
-      display: ${p => (p.mobile === null || p.mobile ? `flex` : `none`)};
-      justify-content: space-between;
-      border-bottom: none;
-      padding: 4px 6px;
-    }
+    display: ${p => (p.mobile === null || p.mobile ? `flex` : `none`)};
+    justify-content: space-between;
+    border-bottom: none;
+    padding: 4px 6px;
   }
 `
 

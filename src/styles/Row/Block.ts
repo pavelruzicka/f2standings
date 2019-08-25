@@ -1,39 +1,20 @@
 import styled from "styled-components"
 import { getRule } from "../../util/viewports"
+import { TableItem } from "../Layout/Table"
 
-export const RowBlock = styled.td`
-  && {
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  @media ${getRule("max", "laptop")} {
-    && {
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      padding: 4px 6px;
-      border-bottom: none;
-    }
-  }
-`
-
-export const RowBlockVert = styled.td`
-  font-weight: bold;
-
-  && {
-    vertical-align: middle;
-  }
+export const RowBlock = styled(TableItem)<{
+  bold?: boolean
+  alignLeft?: boolean
+}>`
+  text-align: ${p => (p.alignLeft ? "left" : "center")};
+  vertical-align: middle;
+  font-weight: ${p => (p.bold ? "500" : "initial")};
 
   @media ${getRule("max", "laptop")} {
-    && {
-      font-weight: 500;
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-      padding: 16px 6px 4px;
-      border-bottom: none;
-      border-top: 2px solid hsla(0, 0%, 0%, 0.12);
-    }
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 6px;
+    border-bottom: none;
   }
 `

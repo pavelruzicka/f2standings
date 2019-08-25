@@ -12,30 +12,23 @@ interface IProps {
 export function MainMenu({ onChartPage }: IProps) {
   return (
     <Header logo>
-      <Link
+      <MenuLink
         to={`/drivers${onChartPage ? "/chart" : ""}`}
-        style={MenuLink}
         activeStyle={{ opacity: 1 }}
         partiallyActive
       >
         Drivers
-      </Link>
-      <Link
+      </MenuLink>
+      <MenuLink
         to={`/teams${onChartPage ? "/chart" : ""}`}
-        style={MenuLink}
         activeStyle={{ opacity: 1 }}
         partiallyActive
       >
         Teams
-      </Link>
-      <Link
-        to="/races"
-        style={MenuLink}
-        activeStyle={{ opacity: 1 }}
-        partiallyActive
-      >
+      </MenuLink>
+      <MenuLink to="/races" activeStyle={{ opacity: 1 }} partiallyActive>
         Races
-      </Link>
+      </MenuLink>
     </Header>
   )
 }

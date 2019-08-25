@@ -4,7 +4,7 @@ import { RaceType } from "../../enums/RaceType"
 
 import { IRaceResultProps } from "../../interfaces/Props"
 
-import { ResultWrapper, ResultWrapperBold } from "../../styles/Race/Result"
+import { ResultWrapper } from "../../styles/Race/Result"
 
 export const RaceResult = ({ result, type }: IRaceResultProps) => {
   const typeName = RaceType[type].toLowerCase()
@@ -14,9 +14,10 @@ export const RaceResult = ({ result, type }: IRaceResultProps) => {
     return <ResultWrapper>—</ResultWrapper>
   }
 
-  if (race.position < 4) {
-    return <ResultWrapperBold active>{`P${race.position}`}</ResultWrapperBold>
-  } else {
-    return <ResultWrapper active>{`P${race.position}`}</ResultWrapper>
-  }
+  return (
+    <ResultWrapper
+      bold={race.position < 4}
+      active
+    >{`P${race.position}`}</ResultWrapper>
+  )
 }

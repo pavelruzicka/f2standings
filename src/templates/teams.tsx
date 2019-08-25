@@ -15,11 +15,13 @@ import { getFinishedRaces } from "../services/finishedRaces"
 
 import {
   TableHead,
-  TableHeadInit,
+  TableHeadAlignRight,
   TableHeadCentered,
   TableHeadWrapper,
-} from "../styles/Layout/TableHead"
-import { RookieExpl } from "../styles/RookieExpl"
+  Table,
+  TableRow,
+} from "../styles/Layout/Table"
+import { RookieExplanation } from "../styles/RookieExplanation"
 import { Tooltip } from "../styles/Tooltip"
 
 export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
@@ -40,10 +42,10 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
           />
         </>
       ) : (
-        <table className="uk-table uk-table-small">
+        <Table>
           <TableHeadWrapper>
-            <tr>
-              <TableHeadInit scope="col">Pos</TableHeadInit>
+            <TableRow>
+              <TableHeadAlignRight scope="col">Pos</TableHeadAlignRight>
               <TableHead scope="col">Team</TableHead>
               <TableHead scope="col">Drivers</TableHead>
               <TableHeadCentered scope="col">
@@ -53,7 +55,7 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
                 <Icon type={"win"} size={18} />
               </TableHeadCentered>
               <TableHeadCentered scope="col">Points</TableHeadCentered>
-            </tr>
+            </TableRow>
           </TableHeadWrapper>
 
           <tbody>
@@ -67,12 +69,12 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
               />
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
-      <RookieExpl>
+      <RookieExplanation>
         The &#42; besides a driver's name denotes them being a rookie in
         Formula&nbsp;2.
-      </RookieExpl>
+      </RookieExplanation>
     </Layout>
   )
 }

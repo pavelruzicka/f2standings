@@ -21,7 +21,10 @@ export interface IContentProps {
   index: number
 }
 
-export interface IDriverProps extends IContentProps {
+export interface IDriverProps {
+  driver: IDriver
+  team: ITeam
+  index: number
   expand: () => void
 }
 

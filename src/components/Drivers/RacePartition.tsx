@@ -8,6 +8,7 @@ import {
   TypeShortened,
   TypeExpanded,
 } from "../../styles/Race/Partition"
+import { Abbr } from "../../styles/Global"
 
 export const RacePartition = ({ type, padded }: IRacePartititon) => {
   const abbr = (full: string) =>
@@ -19,7 +20,7 @@ export const RacePartition = ({ type, padded }: IRacePartititon) => {
   return (
     <PartitionWrapper padded={padded}>
       <TypeShortened>
-        <abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</abbr>
+        <Abbr title={`${RaceType[type]} Race`}>{abbr(RaceType[type])}</Abbr>
       </TypeShortened>
       <TypeExpanded>{`${RaceType[type]} Race`}</TypeExpanded>
     </PartitionWrapper>

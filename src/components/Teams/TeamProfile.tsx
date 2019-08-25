@@ -6,12 +6,9 @@ import { Flag } from "../Flag"
 import { ITeamProfileProps } from "../../interfaces/Props"
 
 import { MobileLabel, MobileContent } from "../../styles/Mobile"
-import { RowBlock, RowBlockVert } from "../../styles/Row/Block"
-import { RowInitMobile, RowInitVert } from "../../styles/Row/Init"
-import { RowEnd } from "../../styles/Row/End"
+import { RowBlock } from "../../styles/Row/Block"
 import { RowWrapper } from "../../styles/Row/Wrapper"
-
-import { getSuffix } from "../../util/ordinalSuffix"
+import { RowStart } from "../../styles/Row/Start"
 
 export const TeamProfile = ({
   team,
@@ -23,19 +20,16 @@ export const TeamProfile = ({
 
   return (
     <RowWrapper>
-      <RowInitVert>#{index + 1}</RowInitVert>
+      <RowStart>#{index + 1}</RowStart>
 
-      <RowBlockVert>
-        <MobileLabel>Team</MobileLabel>
+      <RowBlock alignLeft bold>
+        <MobileLabel>
+          #<b>{index + 1}</b>
+        </MobileLabel>
         <MobileContent>
           <Flag countryCode={team.country} large /> {team.name}
         </MobileContent>
-      </RowBlockVert>
-
-      <RowInitMobile>
-        <MobileLabel>Championship position</MobileLabel>
-        <MobileContent>{getSuffix(index + 1)}</MobileContent>
-      </RowInitMobile>
+      </RowBlock>
 
       <RaceColumn
         occupants={team.drivers}
@@ -54,10 +48,10 @@ export const TeamProfile = ({
         <MobileContent>{stats.wins}</MobileContent>
       </RowBlock>
 
-      <RowEnd>
+      <RowBlock>
         <MobileLabel>Points</MobileLabel>
         <MobileContent>{stats.points}</MobileContent>
-      </RowEnd>
+      </RowBlock>
     </RowWrapper>
   )
 }
