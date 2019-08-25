@@ -32,7 +32,7 @@ export const DriverProfile = ({
             #<b>{index + 1}</b>
           </MobileLabel>
           <TableContent>
-            <Flag countryCode={driver.country} large /> {`${name} `}
+            <Flag countryCode={driver.country} large />
             <span>{driver.name} </span>
             <strong>{driver.lastName}</strong>
             {driver.rookie ? <RookieStatus /> : null}
