@@ -15,8 +15,6 @@ import { getFinishedRaces } from "../services/finishedRaces"
 
 import {
   TableHead,
-  TableHeadAlignRight,
-  TableHeadCentered,
   TableHeadWrapper,
   Table,
   TableRow,
@@ -45,16 +43,20 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
         <Table>
           <TableHeadWrapper>
             <TableRow>
-              <TableHeadAlignRight scope="col">Pos</TableHeadAlignRight>
+              <TableHead textAlign="right" scope="col">
+                Pos
+              </TableHead>
               <TableHead scope="col">Team</TableHead>
               <TableHead scope="col">Drivers</TableHead>
-              <TableHeadCentered scope="col">
+              <TableHead textAlign="center" scope="col">
                 <Icon type={"podium"} />
-              </TableHeadCentered>
-              <TableHeadCentered>
+              </TableHead>
+              <TableHead textAlign="center">
                 <Icon type={"win"} size={18} />
-              </TableHeadCentered>
-              <TableHeadCentered scope="col">Points</TableHeadCentered>
+              </TableHead>
+              <TableHead textAlign="center" scope="col">
+                Points
+              </TableHead>
             </TableRow>
           </TableHeadWrapper>
 

@@ -2,7 +2,7 @@ import React from "react"
 
 import { RaceDates } from "./RaceDates"
 import { RacePole } from "./RacePole"
-import { RacePartition } from "../Drivers/RacePartition"
+import { RacePartition } from "../Drivers/Races/RacePartition"
 import { RaceColumn } from "./RaceColumn"
 import { Flag } from "../Flag"
 

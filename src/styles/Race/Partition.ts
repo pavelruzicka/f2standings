@@ -12,16 +12,6 @@ export const PartitionWrapper = styled.div<{ padded?: boolean }>`
   }
 `
 
-export const TypeShortened = styled.span`
-  @media ${getRule("max", "laptop")} {
-    display: none;
-  }
-`
-
 export const TypeExpanded = styled.small`
   text-transform: uppercase;
-
-  @media ${getRule("min", "laptop")} {
-    display: none;
-  }
 `

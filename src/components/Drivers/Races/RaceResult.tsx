@@ -1,14 +1,14 @@
 import React from "react"
 
-import { RaceType } from "../../enums/RaceType"
+import { RaceType } from "../../../enums/RaceType"
 
-import { IRaceResultProps } from "../../interfaces/Props"
+import { IRaceResultProps } from "../../../interfaces/Props"
 
-import { ResultWrapper } from "../../styles/Race/Result"
+import { ResultWrapper } from "../../../styles/Race/Result"
 
 export const RaceResult = ({ result, type }: IRaceResultProps) => {
-  const typeName = RaceType[type].toLowerCase()
-  const race = typeName === "feature" ? result["feature"] : result["sprint"]
+  const typeName = RaceType[type].toLowerCase() as "feature" | "sprint"
+  const race = result[typeName]
 
   if (race === null) {
     return <ResultWrapper>—</ResultWrapper>

@@ -15,8 +15,6 @@ import { getFinishedRaces } from "../services/finishedRaces"
 
 import {
   TableHead,
-  TableHeadAlignRight,
-  TableHeadCentered,
   TableHeadWrapper,
   Table,
   TableRow,
@@ -48,16 +46,20 @@ export default ({
         <Table>
           <TableHeadWrapper>
             <TableRow>
-              <TableHeadAlignRight scope="col">Pos</TableHeadAlignRight>
+              <TableHead textAlign="right" scope="col">
+                Pos
+              </TableHead>
               <TableHead scope="col">Driver</TableHead>
               <TableHead scope="col">Team</TableHead>
-              <TableHeadCentered scope="col">
+              <TableHead textAlign="center" scope="col">
                 <Icon type={"pole"} />
-              </TableHeadCentered>
-              <TableHeadCentered scope="col">
+              </TableHead>
+              <TableHead textAlign="center" scope="col">
                 <Icon type={"fastest"} />
-              </TableHeadCentered>
-              <TableHeadCentered scope="col">Points</TableHeadCentered>
+              </TableHead>
+              <TableHead textAlign="center" scope="col">
+                Points
+              </TableHead>
             </TableRow>
           </TableHeadWrapper>
 

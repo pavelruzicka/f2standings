@@ -50,13 +50,13 @@ export const TableContent = styled.div<{ horizontal?: boolean }>`
   }
 `
 
-export const DesktopContent = styled(TableContent)`
+export const DesktopContent = styled.div`
   @media ${getRule("max", "laptop")} {
     display: none;
   }
 `
 
-export const MobileContent = styled(TableContent)`
+export const MobileContent = styled.div`
   @media ${getRule("min", "laptop")} {
     display: none;
   }

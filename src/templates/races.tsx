@@ -10,7 +10,6 @@ import { IRacesContext } from "../interfaces/Context"
 import {
   TableHeadWrapper,
   TableHead,
-  TableHeadAlignRight,
   Table,
   TableRow,
 } from "../styles/Layout/Table"
@@ -24,7 +23,9 @@ export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
       <Table>
         <TableHeadWrapper>
           <TableRow>
-            <TableHeadAlignRight scope="col">No</TableHeadAlignRight>
+            <TableHead scope="col" textAlign="right">
+              No
+            </TableHead>
             <TableHead scope="col">Race dates</TableHead>
             <TableHead scope="col">Location</TableHead>
             <TableHead scope="col">

@@ -1,13 +1,15 @@
 import React from "react"
 import { useBoolean } from "react-hanger"
 
-import { RacesRow } from "./RacesRow"
+import { RacesRow } from "./Races/RacesRow"
 
 import { IProfileProps } from "../../interfaces/Props"
-import { RowStart, RowBlock, RowWrapperClickable } from "../../styles/Row"
-import { TableContent, MobileLabel } from "../../styles/Mobile"
+
 import { Flag } from "../Flag"
 import { RookieStatus } from "./RookieStatus"
+
+import { RowStart, RowBlock, RowWrapperClickable } from "../../styles/Row"
+import { TableContent, MobileLabel } from "../../styles/Mobile"
 
 export const DriverProfile = ({
   driver,

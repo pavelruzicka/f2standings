@@ -219,7 +219,7 @@ export function drawAxis(
     .call(yAxis.tickSize(0).tickFormat(s => String(s)))
 }
 
-export function highlightLines(
+function highlightLines(
   root: d3.Selection<SVGGElement, unknown, null, undefined>,
   data: IDataEntry[],
   hovered: IDataEntry | null

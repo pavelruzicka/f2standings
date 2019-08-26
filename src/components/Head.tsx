@@ -8,7 +8,7 @@ import { ISEOProps } from "../interfaces/Props"
 export const Head = ({ description, lang = "en", title }: ISEOProps) => {
   const { site } = useStaticQuery(
     graphql`
-      query {
+      {
         site {
           siteMetadata {
             title

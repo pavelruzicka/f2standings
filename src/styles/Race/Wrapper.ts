@@ -5,9 +5,7 @@ import { TableItem } from "../Layout/Table"
 
 export const RaceWrapper = styled(TableItem)`
   @media ${getRule("max", "laptop")} {
-    && {
-      display: none;
-    }
+    display: none;
   }
 `
 export const RaceWrapperMobile = styled(TableItem)`
