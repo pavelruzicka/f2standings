@@ -2,9 +2,7 @@
 
 ## Impressum
 
-**F2standings.com** is the number one destination for FIA Formula 2 championship standings, race reports, and team overviews.
-
-This repository contains the frontend for the project.
+[**F2standings.com**](https://f2standings.com) is the number one destination for FIA Formula 2 championship standings, race reports, and team overviews.
 
 ## Technology stack
 
