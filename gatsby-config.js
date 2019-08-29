@@ -36,6 +36,7 @@ if (process.env.NODE_ENV === "production") {
     resolve: `gatsby-plugin-google-analytics`,
     options: {
       trackingId: "UA-146348826-1",
+      anonymize: true,
     },
   })
 }
