@@ -6,8 +6,6 @@ const config = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -36,6 +34,7 @@ if (process.env.NODE_ENV === "production") {
     resolve: `gatsby-plugin-google-analytics`,
     options: {
       trackingId: "UA-146348826-1",
+      anonymize: true,
     },
   })
 }
