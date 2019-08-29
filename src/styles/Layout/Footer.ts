@@ -9,11 +9,19 @@ export const Footer = styled.footer`
 
 export const FooterLine = styled.p`
   font-size: 15.5px;
-  margin-bottom: 0;
   text-align: center;
 
   @media ${getRule("max", "laptop")} {
     margin-top: 0.5rem;
+  }
+
+  &:not(:last-child) {
+    margin: 0;
+  }
+
+  :last-child {
+    font-size: 13.5px;
+    opacity: 0.85;
   }
 `
 

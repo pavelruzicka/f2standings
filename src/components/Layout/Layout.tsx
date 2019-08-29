@@ -22,6 +22,7 @@ export function Layout({ children, onChartPage }: IProps) {
           championship&nbsp;standings, race&nbsp;reports, and
           team&nbsp;overviews.
         </FooterLine>
+
         <FooterLine>
           Crafted in 2019 by{" "}
           <FooterLink
@@ -40,6 +41,18 @@ export function Layout({ children, onChartPage }: IProps) {
             Christian&nbsp;Ruigrok
           </FooterLink>
           .
+        </FooterLine>
+
+        <FooterLine>
+          Check out{" "}
+          <FooterLink
+            href="https://f2calendar.com/"
+            rel="noopener"
+            target="_blank"
+          >
+            F2calendar
+          </FooterLink>{" "}
+          as well.
         </FooterLine>
       </Footer>
     </Container>
