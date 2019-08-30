@@ -2,35 +2,48 @@ import React from "react"
 
 import { formatDate } from "../../services/formatDate"
 
-import { IRaceDatesProps } from "../../interfaces/render/Race"
+import { IRaceDatesProps, IDate } from "../../interfaces/render/Race"
 
 import { MobileLabel, TableContent } from "../../styles/Mobile"
-import { RaceWrapper, RaceWrapperMobile } from "../../styles/Race/Wrapper"
-import { RaceDate, RaceDateMobile } from "../../styles/Race/Misc"
+import { RowBlock } from "../../styles/Row"
+import { RaceWrapper } from "../../styles/Race/Wrapper"
+import { RaceDate } from "../../styles/Race/Misc"
+
+const formattedDate = ({
+  date,
+  short,
+  bold,
+}: {
+  date: IDate
+  short?: boolean
+  bold?: boolean
+}) => {
+  const result = formatDate({ date, short: short || false })
+
+  return (
+    <span>
+      {bold ? <strong>{result.day}</strong> : result.day} {result.month}
+    </span>
+  )
+}
 
 export const RaceDates = ({ feature, sprint, mobile }: IRaceDatesProps) => {
   if (mobile) {
     return (
-      <>
-        <RaceWrapperMobile>
-          <MobileLabel>Race weekend</MobileLabel>
-        </RaceWrapperMobile>
-        <RaceWrapperMobile>
-          <TableContent>
-            <RaceDateMobile>
-              {formatDate({ date: feature.date, short: true })} —{" "}
-              {formatDate({ date: sprint.date, short: true })}
-            </RaceDateMobile>
-          </TableContent>
-        </RaceWrapperMobile>
-      </>
+      <RowBlock alignLeft mobileOnly bold>
+        <MobileLabel>Races</MobileLabel>
+        <TableContent>
+          {formattedDate({ date: feature.date, short: true, bold: true })} —{" "}
+          {formattedDate({ date: sprint.date, short: true, bold: true })}
+        </TableContent>
+      </RowBlock>
     )
   }
 
   return (
     <RaceWrapper>
-      <RaceDate>{formatDate({ date: feature.date })}</RaceDate>
-      <RaceDate>{formatDate({ date: sprint.date })}</RaceDate>
+      <RaceDate>{formattedDate({ date: feature.date })}</RaceDate>
+      <RaceDate>{formattedDate({ date: sprint.date })}</RaceDate>
     </RaceWrapper>
   )
 }

@@ -6,4 +6,7 @@ export const formatDate = ({
 }: {
   date: IDate
   short?: boolean
-}) => `${date.day} ${short ? date.month.substring(0, 3) : date.month}`
+}) => ({
+  day: date.day,
+  month: short ? date.month.substring(0, 3) : date.month,
+})

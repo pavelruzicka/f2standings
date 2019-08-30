@@ -14,10 +14,12 @@ export const RowBlock = styled(TableItem)<{
   mobileOnly?: boolean
   desktopOnly?: boolean
   alignLeft?: boolean
+  bottomGap?: boolean
 }>`
   text-align: ${p => (p.alignLeft ? "left" : "center")};
   vertical-align: middle;
   font-weight: ${p => (p.bold ? "500" : "initial")};
+  margin-bottom: ${p => (p.bottomGap ? 1.25 : 0)}rem;
 
   @media ${getRule("max", "laptop")} {
     font-weight: 500;

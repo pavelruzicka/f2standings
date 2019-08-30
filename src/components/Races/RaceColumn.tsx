@@ -21,42 +21,35 @@ export const RaceColumn = ({
   const boxes = occupants.map(o => drivers.find(d => d.short === o))
 
   return (
-    <>
-      <MobileContent>
-        <RaceColumnWrapper mobile={mobile}>
-          <MobileLabel>{label || ""}</MobileLabel>
-        </RaceColumnWrapper>
-      </MobileContent>
-      <RaceColumnWrapper mobile={mobile}>
-        <TableContent horizontal>
-          {boxes.map((driver, index) => {
-            if (!driver) {
-              return null
-            }
+    <RaceColumnWrapper mobile={mobile}>
+      <TableContent horizontal>
+        {boxes.map((driver, index) => {
+          if (!driver) {
+            return null
+          }
 
-            const team = teams.find(t => t.drivers.includes(driver.short))
-            if (!team) {
-              return null
-            }
+          const team = teams.find(t => t.drivers.includes(driver.short))
+          if (!team) {
+            return null
+          }
 
-            return (
-              <ColumnDriver key={keys ? keys[index] : driver.short}>
-                <Flag countryCode={driver.country} large />
-                {shortened ? (
-                  <Abbr
-                    title={`${driver.name} ${driver.lastName} | ${team.name}`}
-                  >
-                    {driver.short}
-                  </Abbr>
-                ) : (
-                  `${driver.name} ${driver.lastName}`
-                )}
-                {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
-              </ColumnDriver>
-            )
-          })}
-        </TableContent>
-      </RaceColumnWrapper>
-    </>
+          return (
+            <ColumnDriver key={keys ? keys[index] : driver.short}>
+              <Flag countryCode={driver.country} large />
+              {shortened ? (
+                <Abbr
+                  title={`${driver.name} ${driver.lastName} | ${team.name}`}
+                >
+                  {driver.short}
+                </Abbr>
+              ) : (
+                `${driver.name} ${driver.lastName}`
+              )}
+              {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
+            </ColumnDriver>
+          )
+        })}
+      </TableContent>
+    </RaceColumnWrapper>
   )
 }
