@@ -1,14 +1,16 @@
-export const MenuLink: React.CSSProperties = {
-  color: `#000000cc`,
-  fontWeight: `bold`,
-  margin: `0 .75rem`,
-  opacity: 0.35,
-  textDecoration: `none`,
-}
+import styled from "styled-components"
+import { Link } from "gatsby"
 
-export const SubMenuLink: React.CSSProperties = {
-  ...MenuLink,
-  fontSize: "16px",
-  fontWeight: 700,
-  textTransform: "uppercase",
-}
+export const MenuLink = styled(Link)`
+  color: #000;
+  font-weight: bold;
+  margin: 0 0.75rem;
+  opacity: 0.35;
+  text-decoration: none;
+`
+
+export const SubMenuLink = styled(MenuLink)`
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+`

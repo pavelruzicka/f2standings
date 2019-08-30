@@ -10,32 +10,37 @@ import { IRacesContext } from "../interfaces/Context"
 import {
   TableHeadWrapper,
   TableHead,
-  TableHeadInit,
-} from "../styles/Layout/TableHead"
-import { RookieExpl } from "../styles/RookieExpl"
+  Table,
+  TableRow,
+} from "../styles/Layout/Table"
+import { RookieExplanation } from "../styles/RookieExplanation"
 
 export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
   return (
     <Layout onChartPage={false}>
       <Head title="Races" />
 
-      <table className="uk-table uk-table-small">
+      <Table>
         <TableHeadWrapper>
-          <tr>
-            <TableHeadInit scope="col">No</TableHeadInit>
+          <TableRow>
+            <TableHead scope="col" textAlign="right">
+              No
+            </TableHead>
             <TableHead scope="col">Race dates</TableHead>
             <TableHead scope="col">Location</TableHead>
             <TableHead scope="col">
               <Icon type={"pole"} singular />
             </TableHead>
             <TableHead scope="col" />
+            <TableHead scope="col" />
             <TableHead scope="col" colSpan={3}>
               Podium
             </TableHead>
+            <TableHead scope="col" />
             <TableHead scope="col">
               <Icon type={"fastest"} singular />
             </TableHead>
-          </tr>
+          </TableRow>
         </TableHeadWrapper>
 
         <tbody>
@@ -49,12 +54,12 @@ export default ({ pageContext: { drivers, teams, races } }: IRacesContext) => {
             />
           ))}
         </tbody>
-      </table>
+      </Table>
 
-      <RookieExpl>
+      <RookieExplanation>
         The &#42; besides a driver's name denotes them being a rookie in Formula
         2.
-      </RookieExpl>
+      </RookieExplanation>
     </Layout>
   )
 }

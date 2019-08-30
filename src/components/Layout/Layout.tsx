@@ -3,7 +3,7 @@ import React from "react"
 import { MainMenu } from "./MainMenu"
 
 import { Footer, FooterLine, FooterLink } from "../../styles/Layout/Footer"
-import "../../styles/layout.css"
+import { GlobalStyle, Container } from "../../styles/Global"
 
 interface IProps {
   children: React.ReactNode
@@ -12,41 +12,49 @@ interface IProps {
 
 export function Layout({ children, onChartPage }: IProps) {
   return (
-    <div className="uk-container">
+    <Container>
+      <GlobalStyle />
       <MainMenu onChartPage={onChartPage} />
-      <div
-        style={{
-          margin: `0 auto`,
-        }}
-      >
-        <main>{children}</main>
-        <Footer>
-          <FooterLine>
-            The number one destination for FIA&nbsp;Formula&nbsp;2
-            championship&nbsp;standings, race&nbsp;reports, and
-            team&nbsp;overviews.
-          </FooterLine>
-          <FooterLine>
-            Crafted in 2019 by{" "}
-            <FooterLink
-              href="https://pavelruzicka.com/"
-              rel="noopener"
-              target="_blank"
-            >
-              Pavel&nbsp;Růžička
-            </FooterLink>
-            &nbsp;and&nbsp;
-            <FooterLink
-              href="https://ruigrok.info/"
-              rel="noopener"
-              target="_blank"
-            >
-              Christian&nbsp;Ruigrok
-            </FooterLink>
-            .
-          </FooterLine>
-        </Footer>
-      </div>
-    </div>
+      <main>{children}</main>
+      <Footer>
+        <FooterLine>
+          The number one destination for FIA&nbsp;Formula&nbsp;2
+          championship&nbsp;standings, race&nbsp;reports, and
+          team&nbsp;overviews.
+        </FooterLine>
+
+        <FooterLine>
+          Crafted in 2019 by{" "}
+          <FooterLink
+            href="https://pavelruzicka.com/"
+            rel="noopener"
+            target="_blank"
+          >
+            Pavel&nbsp;Růžička
+          </FooterLink>
+          &nbsp;and&nbsp;
+          <FooterLink
+            href="https://ruigrok.info/"
+            rel="noopener"
+            target="_blank"
+          >
+            Christian&nbsp;Ruigrok
+          </FooterLink>
+          .
+        </FooterLine>
+
+        <FooterLine>
+          Check out{" "}
+          <FooterLink
+            href="https://f2calendar.com/"
+            rel="noopener"
+            target="_blank"
+          >
+            F2calendar
+          </FooterLink>{" "}
+          as well.
+        </FooterLine>
+      </Footer>
+    </Container>
   )
 }

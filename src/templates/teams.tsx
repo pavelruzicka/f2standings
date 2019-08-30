@@ -15,11 +15,12 @@ import { getFinishedRaces } from "../services/finishedRaces"
 
 import {
   TableHead,
-  TableHeadInit,
-  TableHeadCentered,
   TableHeadWrapper,
-} from "../styles/Layout/TableHead"
-import { RookieExpl } from "../styles/RookieExpl"
+  Table,
+  TableRow,
+  TableFooter,
+} from "../styles/Layout/Table"
+import { RookieExplanation } from "../styles/RookieExplanation"
 import { Tooltip } from "../styles/Tooltip"
 
 export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
@@ -40,39 +41,46 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
           />
         </>
       ) : (
-        <table className="uk-table uk-table-small">
-          <TableHeadWrapper>
-            <tr>
-              <TableHeadInit scope="col">Pos</TableHeadInit>
-              <TableHead scope="col">Team</TableHead>
-              <TableHead scope="col">Drivers</TableHead>
-              <TableHeadCentered scope="col">
-                <Icon type={"podium"} />
-              </TableHeadCentered>
-              <TableHeadCentered>
-                <Icon type={"win"} size={18} />
-              </TableHeadCentered>
-              <TableHeadCentered scope="col">Points</TableHeadCentered>
-            </tr>
-          </TableHeadWrapper>
+        <>
+          <Table>
+            <TableHeadWrapper>
+              <TableRow>
+                <TableHead textAlign="right" scope="col">
+                  Pos
+                </TableHead>
+                <TableHead scope="col">Team</TableHead>
+                <TableHead scope="col">Drivers</TableHead>
+                <TableHead textAlign="center" scope="col">
+                  <Icon type={"podium"} />
+                </TableHead>
+                <TableHead textAlign="center">
+                  <Icon type={"win"} size={18} />
+                </TableHead>
+                <TableHead textAlign="center" scope="col">
+                  Points
+                </TableHead>
+              </TableRow>
+            </TableHeadWrapper>
 
-          <tbody>
-            {sortedTeams.map((team, index) => (
-              <TeamProfile
-                team={team}
-                teams={teams}
-                drivers={drivers}
-                index={index}
-                key={team.short}
-              />
-            ))}
-          </tbody>
-        </table>
+            <tbody>
+              {sortedTeams.map((team, index) => (
+                <TeamProfile
+                  team={team}
+                  teams={teams}
+                  drivers={drivers}
+                  index={index}
+                  key={team.short}
+                />
+              ))}
+            </tbody>
+          </Table>
+          <TableFooter />
+        </>
       )}
-      <RookieExpl>
+      <RookieExplanation>
         The &#42; besides a driver's name denotes them being a rookie in
         Formula&nbsp;2.
-      </RookieExpl>
+      </RookieExplanation>
     </Layout>
   )
 }

@@ -8,10 +8,6 @@ export const HeaderWrapper = styled.header<{ subStyling: boolean }>`
   align-items: center;
   margin: 1rem auto ${p => (p.subStyling ? 1 : 2.5)}rem;
 
-  @media ${getRule("max", "laptop")} {
-    flex-direction: column;
-  }
-
   h3 {
     margin: 0;
   }
@@ -30,9 +26,17 @@ export const HeaderWrapper = styled.header<{ subStyling: boolean }>`
       margin-left: auto;
     }
   }
+
+  @media ${getRule("max", "laptop")} {
+    flex-flow: column nowrap;
+  }
 `
 
 export const ImageWrapper = styled.div`
   width: 60px;
   margin: 1rem 0.5rem;
+
+  svg {
+    vertical-align: middle;
+  }
 `

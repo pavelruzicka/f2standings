@@ -2,40 +2,46 @@ import React from "react"
 
 import { RaceDates } from "./RaceDates"
 import { RacePole } from "./RacePole"
-import { RacePartition } from "../Drivers/RacePartition"
+import { RacePartition } from "../Drivers/Races/RacePartition"
 import { RaceColumn } from "./RaceColumn"
+import { ResultRow } from "./ResultRow"
 import { Flag } from "../Flag"
 
 import { RaceType } from "../../enums/RaceType"
 
 import { IRaceRowProps } from "../../interfaces/Props"
 
-import {
-  MobileLabel,
-  MobileContentReversed,
-  MobileContentReversedSmall,
-} from "../../styles/Mobile"
-
-import { RowInit } from "../../styles/Row/Init"
-import { RowEnd } from "../../styles/Row/End"
-import { RowWrapper } from "../../styles/Row/Wrapper"
-import { RowLeftAligned, RowFiller } from "../../styles/Row/Misc"
-import { RaceWrapper } from "../../styles/Race/Wrapper"
+import { TableContent, MobileLabel, DesktopContent } from "../../styles/Mobile"
+import { Results, ResultColumn, ResultHeader } from "../../styles/Results"
+import { RowWrapper, RowFiller, RowStart, RowBlock } from "../../styles/Row"
+import { EntityPos, EntityName } from "../../styles/Entity"
 import { Circuit } from "../../styles/Race/Misc"
+import { RaceColumnWrapper } from "../../styles/Race/Column"
 
 export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
   const { feature, sprint } = race.races
 
   return (
     <RowWrapper>
-      <RowInit>#{index + 1}</RowInit>
+      <RowStart>#{index + 1}</RowStart>
 
       <RaceDates feature={feature} sprint={sprint} />
 
-      <RowLeftAligned border>
-        <MobileLabel varied>R{index + 1}</MobileLabel>
+      <RowBlock mobileOnly alignLeft bold>
+        <MobileLabel>
+          <EntityPos>{index + 1}</EntityPos>
+        </MobileLabel>
+        <TableContent>
+          <EntityName>
+            <Flag countryCode={race.short} large /> {race.country}
+          </EntityName>
 
-        <MobileContentReversed>
+          <small>{race.circuit}</small>
+        </TableContent>
+      </RowBlock>
+
+      <RowBlock desktopOnly alignLeft>
+        <DesktopContent>
           <Circuit>
             <Flag countryCode={race.short} large />
             {race.circuit}
@@ -44,19 +50,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           <small>
             {race.city}, {race.country}
           </small>
-        </MobileContentReversed>
-
-        <MobileContentReversedSmall>
-          <Circuit>
-            <Flag countryCode={"empty"} large />
-            {race.circuit}
-          </Circuit>
-          <Flag countryCode={race.short} large />
-          <small>
-            {race.city}, {race.country}
-          </small>
-        </MobileContentReversedSmall>
-      </RowLeftAligned>
+        </DesktopContent>
+      </RowBlock>
 
       <RaceDates feature={feature} sprint={sprint} mobile />
 
@@ -64,33 +59,71 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
         <>
           <RacePole feature={feature} drivers={drivers} teams={teams} />
 
-          <RaceWrapper>
+          <RowFiller />
+
+          <RaceColumnWrapper>
             <RacePartition type={RaceType.Feature} />
             <RacePartition type={RaceType.Sprint} />
-          </RaceWrapper>
+          </RaceColumnWrapper>
+
+          <Results>
+            <ResultColumn>
+              <ResultHeader>Feature race</ResultHeader>
+
+              <ResultRow
+                icon={"p1"}
+                drivers={drivers}
+                driver={feature.podium[0]}
+              />
+              <ResultRow
+                icon={"p2"}
+                drivers={drivers}
+                driver={feature.podium[1]}
+              />
+              <ResultRow
+                icon={"p3"}
+                drivers={drivers}
+                driver={feature.podium[2]}
+              />
+              {feature.fastest ? (
+                <ResultRow
+                  icon={"fastest"}
+                  drivers={drivers}
+                  driver={feature.fastest}
+                />
+              ) : null}
+            </ResultColumn>
+
+            <ResultColumn second>
+              <ResultHeader>Sprint race</ResultHeader>
+
+              <ResultRow
+                icon={"p1"}
+                drivers={drivers}
+                driver={sprint.podium[0]}
+              />
+              <ResultRow
+                icon={"p2"}
+                drivers={drivers}
+                driver={sprint.podium[1]}
+              />
+              <ResultRow
+                icon={"p3"}
+                drivers={drivers}
+                driver={sprint.podium[2]}
+              />
+              {sprint.fastest ? (
+                <ResultRow
+                  icon={"fastest"}
+                  drivers={drivers}
+                  driver={sprint.fastest}
+                />
+              ) : null}
+            </ResultColumn>
+          </Results>
 
           {feature.podium && sprint.podium ? (
             <>
-              <RaceColumn
-                keys={["fp1", "fp2", "fp3"]}
-                occupants={[0, 1, 2].map(n => feature.podium[n])}
-                drivers={drivers}
-                teams={teams}
-                label={"Feature race podium"}
-                mobile
-                shortened
-              />
-
-              <RaceColumn
-                keys={["sp1", "sp2", "sp3"]}
-                occupants={[0, 1, 2].map(n => sprint.podium[n])}
-                drivers={drivers}
-                teams={teams}
-                label={"Sprint race podium"}
-                mobile
-                shortened
-              />
-
               {[0, 1, 2].map(n => (
                 <RaceColumn
                   keys={["feature", "sprint"]}
@@ -104,6 +137,8 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
             </>
           ) : null}
 
+          <RowFiller />
+
           {feature.fastest && sprint.fastest ? (
             <>
               <RaceColumn
@@ -113,40 +148,14 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 teams={teams}
                 shortened
               />
-
-              <RaceColumn
-                keys={["feature"]}
-                occupants={[feature.fastest]}
-                drivers={drivers}
-                teams={teams}
-                label={"Fastest in feature"}
-                mobile
-                shortened
-              />
-
-              <RaceColumn
-                keys={["sprint"]}
-                occupants={[sprint.fastest]}
-                drivers={drivers}
-                teams={teams}
-                label={"Fastest in sprint"}
-                mobile
-                shortened
-              />
             </>
           ) : (
-            <RowEnd />
+            <RowFiller />
           )}
         </>
       ) : (
-        <>
-          {[0, 1, 2, 3, 4].map(n => (
-            <RowFiller key={n} />
-          ))}
-        </>
+        <RowFiller colSpan={8} />
       )}
-
-      <RowEnd />
     </RowWrapper>
   )
 }

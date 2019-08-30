@@ -10,12 +10,11 @@ export const FlagElement = styled.img<{
   margin: 0 ${p => (p.space ? 0.5 : 0)}rem 0 0;
   position: ${p => (p.large ? "relative" : "static")};
   width: ${p => (p.large ? 24 : 21)}px;
+  vertical-align: middle;
   user-select: none;
 
   @media ${getRule("max", "laptopM")} {
-    && {
-      width: 18px;
-      margin: 0 ${p => (p.space ? 0.35 : 0)}rem 0 0;
-    }
+    width: 21px;
+    margin: 0 ${p => (p.space ? 0.35 : 0)}rem 0 0;
   }
 `

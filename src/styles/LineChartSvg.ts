@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const LineChartSvg = styled.svg`
   width: 100%;
+  height: auto;
 
   text {
     font-family: "Red Hat Display", sans-serif;

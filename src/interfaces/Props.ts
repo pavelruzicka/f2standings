@@ -15,16 +15,6 @@ export interface IProfileProps {
   open: number[]
 }
 
-export interface IContentProps {
-  driver: IDriver
-  team: ITeam
-  index: number
-}
-
-export interface IDriverProps extends IContentProps {
-  expand: () => void
-}
-
 export interface IRaceHeaderProps {
   race: IResult
   index: number

@@ -7,6 +7,7 @@ export interface IDate {
   day: number
   month: string
 }
+
 interface IRaceBase {
   date: IDate
 }

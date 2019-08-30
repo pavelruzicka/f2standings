@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import { Header } from "../Header"
 
@@ -12,16 +11,12 @@ interface IProps {
 export const SubMenu = ({ origin }: IProps) => {
   return (
     <Header subStyling>
-      <Link to={`/${origin}`} style={SubMenuLink} activeStyle={{ opacity: 1 }}>
+      <SubMenuLink to={`/${origin}`} activeStyle={{ opacity: 1 }}>
         Table
-      </Link>
-      <Link
-        to={`/${origin}/chart`}
-        style={SubMenuLink}
-        activeStyle={{ opacity: 1 }}
-      >
+      </SubMenuLink>
+      <SubMenuLink to={`/${origin}/chart`} activeStyle={{ opacity: 1 }}>
         Chart
-      </Link>
+      </SubMenuLink>
     </Header>
   )
 }

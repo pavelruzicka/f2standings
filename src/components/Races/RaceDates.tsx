@@ -1,29 +1,49 @@
 import React from "react"
 
-import { IRaceDatesProps } from "../../interfaces/render/Race"
-
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
-import { RaceWrapper, RaceWrapperMobile } from "../../styles/Race/Wrapper"
-
 import { formatDate } from "../../services/formatDate"
 
-export const RaceDates = ({ feature, sprint, mobile }: IRaceDatesProps) => {
+import { IRaceDatesProps, IDate } from "../../interfaces/render/Race"
+
+import { MobileLabel, TableContent } from "../../styles/Mobile"
+import { RowBlock } from "../../styles/Row"
+import { RaceWrapper } from "../../styles/Race/Wrapper"
+import { RaceDate } from "../../styles/Race/Misc"
+
+const formattedDate = ({
+  date,
+  short,
+  bold,
+}: {
+  date: IDate
+  short?: boolean
+  bold?: boolean
+}) => {
+  const result = formatDate({ date, short: short || false })
+
   return (
-    <>
-      {mobile ? (
-        <RaceWrapperMobile>
-          <MobileLabel>Race weekend</MobileLabel>
-          <MobileContent>
-            {formatDate({ date: feature.date, short: true })} —{" "}
-            {formatDate({ date: sprint.date, short: true })}
-          </MobileContent>
-        </RaceWrapperMobile>
-      ) : (
-        <RaceWrapper>
-          <div>{formatDate({ date: feature.date })}</div>
-          <div>{formatDate({ date: sprint.date })}</div>
-        </RaceWrapper>
-      )}
-    </>
+    <span>
+      {bold ? <strong>{result.day}</strong> : result.day} {result.month}
+    </span>
+  )
+}
+
+export const RaceDates = ({ feature, sprint, mobile }: IRaceDatesProps) => {
+  if (mobile) {
+    return (
+      <RowBlock alignLeft mobileOnly bold>
+        <MobileLabel>Races</MobileLabel>
+        <TableContent>
+          {formattedDate({ date: feature.date, short: true, bold: true })} —{" "}
+          {formattedDate({ date: sprint.date, short: true, bold: true })}
+        </TableContent>
+      </RowBlock>
+    )
+  }
+
+  return (
+    <RaceWrapper>
+      <RaceDate>{formattedDate({ date: feature.date })}</RaceDate>
+      <RaceDate>{formattedDate({ date: sprint.date })}</RaceDate>
+    </RaceWrapper>
   )
 }

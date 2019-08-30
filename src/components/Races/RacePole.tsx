@@ -4,39 +4,56 @@ import { Flag } from "../Flag"
 
 import { IPoleProps } from "../../interfaces/Props"
 
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
-import { RowLeftAligned } from "../../styles/Row/Misc"
+import { TableContent, MobileLabel, DesktopContent } from "../../styles/Mobile"
 import { Driver } from "../../styles/Race/Column"
+import { EntityName } from "../../styles/Entity"
+import { Abbr } from "../../styles/Global"
+import { TableItem } from "../../styles/Layout/Table"
+import { RowBlock } from "../../styles/Row"
+import { RookieStatus } from "../Drivers/RookieStatus"
 
 export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
   const driver = drivers.find(d => d.short === feature.pole)
 
   if (!feature.pole || !driver) {
-    return <td />
+    return <TableItem />
   }
 
   const team = teams.find(t => t.drivers.includes(driver.short))
+  if (!team) {
+    return <TableItem />
+  }
 
-  if (team) {
-    return (
-      <RowLeftAligned>
+  return (
+    <>
+      <RowBlock alignLeft mobileOnly bold bottomGap>
         <MobileLabel>Pole position</MobileLabel>
-        <MobileContent>
-          <Driver>
+        <TableContent>
+          <EntityName>
+            <Flag countryCode={driver.country} large />
+            {driver.short}
+            {driver.rookie ? <RookieStatus /> : null}
+          </EntityName>
+          <small>{feature.poleTime}</small>
+        </TableContent>
+      </RowBlock>
+
+      <RowBlock alignLeft desktopOnly>
+        <Driver>
+          <DesktopContent>
             <div>
               <Flag countryCode={driver.country} large />
-              <abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
+              <Abbr title={`${driver.name} ${driver.lastName} | ${team.name}`}>
                 {driver.short}
-              </abbr>
+              </Abbr>
+              {driver.rookie ? <RookieStatus /> : null}
             </div>
             <div>
               <small>{feature.poleTime}</small>
             </div>
-          </Driver>
-        </MobileContent>
-      </RowLeftAligned>
-    )
-  }
-
-  return <td />
+          </DesktopContent>
+        </Driver>
+      </RowBlock>
+    </>
+  )
 }

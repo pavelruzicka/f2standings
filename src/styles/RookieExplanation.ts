@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const RookieExpl = styled.div`
+export const RookieExplanation = styled.div`
   font-size: 13.5px;
   text-align: right;
   opacity: 0.85;

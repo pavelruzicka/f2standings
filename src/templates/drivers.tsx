@@ -15,11 +15,12 @@ import { getFinishedRaces } from "../services/finishedRaces"
 
 import {
   TableHead,
-  TableHeadInit,
-  TableHeadCentered,
   TableHeadWrapper,
-} from "../styles/Layout/TableHead"
-import { RookieExpl } from "../styles/RookieExpl"
+  Table,
+  TableRow,
+  TableFooter,
+} from "../styles/Layout/Table"
+import { RookieExplanation } from "../styles/RookieExplanation"
 import { Tooltip } from "../styles/Tooltip"
 
 export default ({
@@ -43,40 +44,47 @@ export default ({
           />
         </>
       ) : (
-        <table className="uk-table uk-table-small">
-          <TableHeadWrapper>
-            <tr>
-              <TableHeadInit scope="col">Pos</TableHeadInit>
-              <TableHead scope="col">Driver</TableHead>
-              <TableHead scope="col">Team</TableHead>
-              <TableHeadCentered scope="col">
-                <Icon type={"pole"} />
-              </TableHeadCentered>
-              <TableHeadCentered scope="col">
-                <Icon type={"fastest"} />
-              </TableHeadCentered>
-              <TableHeadCentered scope="col">Points</TableHeadCentered>
-            </tr>
-          </TableHeadWrapper>
+        <>
+          <Table>
+            <TableHeadWrapper>
+              <TableRow>
+                <TableHead textAlign="right" scope="col">
+                  Pos
+                </TableHead>
+                <TableHead scope="col">Driver</TableHead>
+                <TableHead scope="col">Team</TableHead>
+                <TableHead textAlign="center" scope="col">
+                  <Icon type={"pole"} />
+                </TableHead>
+                <TableHead textAlign="center" scope="col">
+                  <Icon type={"fastest"} />
+                </TableHead>
+                <TableHead textAlign="center" scope="col">
+                  Points
+                </TableHead>
+              </TableRow>
+            </TableHeadWrapper>
 
-          <tbody>
-            {sortedDrivers.map((driver, index) => (
-              <DriverProfile
-                driver={driver}
-                teams={teams}
-                races={races}
-                index={index}
-                open={open}
-                key={driver.short}
-              />
-            ))}
-          </tbody>
-        </table>
+            <tbody>
+              {sortedDrivers.map((driver, index) => (
+                <DriverProfile
+                  driver={driver}
+                  teams={teams}
+                  races={races}
+                  index={index}
+                  open={open}
+                  key={driver.short}
+                />
+              ))}
+            </tbody>
+          </Table>
+          <TableFooter />
+        </>
       )}
-      <RookieExpl>
+      <RookieExplanation>
         The &#42; besides a driver's name denotes them being a rookie in
         Formula&nbsp;2.
-      </RookieExpl>
+      </RookieExplanation>
     </Layout>
   )
 }

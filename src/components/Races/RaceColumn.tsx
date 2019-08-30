@@ -5,15 +5,15 @@ import { Flag } from "../Flag"
 
 import { IRaceColumn } from "../../interfaces/render/Race"
 
-import { MobileLabel, MobileContent } from "../../styles/Mobile"
+import { TableContent } from "../../styles/Mobile"
 import { RaceColumnWrapper, ColumnDriver } from "../../styles/Race/Column"
+import { Abbr } from "../../styles/Global"
 
 export const RaceColumn = ({
   keys,
   occupants,
   drivers,
   teams,
-  label,
   mobile = false,
   shortened = false,
 }: IRaceColumn) => {
@@ -21,32 +21,34 @@ export const RaceColumn = ({
 
   return (
     <RaceColumnWrapper mobile={mobile}>
-      <MobileLabel>{label || ``}</MobileLabel>
-      <MobileContent>
+      <TableContent horizontal>
         {boxes.map((driver, index) => {
-          if (driver) {
-            const team = teams.find(t => t.drivers.includes(driver.short))
-
-            if (team) {
-              return (
-                <ColumnDriver key={keys ? keys[index] : driver.short}>
-                  <Flag countryCode={driver.country} large />
-                  {shortened ? (
-                    <abbr
-                      title={`${driver.name} ${driver.lastName} | ${team.name}`}
-                    >
-                      {driver.short}
-                    </abbr>
-                  ) : (
-                    `${driver.name} ${driver.lastName}`
-                  )}
-                  {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
-                </ColumnDriver>
-              )
-            }
+          if (!driver) {
+            return null
           }
+
+          const team = teams.find(t => t.drivers.includes(driver.short))
+          if (!team) {
+            return null
+          }
+
+          return (
+            <ColumnDriver key={keys ? keys[index] : driver.short}>
+              <Flag countryCode={driver.country} large />
+              {shortened ? (
+                <Abbr
+                  title={`${driver.name} ${driver.lastName} | ${team.name}`}
+                >
+                  {driver.short}
+                </Abbr>
+              ) : (
+                `${driver.name} ${driver.lastName}`
+              )}
+              {driver.rookie ? <RookieStatus noWidth={shortened} /> : null}
+            </ColumnDriver>
+          )
         })}
-      </MobileContent>
+      </TableContent>
     </RaceColumnWrapper>
   )
 }

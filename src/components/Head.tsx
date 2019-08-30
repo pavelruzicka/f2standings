@@ -8,7 +8,7 @@ import { ISEOProps } from "../interfaces/Props"
 export const Head = ({ description, lang = "en", title }: ISEOProps) => {
   const { site } = useStaticQuery(
     graphql`
-      query {
+      {
         site {
           siteMetadata {
             title
@@ -55,6 +55,11 @@ export const Head = ({ description, lang = "en", title }: ISEOProps) => {
         { name: `twitter:title`, content: "F2standings.com" },
         { name: `twitter:description`, content: metaDescription },
       ]}
-    />
+    >
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Red+Hat+Display:400,500,700&display=swap"
+      />
+    </Helmet>
   )
 }
