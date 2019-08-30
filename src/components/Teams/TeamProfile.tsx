@@ -27,11 +27,13 @@ const MobileDriver = ({
   drivers: IDriverBase[]
   driver: string
 }) => {
-  const { country, rookie } = drivers.find(d => d.short === driver)!
+  const driverInfo = drivers.find(d => d.short === driver)
 
-  if (!country) {
+  if (!driverInfo) {
     return null
   }
+
+  const { country, rookie } = driverInfo
 
   return (
     <div>

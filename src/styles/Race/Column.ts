@@ -27,13 +27,3 @@ export const ColumnDriver = styled(Driver)`
     margin-bottom: 4px;
   }
 `
-
-export const PoleTime = styled.span`
-  margin-left: 1rem;
-`
-
-export const PoleSitter = styled.span`
-  display: inline-block;
-  font-weight: 500;
-  margin-right: 1rem;
-`

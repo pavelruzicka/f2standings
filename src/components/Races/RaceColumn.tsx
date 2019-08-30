@@ -5,7 +5,7 @@ import { Flag } from "../Flag"
 
 import { IRaceColumn } from "../../interfaces/render/Race"
 
-import { MobileLabel, TableContent, MobileContent } from "../../styles/Mobile"
+import { TableContent } from "../../styles/Mobile"
 import { RaceColumnWrapper, ColumnDriver } from "../../styles/Race/Column"
 import { Abbr } from "../../styles/Global"
 
@@ -14,7 +14,6 @@ export const RaceColumn = ({
   occupants,
   drivers,
   teams,
-  label,
   mobile = false,
   shortened = false,
 }: IRaceColumn) => {

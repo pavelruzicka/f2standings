@@ -7,7 +7,3 @@ export const Circuit = styled.div`
 export const RaceDate = styled.div`
   font-size: 0.9rem;
 `
-
-export const RaceDateMobile = styled.span`
-  font-weight: 500;
-`
