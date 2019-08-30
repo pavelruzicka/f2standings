@@ -44,3 +44,16 @@ export const TableHeadWrapper = styled.thead`
 export const TableRow = styled.tr`
   transition: background-color 0.1s;
 `
+
+export const TableFooter = styled.hr`
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 1em 0;
+  padding: 0;
+
+  @media ${getRule("min", "laptop")} {
+    display: none;
+  }
+`

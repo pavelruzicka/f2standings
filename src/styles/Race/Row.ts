@@ -12,7 +12,7 @@ export const RaceWrapper = styled.div<{ upcoming?: boolean }>`
     height: 80px;
 
     &:not(:last-child) {
-      border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
+      border-top: 1px solid hsla(0, 0%, 0%, 0.12);
     }
   }
 `

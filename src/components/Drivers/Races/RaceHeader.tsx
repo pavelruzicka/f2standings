@@ -26,7 +26,7 @@ export const RaceHeader = ({ race, index }: IRaceHeaderProps) => {
         <LocationWrapperExpanded>
           <Circuit>
             <span>
-              Round {index + 1} — {country}
+              R{index + 1}: {country}
             </span>
           </Circuit>
 

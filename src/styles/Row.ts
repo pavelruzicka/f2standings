@@ -1,16 +1,18 @@
 import styled from "styled-components"
+
 import { TableItem, TableRow } from "./Layout/Table"
 import { getRule } from "../util/viewports"
 
 export const RowBase = styled(TableItem)<{ short: string }>`
   display: ${p => (p.short === "DOE" ? "none" : "table-cell")};
   padding: 0;
-  background: #f3f2f2;
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
 `
 
 export const RowBlock = styled(TableItem)<{
   bold?: boolean
+  mobileOnly?: boolean
+  desktopOnly?: boolean
   alignLeft?: boolean
 }>`
   text-align: ${p => (p.alignLeft ? "left" : "center")};
@@ -19,10 +21,15 @@ export const RowBlock = styled(TableItem)<{
 
   @media ${getRule("max", "laptop")} {
     font-weight: 500;
-    display: flex;
+    display: ${p => (p.desktopOnly ? "none" : "flex")};
     justify-content: space-between;
+    align-items: flex-start;
     padding: 4px 6px;
     border-bottom: none;
+  }
+
+  @media ${getRule("min", "laptop")} {
+    display: ${p => (p.mobileOnly ? "none" : "table-cell")};
   }
 `
 
@@ -67,10 +74,6 @@ export const RowWrapperClickable = styled(RowWrapper)<{ short: string }>`
   }
 
   cursor: pointer;
-
-  &:hover {
-    background-color: #eff2f7;
-  }
 `
 export const RowFiller = styled(TableItem)`
   @media ${getRule("max", "laptop")} {

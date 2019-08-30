@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 import { getRule } from "../util/viewports"
 import { ColumnDriver } from "./Race/Column"
+import { FlagElement } from "./Flag"
 
 export const MobileLabel = styled.span<{ varied?: boolean }>`
   display: block;
@@ -10,7 +11,6 @@ export const MobileLabel = styled.span<{ varied?: boolean }>`
   font-weight: ${p => (p.varied ? "bold" : "normal")};
   color: ${p => (p.varied ? "black" : "#565656")};
   text-transform: uppercase;
-  margin-top: 0.8rem;
 
   span {
     font-size: 0.875rem;
@@ -28,7 +28,10 @@ export const MobileLabel = styled.span<{ varied?: boolean }>`
   }
 `
 
-export const TableContent = styled.div<{ horizontal?: boolean }>`
+export const TableContent = styled.div<{
+  horizontal?: boolean
+  driver?: boolean
+}>`
   vertical-align: middle;
 
   @media ${getRule("max", "laptop")} {
@@ -46,6 +49,10 @@ export const TableContent = styled.div<{ horizontal?: boolean }>`
       &:last-child {
         margin-right: 0;
       }
+    }
+
+    ${FlagElement} {
+      display: ${p => (p.driver ? "none" : "inline")};
     }
   }
 `

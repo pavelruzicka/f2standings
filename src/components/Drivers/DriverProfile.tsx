@@ -6,10 +6,21 @@ import { RacesRow } from "./Races/RacesRow"
 import { IProfileProps } from "../../interfaces/Props"
 
 import { Flag } from "../Flag"
+import { Icon } from "../Icon"
 import { RookieStatus } from "./RookieStatus"
+
+import { countries } from "../../util/countries"
 
 import { RowStart, RowBlock, RowWrapperClickable } from "../../styles/Row"
 import { TableContent, MobileLabel } from "../../styles/Mobile"
+import { DriverPos, DriverName } from "../../styles/Driver"
+import {
+  StatsBox,
+  StatsBlock,
+  StatHeading,
+  StatValue,
+} from "../../styles/Stats"
+import { ExpandHelper } from "../../styles/ExpandHelper"
 
 export const DriverProfile = ({
   driver,
@@ -19,6 +30,7 @@ export const DriverProfile = ({
 }: IProfileProps) => {
   const racesVisible = useBoolean(open.includes(index))
 
+  const country = countries[driver.country]
   const team = teams.find(t => t.short === driver.team)
   if (!team) {
     return null
@@ -31,13 +43,20 @@ export const DriverProfile = ({
 
         <RowBlock alignLeft>
           <MobileLabel>
-            #<b>{index + 1}</b>
+            <DriverPos>{index + 1}</DriverPos>
           </MobileLabel>
-          <TableContent>
+          <TableContent driver>
             <Flag countryCode={driver.country} large />
-            <span>{driver.name} </span>
+            <DriverName>{driver.name} </DriverName>
             <strong>{driver.lastName}</strong>
             {driver.rookie ? <RookieStatus /> : null}
+          </TableContent>
+        </RowBlock>
+
+        <RowBlock alignLeft mobileOnly bold>
+          <MobileLabel>Country</MobileLabel>
+          <TableContent>
+            <Flag countryCode={driver.country} large /> {country}
           </TableContent>
         </RowBlock>
 
@@ -48,20 +67,42 @@ export const DriverProfile = ({
           </TableContent>
         </RowBlock>
 
-        <RowBlock>
-          <MobileLabel>Pole positions</MobileLabel>
+        <StatsBox>
+          <StatsBlock>
+            <StatHeading>
+              <Icon type={"pole"} />
+            </StatHeading>
+            <StatValue>{driver.stats.poles}</StatValue>
+          </StatsBlock>
+
+          <StatsBlock>
+            <StatHeading>
+              <Icon type={"fastest"} />
+            </StatHeading>
+            <StatValue>{driver.stats.fastest}</StatValue>
+          </StatsBlock>
+
+          <StatsBlock>
+            <StatHeading>Pts</StatHeading>
+            <StatValue>{driver.stats.points}</StatValue>
+          </StatsBlock>
+        </StatsBox>
+
+        <RowBlock desktopOnly>
           <TableContent>{driver.stats.poles}</TableContent>
         </RowBlock>
 
-        <RowBlock>
-          <MobileLabel>Fastest laps</MobileLabel>
+        <RowBlock desktopOnly>
           <TableContent>{driver.stats.fastest}</TableContent>
         </RowBlock>
 
-        <RowBlock>
-          <MobileLabel>Points</MobileLabel>
+        <RowBlock desktopOnly>
           <TableContent>{driver.stats.points}</TableContent>
         </RowBlock>
+
+        {!racesVisible.value ? (
+          <ExpandHelper mobileOnly>Tap to expand results</ExpandHelper>
+        ) : null}
       </RowWrapperClickable>
 
       {racesVisible.value ? (
