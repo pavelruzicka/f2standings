@@ -13,7 +13,7 @@ import { countries } from "../../util/countries"
 
 import { RowStart, RowBlock, RowWrapperClickable } from "../../styles/Row"
 import { TableContent, MobileLabel } from "../../styles/Mobile"
-import { DriverPos, DriverName } from "../../styles/Driver"
+import { EntityPos, EntityName } from "../../styles/Entity"
 import {
   StatsBox,
   StatsBlock,
@@ -43,11 +43,11 @@ export const DriverProfile = ({
 
         <RowBlock alignLeft>
           <MobileLabel>
-            <DriverPos>{index + 1}</DriverPos>
+            <EntityPos>{index + 1}</EntityPos>
           </MobileLabel>
-          <TableContent driver>
+          <TableContent entity>
             <Flag countryCode={driver.country} large />
-            <DriverName>{driver.name} </DriverName>
+            <EntityName>{driver.name} </EntityName>
             <strong>{driver.lastName}</strong>
             {driver.rookie ? <RookieStatus /> : null}
           </TableContent>

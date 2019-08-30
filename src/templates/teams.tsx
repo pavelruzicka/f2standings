@@ -18,6 +18,7 @@ import {
   TableHeadWrapper,
   Table,
   TableRow,
+  TableFooter,
 } from "../styles/Layout/Table"
 import { RookieExplanation } from "../styles/RookieExplanation"
 import { Tooltip } from "../styles/Tooltip"
@@ -40,38 +41,41 @@ export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
           />
         </>
       ) : (
-        <Table>
-          <TableHeadWrapper>
-            <TableRow>
-              <TableHead textAlign="right" scope="col">
-                Pos
-              </TableHead>
-              <TableHead scope="col">Team</TableHead>
-              <TableHead scope="col">Drivers</TableHead>
-              <TableHead textAlign="center" scope="col">
-                <Icon type={"podium"} />
-              </TableHead>
-              <TableHead textAlign="center">
-                <Icon type={"win"} size={18} />
-              </TableHead>
-              <TableHead textAlign="center" scope="col">
-                Points
-              </TableHead>
-            </TableRow>
-          </TableHeadWrapper>
+        <>
+          <Table>
+            <TableHeadWrapper>
+              <TableRow>
+                <TableHead textAlign="right" scope="col">
+                  Pos
+                </TableHead>
+                <TableHead scope="col">Team</TableHead>
+                <TableHead scope="col">Drivers</TableHead>
+                <TableHead textAlign="center" scope="col">
+                  <Icon type={"podium"} />
+                </TableHead>
+                <TableHead textAlign="center">
+                  <Icon type={"win"} size={18} />
+                </TableHead>
+                <TableHead textAlign="center" scope="col">
+                  Points
+                </TableHead>
+              </TableRow>
+            </TableHeadWrapper>
 
-          <tbody>
-            {sortedTeams.map((team, index) => (
-              <TeamProfile
-                team={team}
-                teams={teams}
-                drivers={drivers}
-                index={index}
-                key={team.short}
-              />
-            ))}
-          </tbody>
-        </Table>
+            <tbody>
+              {sortedTeams.map((team, index) => (
+                <TeamProfile
+                  team={team}
+                  teams={teams}
+                  drivers={drivers}
+                  index={index}
+                  key={team.short}
+                />
+              ))}
+            </tbody>
+          </Table>
+          <TableFooter />
+        </>
       )}
       <RookieExplanation>
         The &#42; besides a driver's name denotes them being a rookie in

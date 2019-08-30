@@ -30,7 +30,7 @@ export const MobileLabel = styled.span<{ varied?: boolean }>`
 
 export const TableContent = styled.div<{
   horizontal?: boolean
-  driver?: boolean
+  entity?: boolean
 }>`
   vertical-align: middle;
 
@@ -52,7 +52,7 @@ export const TableContent = styled.div<{
     }
 
     ${FlagElement} {
-      display: ${p => (p.driver ? "none" : "inline")};
+      display: ${p => (p.entity ? "none" : "inline")};
     }
   }
 `

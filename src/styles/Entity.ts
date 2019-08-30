@@ -2,12 +2,12 @@ import styled from "styled-components"
 
 import { getRule } from "../util/viewports"
 
-export const DriverName = styled.span`
+export const EntityName = styled.span`
   @media ${getRule("max", "laptop")} {
     display: block;
   }
 `
-export const DriverPos = styled.div`
+export const EntityPos = styled.div`
   background: tomato;
   width: 32px;
   height: 32px;
