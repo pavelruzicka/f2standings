@@ -43,7 +43,7 @@ export const RowStart = styled(RowBlock)`
     line-height: 0;
     justify-content: space-between;
     padding: 10px 16px;
-    margin-top: 1rem;
+    padding-bottom: 1rem;
     border-bottom: none;
     border-top: 1px solid hsla(0, 0%, 0%, 0.12);
   }

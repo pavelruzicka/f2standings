@@ -99,15 +99,15 @@ export const DriverProfile = ({
         <RowBlock desktopOnly>
           <TableContent>{driver.stats.points}</TableContent>
         </RowBlock>
-
-        {!racesVisible.value ? (
-          <ExpandHelper mobileOnly>Tap to expand results</ExpandHelper>
-        ) : null}
       </RowWrapperClickable>
 
       {racesVisible.value ? (
         <RacesRow results={driver.results} driver={driver} />
-      ) : null}
+      ) : (
+        <ExpandHelper onClick={racesVisible.toggle} mobileOnly>
+          <td>Tap to expand results</td>
+        </ExpandHelper>
+      )}
     </>
   )
 }
