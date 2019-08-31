@@ -44,7 +44,7 @@ export function getChartDriverPoints(drivers: IDriverBase[], teams: ITeam[]) {
         points,
         color: teamColours[driver.team] || "#000",
         dotted: isSecondDriver(teams, driver),
-        shortLabel: driver.short,
+        shortLabel: `${driver.short} ${driver.rookie ? "*" : ""}`,
         label: `<b>${driver.name} ${driver.lastName}</b> ${
           driver.rookie ? "*" : ""
         }<br/>${teamName}`,
