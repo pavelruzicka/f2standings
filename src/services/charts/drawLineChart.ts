@@ -29,8 +29,7 @@ export function getBottomAxis(races: number, size: ISize) {
 
 export function getLeftAxis(data: IDataEntry[], size: ISize) {
   // Create math functions for vertical y axis with points count
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const maxY = d3.max(data, d => d3.max(d.points, ([_, x]) => x)) || 0
+  const maxY = d3.max(data, d => d3.max(d.points, ([, x]) => x)) || 0
 
   const yScale = d3
     .scaleLinear()
@@ -248,8 +247,7 @@ export function drawLines(
     .line()
     .curve(d3.curveBasis)
     .x(([x]) => xScale(x))
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .y(([_, y]) => yScale(y))
+    .y(([, y]) => yScale(y))
 
   const tooltip = d3.select("div[data-tooltip]")
 

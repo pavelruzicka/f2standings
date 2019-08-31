@@ -4,7 +4,8 @@ import { getRule } from "../util/viewports"
 
 export const StatsBox = styled.td`
   display: flex;
-  margin: 1rem 0;
+  margin: 1rem 0 0;
+  padding-bottom: 1rem;
 
   @media ${getRule("min", "laptop")} {
     display: none;
