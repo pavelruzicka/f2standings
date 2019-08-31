@@ -6,6 +6,7 @@ import { getRule } from "../util/viewports"
 
 export const Results = styled.td`
   display: flex;
+  padding-bottom: 1rem;
 
   @media ${getRule("min", "laptop")} {
     display: none;
