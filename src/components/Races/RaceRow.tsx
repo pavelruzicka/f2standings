@@ -62,64 +62,67 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
           <RowFiller />
 
           <RaceColumnWrapper>
-            <RacePartition type={RaceType.Feature} />
-            <RacePartition type={RaceType.Sprint} />
+            {feature.podium ? <RacePartition type={RaceType.Feature} /> : null}
+            {sprint.podium ? <RacePartition type={RaceType.Sprint} /> : null}
           </RaceColumnWrapper>
 
           <Results>
-            <ResultColumn>
-              <ResultHeader>Feature race</ResultHeader>
+            {feature.podium && feature.fastest ? (
+              <ResultColumn>
+                <ResultHeader>Feature race</ResultHeader>
 
-              <ResultRow
-                icon={"p1"}
-                drivers={drivers}
-                driver={feature.podium[0]}
-              />
-              <ResultRow
-                icon={"p2"}
-                drivers={drivers}
-                driver={feature.podium[1]}
-              />
-              <ResultRow
-                icon={"p3"}
-                drivers={drivers}
-                driver={feature.podium[2]}
-              />
-              {feature.fastest ? (
+                <ResultRow
+                  icon={"p1"}
+                  drivers={drivers}
+                  driver={feature.podium[0]}
+                />
+                <ResultRow
+                  icon={"p2"}
+                  drivers={drivers}
+                  driver={feature.podium[1]}
+                />
+                <ResultRow
+                  icon={"p3"}
+                  drivers={drivers}
+                  driver={feature.podium[2]}
+                />
+
                 <ResultRow
                   icon={"fastest"}
                   drivers={drivers}
                   driver={feature.fastest}
                 />
-              ) : null}
-            </ResultColumn>
+              </ResultColumn>
+            ) : null}
 
-            <ResultColumn second>
-              <ResultHeader>Sprint race</ResultHeader>
+            {sprint.podium && sprint.fastest ? (
+              <ResultColumn second>
+                <ResultHeader>Sprint race</ResultHeader>
 
-              <ResultRow
-                icon={"p1"}
-                drivers={drivers}
-                driver={sprint.podium[0]}
-              />
-              <ResultRow
-                icon={"p2"}
-                drivers={drivers}
-                driver={sprint.podium[1]}
-              />
-              <ResultRow
-                icon={"p3"}
-                drivers={drivers}
-                driver={sprint.podium[2]}
-              />
-              {sprint.fastest ? (
                 <ResultRow
-                  icon={"fastest"}
+                  icon={"p1"}
                   drivers={drivers}
-                  driver={sprint.fastest}
+                  driver={sprint.podium[0]}
                 />
-              ) : null}
-            </ResultColumn>
+                <ResultRow
+                  icon={"p2"}
+                  drivers={drivers}
+                  driver={sprint.podium[1]}
+                />
+                <ResultRow
+                  icon={"p3"}
+                  drivers={drivers}
+                  driver={sprint.podium[2]}
+                />
+                {sprint.fastest ? (
+                  <ResultRow
+                    icon={"fastest"}
+                    drivers={drivers}
+                    driver={sprint.fastest}
+                  />
+                ) : null}
+              </ResultColumn>
+            ) : null}
           </Results>
 
           {feature.podium && sprint.podium ? (
