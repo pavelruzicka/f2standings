@@ -66,6 +66,9 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
             {sprint.podium ? <RacePartition type={RaceType.Sprint} /> : null}
           </RaceColumnWrapper>
 
+          {feature.podium ? null : <RowFiller />}
+          {sprint.podium ? null : <RowFiller />}
+
           <Results>
             {feature.podium && feature.fastest ? (
               <ResultColumn>
@@ -138,7 +141,9 @@ export const RaceRow = ({ race, index, drivers, teams }: IRaceRowProps) => {
                 />
               ))}
             </>
-          ) : null}
+          ) : (
+            <RowFiller />
+          )}
 
           <RowFiller />
 
