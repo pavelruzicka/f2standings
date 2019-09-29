@@ -11,8 +11,8 @@ export const Table = styled.table`
 
 export const TableItem = styled.td`
   padding: 10px 12px;
-  border-bottom: 1px solid #e0e0e0;
   vertical-align: top;
+  border-bottom: 1px solid #e0e0e0;
 
   @media ${getRule("min", "laptop")} {
     &:first-child {

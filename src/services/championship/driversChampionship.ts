@@ -27,11 +27,11 @@ const countFastest = (results: IResult[]) =>
 const countPoints = (results: IResult[], short: string) => {
   const base = results.reduce((acc, curr) => {
     if (!curr.upcoming) {
-      if (curr.feature) {
+      if (curr.feature && curr.feature.position !== null) {
         acc += featurePoints[curr.feature.position] || 0
       }
 
-      if (curr.sprint) {
+      if (curr.sprint && curr.sprint.position !== null) {
         acc += sprintPoints[curr.sprint.position] || 0
       }
     }

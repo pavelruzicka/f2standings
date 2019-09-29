@@ -23,13 +23,17 @@ export function getChartDriverPoints(drivers: IDriverBase[], teams: ITeam[]) {
           let points = 0
 
           if (result.feature) {
-            points += featurePoints[result.feature.position] || 0
+            if (result.feature.position !== null) {
+              points += featurePoints[result.feature.position] || 0
+            }
             points += result.feature.fastest ? 2 : 0
             points += result.feature.pole ? 4 : 0
           }
 
           if (result.sprint) {
-            points += sprintPoints[result.sprint.position] || 0
+            if (result.sprint.position !== null) {
+              points += sprintPoints[result.sprint.position] || 0
+            }
             points += result.sprint.fastest ? 2 : 0
           }
 

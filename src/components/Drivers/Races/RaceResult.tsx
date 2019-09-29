@@ -10,7 +10,7 @@ export const RaceResult = ({ result, type }: IRaceResultProps) => {
   const typeName = RaceType[type].toLowerCase() as "feature" | "sprint"
   const race = result[typeName]
 
-  if (race === null) {
+  if (race === null || race.position === null) {
     return <ResultWrapper>—</ResultWrapper>
   }
 
