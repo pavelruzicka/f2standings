@@ -2,12 +2,12 @@ import { countries } from "../../util/countries"
 
 interface IFeatureRaceReport {
   pole: boolean
-  position: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
+  position: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | null
   fastest: boolean
 }
 
 interface ISprintRaceReport {
-  position: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+  position: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | null
   fastest: boolean
 }
 
