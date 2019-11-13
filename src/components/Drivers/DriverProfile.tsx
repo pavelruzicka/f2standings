@@ -31,10 +31,7 @@ export const DriverProfile = ({
   const racesVisible = useBoolean(open.includes(index))
 
   const country = countries[driver.country]
-  const team = teams.find(t => t.short === driver.team)
-  if (!team) {
-    return null
-  }
+  const team = teams.find(team => team.short === driver.team)
 
   return (
     <>
@@ -63,7 +60,16 @@ export const DriverProfile = ({
         <RowBlock alignLeft bold>
           <MobileLabel>Team</MobileLabel>
           <TableContent>
-            <Flag countryCode={team.country} large /> {team.name}
+            {team ? (
+              <>
+                <Flag countryCode={team.country} large /> {team.name}
+              </>
+            ) : (
+              <>
+                <Flag countryCode="empty" large />
+                unknown
+              </>
+            )}
           </TableContent>
         </RowBlock>
 

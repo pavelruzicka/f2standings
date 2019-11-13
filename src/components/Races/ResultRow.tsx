@@ -21,7 +21,7 @@ export const ResultRow = ({
   const driverInfo = drivers.find(d => d.short === driver)
 
   if (!driverInfo) {
-    return <></>
+    return null
   }
 
   return (
