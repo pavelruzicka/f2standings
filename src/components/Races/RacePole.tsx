@@ -19,7 +19,7 @@ export const RacePole = ({ feature, drivers, teams }: IPoleProps) => {
     return <TableItem />
   }
 
-  const team = teams.find(t => t.drivers.includes(driver.short))
+  const team = teams.find(team => team.short === driver.team)
   if (!team) {
     return <TableItem />
   }

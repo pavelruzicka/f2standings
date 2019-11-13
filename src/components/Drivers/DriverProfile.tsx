@@ -31,7 +31,7 @@ export const DriverProfile = ({
   const racesVisible = useBoolean(open.includes(index))
 
   const country = countries[driver.country]
-  const team = teams.find(t => t.short === driver.team)
+  const team = teams.find(team => team.short === driver.team)
   if (!team) {
     return null
   }

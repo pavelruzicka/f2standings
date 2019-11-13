@@ -8,6 +8,7 @@ import { IRaceColumn } from "../../interfaces/render/Race"
 import { TableContent } from "../../styles/Mobile"
 import { RaceColumnWrapper, ColumnDriver } from "../../styles/Race/Column"
 import { Abbr } from "../../styles/Global"
+import { IDriverBase } from "../../interfaces/render/Driver"
 
 export const RaceColumn = ({
   keys,
@@ -17,27 +18,24 @@ export const RaceColumn = ({
   mobile = false,
   shortened = false,
 }: IRaceColumn) => {
-  const boxes = occupants.map(o => drivers.find(d => d.short === o))
+  const boxes = occupants.map(o =>
+    drivers.find(d => d.short === o)
+  ) as IDriverBase[]
 
   return (
     <RaceColumnWrapper mobile={mobile}>
       <TableContent horizontal>
         {boxes.map((driver, index) => {
-          if (!driver) {
-            return null
-          }
-
-          const team = teams.find(t => t.drivers.includes(driver.short))
-          if (!team) {
-            return null
-          }
+          const team = teams.find(team => team.short === driver.team)
 
           return (
             <ColumnDriver key={keys ? keys[index] : driver.short}>
               <Flag countryCode={driver.country} large />
               {shortened ? (
                 <Abbr
-                  title={`${driver.name} ${driver.lastName} | ${team.name}`}
+                  title={`${driver.name} ${driver.lastName}${
+                    team ? ` | ${team.name}` : ""
+                  }`}
                 >
                   {driver.short}
                 </Abbr>
