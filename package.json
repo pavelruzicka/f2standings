@@ -57,7 +57,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "lint": "eslint . --ext .tsx,.ts"
+    "lint": "eslint . --ext .tsx,.ts",
+    "compile-check": "tsc -p tsconfig.json --noEmit"
   },
   "repository": {
     "type": "git",
