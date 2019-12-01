@@ -18,9 +18,14 @@ export const RaceColumn = ({
   mobile = false,
   shortened = false,
 }: IRaceColumn) => {
-  const boxes = occupants.map(o =>
-    drivers.find(d => d.short === o)
-  ) as IDriverBase[]
+  const boxes = occupants.map(occupant => {
+    const driver = drivers.find(d => d.short === occupant)
+    if (driver === undefined) {
+      throw new Error("Unknown driver short: " + occupant)
+    }
+
+    return driver
+  })
 
   return (
     <RaceColumnWrapper mobile={mobile}>
