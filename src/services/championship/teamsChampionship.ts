@@ -2,6 +2,7 @@ import { ITeamResult, ITeam } from "../../interfaces/render/Team"
 import { IBonusPointSources } from "../../interfaces/General"
 
 import { featurePoints, sprintPoints } from "../../util/points"
+import { flatten } from "../../util/array"
 
 const countCarPodiums = (set: ITeamResult[]) =>
   set.filter(placement => placement.position && placement.position < 4).length
@@ -54,7 +55,7 @@ export const sortTeams = (teams: ITeam[]) => {
 }
 
 export const countFastestLaps = (team: ITeam) => {
-  return team.results.flat().reduce((fastestLaps, result) => {
+  return flatten(team.results).reduce((fastestLaps, result) => {
     if (result.fastest) {
       return fastestLaps + 1
     }
@@ -64,7 +65,7 @@ export const countFastestLaps = (team: ITeam) => {
 }
 
 export const countPoles = (team: ITeam) => {
-  return team.results.flat().reduce((poles, result) => {
+  return flatten(team.results).reduce((poles, result) => {
     if (result.pole) {
       return poles + 1
     }
