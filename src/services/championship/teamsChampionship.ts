@@ -46,9 +46,29 @@ export const sortTeams = (teams: ITeam[]) => {
     .map(team => ({
       ...team,
       stats: getTeamStats(team.results, {
-        poles: team.poles,
-        fastest: team.fastest,
+        poles: countPoles(team),
+        fastest: countFastestLaps(team),
       }),
     }))
     .sort((x, y) => y.stats.points - x.stats.points)
+}
+
+export const countFastestLaps = (team: ITeam) => {
+  return team.results.flat().reduce((fastestLaps, result) => {
+    if (result.fastest) {
+      return fastestLaps + 1
+    }
+
+    return fastestLaps
+  }, 0)
+}
+
+export const countPoles = (team: ITeam) => {
+  return team.results.flat().reduce((poles, result) => {
+    if (result.pole) {
+      return poles + 1
+    }
+
+    return poles
+  }, 0)
 }
