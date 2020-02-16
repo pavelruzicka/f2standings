@@ -8,11 +8,12 @@ interface IProps {
   onChartPage: boolean
   year: string
   availableYears: string[]
+  path: string
 }
 
-export function MainMenu({ onChartPage, year, availableYears }: IProps) {
+export function MainMenu({ onChartPage, path, year, availableYears }: IProps) {
   return (
-    <Header logo availableYears={availableYears}>
+    <Header logo year={year} path={path} availableYears={availableYears}>
       <MenuLink
         to={`/${year}/drivers${onChartPage ? "/chart" : ""}`}
         activeStyle={{ opacity: 1 }}

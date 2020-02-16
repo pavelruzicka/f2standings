@@ -8,11 +8,12 @@ interface IProps {
   origin: "drivers" | "teams"
   year: string
   availableYears: string[]
+  path: string
 }
 
-export const SubMenu = ({ origin, year, availableYears }: IProps) => {
+export const SubMenu = ({ origin, path, year, availableYears }: IProps) => {
   return (
-    <Header subStyling availableYears={availableYears}>
+    <Header subStyling path={path} year={year} availableYears={availableYears}>
       <SubMenuLink to={`/${year}/${origin}`} activeStyle={{ opacity: 1 }}>
         Table
       </SubMenuLink>

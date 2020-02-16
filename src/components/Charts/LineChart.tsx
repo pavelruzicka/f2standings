@@ -35,7 +35,13 @@ export function LineChart({ data, races }: IProps) {
 
     const svg = drawSvg(svgRef.current, size)
     drawGrid(svg, xAxis, yAxis, races.length, size)
-    drawAxis(svg, xAxis, yAxis, races.map(race => race.location), size)
+    drawAxis(
+      svg,
+      xAxis,
+      yAxis,
+      races.map(race => race.location),
+      size
+    )
     drawLegend(svg, data, size)
     drawLines(svg, xScale, yScale, data.slice().reverse())
   }, [data, races, svgRef])

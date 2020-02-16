@@ -17,6 +17,8 @@ export const Header = ({
   subStyling = false,
   children,
   availableYears,
+  year: currentYear,
+  path,
 }: IHeaderProps) => (
   <HeaderWrapper subStyling={subStyling}>
     {logo ? (
@@ -28,17 +30,16 @@ export const Header = ({
         </Link>
         <YearWrapper>
           {availableYears.map((year, index) => (
-            <>
+            <React.Fragment key={year}>
               {index !== 0 ? <Bullet /> : null}
               <Link
-                key={year}
-                to={`/${year}`}
+                to={path.replace(currentYear, year)}
                 activeStyle={{ opacity: 1 }}
                 partiallyActive
               >
                 {year}
               </Link>
-            </>
+            </React.Fragment>
           ))}
         </YearWrapper>
       </h3>

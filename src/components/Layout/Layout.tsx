@@ -10,12 +10,14 @@ interface IProps {
   onChartPage: boolean
   year: string
   availableYears: string[]
+  path: string
 }
 
 export function Layout({
   children,
   onChartPage,
   year,
+  path,
   availableYears,
 }: IProps) {
   return (
@@ -23,6 +25,7 @@ export function Layout({
       <GlobalStyle />
       <MainMenu
         year={year}
+        path={path}
         onChartPage={onChartPage}
         availableYears={availableYears}
       />

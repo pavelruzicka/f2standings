@@ -17,9 +17,15 @@ import { RookieExplanation } from "../styles/RookieExplanation"
 
 export default ({
   pageContext: { drivers, teams, races, year, availableYears },
+  path,
 }: IRacesContext) => {
   return (
-    <Layout onChartPage={false} year={year} availableYears={availableYears}>
+    <Layout
+      onChartPage={false}
+      path={path}
+      year={year}
+      availableYears={availableYears}
+    >
       <Head title="Races" />
 
       <Table>

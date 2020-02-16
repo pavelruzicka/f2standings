@@ -25,14 +25,25 @@ import { Tooltip } from "../styles/Tooltip"
 
 export default ({
   pageContext: { teams, drivers, chart, year, availableYears },
+  path,
 }: ITeamsContext) => {
   const sortedTeams = sortTeams(teams)
 
   return (
-    <Layout onChartPage={chart} year={year} availableYears={availableYears}>
+    <Layout
+      onChartPage={chart}
+      path={path}
+      year={year}
+      availableYears={availableYears}
+    >
       <Head title="Teams" />
 
-      <SubMenu origin={"teams"} year={year} availableYears={availableYears} />
+      <SubMenu
+        origin={"teams"}
+        path={path}
+        year={year}
+        availableYears={availableYears}
+      />
 
       {chart ? (
         <>
