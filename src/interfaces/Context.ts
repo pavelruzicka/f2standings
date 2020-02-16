@@ -8,6 +8,8 @@ export interface IDriversContext {
     teams: ITeam[]
     races: IRace[]
     chart: boolean
+    year: string
+    availableYears: string[]
   }
 }
 
@@ -16,6 +18,8 @@ export interface IRacesContext {
     drivers: IDriverBase[]
     teams: ITeam[]
     races: IRace[]
+    year: string
+    availableYears: string[]
   }
 }
 
@@ -24,5 +28,7 @@ export interface ITeamsContext {
     teams: ITeam[]
     drivers: IDriverBase[]
     chart: boolean
+    year: string
+    availableYears: string[]
   }
 }

@@ -8,13 +8,24 @@ import { GlobalStyle, Container } from "../../styles/Global"
 interface IProps {
   children: React.ReactNode
   onChartPage: boolean
+  year: string
+  availableYears: string[]
 }
 
-export function Layout({ children, onChartPage }: IProps) {
+export function Layout({
+  children,
+  onChartPage,
+  year,
+  availableYears,
+}: IProps) {
   return (
     <Container>
       <GlobalStyle />
-      <MainMenu onChartPage={onChartPage} />
+      <MainMenu
+        year={year}
+        onChartPage={onChartPage}
+        availableYears={availableYears}
+      />
       <main>{children}</main>
       <Footer>
         <FooterLine>

@@ -78,4 +78,5 @@ export interface IHeaderProps {
   logo?: boolean
   subStyling?: boolean
   children: React.ReactNode
+  availableYears: string[]
 }
