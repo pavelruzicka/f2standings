@@ -8,7 +8,6 @@ import { IRaceColumn } from "../../interfaces/render/Race"
 import { TableContent } from "../../styles/Mobile"
 import { RaceColumnWrapper, ColumnDriver } from "../../styles/Race/Column"
 import { Abbr } from "../../styles/Global"
-import { IDriverBase } from "../../interfaces/render/Driver"
 
 export const RaceColumn = ({
   keys,

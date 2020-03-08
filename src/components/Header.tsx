@@ -5,24 +5,49 @@ import { Logo } from "./Logo"
 
 import { IHeaderProps } from "../interfaces/Props"
 
-import { HeaderWrapper, ImageWrapper } from "../styles/Layout/Header"
+import {
+  HeaderWrapper,
+  ImageWrapper,
+  YearWrapper,
+  Bullet,
+} from "../styles/Layout/Header"
 
 export const Header = ({
   logo = false,
   subStyling = false,
   children,
-}: IHeaderProps) => (
-  <HeaderWrapper subStyling={subStyling}>
-    {logo ? (
-      <h3>
-        <Link to="/drivers" title="F2 Standings">
-          <ImageWrapper>
-            <Logo />
-          </ImageWrapper>
-        </Link>
-      </h3>
-    ) : null}
+  availableYears,
+  year: currentYear,
+  path,
+}: IHeaderProps) => {
+  console.log(availableYears)
+  return (
+    <HeaderWrapper subStyling={subStyling}>
+      {logo ? (
+        <h3>
+          <Link to="/" title="F2 Standings">
+            <ImageWrapper>
+              <Logo />
+            </ImageWrapper>
+          </Link>
+          <YearWrapper>
+            {availableYears.map((year, index) => (
+              <React.Fragment key={year}>
+                {index !== 0 ? <Bullet /> : null}
+                <Link
+                  to={path.replace(currentYear, year)}
+                  activeStyle={{ opacity: 1 }}
+                  partiallyActive
+                >
+                  {year}
+                </Link>
+              </React.Fragment>
+            ))}
+          </YearWrapper>
+        </h3>
+      ) : null}
 
-    <div>{children}</div>
-  </HeaderWrapper>
-)
+      <div>{children}</div>
+    </HeaderWrapper>
+  )
+}

@@ -24,8 +24,8 @@ const countFastest = (results: IResult[]) =>
     return acc
   }, 0)
 
-const countPoints = (results: IResult[], short: string) => {
-  const base = results.reduce((acc, curr) => {
+const countPoints = (results: IResult[]) =>
+  results.reduce((acc, curr) => {
     if (!curr.upcoming) {
       if (curr.feature && curr.feature.position !== null) {
         acc += featurePoints[curr.feature.position] || 0
@@ -39,22 +39,23 @@ const countPoints = (results: IResult[], short: string) => {
     return acc
   }, 0)
 
-  return base - (short === "DOE" ? 1 : 0)
-}
-
-const getDriverStats = (results: IResult[], short: string) => {
+const getDriverStats = (results: IResult[]) => {
   const poles = countPoles(results)
   const fastest = countFastest(results)
-  const points = countPoints(results, short)
+  const points = countPoints(results)
 
-  return { poles, fastest, points: points + poles * 4 + fastest * 2 }
+  return {
+    poles,
+    fastest,
+    points: points + poles * 4 + fastest * 2,
+  }
 }
 
 export const sortDrivers = (drivers: IDriverBase[]) => {
   return drivers
     .map(driver => ({
       ...driver,
-      stats: getDriverStats(driver.results, driver.short),
+      stats: getDriverStats(driver.results),
     }))
     .sort((x, y) => y.stats.points - x.stats.points)
 }

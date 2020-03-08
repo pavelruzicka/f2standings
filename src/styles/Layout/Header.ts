@@ -10,6 +10,9 @@ export const HeaderWrapper = styled.header<{ subStyling: boolean }>`
 
   h3 {
     margin: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
   }
 
   link {
@@ -38,5 +41,30 @@ export const ImageWrapper = styled.div`
 
   svg {
     vertical-align: middle;
+  }
+`
+
+export const YearWrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  margin-left: 10px;
+
+  a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+    opacity: 0.4;
+    margin: 0 5px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+export const Bullet = styled.span`
+  &:before {
+    content: "—";
+    color: rgba(0, 0, 0, 0.7);
+    opacity: 0.4;
   }
 `

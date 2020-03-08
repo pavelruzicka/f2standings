@@ -24,16 +24,27 @@ import { RookieExplanation } from "../styles/RookieExplanation"
 import { Tooltip } from "../styles/Tooltip"
 
 export default ({
-  pageContext: { drivers, teams, races, chart },
+  pageContext: { drivers, teams, races, chart, year, availableYears },
+  path,
 }: IDriversContext) => {
   const open = [0, drivers.length - 1]
   const sortedDrivers = sortDrivers(drivers)
 
   return (
-    <Layout onChartPage={chart}>
+    <Layout
+      onChartPage={chart}
+      path={path}
+      year={year}
+      availableYears={availableYears}
+    >
       <Head title="Drivers" />
 
-      <SubMenu origin={"drivers"} />
+      <SubMenu
+        origin={"drivers"}
+        path={path}
+        year={year}
+        availableYears={availableYears}
+      />
 
       {chart ? (
         <>

@@ -2,27 +2,31 @@ import { IDriverBase } from "./render/Driver"
 import { ITeam } from "./render/Team"
 import { IRace } from "./render/Race"
 
-export interface IDriversContext {
+interface IPageContext {
+  path: string
   pageContext: {
     drivers: IDriverBase[]
     teams: ITeam[]
+    year: string
+    availableYears: string[]
+  }
+}
+
+export type IDriversContext = IPageContext & {
+  pageContext: {
     races: IRace[]
     chart: boolean
   }
 }
 
-export interface IRacesContext {
+export type IRacesContext = IPageContext & {
   pageContext: {
-    drivers: IDriverBase[]
-    teams: ITeam[]
     races: IRace[]
   }
 }
 
-export interface ITeamsContext {
+export type ITeamsContext = IPageContext & {
   pageContext: {
-    teams: ITeam[]
-    drivers: IDriverBase[]
     chart: boolean
   }
 }

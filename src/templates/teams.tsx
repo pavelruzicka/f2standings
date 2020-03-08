@@ -23,14 +23,27 @@ import {
 import { RookieExplanation } from "../styles/RookieExplanation"
 import { Tooltip } from "../styles/Tooltip"
 
-export default ({ pageContext: { teams, drivers, chart } }: ITeamsContext) => {
+export default ({
+  pageContext: { teams, drivers, chart, year, availableYears },
+  path,
+}: ITeamsContext) => {
   const sortedTeams = sortTeams(teams)
 
   return (
-    <Layout onChartPage={chart}>
+    <Layout
+      onChartPage={chart}
+      path={path}
+      year={year}
+      availableYears={availableYears}
+    >
       <Head title="Teams" />
 
-      <SubMenu origin={"teams"} />
+      <SubMenu
+        origin={"teams"}
+        path={path}
+        year={year}
+        availableYears={availableYears}
+      />
 
       {chart ? (
         <>
