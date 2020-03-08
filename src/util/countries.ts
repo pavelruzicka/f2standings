@@ -1,6 +1,7 @@
 export const countries = {
   ARE: "United Arab Emirates",
   AUT: "Austria",
+  AUS: "Australia",
   AZE: "Azerbaijan",
   BEL: "Belgium",
   BHR: "Bahrain",
@@ -17,6 +18,7 @@ export const countries = {
   HUN: "Hungary",
   IDN: "Indonesia",
   IND: "India",
+  ISR: "Israel",
   ITA: "Italy",
   JPN: "Japan",
   MCO: "Monaco",
